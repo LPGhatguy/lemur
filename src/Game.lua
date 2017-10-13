@@ -1,5 +1,3 @@
-local root = (...):match("^(.-%.)[^.]+$")
-
 local services = require("services")
 
 local Game = {}

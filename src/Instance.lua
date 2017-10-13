@@ -1,5 +1,3 @@
-local root = (...):match("^(.-%.)[^.]+$")
-
 local instances = require("instances")
 
 local Instance = {}

@@ -1,5 +1,3 @@
-local root = (...):match("^(.-%.)[^.]+%.[^.]+$")
-
 local Signal = require("Signal")
 
 local RunService = {}
