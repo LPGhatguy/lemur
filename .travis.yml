@@ -21,7 +21,7 @@ install:
   - luarocks install luacheck
 
 script:
-  - luacheck src spec
+  - luacheck src
   - busted --verbose --coverage
 
 after_success:
