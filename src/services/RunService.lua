@@ -1,6 +1,6 @@
 local root = (...):match("^(.-%.)[^.]+%.[^.]+$")
 
-local Signal = require(root .. "Signal")
+local Signal = require("Signal")
 
 local RunService = {}
 

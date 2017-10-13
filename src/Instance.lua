@@ -1,6 +1,6 @@
 local root = (...):match("^(.-%.)[^.]+$")
 
-local instances = require(root .. "instances")
+local instances = require("instances")
 
 local Instance = {}
 Instance.__index = Instance

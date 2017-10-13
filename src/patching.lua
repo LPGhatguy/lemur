@@ -1,7 +1,7 @@
 local root = (...):match("^(.-%.)[^.]+$")
 
-local Instance = require(root .. "Instance")
-local Game = require(root .. "Game")
+local Instance = require("Instance")
+local Game = require("Game")
 
 local patchValues = {}
 local capturedValues = {}

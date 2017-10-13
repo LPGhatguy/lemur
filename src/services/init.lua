@@ -1,5 +1,5 @@
 local root = (...):match("^(.-%.)[^.]+$")
 
 return {
-	RunService = require(root .. "services.RunService"),
+	RunService = require("services.RunService"),
 }

@@ -1,4 +1,4 @@
-local patching = require((...) .. ".patching")
+local patching = require("patching")
 
 return {
 	patch = patching.patch,

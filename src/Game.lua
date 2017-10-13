@@ -1,6 +1,6 @@
 local root = (...):match("^(.-%.)[^.]+$")
 
-local services = require(root .. "services")
+local services = require("services")
 
 local Game = {}
 Game.__index = Game
