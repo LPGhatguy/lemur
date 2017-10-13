@@ -1,6 +1,6 @@
 local patching = require("lemur.patching")
 
-local REPLACEMENTS = {"require", "game"}
+local REPLACEMENTS = {"require", "game", "Instance"}
 
 describe("patching", function()
 	it("should replace and revert known values", function()

@@ -1,5 +1,6 @@
 local Instance = require("lemur.Instance")
 local Game = require("lemur.Game")
+local typeof = require("lemur.functions.typeof")
 
 local patchValues = {}
 local capturedValues = {}
@@ -18,6 +19,7 @@ end
 do
 	patchValues.game = Game.new()
 	patchValues.Instance = Instance
+	patchValues.typeof = typeof
 end
 
 local function capture()
