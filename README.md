@@ -1,8 +1,18 @@
-# Lemur
-[![Travis CI Build Status](https://api.travis-ci.org/LPGhatguy/lemur.svg?branch=master)](https://travis-ci.org/LPGhatguy/lemur)
-[![Coverage Status](https://coveralls.io/repos/github/LPGhatguy/lemur/badge.svg?branch=master)](https://coveralls.io/github/LPGhatguy/lemur?branch=master)
+<h1 align="center">Lemur</h1>
+<div align="center">
+	<a href="https://travis-ci.org/LPGhatguy/lemur">
+		<img src="https://api.travis-ci.org/LPGhatguy/lemur.svg?branch=master" />
+	</a>
+	<a href="https://coveralls.io/github/LPGhatguy/lemur?branch=master">
+		<img src="https://coveralls.io/repos/github/LPGhatguy/lemur/badge.svg?branch=master" />
+	</a>
+</div>
 
-Provides minimal emulation of Roblox APIs, intended for use with continuous integration systems.
+<div align="center">
+	<strong>L</strong>ua <strong>Emu</strong>lation of <strong>R</strong>oblox APIs
+</div>
+
+<div>&nbsp;</div>
 
 ## Planned Features:
 - [ ] RunService
