@@ -1,2 +1,5 @@
 # Lemur
-Provides minimal implementation of Roblox APIs, used for running CI with standalone Lua 5.1.
+Provides minimal emulation of Roblox APIs, intended for use with continuous integration systems.
+
+## License
+Lemur is available under the MIT license. See [LICENSE.md](LICENSE.md) for details.
