@@ -22,7 +22,7 @@ install:
 
 script:
   - luacheck src
-  - busted --verbose --coverage
+  - busted src --verbose --coverage
 
 after_success:
   - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua_install
