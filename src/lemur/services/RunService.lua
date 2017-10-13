@@ -1,4 +1,4 @@
-local Signal = require("Signal")
+local Signal = require("lemur.Signal")
 
 local RunService = {}
 

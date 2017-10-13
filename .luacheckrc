@@ -8,10 +8,6 @@ ignore = {
 
 std = "lua51"
 
-files["spec/*.lua"] = {
-	std = "+busted",
-}
-
 files["src/**/*_spec.lua"] = {
 	std = "+busted",
 }

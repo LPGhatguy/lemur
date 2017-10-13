@@ -1,4 +1,4 @@
-local Signal = require("src.Signal")
+local Signal = require("lemur.Signal")
 
 describe("Signal", function()
 	it("should be instantiable", function()

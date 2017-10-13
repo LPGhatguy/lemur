@@ -1,4 +1,4 @@
-local services = require("services")
+local services = require("lemur.services")
 
 local Game = {}
 Game.__index = Game

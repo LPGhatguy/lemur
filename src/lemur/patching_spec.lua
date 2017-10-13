@@ -1,4 +1,4 @@
-local patching = require("src.patching")
+local patching = require("lemur.patching")
 
 local REPLACEMENTS = {"require", "game"}
 

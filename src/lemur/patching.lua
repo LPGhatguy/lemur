@@ -1,5 +1,5 @@
-local Instance = require("Instance")
-local Game = require("Game")
+local Instance = require("lemur.Instance")
+local Game = require("lemur.Game")
 
 local patchValues = {}
 local capturedValues = {}

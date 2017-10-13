@@ -1,4 +1,4 @@
-local RunService = require("src.services.RunService")
+local RunService = require("lemur.services.RunService")
 
 describe("RunService", function()
 	it("exists", function()

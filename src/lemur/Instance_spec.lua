@@ -1,4 +1,4 @@
-local Instance = require("src.Instance")
+local Instance = require("lemur.Instance")
 
 describe("Instance", function()
 	it("should create instances of objects", function()

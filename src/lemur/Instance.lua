@@ -1,4 +1,4 @@
-local instances = require("instances")
+local instances = require("lemur.instances")
 
 local Instance = {}
 Instance.__index = Instance

@@ -1,4 +1,4 @@
-local lemur = require("init")
+local lemur = require("lemur")
 
 describe("init", function()
 	it("should load", function()
