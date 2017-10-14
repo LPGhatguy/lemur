@@ -1,5 +1,4 @@
 local names = {
-	"require",
 	"typeof",
 }
 
