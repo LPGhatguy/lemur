@@ -11,3 +11,7 @@ std = "lua51"
 files["src/**/*_spec.lua"] = {
 	std = "+busted",
 }
+
+files["spec/**/*.lua"] = {
+	std = "+busted",
+}

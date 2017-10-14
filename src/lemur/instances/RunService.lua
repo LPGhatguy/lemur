@@ -2,6 +2,8 @@ local Signal = require("lemur.Signal")
 
 local RunService = {}
 
-RunService.Heartbeat = Signal.new()
+function RunService:init()
+	self.Heartbeat = Signal.new()
+end
 
 return RunService
