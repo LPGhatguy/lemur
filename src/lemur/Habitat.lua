@@ -6,6 +6,7 @@
 
 local Game = require("lemur.Game")
 local environment = require("lemur.environment")
+local fs = require("lemur.fs")
 
 local Habitat = {}
 Habitat.__index = Habitat
@@ -22,18 +23,16 @@ function Habitat.new(path)
 	return habitat
 end
 
-function Habitat:fileExists(path)
+function Habitat:isFile(path)
 	local fullPath = self._path .. "/" .. path
 
-	local handle = io.open(fullPath, "r")
+	return fs.isFile(fullPath)
+end
 
-	if not handle then
-		return false
-	end
+function Habitat:isDirectory(path)
+	local fullPath = self._path .. "/" .. path
 
-	handle:close()
-
-	return true
+	return fs.isDirectory(fullPath)
 end
 
 function Habitat:_load(path)
@@ -43,11 +42,12 @@ function Habitat:_load(path)
 end
 
 function Habitat:require(instance)
-	if instance._loaded then
-		return instance._result
+	local internalInstance = instance._internal
+	if internalInstance._loaded then
+		return internalInstance._result
 	end
 
-	local chunk, err = self:_load(instance._path)
+	local chunk, err = self:_load(internalInstance._path)
 
 	if not chunk then
 		error(err)
@@ -58,8 +58,8 @@ function Habitat:require(instance)
 
 	local result = chunk()
 
-	instance._loaded = true
-	instance._result = result
+	internalInstance._loaded = true
+	internalInstance._result = result
 
 	return result
 end

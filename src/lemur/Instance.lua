@@ -12,6 +12,10 @@ function Instance.new(name, parent)
 	local new = {
 		_children = {},
 
+		-- Any instance-specific internal values should be here.
+		-- This lets us hide keys and check nil without bumping into __index.
+		_internal = {},
+
 		ClassName = name,
 		Name = name,
 		Parent = parent,
@@ -22,6 +26,8 @@ function Instance.new(name, parent)
 	end
 
 	setmetatable(new, Instance)
+
+	-- TODO: The instance handle should be a userdata, not a table!
 
 	if template.init then
 		template.init(new)
@@ -40,7 +46,14 @@ function Instance:__index(key)
 		return nil
 	end
 
-	return self:FindFirstChild(key)
+	local child = self:FindFirstChild(key)
+
+	-- Roblox throws when accessing undefined keys
+	if not child then
+		error(string.format("%s is not a valid member of %s", key, self.ClassName), 2)
+	end
+
+	return child
 end
 
 --[[
@@ -95,22 +108,28 @@ function Instance:FindFirstChild(name)
 		return nil
 	end
 
-	-- ...check to see if there's a script here on the filesystem
-	local childPath = self:_getChildPath(name .. ".lua")
-	local exists = lemur.habitat:fileExists(childPath)
+	-- Check for either a Lua script or a folder on the filesystem
+	local filePath = self:_getChildPath(name .. ".lua")
+	local directoryPath = self:_getChildPath(name)
 
-	-- TODO: check for a folder instead!
+	if lemur.habitat:isFile(filePath) then
+		-- Create a ModuleScript to represent this!
+		local instance = Instance.new("ModuleScript", self)
+		instance.Name = name
+		instance._internal._path = filePath
+		instance._internal._habitat = lemur.habitat
 
-	if not exists then
+		return instance
+	elseif lemur.habitat:isDirectory(directoryPath) then
+		-- Create a Folder to represent this!
+		local instance = Instance.new("Folder", self)
+		instance.Name = name
+
+		return instance
+	else
+		-- Either there's nothing here, or something we don't recognize.
 		return nil
 	end
-
-	-- ...and create a ModuleScript that represents it!
-	local instance = Instance.new("ModuleScript", self)
-	instance._path = childPath
-	instance._habitat = lemur.habitat
-
-	return instance
 end
 
 function Instance:GetChildren()
