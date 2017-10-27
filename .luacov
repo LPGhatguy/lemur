@@ -1,5 +1,8 @@
 return {
 	include = {
 		"src",
-	}
+	},
+	exclude = {
+		"src/lemur/baste.lua",
+	},
 }
