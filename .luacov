@@ -3,6 +3,6 @@ return {
 		"src",
 	},
 	exclude = {
-		"src/lemur/baste.lua",
+		"src/lemur/baste",
 	},
 }
