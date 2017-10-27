@@ -1,6 +1,6 @@
-local functions = require("lemur.functions")
-local Instance = require("lemur.Instance")
-local Game = require("lemur.Game")
+local functions = import("./functions")
+local Instance = import("./Instance")
+local Game = import("./Game")
 
 local environment = {}
 

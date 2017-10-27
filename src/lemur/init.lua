@@ -1,4 +1,6 @@
-local Habitat = require("lemur.Habitat")
+local baste = require((...) .. ".baste")
+
+local Habitat = baste.import("./Habitat")
 
 return {
 	Habitat = Habitat,

@@ -5,7 +5,7 @@ local names = {
 local functions = {}
 
 for _, name in ipairs(names) do
-	functions[name] = require("lemur.functions." .. name)
+	functions[name] = import("./" .. name)
 end
 
 return functions

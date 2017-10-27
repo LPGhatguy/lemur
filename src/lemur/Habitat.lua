@@ -4,9 +4,9 @@
 	It is the root instance of the emulated hierarchy.
 ]]
 
-local Game = require("lemur.Game")
-local environment = require("lemur.environment")
-local fs = require("lemur.fs")
+local Game = import("./Game")
+local environment = import("./environment")
+local fs = import("./fs")
 
 local Habitat = {}
 Habitat.__index = Habitat

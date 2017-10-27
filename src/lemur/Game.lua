@@ -1,4 +1,4 @@
-local Instance = require("lemur.Instance")
+local Instance = import("./Instance")
 
 local Game = {}
 Game.__index = Game

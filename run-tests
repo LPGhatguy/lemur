@@ -1,0 +1,3 @@
+#!/bin/sh
+
+busted -e 'require("src.lemur.baste").global()' src spec

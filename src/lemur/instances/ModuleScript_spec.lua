@@ -1,4 +1,4 @@
-local Instance = require("lemur.Instance")
+local Instance = import("../Instance")
 
 describe("instances.ModuleScript", function()
 	it("should instantiate", function()

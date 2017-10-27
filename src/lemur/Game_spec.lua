@@ -1,4 +1,4 @@
-local Game = require("lemur.Game")
+local Game = import("./Game")
 
 describe("Game", function()
 	it("is instantiable", function()

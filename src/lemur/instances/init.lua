@@ -11,7 +11,7 @@ local names = {
 local instances = {}
 
 for _, name in ipairs(names) do
-	instances[name] = require("lemur.instances." .. name)
+	instances[name] = import("./" .. name)
 end
 
 return instances

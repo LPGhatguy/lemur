@@ -1,3 +1,9 @@
+stds.baste = {
+	read_globals = {
+		"import",
+	},
+}
+
 ignore = {
 	"212", -- unused arguments
 	"421", -- shadowing local variable
@@ -6,7 +12,7 @@ ignore = {
 	"432", -- shadowing upvalue argument
 }
 
-std = "lua51"
+std = "lua51+baste"
 
 files["src/**/*_spec.lua"] = {
 	std = "+busted",
