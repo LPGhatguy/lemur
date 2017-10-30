@@ -8,4 +8,8 @@
 
 local ModuleScript = {}
 
+function ModuleScript:init()
+	self.Source = ""
+end
+
 return ModuleScript

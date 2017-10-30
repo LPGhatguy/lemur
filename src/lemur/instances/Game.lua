@@ -12,9 +12,12 @@ function Game:init()
 end
 
 function Game:GetService(serviceName)
-	if self._internal.services[serviceName] then
-		return self._internal.services[serviceName]
+	local service = self:FindFirstChild(serviceName)
+	if service then
+		return service
 	end
+
+	-- TODO: Load the service if possible?
 
 	error(string.format("Cannot get service %q", tostring(serviceName)), 2)
 end

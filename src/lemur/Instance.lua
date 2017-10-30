@@ -15,6 +15,7 @@ function Instance.new(name, parent)
 		_internal = {
 			template = template,
 			children = {},
+			parent = nil,
 		},
 
 		ClassName = name,
@@ -23,6 +24,7 @@ function Instance.new(name, parent)
 	}
 
 	if parent then
+		new._internal.parent = parent
 		parent._internal.children[new] = true
 	end
 
@@ -50,7 +52,7 @@ function Instance:__index(key)
 
 	-- 'Parent' is allowed to be nil
 	if key == "Parent" then
-		return nil
+		return internalInstance.parent
 	end
 
 	local child = self:FindFirstChild(key)
@@ -61,6 +63,28 @@ function Instance:__index(key)
 	end
 
 	return child
+end
+
+function Instance:__newindex(key, value)
+	local internalInstance = self._internal
+
+	if key == "Parent" then
+		if internalInstance.parent == value then
+			return
+		end
+
+		if internalInstance.parent then
+			internalInstance.parent._internal.children[self] = nil
+		end
+
+		internalInstance.parent = value
+
+		if value then
+			value._internal.children[self] = true
+		end
+	end
+
+	rawset(self, key, value)
 end
 
 function Instance:FindFirstChild(name)
