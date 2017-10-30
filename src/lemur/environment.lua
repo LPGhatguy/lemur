@@ -1,4 +1,6 @@
 local functions = import("./functions")
+local types = import("./types")
+local Enum = import("./Enum")
 local Instance = import("./Instance")
 
 local environment = {}
@@ -14,7 +16,12 @@ do
 		environment.base[key] = value
 	end
 
+	for key, value in pairs(types) do
+		environment.base[key] = value
+	end
+
 	environment.base.Instance = Instance
+	environment.base.Enum = Enum
 end
 
 --[[
