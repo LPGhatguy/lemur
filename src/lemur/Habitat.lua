@@ -4,7 +4,6 @@
 	It is the root instance of the emulated hierarchy.
 ]]
 
-local Game = import("./Game")
 local Instance = import("./Instance")
 local environment = import("./environment")
 local fs = import("./fs")
@@ -44,31 +43,13 @@ function Habitat.new(path)
 
 	setmetatable(habitat, Habitat)
 
-	habitat.game = Game.new(habitat)
+	habitat.game = Instance.new("Game")
 
 	local lemur = habitat.game:GetService("Lemur")
 
 	loadFromFs(path, lemur)
 
 	return habitat
-end
-
-function Habitat:isFile(path)
-	local fullPath = self._path .. "/" .. path
-
-	return fs.isFile(fullPath)
-end
-
-function Habitat:isDirectory(path)
-	local fullPath = self._path .. "/" .. path
-
-	return fs.isDirectory(fullPath)
-end
-
-function Habitat:_load(path)
-	local fullPath = self._path .. "/" .. path
-
-	return loadfile(fullPath)
 end
 
 --[[

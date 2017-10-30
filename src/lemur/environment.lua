@@ -1,6 +1,5 @@
 local functions = import("./functions")
 local Instance = import("./Instance")
-local Game = import("./Game")
 
 local environment = {}
 
@@ -12,11 +11,10 @@ do
 	end
 
 	for key, value in pairs(functions) do
-		environment[key] = value
+		environment.base[key] = value
 	end
 
-	environment.Instance = Instance
-	environment.game = Game.new()
+	environment.base.Instance = Instance
 end
 
 --[[
@@ -39,6 +37,7 @@ function environment.create(habitat, scriptInstance)
 	end
 
 	new.script = scriptInstance
+	new.game = habitat.game
 
 	return new
 end

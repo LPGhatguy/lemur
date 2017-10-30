@@ -10,20 +10,20 @@ function Instance.new(name, parent)
 	end
 
 	local new = {
-		_template = template,
-		_children = {},
-
 		-- Any instance-specific internal values should be here.
 		-- This lets us hide keys and check nil without bumping into __index.
-		_internal = {},
+		_internal = {
+			template = template,
+			children = {},
+		},
 
 		ClassName = name,
 		Name = name,
 		Parent = parent,
 	}
 
-	if parent and parent._children then
-		parent._children[new] = true
+	if parent then
+		parent._internal.children[new] = true
 	end
 
 	setmetatable(new, Instance)
@@ -38,6 +38,12 @@ function Instance.new(name, parent)
 end
 
 function Instance:__index(key)
+	local internalInstance = self._internal
+
+	if internalInstance.template[key] then
+		return internalInstance.template[key]
+	end
+
 	if Instance[key] then
 		return Instance[key]
 	end
@@ -57,46 +63,10 @@ function Instance:__index(key)
 	return child
 end
 
---[[
-	Crawl up the tree to locate the 'Lemur' service, where all code is mounted.
-]]
-function Instance:_findLemur()
-	local current = self
-
-	while current and current.ClassName ~= "Lemur" do
-		current = current.Parent
-	end
-
-	return current
-end
-
-function Instance:_getChildPath(name)
-	local piecePath = {}
-	local current = self
-
-	while true do
-		if not current then
-			break
-		end
-
-		if current.ClassName == "Lemur" then
-			break
-		end
-
-		table.insert(piecePath, current.Name)
-
-		current = current.Parent
-	end
-
-	table.insert(piecePath, name)
-
-	return table.concat(piecePath, "/")
-end
-
 function Instance:FindFirstChild(name)
 	-- Search for existing children
 	-- This is a set stored by child instead of by name, since names are not unique.
-	for child in pairs(self._children) do
+	for child in pairs(self._internal.children) do
 		if child.Name == name then
 			return child
 		end
@@ -108,7 +78,7 @@ end
 function Instance:GetChildren()
 	local result = {}
 
-	for child in pairs(self._children) do
+	for child in pairs(self._internal.children) do
 		table.insert(result, child)
 	end
 

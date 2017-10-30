@@ -1,4 +1,6 @@
 local names = {
+	"Game",
+
 	-- Regular instances
 	"Folder",
 	"ModuleScript",
