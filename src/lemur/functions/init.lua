@@ -1,5 +1,8 @@
 local names = {
 	"typeof",
+	"warn",
+	"tick",
+	"wait",
 }
 
 local functions = {}

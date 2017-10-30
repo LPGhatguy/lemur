@@ -9,6 +9,7 @@ function Game:init()
 
 	self._internal.services.RunService = Instance.new("RunService", self)
 	self._internal.services.Lemur = Instance.new("Lemur", self)
+	self._internal.services.CoreGui = Instance.new("CoreGui", self)
 end
 
 function Game:GetService(serviceName)

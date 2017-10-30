@@ -8,30 +8,6 @@ local Instance = import("./Instance")
 local environment = import("./environment")
 local fs = import("./fs")
 
-local function loadFromFs(path, rootInstance)
-	for name in fs.dir(path) do
-		-- Why are these even in the iterator?
-		if name ~= "." and name ~= ".." then
-			local childPath = path .. "/" .. name
-
-			if fs.isFile(childPath) then
-				if name:find("%.lua$") then
-					local instance = Instance.new("ModuleScript", rootInstance)
-					instance.Name = name:match("^(.-)%.lua$")
-					local contents = assert(fs.read(childPath))
-
-					instance.Source = contents
-				end
-			elseif fs.isDirectory(childPath) then
-				local instance = Instance.new("Folder", rootInstance)
-				instance.Name = name
-
-				loadFromFs(childPath, instance)
-			end
-		end
-	end
-end
-
 local Habitat = {}
 Habitat.__index = Habitat
 
@@ -41,15 +17,39 @@ function Habitat.new(path)
 		game = nil,
 	}
 
-	setmetatable(habitat, Habitat)
-
 	habitat.game = Instance.new("Game")
 
-	local lemur = habitat.game:GetService("Lemur")
+	setmetatable(habitat, Habitat)
 
-	loadFromFs(path, lemur)
+	local lemur = habitat.game:GetService("Lemur")
+	habitat:loadFromFs(path, lemur)
 
 	return habitat
+end
+
+function Habitat:loadFromFs(path, rootInstance)
+	for name in fs.dir(path) do
+		-- Why are these even in the iterator?
+		if name ~= "." and name ~= ".." then
+			local childPath = path .. "/" .. name
+
+			if fs.isFile(childPath) then
+				if name:find("%.lua$") then
+					local instance = Instance.new("ModuleScript", rootInstance)
+					local contents = assert(fs.read(childPath))
+
+					instance.Name = name:match("^(.-)%.lua$")
+					instance.Source = contents
+					instance._internal.path = childPath
+				end
+			elseif fs.isDirectory(childPath) then
+				local instance = Instance.new("Folder", rootInstance)
+				instance.Name = name
+
+				self:loadFromFs(childPath, instance)
+			end
+		end
+	end
 end
 
 --[[
@@ -61,7 +61,7 @@ function Habitat:require(instance)
 		return internalInstance._result
 	end
 
-	local chunk = assert(loadstring(instance.Source, internalInstance._path))
+	local chunk = assert(loadstring(instance.Source, "@" .. internalInstance.path))
 
 	local env = environment.create(self, instance)
 	setfenv(chunk, env)

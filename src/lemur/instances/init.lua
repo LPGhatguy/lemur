@@ -4,10 +4,17 @@ local names = {
 	-- Regular instances
 	"Folder",
 	"ModuleScript",
+	"StringValue",
+	"BoolValue",
+	"ObjectValue",
+	"IntValue",
+	"Frame",
+	"BindableEvent",
 
 	-- Services
 	"Lemur",
 	"RunService",
+	"CoreGui",
 }
 
 local instances = {}

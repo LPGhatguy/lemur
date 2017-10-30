@@ -1,6 +1,40 @@
 local instances = import("./instances")
+local Signal = import("./Signal")
 
 local Instance = {}
+
+Instance.properties = {}
+
+Instance.properties.Parent = {
+	get = function(self, key)
+		return self._internal.parent
+	end,
+	set = function(self, key, value)
+		local internal = self._internal
+		if internal.parent == value then
+			return
+		end
+
+		if internal.parent then
+			internal.parent._internal.children[self] = nil
+		end
+
+		internal.parent = value
+
+		if value then
+			value._internal.children[self] = true
+		end
+	end,
+}
+
+Instance.properties.Name = {
+	get = function(self, key)
+		return self._internal.name
+	end,
+	set = function(self, key, value)
+		self._internal.name = value
+	end,
+}
 
 function Instance.new(name, parent)
 	local template = instances[name]
@@ -14,21 +48,19 @@ function Instance.new(name, parent)
 		-- This lets us hide keys and check nil without bumping into __index.
 		_internal = {
 			template = template,
+			properties = template.properties or {},
 			children = {},
 			parent = nil,
 		},
 
+		_isInstance = true,
 		ClassName = name,
-		Name = name,
-		Parent = parent,
+		Changed = Signal.new(),
 	}
 
-	if parent then
-		new._internal.parent = parent
-		parent._internal.children[new] = true
-	end
-
 	setmetatable(new, Instance)
+
+	new.Name = name
 
 	-- TODO: The instance handle should be a userdata, not a table!
 
@@ -36,23 +68,35 @@ function Instance.new(name, parent)
 		template.init(new)
 	end
 
+	if parent then
+		new._internal.parent = parent
+		parent._internal.children[new] = true
+	end
+
 	return new
 end
 
-function Instance:__index(key)
-	local internalInstance = self._internal
+function Instance:__tostring()
+	return self.Name
+end
 
-	if internalInstance.template[key] then
-		return internalInstance.template[key]
+function Instance:__index(key)
+	local internal = self._internal
+
+	if internal.template[key] then
+		return internal.template[key]
 	end
 
 	if Instance[key] then
 		return Instance[key]
 	end
 
-	-- 'Parent' is allowed to be nil
-	if key == "Parent" then
-		return internalInstance.parent
+	if Instance.properties[key] then
+		return Instance.properties[key].get(self, key)
+	end
+
+	if internal.properties[key] then
+		return internal.properties[key].get(self, key)
 	end
 
 	local child = self:FindFirstChild(key)
@@ -66,22 +110,21 @@ function Instance:__index(key)
 end
 
 function Instance:__newindex(key, value)
-	local internalInstance = self._internal
+	if Instance.properties[key] then
+		Instance.properties[key].set(self, key, value)
 
-	if key == "Parent" then
-		if internalInstance.parent == value then
-			return
-		end
+		self.Changed:Fire(key)
 
-		if internalInstance.parent then
-			internalInstance.parent._internal.children[self] = nil
-		end
+		return
+	end
 
-		internalInstance.parent = value
+	local internal = self._internal
+	if internal.properties[key] then
+		internal.properties[key].set(self, key, value)
 
-		if value then
-			value._internal.children[self] = true
-		end
+		self.Changed:Fire(key)
+
+		return
 	end
 
 	rawset(self, key, value)
@@ -107,6 +150,18 @@ function Instance:GetChildren()
 	end
 
 	return result
+end
+
+function Instance:IsA(className)
+	-- TODO: Hierarchy stuff
+
+	return self.ClassName == className
+end
+
+function Instance:Destroy()
+	self.Parent = nil
+
+	-- TODO: Lock the parent!
 end
 
 return Instance

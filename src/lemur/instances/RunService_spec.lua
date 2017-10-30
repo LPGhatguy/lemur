@@ -2,9 +2,9 @@ local Instance = import("../Instance")
 
 describe("instances.RunService", function()
 	it("should instantiate", function()
-		local service = Instance.new("RunService")
+		local instance = Instance.new("RunService")
 
-		assert.not_nil(service)
-		assert.not_nil(service.Heartbeat)
+		assert.not_nil(instance)
+		assert.not_nil(instance.Heartbeat)
 	end)
 end)
