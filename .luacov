@@ -4,5 +4,6 @@ return {
 	},
 	exclude = {
 		"src/lemur/baste",
+		"_spec$",
 	},
 }
