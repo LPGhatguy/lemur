@@ -10,6 +10,7 @@ function Instance.new(name, parent)
 	end
 
 	local new = {
+		_template = template,
 		_children = {},
 
 		-- Any instance-specific internal values should be here.
@@ -101,39 +102,17 @@ function Instance:FindFirstChild(name)
 		end
 	end
 
-	-- If we're inside the 'Lemur' service inside a Habitat...
-	local lemur = self:_findLemur()
-
-	if not lemur then
-		return nil
-	end
-
-	-- Check for either a Lua script or a folder on the filesystem
-	local filePath = self:_getChildPath(name .. ".lua")
-	local directoryPath = self:_getChildPath(name)
-
-	if lemur.habitat:isFile(filePath) then
-		-- Create a ModuleScript to represent this!
-		local instance = Instance.new("ModuleScript", self)
-		instance.Name = name
-		instance._internal._path = filePath
-		instance._internal._habitat = lemur.habitat
-
-		return instance
-	elseif lemur.habitat:isDirectory(directoryPath) then
-		-- Create a Folder to represent this!
-		local instance = Instance.new("Folder", self)
-		instance.Name = name
-
-		return instance
-	else
-		-- Either there's nothing here, or something we don't recognize.
-		return nil
-	end
+	return nil
 end
 
 function Instance:GetChildren()
-	error("GetChildren is not implemented.", 2)
+	local result = {}
+
+	for child in pairs(self._children) do
+		table.insert(result, child)
+	end
+
+	return result
 end
 
 return Instance

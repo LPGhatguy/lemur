@@ -14,4 +14,18 @@ function fs.isDirectory(path)
 	return lfs.attributes(path, "mode") == "directory"
 end
 
+function fs.read(path)
+	local handle, err = io.open(path, "r")
+
+	if not handle then
+		return nil, err
+	end
+
+	local contents = handle:read("*all")
+
+	return contents
+end
+
+fs.dir = lfs.dir
+
 return fs

@@ -1,7 +1,7 @@
 local lemur = require("lemur")
 
 describe("Lemur", function()
-	it("should load modules directory", function()
+	it("should load modules directly", function()
 		local habitat = lemur.Habitat.new("spec/require")
 		local module = habitat.game:GetService("Lemur"):FindFirstChild("a")
 
