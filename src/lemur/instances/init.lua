@@ -12,9 +12,9 @@ local names = {
 	"BindableEvent",
 
 	-- Services
-	"Lemur",
 	"RunService",
 	"CoreGui",
+	"ReplicatedStorage",
 }
 
 local instances = {}

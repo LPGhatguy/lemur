@@ -11,18 +11,14 @@ local fs = import("./fs")
 local Habitat = {}
 Habitat.__index = Habitat
 
-function Habitat.new(path)
+function Habitat.new()
 	local habitat = {
-		_path = path,
 		game = nil,
 	}
 
 	habitat.game = Instance.new("Game")
 
 	setmetatable(habitat, Habitat)
-
-	local lemur = habitat.game:GetService("Lemur")
-	habitat:loadFromFs(path, lemur)
 
 	return habitat
 end

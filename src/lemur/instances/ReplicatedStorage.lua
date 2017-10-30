@@ -1,0 +1,3 @@
+local CoreGui = {}
+
+return CoreGui

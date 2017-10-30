@@ -5,11 +5,9 @@ function Game:init()
 
 	self.ClassName = "DataModel"
 
-	self._internal.services = {}
-
-	self._internal.services.RunService = Instance.new("RunService", self)
-	self._internal.services.Lemur = Instance.new("Lemur", self)
-	self._internal.services.CoreGui = Instance.new("CoreGui", self)
+	Instance.new("RunService", self)
+	Instance.new("CoreGui", self)
+	Instance.new("ReplicatedStorage", self)
 end
 
 function Game:GetService(serviceName)

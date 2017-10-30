@@ -1,3 +1,0 @@
-local Lemur = {}
-
-return Lemur
