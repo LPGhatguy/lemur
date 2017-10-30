@@ -23,17 +23,20 @@ Lemur requires:
 * LuaFileSystem (`luarocks install luafilesystem`)
 
 ## Usage
-To use Lemur, create a _Habitat_ with the path that contains your Roblox tree:
+To use Lemur, create a _Habitat_ and load pieces of the filesystem into the tree:
 
 ```lua
 local lemur = require("lemur")
 
 -- Create a Habitat
-local habitat = lemur.Habitat.new("src/roblox")
+local habitat = lemur.Habitat.new()
+local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
+
+-- Load `src/roblox` into ReplicatedStorage as a set of `ModuleScript` objects
+habitat:loadFromFs("src/roblox", ReplicatedStorage)
 
 -- Locate src/roblox/CoolModule.lua from inside the habitat
--- Code from "src/roblox" is mounted into a fake service named Lemur
-local module = habitat.game:GetService("Lemur").CoolModule
+local module = ReplicatedStorage.CoolModule
 
 -- Load it!
 local CoolModule = habitat:require(module)
