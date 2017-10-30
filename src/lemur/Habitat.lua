@@ -12,13 +12,14 @@ local Habitat = {}
 Habitat.__index = Habitat
 
 function Habitat.new(path)
-	local habitat = {}
-
-	habitat._path = path
-
-	habitat.game = Game.new(habitat)
+	local habitat = {
+		_path = path,
+		game = nil,
+	}
 
 	setmetatable(habitat, Habitat)
+
+	habitat.game = Game.new(habitat)
 
 	return habitat
 end
@@ -41,6 +42,9 @@ function Habitat:_load(path)
 	return loadfile(fullPath)
 end
 
+--[[
+	Equivalent to Roblox's 'require', called on an emulated Roblox instance.
+]]
 function Habitat:require(instance)
 	local internalInstance = instance._internal
 	if internalInstance._loaded then

@@ -19,6 +19,10 @@ do
 	environment.game = Game.new()
 end
 
+--[[
+	Create a new function environment, suitable for use with the given script
+	instance.
+]]
 function environment.create(habitat, scriptInstance)
 	local new = {}
 
