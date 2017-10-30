@@ -29,11 +29,7 @@ function environment.create(habitat, scriptInstance)
 	end
 
 	new.require = function(path)
-		if type(path) == "table" then
-			return habitat:require(path)
-		else
-			return require(path)
-		end
+		return habitat:require(path)
 	end
 
 	new.script = scriptInstance

@@ -161,6 +161,7 @@ end
 function Instance:Destroy()
 	self.Parent = nil
 
+	-- TODO: Destruct all children first
 	-- TODO: Lock the parent!
 end
 
