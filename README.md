@@ -15,7 +15,9 @@
 <div>&nbsp;</div>
 
 ## Problem
-Currently, there's no way to test Roblox code on an open-source CI system like Travis-CI or Jenkins. Lemur tries to help solve the problem by _emulating_ Roblox's tree and function semantics.
+Currently, there's no way to test Roblox code on an open-source CI system like Travis-CI or Jenkins. Lemur tries to help solve the problem by _emulating_ some of Roblox's tree and function semantics.
+
+Current feature coverage is detailed in [FEATURES.md](FEATURES.md)
 
 ## Installation
 Lemur requires:
