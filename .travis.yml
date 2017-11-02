@@ -22,7 +22,7 @@ install:
   - luarocks install luafilesystem
 
 script:
-  - luacheck src
+  - luacheck lib
   - busted -e 'require("lib.baste").global()' src spec --verbose --coverage
 
 after_success:
