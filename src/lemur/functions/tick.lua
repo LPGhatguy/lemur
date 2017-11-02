@@ -1,2 +1,1 @@
--- lol
-return os.time
+return os.clock
