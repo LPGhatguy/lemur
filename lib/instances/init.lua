@@ -15,6 +15,7 @@ local names = {
 	"RunService",
 	"CoreGui",
 	"ReplicatedStorage",
+	"TestService",
 }
 
 local instances = {}

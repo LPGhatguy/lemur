@@ -8,6 +8,7 @@ function Game:init()
 	Instance.new("RunService", self)
 	Instance.new("CoreGui", self)
 	Instance.new("ReplicatedStorage", self)
+	Instance.new("TestService", self)
 end
 
 function Game:GetService(serviceName)
