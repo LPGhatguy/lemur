@@ -14,10 +14,6 @@ ignore = {
 
 std = "lua51+baste"
 
-files["src/**/*_spec.lua"] = {
-	std = "+busted",
-}
-
-files["spec/**/*.lua"] = {
+files["lib/**/*_spec.lua"] = {
 	std = "+busted",
 }
