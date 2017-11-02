@@ -22,6 +22,8 @@ Lemur requires:
 * Lua 5.1
 * LuaFileSystem (`luarocks install luafilesystem`)
 
+Clone the Git repository wherever, then call `require` on it.
+
 ## Usage
 To use Lemur, create a _Habitat_ and load pieces of the filesystem into the tree:
 

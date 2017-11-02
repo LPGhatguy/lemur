@@ -23,7 +23,7 @@ install:
 
 script:
   - luacheck src
-  - busted -e 'require("lemur.baste").global()' src spec --verbose --coverage
+  - busted -e 'require("lib.baste").global()' src spec --verbose --coverage
 
 after_success:
   - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua_install

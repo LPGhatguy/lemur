@@ -1,4 +1,4 @@
-local lemur = require("lemur")
+local lemur = require("lib")
 
 describe("Lemur", function()
 	it("should load modules directly", function()
