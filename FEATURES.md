@@ -9,7 +9,7 @@ This document should remain up-to-date with current API coverage and status.
 * tick
 * typeof
 * wait (stub)
-* warn (alias to print)
+* warn
 
 ## Implemented types
 * Color3 (stub)

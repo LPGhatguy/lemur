@@ -1,1 +1,13 @@
-return print
+local function warn(...)
+	local count = select("#", ...)
+	for i = 1, count do
+		local piece = select(i, ...)
+		io.stderr:write(piece)
+
+		if i < count then
+			io.stderr:write("\t")
+		end
+	end
+end
+
+return warn
