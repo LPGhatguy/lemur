@@ -52,6 +52,14 @@ end
 	Equivalent to Roblox's 'require', called on an emulated Roblox instance.
 ]]
 function Habitat:require(instance)
+	if not instance:IsA("ModuleScript") then
+		local message = ("Attempted to require non-ModuleScript object %q (%s)"):format(
+			instance.Name,
+			instance.ClassName
+		)
+		error(message, 2)
+	end
+
 	local internalInstance = instance._internal
 	if internalInstance._loaded then
 		return internalInstance._result
