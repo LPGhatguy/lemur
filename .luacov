@@ -1,9 +1,9 @@
 return {
 	include = {
-		"src",
+		"lib",
 	},
 	exclude = {
-		"src/lemur/baste",
+		"lib/baste",
 		"_spec$",
 	},
 }
