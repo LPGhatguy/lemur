@@ -24,7 +24,7 @@ install:
 
 script:
   - luacheck lib
-  - ./run-tests --verbose --coverage
+  - sh ./run-tests --verbose --coverage
 
 after_success:
   - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua_install
