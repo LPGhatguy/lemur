@@ -2,4 +2,4 @@
 
 LUA_PATH="$LUA_PATH;./?/init.lua"
 
-busted -e 'require("lib.baste").global()' lib spec "$@"
+busted -e 'print(package.path); require("lib.baste").global()' lib spec "$@"
