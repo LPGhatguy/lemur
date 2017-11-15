@@ -8,6 +8,7 @@ branches:
 
 env:
   - LUA="lua=5.1"
+  - LUA_PATH="$LUA_PATH;./?/init.lua"
 
 before_install:
   - pip install hererocks
@@ -23,7 +24,7 @@ install:
 
 script:
   - luacheck lib
-  - busted -e 'require("lib.baste").global()' lib spec --verbose --coverage
+  - ./run-tests --verbose --coverage
 
 after_success:
   - luacov-coveralls -e $TRAVIS_BUILD_DIR/lua_install
