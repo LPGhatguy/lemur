@@ -1,5 +1,5 @@
 #!/bin/sh
 
-LUA_PATH="$LUA_PATH;./?/init.lua"
+LUA_PATH=";;./?/init.lua;$LUA_PATH"
 
 busted -e 'print(package.path); require("lib.baste").global()' lib spec "$@"

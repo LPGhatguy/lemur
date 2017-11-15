@@ -7,10 +7,7 @@ branches:
     - master
 
 env:
-  global:
-    - LUA_PATH="$LUA_PATH;./?/init.lua"
-  matrix:
-    - LUA="lua=5.1"
+  - LUA="lua=5.1"
 
 before_install:
   - pip install hererocks
