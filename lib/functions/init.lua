@@ -3,6 +3,7 @@ local names = {
 	"warn",
 	"tick",
 	"wait",
+	"spawn",
 }
 
 local functions = {}
