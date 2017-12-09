@@ -6,6 +6,7 @@ This document should remain up-to-date with current API coverage and status.
 ## Implemented globals
 * require
 * script
+* spawn (stub)
 * tick
 * typeof
 * wait (stub)
