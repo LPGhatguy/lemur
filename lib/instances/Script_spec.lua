@@ -1,8 +1,8 @@
 local Instance = import("../Instance")
 
-describe("instances.ModuleScript", function()
+describe("instances.Script", function()
 	it("should instantiate", function()
-		local instance = Instance.new("ModuleScript")
+		local instance = Instance.new("Script")
 
 		assert.not_nil(instance)
 		assert.is.string(instance.Source)

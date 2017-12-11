@@ -4,6 +4,8 @@ local names = {
 	-- Regular instances
 	"Folder",
 	"ModuleScript",
+	"Script",
+	"LocalScript",
 	"StringValue",
 	"BoolValue",
 	"ObjectValue",

@@ -24,6 +24,10 @@ This document should remain up-to-date with current API coverage and status.
 	* Value
 * ModuleScript
 	* Source
+* Script (stub)
+	* Source
+* LocalScript (stub)
+	* Source
 * Frame
 
 ## Implemented Service Members
