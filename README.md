@@ -49,5 +49,10 @@ local CoolModule = habitat:require(module)
 CoolModule.doSomething()
 ```
 
+## Contributing
+Lemur is, by nature, always going to be an incomplete implementation of the Roblox API.
+
+If there are any APIs you'd like that are missing, feel free to open an [issue on GitHub](https://github.com/LPGhatguy/lemur/issues)!
+
 ## License
 Lemur is available under the MIT license. See [LICENSE.md](LICENSE.md) for details.
