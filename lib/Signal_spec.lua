@@ -56,19 +56,4 @@ describe("Signal", function()
 		assert.equal(countA, 1)
 		assert.equal(countB, 2)
 	end)
-
-	it("should force-fire on Wait()", function()
-		local signal = Signal.new()
-		local callCount = 0
-
-		signal:Connect(function()
-			callCount = callCount + 1
-		end)
-
-		assert.equal(callCount, 0)
-
-		signal:Wait()
-
-		assert.equal(callCount, 1)
-	end)
 end)

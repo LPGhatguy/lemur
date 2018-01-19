@@ -65,8 +65,8 @@ function Signal:Fire(...)
 end
 
 function Signal:Wait()
-	-- hah!
-	self:Fire()
+	-- Once Lemur has an event loop, this can be revisited.
+	error("Signal:Wait is not implemented in Lemur", 2)
 end
 
 return Signal
