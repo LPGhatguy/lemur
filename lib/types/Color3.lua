@@ -9,7 +9,7 @@ function Color3.new(...)
 		return {
 			r = r,
 			g = g,
-			b = b
+			b = b,
 		}
 	end
 end
