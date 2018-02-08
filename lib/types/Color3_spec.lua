@@ -13,6 +13,7 @@ describe("types.Color3", function()
 		local color = Color3.new()
 
 		assert.not_nil(color)
+		assert.are.same(extractColors(color), { 0, 0, 0 })
 	end)
 
 	it("should have a constructor that takes rgb values 0-1", function()
