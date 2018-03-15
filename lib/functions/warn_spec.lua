@@ -6,18 +6,18 @@ describe("functions.warn", function()
 	end)
 
 	it("should warn", function()
-	   local oldErr = io.stderr
+		local oldErr = io.stderr
 
-	   local writeSpy = spy.new(function(_, msg) end)
+		local writeSpy = spy.new(function(_, msg) end)
 
-	   io.stderr = { -- luacheck: ignore
-	       write = writeSpy
-	   }
+		io.stderr = { -- luacheck: ignore
+			write = writeSpy
+		}
 
-	   warn("Doge has taken over the world!")
+		warn("Doge has taken over the world!")
 
-	   assert.spy(writeSpy).was_called_with(io.stderr, "Doge has taken over the world!")
+		assert.spy(writeSpy).was_called_with(io.stderr, "Doge has taken over the world!")
 
-	   io.stderr = oldErr -- luacheck: ignore
+		io.stderr = oldErr -- luacheck: ignore
 	end)
 end)
