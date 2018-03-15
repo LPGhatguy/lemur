@@ -4,25 +4,25 @@ local Signal = import("./Signal")
 local Instance = {}
 
 function Instance.InternalProperty(key)
-    return {
-        get = function(self)
-            return self._internal[key]
-        end,
-        set = function(self, _, value)
-            self._internal[key] = value
-        end,
-    }
+	return {
+		get = function(self)
+			return self._internal[key]
+		end,
+		set = function(self, _, value)
+			self._internal[key] = value
+		end,
+	}
 end
 
 function Instance.InternalPropertyReadonly(key)
-    return {
-        get = function(self)
-            return self._internal[key]
-        end,
-        set = function(self)
-            error(string.format("Unable to assign property %s. Script write access is restricted.", key))
-        end
-    }
+	return {
+		get = function(self)
+			return self._internal[key]
+		end,
+		set = function(self)
+			error(string.format("Unable to assign property %s. Script write access is restricted.", key))
+		end
+	}
 end
 
 Instance.properties = {}
@@ -171,7 +171,7 @@ end
 function Instance:IsA(className)
 	-- TODO: Hierarchy stuff
 
-	return self._internal.className == className
+	return self.ClassName == className
 end
 
 function Instance:Destroy()
