@@ -56,4 +56,13 @@ describe("Signal", function()
 		assert.equal(countA, 1)
 		assert.equal(countB, 2)
 	end)
+
+    --Remove this when the event loop is made
+	it("should error on Wait", function()
+	   local signal = Signal.new()
+	   
+	   assert.has.errors(function()
+	       signal:Wait()
+	   end)
+	end)
 end)
