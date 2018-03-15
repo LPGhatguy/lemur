@@ -1,7 +1,5 @@
 local Instance = import("../Instance")
 
---TODO: Replace Instance.new("TestService") with game:GetService("TestService")
-
 describe("instances.TestService", function()
 	it("should instantiate", function()
 		local instance = Instance.new("TestService")
@@ -11,19 +9,19 @@ describe("instances.TestService", function()
 	end)
 
 	it("should write to stderr", function()
-	   local instance = Instance.new("TestService")
-	   local oldErr = io.stderr
+		local instance = Instance.new("TestService")
+		local oldErr = io.stderr
 
-	   local writeSpy = spy.new(function(_, msg) end)
+		local writeSpy = spy.new(function(_, msg) end)
 
-	   io.stderr = { -- luacheck: ignore
-	       write = writeSpy
-	   }
+		io.stderr = { -- luacheck: ignore
+			write = writeSpy
+		}
 
-	   instance:Error("Testing tests in a library for testing?")
+		instance:Error("Testing tests in a library for testing?")
 
-	   assert.spy(writeSpy).was_called_with(io.stderr, "Testing tests in a library for testing?")
+		assert.spy(writeSpy).was_called_with(io.stderr, "Testing tests in a library for testing?")
 
-	   io.stderr = oldErr -- luacheck: ignore
+		io.stderr = oldErr -- luacheck: ignore
 	end)
 end)
