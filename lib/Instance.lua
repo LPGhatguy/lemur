@@ -168,7 +168,7 @@ end
 --]]
 function Instance:GetPropertyChangedSignal(key)
 	local listener = self._internal.propertyListeners[key]
-	
+
 	if not listener then
 		assert(self.properties[key], key .. " is not a valid property name.")
 
