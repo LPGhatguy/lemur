@@ -179,8 +179,6 @@ function Instance:GetPropertyChangedSignal(key)
 	return listener
 end
 
--- Internal functions
-
 function Instance:_PropertyChanged(key)
 	self.Changed:Fire(key)
 

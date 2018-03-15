@@ -160,9 +160,8 @@ describe("Instance", function()
 	end)
 
 	describe("GetPropertyChangedSignal", function()
-		local instance = Instance.new("Folder")
-
 		it("should fire property signals for the right property", function()
+			local instance = Instance.new("Folder")
 			local spy = spy.new(function() end)
 			instance:GetPropertyChangedSignal("Name"):Connect(spy)
 			instance.Name = "NameChange"
@@ -170,6 +169,7 @@ describe("Instance", function()
 		end)
 
 		it("should not fire property signals for the incorrect property", function()
+			local instance = Instance.new("Folder")
 			local spy = spy.new(function() end)
 			instance:GetPropertyChangedSignal("Parent"):Connect(spy)
 			instance.Name = "NameChange2"
@@ -177,6 +177,7 @@ describe("Instance", function()
 		end)
 
 		it("should error when given an invalid property name", function()
+			local instance = Instance.new("Folder")
 			assert.has.errors(function()
 				instance:GetPropertyChangedSignal("CanDestroyTheWorld"):Connect(function() end)
 			end)
