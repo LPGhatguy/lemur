@@ -10,7 +10,7 @@ describe("functions.warn", function()
 
 	   local writeSpy = spy.new(function(_, msg) end)
 
-	   io.stderr = {
+	   io.stderr = { -- luacheck: ignore
 	       write = writeSpy
 	   }
 
@@ -18,6 +18,6 @@ describe("functions.warn", function()
 
 	   assert.spy(writeSpy).was_called_with(io.stderr, "Doge has taken over the world!")
 
-	   io.stderr = oldErr
+	   io.stderr = oldErr -- luacheck: ignore
 	end)
 end)
