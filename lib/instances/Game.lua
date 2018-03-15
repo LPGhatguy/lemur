@@ -3,7 +3,7 @@ local Game = {}
 function Game:init()
 	local Instance = import("../Instance")
 
-	self.ClassName = "DataModel"
+	self._internal.className = "DataModel"
 
 	Instance.new("RunService", self)
 	Instance.new("CoreGui", self)

@@ -3,7 +3,32 @@ local Signal = import("./Signal")
 
 local Instance = {}
 
+function Instance.InternalProperty(key)
+    return {
+        get = function(self)
+            return self._internal[key]
+        end,
+        set = function(self, _, value)
+            self._internal[key] = value
+        end,
+    }
+end
+
+function Instance.InternalPropertyReadonly(key)
+    return {
+        get = function(self)
+            return self._internal[key]
+        end,
+        set = function(self)
+            error(string.format("Unable to assign property %s. Script write access is restricted.", key))
+        end
+    }
+end
+
 Instance.properties = {}
+
+Instance.properties.Name = Instance.InternalProperty("name")
+Instance.properties.ClassName = Instance.InternalPropertyReadonly("className")
 
 Instance.properties.Parent = {
 	get = function(self, key)
@@ -27,15 +52,6 @@ Instance.properties.Parent = {
 	end,
 }
 
-Instance.properties.Name = {
-	get = function(self, key)
-		return self._internal.name
-	end,
-	set = function(self, key, value)
-		self._internal.name = value
-	end,
-}
-
 function Instance.new(name, parent)
 	local template = instances[name]
 
@@ -51,10 +67,10 @@ function Instance.new(name, parent)
 			properties = template.properties or {},
 			children = {},
 			parent = nil,
+			className = name,
 		},
 
 		_isInstance = true,
-		ClassName = name,
 		Changed = Signal.new(),
 	}
 
@@ -155,7 +171,7 @@ end
 function Instance:IsA(className)
 	-- TODO: Hierarchy stuff
 
-	return self.ClassName == className
+	return self._internal.className == className
 end
 
 function Instance:Destroy()
