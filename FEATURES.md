@@ -14,7 +14,9 @@ This document should remain up-to-date with current API coverage and status.
 
 ## Implemented types
 * Color3 (stub)
+	* Color3.new()
 	* Color3.new(r, g, b)
+	* Color3.fromRGB(r, g, b)
 
 ## Implemented Instance Members
 * Folder
