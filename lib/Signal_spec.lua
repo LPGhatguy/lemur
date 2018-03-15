@@ -60,7 +60,7 @@ describe("Signal", function()
     --Remove this when the event loop is made
 	it("should error on Wait", function()
 	   local signal = Signal.new()
-	   
+
 	   assert.has.errors(function()
 	       signal:Wait()
 	   end)
