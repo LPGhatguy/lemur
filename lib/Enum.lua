@@ -12,7 +12,7 @@ end
 
 for enumName, enumItems in pairs(import("./EnumList")) do
     local enumList = {}
-    
+
     local enum = {
         GetEnumItems = function()
             return enumList
