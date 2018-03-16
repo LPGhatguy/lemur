@@ -4,6 +4,7 @@ return {
 	},
 	exclude = {
 		"lib/baste",
+		"lib/enums",
 		"_spec$",
 	},
 }
