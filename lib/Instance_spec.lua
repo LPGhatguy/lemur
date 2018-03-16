@@ -31,6 +31,21 @@ describe("Instance", function()
 		assert.equal(typeof(instance), "Instance")
 	end)
 
+	it("should allow the change and read of Name", function()
+	   local instance = Instance.new("Folder")
+	   assert.equal(instance.Name, "Folder")
+	   instance.Name = "Foobar"
+	   assert.equal(instance.Name, "Foobar")
+	end)
+
+	it("should not allow the change of ClassName", function()
+	   local instance = Instance.new("Folder")
+	   assert.equal(instance.ClassName, "Folder")
+	   assert.has.errors(function()
+	       instance.ClassName = "Foobar"
+	   end)
+	end)
+
 	describe("Parent", function()
 		it("should be set to nil by default", function()
 			local instance = Instance.new("Folder")
