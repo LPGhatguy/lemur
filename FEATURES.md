@@ -17,6 +17,10 @@ This document should remain up-to-date with current API coverage and status.
 	* Color3.new()
 	* Color3.new(r, g, b)
 	* Color3.fromRGB(r, g, b)
+* Enum
+	* Enum:GetEnums()
+* EnumItem
+	* EnumItem:GetEnumItems()
 
 ## Implemented Instance Members
 * Folder
