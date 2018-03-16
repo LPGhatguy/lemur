@@ -19,6 +19,15 @@ This document should remain up-to-date with current API coverage and status.
 	* Color3.fromRGB(r, g, b)
 
 ## Implemented Instance Members
+* Instance
+	* Parent
+	* Name
+	* ClassName
+	* FindFirstChild(name)
+	* GetChildren()
+	* IsA(className) (stub)
+	* Destroy() (stub)
+	* GetPropertyChangedSignal(key)
 * Folder
 * BindableEvent
 	* Fire(...)
