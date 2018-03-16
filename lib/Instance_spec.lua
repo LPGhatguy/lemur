@@ -161,4 +161,41 @@ describe("Instance", function()
 			assert.equal(tostring(instance), "foo")
 		end)
 	end)
+
+	describe("Changed", function()
+		it("should fire Changed", function()
+			local instance = Instance.new("Folder")
+
+			local changedSpy = spy.new(function() end)
+			instance.Changed:Connect(changedSpy)
+
+			instance.Name = "NameChange"
+			assert.spy(changedSpy).was.called_with("Name")
+		end)
+	end)
+
+	describe("GetPropertyChangedSignal", function()
+		it("should fire property signals for the right property", function()
+			local instance = Instance.new("Folder")
+			local spy = spy.new(function() end)
+			instance:GetPropertyChangedSignal("Name"):Connect(spy)
+			instance.Name = "NameChange"
+			assert.spy(spy).was.called()
+		end)
+
+		it("should not fire property signals for the incorrect property", function()
+			local instance = Instance.new("Folder")
+			local spy = spy.new(function() end)
+			instance:GetPropertyChangedSignal("Parent"):Connect(spy)
+			instance.Name = "NameChange2"
+			assert.spy(spy).was_not_called()
+		end)
+
+		it("should error when given an invalid property name", function()
+			local instance = Instance.new("Folder")
+			assert.has.errors(function()
+				instance:GetPropertyChangedSignal("CanDestroyTheWorld"):Connect(function() end)
+			end)
+		end)
+	end)
 end)

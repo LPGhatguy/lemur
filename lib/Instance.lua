@@ -68,6 +68,7 @@ function Instance.new(name, parent)
 			children = {},
 			parent = nil,
 			className = name,
+			propertyListeners = {},
 		},
 
 		_isInstance = true,
@@ -128,18 +129,14 @@ end
 function Instance:__newindex(key, value)
 	if Instance.properties[key] then
 		Instance.properties[key].set(self, key, value)
-
-		self.Changed:Fire(key)
-
+		self:_PropertyChanged(key)
 		return
 	end
 
 	local internal = self._internal
 	if internal.properties[key] then
 		internal.properties[key].set(self, key, value)
-
-		self.Changed:Fire(key)
-
+		self:_PropertyChanged(key)
 		return
 	end
 
@@ -179,6 +176,33 @@ function Instance:Destroy()
 
 	-- TODO: Destruct all children first
 	-- TODO: Lock the parent!
+end
+
+--[[
+	Note: In real Roblox, the Signal would be named PropertyNameChanged.
+	Lemur signals do not have names, so this behavior is not recreated.
+--]]
+function Instance:GetPropertyChangedSignal(key)
+	local listener = self._internal.propertyListeners[key]
+
+	if not listener then
+		assert(self.properties[key], key .. " is not a valid property name.")
+
+		listener = Signal.new()
+		self._internal.propertyListeners[key] = listener
+	end
+
+	return listener
+end
+
+function Instance:_PropertyChanged(key)
+	self.Changed:Fire(key)
+
+	local changedSignal = self._internal.propertyListeners[key]
+
+	if changedSignal then
+		changedSignal:Fire()
+	end
 end
 
 return Instance
