@@ -41,4 +41,4 @@ This document should remain up-to-date with current API coverage and status.
 	* Error(message)
 
 ## Implemented Enums
-*None*
+* All Enums until 2018-03-15.
