@@ -143,6 +143,24 @@ describe("Instance", function()
 
 			assert.equal(child.Parent, nil)
 		end)
+
+		it("should set the children's parents to nil", function()
+			local parent = Instance.new("Folder")
+			local child = Instance.new("Folder", parent)
+			parent:Destroy()
+			assert.equal(child.Parent, nil)
+		end)
+
+		it("should lock the parent property", function()
+			local instance = Instance.new("Folder")
+			local badParent = Instance.new("Folder")
+
+			instance:Destroy()
+
+			assert.has.errors(function()
+				instance.Parent = badParent
+			end)
+		end)
 	end)
 
 	describe("IsA", function()

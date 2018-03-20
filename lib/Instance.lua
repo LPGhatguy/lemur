@@ -172,10 +172,14 @@ function Instance:IsA(className)
 end
 
 function Instance:Destroy()
-	self.Parent = nil
+	for child in pairs(self._internal.children) do
+		child:Destroy()
+	end
 
-	-- TODO: Destruct all children first
-	-- TODO: Lock the parent!
+	self._internal.parent = nil --Sometimes Destroy() is called on already destroyed children
+	self.properties.Parent.set = function()
+		error("Attempt to set parent after being destroyed!") --This isn't the exact error, does it matter?
+	end
 end
 
 --[[
