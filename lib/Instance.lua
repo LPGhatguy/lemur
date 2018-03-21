@@ -14,21 +14,21 @@ function Instance.InternalProperty(key)
 	}
 end
 
-function Instance.InternalPropertyReadonly(key)
+function Instance.InternalPropertyReadOnly(key)
 	return {
 		get = function(self)
 			return self._internal[key]
 		end,
 		set = function(self)
 			error(string.format("Unable to assign property %s. Script write access is restricted.", key))
-		end
+		end,
 	}
 end
 
 Instance.properties = {}
 
 Instance.properties.Name = Instance.InternalProperty("name")
-Instance.properties.ClassName = Instance.InternalPropertyReadonly("className")
+Instance.properties.ClassName = Instance.InternalPropertyReadOnly("className")
 
 Instance.properties.Parent = {
 	get = function(self, key)
@@ -45,13 +45,13 @@ Instance.properties.Parent = {
 			return
 		end
 
-		if internal.parent then
+		if internal.parent ~= nil then
 			internal.parent._internal.children[self] = nil
 		end
 
 		internal.parent = value
 
-		if value then
+		if value ~= nil then
 			value._internal.children[self] = true
 		end
 	end,
@@ -132,15 +132,15 @@ function Instance:__index(key)
 end
 
 function Instance:__newindex(key, value)
-	if Instance.properties[key] then
-		Instance.properties[key].set(self, key, value)
+	local internal = self._internal
+	if internal.properties[key] then
+		internal.properties[key].set(self, key, value)
 		self:_PropertyChanged(key)
 		return
 	end
 
-	local internal = self._internal
-	if internal.properties[key] then
-		internal.properties[key].set(self, key, value)
+	if Instance.properties[key] then
+		Instance.properties[key].set(self, key, value)
 		self:_PropertyChanged(key)
 		return
 	end
@@ -181,7 +181,7 @@ function Instance:Destroy()
 		child:Destroy()
 	end
 
-	if self.Parent then
+	if self.Parent ~= nil then
 		self.Parent = nil
 	end
 
