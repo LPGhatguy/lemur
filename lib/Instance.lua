@@ -36,6 +36,11 @@ Instance.properties.Parent = {
 	end,
 	set = function(self, key, value)
 		local internal = self._internal
+
+		if internal.destroyed then
+			error("Attempt to set parent after being destroyed!")
+		end
+
 		if internal.parent == value then
 			return
 		end
@@ -176,10 +181,11 @@ function Instance:Destroy()
 		child:Destroy()
 	end
 
-	self._internal.parent = nil --Sometimes Destroy() is called on already destroyed children
-	self.properties.Parent.set = function()
-		error("Attempt to set parent after being destroyed!") --This isn't the exact error, does it matter?
+	if self.Parent then
+		self.Parent = nil
 	end
+
+	self._internal.destroyed = true
 end
 
 --[[

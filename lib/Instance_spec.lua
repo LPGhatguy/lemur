@@ -161,6 +161,19 @@ describe("Instance", function()
 				instance.Parent = badParent
 			end)
 		end)
+
+		it("should only lock its own instance, and not all of the same type", function()
+			local destroyFolder = Instance.new("Folder")
+			destroyFolder:Destroy()
+			assert.equal(destroyFolder.Parent, nil)
+
+			local goodParent = Instance.new("Folder")
+			local goodFolder = Instance.new("Folder")
+
+			assert.has_no.errors(function()
+				goodFolder.Parent = goodParent
+			end)
+		end)
 	end)
 
 	describe("IsA", function()
