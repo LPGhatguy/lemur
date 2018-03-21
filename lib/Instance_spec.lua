@@ -91,6 +91,16 @@ describe("Instance", function()
 			assert.equal(child.Parent, parent2)
 			assert.equal(parent2:FindFirstChild("foo"), child)
 		end)
+
+		-- This may seem like a weird test, but it's for 100% coverage
+		it("shouldn't react differently when setting the parent to the existing parent", function()
+			local parent = Instance.new("Folder")
+			local object = Instance.new("Folder", parent)
+
+			assert.has_no_errors(function()
+				object.Parent = parent
+			end)
+		end)
 	end)
 
 	describe("FindFirstChild", function()
