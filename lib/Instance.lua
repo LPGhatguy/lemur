@@ -36,6 +36,11 @@ Instance.properties.Parent = {
 	end,
 	set = function(self, key, value)
 		local internal = self._internal
+
+		if internal.destroyed then
+			error("Attempt to set parent after being destroyed!")
+		end
+
 		if internal.parent == value then
 			return
 		end
@@ -172,10 +177,15 @@ function Instance:IsA(className)
 end
 
 function Instance:Destroy()
-	self.Parent = nil
+	for child in pairs(self._internal.children) do
+		child:Destroy()
+	end
 
-	-- TODO: Destruct all children first
-	-- TODO: Lock the parent!
+	if self.Parent then
+		self.Parent = nil
+	end
+
+	self._internal.destroyed = true
 end
 
 --[[
