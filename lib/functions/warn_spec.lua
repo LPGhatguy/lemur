@@ -3,7 +3,7 @@ local warn = import("./warn")
 local function setupWarnDetour()
 	local oldErr = io.stderr
 
-	local writeSpy = spy.new(function(_, msg) end)
+	local writeSpy = spy.new(function() end)
 
 	io.stderr = { -- luacheck: ignore
 		write = writeSpy
