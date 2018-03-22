@@ -91,6 +91,16 @@ describe("Instance", function()
 			assert.equal(child.Parent, parent2)
 			assert.equal(parent2:FindFirstChild("foo"), child)
 		end)
+
+		-- This may seem like a weird test, but it's for 100% coverage
+		it("shouldn't react differently when setting the parent to the existing parent", function()
+			local parent = Instance.new("Folder")
+			local object = Instance.new("Folder", parent)
+
+			assert.has_no_errors(function()
+				object.Parent = parent
+			end)
+		end)
 	end)
 
 	describe("FindFirstChild", function()
@@ -142,6 +152,37 @@ describe("Instance", function()
 			child:Destroy()
 
 			assert.equal(child.Parent, nil)
+		end)
+
+		it("should set the children's parents to nil", function()
+			local parent = Instance.new("Folder")
+			local child = Instance.new("Folder", parent)
+			parent:Destroy()
+			assert.equal(child.Parent, nil)
+		end)
+
+		it("should lock the parent property", function()
+			local instance = Instance.new("Folder")
+			local badParent = Instance.new("Folder")
+
+			instance:Destroy()
+
+			assert.has.errors(function()
+				instance.Parent = badParent
+			end)
+		end)
+
+		it("should only lock its own instance, and not all of the same type", function()
+			local destroyFolder = Instance.new("Folder")
+			destroyFolder:Destroy()
+			assert.equal(destroyFolder.Parent, nil)
+
+			local goodParent = Instance.new("Folder")
+			local goodFolder = Instance.new("Folder")
+
+			assert.has_no.errors(function()
+				goodFolder.Parent = goodParent
+			end)
 		end)
 	end)
 

@@ -14,21 +14,21 @@ function Instance.InternalProperty(key)
 	}
 end
 
-function Instance.InternalPropertyReadonly(key)
+function Instance.InternalPropertyReadOnly(key)
 	return {
 		get = function(self)
 			return self._internal[key]
 		end,
 		set = function(self)
 			error(string.format("Unable to assign property %s. Script write access is restricted.", key))
-		end
+		end,
 	}
 end
 
 Instance.properties = {}
 
 Instance.properties.Name = Instance.InternalProperty("name")
-Instance.properties.ClassName = Instance.InternalPropertyReadonly("className")
+Instance.properties.ClassName = Instance.InternalPropertyReadOnly("className")
 
 Instance.properties.Parent = {
 	get = function(self, key)
@@ -36,17 +36,22 @@ Instance.properties.Parent = {
 	end,
 	set = function(self, key, value)
 		local internal = self._internal
+
+		if internal.destroyed then
+			error("Attempt to set parent after being destroyed!")
+		end
+
 		if internal.parent == value then
 			return
 		end
 
-		if internal.parent then
+		if internal.parent ~= nil then
 			internal.parent._internal.children[self] = nil
 		end
 
 		internal.parent = value
 
-		if value then
+		if value ~= nil then
 			value._internal.children[self] = true
 		end
 	end,
@@ -127,15 +132,15 @@ function Instance:__index(key)
 end
 
 function Instance:__newindex(key, value)
-	if Instance.properties[key] then
-		Instance.properties[key].set(self, key, value)
+	local internal = self._internal
+	if internal.properties[key] then
+		internal.properties[key].set(self, key, value)
 		self:_PropertyChanged(key)
 		return
 	end
 
-	local internal = self._internal
-	if internal.properties[key] then
-		internal.properties[key].set(self, key, value)
+	if Instance.properties[key] then
+		Instance.properties[key].set(self, key, value)
 		self:_PropertyChanged(key)
 		return
 	end
@@ -172,10 +177,15 @@ function Instance:IsA(className)
 end
 
 function Instance:Destroy()
-	self.Parent = nil
+	for child in pairs(self._internal.children) do
+		child:Destroy()
+	end
 
-	-- TODO: Destruct all children first
-	-- TODO: Lock the parent!
+	if self.Parent ~= nil then
+		self.Parent = nil
+	end
+
+	self._internal.destroyed = true
 end
 
 --[[
