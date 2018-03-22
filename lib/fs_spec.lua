@@ -6,11 +6,7 @@ describe("fs", function()
 		local oldRequire = require
 
 		--Bypass baste cache checks
-		local oldJoin = baste._path.join
-
-		baste._path.join = function(current, name)
-			return "./" .. oldJoin(current, name)
-		end
+		local notCachedImport = baste.makeImport()
 
 		_G.require = function(name)
 			if name == "lfs" then
@@ -21,11 +17,10 @@ describe("fs", function()
 		end
 
 		assert.has.errors(function()
-			import("./fs.lua")
+			notCachedImport("./fs.lua")
 		end)
 
 		_G.require = oldRequire
-		baste._path.join = oldJoin
 	end)
 
 	local fs = import("./fs")
