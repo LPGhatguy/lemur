@@ -13,7 +13,7 @@ describe("fs", function()
 
 		assert.has.errors(function()
 			import("./fs")
-		end
+		end)
 
 		_G.require = oldRequire
 	end)
