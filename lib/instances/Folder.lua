@@ -1,3 +1,3 @@
-local Folder = {}
+local BaseInstance = import("./BaseInstance")
 
-return Folder
+return BaseInstance:extend("Folder")

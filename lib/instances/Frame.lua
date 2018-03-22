@@ -1,3 +1,3 @@
-local Frame = {}
+local BaseInstance = import("./BaseInstance")
 
-return Frame
+return BaseInstance:extend("Frame")

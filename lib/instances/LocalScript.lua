@@ -2,10 +2,15 @@
 	Serves as just a source container right now.
 ]]
 
-local LocalScript = {}
+local BaseInstance = import("./BaseInstance")
+local InstanceProperty = import("../InstanceProperty")
 
-function LocalScript:init()
-	self.Source = ""
-end
+local LocalScript = BaseInstance:extend("LocalScript")
+
+LocalScript.properties.Source = InstanceProperty.normal({
+	getDefault = function()
+		return ""
+	end,
+})
 
 return LocalScript

@@ -1,18 +1,12 @@
-local ObjectValue = {
-	properties = {}
-}
+local BaseInstance = import("./BaseInstance")
+local InstanceProperty = import("../InstanceProperty")
 
-function ObjectValue:init()
-	self.Name = "Value"
+local ObjectValue = BaseInstance:extend("ObjectValue")
+
+ObjectValue.properties.Value = InstanceProperty.normal({})
+
+function ObjectValue:init(instance)
+	instance.Name = "Value"
 end
-
-ObjectValue.properties.Value = {
-	get = function(self)
-		return self._internal.value
-	end,
-	set = function(self, _, value)
-		self._internal.value = value
-	end,
-}
 
 return ObjectValue

@@ -1,6 +1,8 @@
-local TestService = {}
+local BaseInstance = import("./BaseInstance")
 
-function TestService:Error(message)
+local TestService = BaseInstance:extend("TestService")
+
+function TestService.prototype:Error(message)
 	io.stderr:write(message)
 	io.stderr:write("\n")
 end

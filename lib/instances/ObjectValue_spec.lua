@@ -5,8 +5,8 @@ describe("instances.ObjectValue", function()
 		local instance = Instance.new("ObjectValue")
 
 		assert.not_nil(instance)
-		assert.equal(instance.Name, "Value")
-		assert.equal(instance.Value, nil)
+		assert.equal("Value", instance.Name)
+		assert.equal(nil, instance.Value)
 	end)
 
 	it("should set values", function()
