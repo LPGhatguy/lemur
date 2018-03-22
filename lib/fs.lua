@@ -1,7 +1,7 @@
 local ok, lfs = pcall(require, "lfs")
 
 if not ok then
-	error("Lemur requires LuaFileSystem, which couldn't be found: " .. lfs)
+	error("Lemur requires LuaFileSystem, which couldn't be found.")
 end
 
 local fs = {}

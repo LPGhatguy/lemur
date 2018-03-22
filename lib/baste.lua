@@ -134,9 +134,6 @@ if love then
 	end
 end
 
-local loadedModules = {}
-local moduleResults = {}
-
 --[[
 	Because of tail-call optimization, trying to get the file location of a
 	chunk whose contents are just a return statement fails.
@@ -145,7 +142,10 @@ local moduleResults = {}
 	file's path into the generated function. This also reduces the number of
 	debug library calls.
 ]]
-local function makeImport(root)
+function baste.makeImport(root)
+	local loadedModules = {}
+	local moduleResults = {}
+
 	return function(modulePath)
 		local current = root or debug.getinfo(2, "S").source:gsub("^@", "")
 
@@ -180,7 +180,7 @@ local function makeImport(root)
 				-- Hand-craft an environment for the module we're loading
 				-- The module won't be able to iterate over globals!
 				local env = setmetatable({
-					import = makeImport(target),
+					import = baste.makeImport(target),
 				}, {
 					__index = _G,
 					__newindex = _G,
@@ -221,7 +221,7 @@ local function makeImport(root)
 	end
 end
 
-baste.import = makeImport()
+baste.import = baste.makeImport()
 
 function baste.global()
 	_G.import = baste.import

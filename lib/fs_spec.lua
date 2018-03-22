@@ -1,4 +1,28 @@
+local baste = require("lib.baste")
+
 describe("fs", function()
+	it("should error when lfs is not installed", function()
+		--To successfully test this, I must do the grossest hack.
+		local oldRequire = require
+
+		--Bypass baste cache checks
+		local notCachedImport = baste.makeImport()
+
+		_G.require = function(name)
+			if name == "lfs" then
+				error()
+			else
+				return oldRequire(name)
+			end
+		end
+
+		assert.has.errors(function()
+			notCachedImport("./fs.lua")
+		end)
+
+		_G.require = oldRequire
+	end)
+
 	local fs = import("./fs")
 
 	it("should return errors when failing to open a file", function()
