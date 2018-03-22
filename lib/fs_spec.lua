@@ -1,7 +1,16 @@
+local baste = require("lib.baste")
+
 describe("fs", function()
 	it("should error when lfs is not installed", function()
 		--To successfully test this, I must do the grossest hack.
 		local oldRequire = require
+
+		--Bypass baste cache checks
+		local oldJoin = baste._path.join
+
+		baste._path.join = function(current, name)
+			return "./" .. oldJoin(current, name)
+		end
 
 		_G.require = function(name)
 			if name == "lfs" then
@@ -12,10 +21,11 @@ describe("fs", function()
 		end
 
 		assert.has.errors(function()
-			import("./fs")
+			import("./fs.lua")
 		end)
 
 		_G.require = oldRequire
+		baste._path.join = oldJoin
 	end)
 
 	local fs = import("./fs")
