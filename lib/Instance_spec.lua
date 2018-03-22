@@ -14,6 +14,22 @@ describe("Instance", function()
 		end)
 	end)
 
+	it("should error when parenting instances to invalid objects", function()
+		local new = Instance.new("Folder")
+
+		assert.has.errors(function()
+			new.Parent = 7
+		end)
+	end)
+
+	it("should error when setting unknown values", function()
+		local new = Instance.new("Folder")
+
+		assert.has.errors(function()
+			new.frobulations = 6
+		end)
+	end)
+
 	it("should error when indexing invalid instances", function()
 		local instance = Instance.new("Folder")
 
