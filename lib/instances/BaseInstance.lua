@@ -21,7 +21,9 @@ local function assign(target, ...)
 end
 
 local function isInstance(value)
-	return getmetatable(value).instance ~= nil
+	local metatable = getmetatable(value)
+
+	return metatable and metatable.instance ~= nil
 end
 
 local BaseInstance = {}
@@ -60,7 +62,7 @@ BaseInstance.properties.Parent = InstanceProperty.normal({
 			return
 		end
 
-		if not isInstance(value) then
+		if value ~= nil and not isInstance(value) then
 			error(string.format("Can't set Parent to %q; Parent must be an Instance!"), tostring(value))
 		end
 
