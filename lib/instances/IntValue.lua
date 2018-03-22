@@ -1,8 +1,16 @@
-local IntValue = {}
+local BaseInstance = import("./BaseInstance")
+local InstanceProperty = import("../InstanceProperty")
 
-function IntValue:init()
-	self.Name = "Value"
-	self.Value = 0
+local StringValue = BaseInstance:extend("StringValue")
+
+StringValue.properties.Value = InstanceProperty.normal({
+	getDefault = function()
+		return 0
+	end,
+})
+
+function StringValue:init(instance)
+	instance.Name = "Value"
 end
 
-return IntValue
+return StringValue

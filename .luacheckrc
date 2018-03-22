@@ -13,3 +13,7 @@ std = "lua51+baste"
 files["lib/**/*_spec.lua"] = {
 	std = "+busted",
 }
+
+files["spec/**/*_spec.lua"] = {
+	std = "+busted",
+}

@@ -1,9 +1,11 @@
 local Signal = import("../Signal")
+local BaseInstance = import("./BaseInstance")
+local InstanceProperty = import("../InstanceProperty")
 
-local RunService = {}
+local RunService = BaseInstance:extend("RunService")
 
-function RunService:init()
-	self.Heartbeat = Signal.new()
-end
+RunService.properties.Heartbeat = InstanceProperty.readOnly({
+	getDefault = Signal.new,
+})
 
 return RunService

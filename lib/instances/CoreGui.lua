@@ -1,3 +1,3 @@
-local CoreGui = {}
+local BaseInstance = import("./BaseInstance")
 
-return CoreGui
+return BaseInstance:extend("CoreGui")

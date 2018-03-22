@@ -36,7 +36,8 @@ function Habitat:loadFromFs(path, rootInstance)
 
 					instance.Name = name:match("^(.-)%.lua$")
 					instance.Source = contents
-					instance._internal.path = childPath
+
+					getmetatable(instance).instance.modulePath = childPath
 				end
 			elseif fs.isDirectory(childPath) then
 				local instance = Instance.new("Folder", rootInstance)
@@ -60,20 +61,20 @@ function Habitat:require(instance)
 		error(message, 2)
 	end
 
-	local internalInstance = instance._internal
-	if internalInstance._loaded then
-		return internalInstance._result
+	local internalInstance = getmetatable(instance).instance
+	if internalInstance.moduleLoaded then
+		return internalInstance.moduleResult
 	end
 
-	local chunk = assert(loadstring(instance.Source, "@" .. internalInstance.path))
+	local chunk = assert(loadstring(instance.Source, "@" .. internalInstance.modulePath))
 
 	local env = environment.create(self, instance)
 	setfenv(chunk, env)
 
 	local result = chunk()
 
-	internalInstance._loaded = true
-	internalInstance._result = result
+	internalInstance.moduleLoaded = true
+	internalInstance.moduleResult = result
 
 	return result
 end

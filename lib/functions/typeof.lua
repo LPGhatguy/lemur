@@ -1,8 +1,8 @@
 return function(object)
 	local realType = type(object)
 
-	if realType == "table" then
-		if object._isInstance then
+	if realType == "userdata" then
+		if getmetatable(object).instance then
 			return "Instance"
 		end
 	end

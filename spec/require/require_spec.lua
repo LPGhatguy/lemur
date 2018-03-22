@@ -65,10 +65,10 @@ describe("Lemur", function()
 
 		assert.is_nil(object)
 	end)
-	
+
 	it("should fail to require non-ModuleScripts", function()
 	   local habitat = lemur.Habitat.new()
-	   
+
 	   assert.has.errors(function()
 	       habitat:require(habitat.game)
 	   end)

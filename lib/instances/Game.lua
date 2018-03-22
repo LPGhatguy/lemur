@@ -1,18 +1,20 @@
-local Game = {}
+local BaseInstance = import("./BaseInstance")
 
-function Game:init()
+local Game = BaseInstance:extend("DataModel")
+
+function Game:init(instance)
+	-- Late import here to avoid a circular reference
 	local Instance = import("../Instance")
 
-	self._internal.className = "DataModel"
-
-	Instance.new("RunService", self)
-	Instance.new("CoreGui", self)
-	Instance.new("ReplicatedStorage", self)
-	Instance.new("TestService", self)
+	Instance.new("RunService", instance)
+	Instance.new("CoreGui", instance)
+	Instance.new("ReplicatedStorage", instance)
+	Instance.new("TestService", instance)
 end
 
-function Game:GetService(serviceName)
+function Game.prototype:GetService(serviceName)
 	local service = self:FindFirstChild(serviceName)
+
 	if service then
 		return service
 	end
