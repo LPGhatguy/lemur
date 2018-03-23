@@ -133,6 +133,7 @@ function BaseInstance.prototype:GetPropertyChangedSignal(key)
 end
 
 BaseInstance.metatable = {}
+BaseInstance.metatable.type = "Instance"
 
 function BaseInstance.metatable.__index(self, key)
 	local class = getmetatable(self).class
