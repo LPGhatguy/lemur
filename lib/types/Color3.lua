@@ -3,7 +3,8 @@ local function lerpNumber(a, b, alpha)
 end
 
 local Color3 = {}
-Color3.__index = Color3
+local Color3Metatable = {}
+Color3Metatable.__index = Color3Metatable
 
 function Color3.new(...)
 	if select("#", ...) == 0 then
@@ -15,7 +16,7 @@ function Color3.new(...)
 			r = r,
 			g = g,
 			b = b,
-		}, Color3)
+		}, Color3Metatable)
 	end
 end
 
@@ -55,7 +56,7 @@ function Color3.fromHSV(h, s, v)
 	return Color3.new(r + m, g + m, b + m)
 end
 
-function Color3:lerp(goal, alpha)
+function Color3Metatable:lerp(goal, alpha)
 	return Color3.new(
 		lerpNumber(self.r, goal.r, alpha),
 		lerpNumber(self.g, goal.g, alpha),
