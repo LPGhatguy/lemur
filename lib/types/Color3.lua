@@ -1,24 +1,67 @@
+local assign = import("../assign")
+
 local function lerpNumber(a, b, alpha)
 	return (1 - alpha) * a + b * alpha
 end
 
 local Color3 = {}
-local Color3Metatable = {}
-Color3Metatable.__index = Color3Metatable
-Color3Metatable.__type = "Color3"
+
+setmetatable(Color3, {
+	__tostring = function()
+		return "Color3"
+	end,
+})
+
+local prototype = {}
+
+function prototype:lerp(goal, alpha)
+	return Color3.new(
+		lerpNumber(self.r, goal.r, alpha),
+		lerpNumber(self.g, goal.g, alpha),
+		lerpNumber(self.b, goal.b, alpha)
+	)
+end
+
+local metatable = {}
+metatable.type = Color3
+
+function metatable:__index(key)
+	local internal = getmetatable(self).internal
+
+	if internal[key] ~= nil then
+		return internal[key]
+	end
+
+	if prototype[key] ~= nil then
+		return prototype[key]
+	end
+
+	error(string.format("%s is not a valid member of Color3", tostring(key)), 2)
+end
+
+function metatable:__eq(other)
+	return self.r == other.r and self.g == other.g and self.b == other.b
+end
 
 function Color3.new(...)
 	if select("#", ...) == 0 then
 		return Color3.new(0, 0, 0)
-	else
-		local r, g, b = ...
-
-		return setmetatable({
-			r = r,
-			g = g,
-			b = b,
-		}, Color3Metatable)
 	end
+
+	local r, g, b = ...
+
+	local internalInstance = {
+		r = r,
+		g = g,
+		b = b,
+	}
+
+	local instance = newproxy(true)
+
+	assign(getmetatable(instance), metatable)
+	getmetatable(instance).internal = internalInstance
+
+	return instance
 end
 
 function Color3.fromRGB(r, g, b)
@@ -81,18 +124,6 @@ function Color3.toHSV(color)
 	end
 
 	return (hue * 60) / 360, saturation, value
-end
-
-function Color3Metatable:lerp(goal, alpha)
-	return Color3.new(
-		lerpNumber(self.r, goal.r, alpha),
-		lerpNumber(self.g, goal.g, alpha),
-		lerpNumber(self.b, goal.b, alpha)
-	)
-end
-
-function Color3Metatable:__eq(other)
-	return self.r == other.r and self.g == other.g and self.b == other.b
 end
 
 return Color3

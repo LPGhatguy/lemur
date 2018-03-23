@@ -2,18 +2,19 @@ return function(object)
 	local realType = type(object)
 
 	if realType == "userdata" then
-		if getmetatable(object).instance then
-			return "Instance"
-		end
-	elseif realType == "table" then
 		local metatable = getmetatable(object)
 
-		if metatable == nil then
-			return realType
+		if not metatable then
+			return "userdata"
 		end
 
-		if metatable.__type == "Color3" then
-			return "Color3"
+		if metatable.type then
+			return tostring(metatable.type)
+		end
+
+		-- TODO: Change the way that instances signal their type
+		if getmetatable(object).instance then
+			return "Instance"
 		end
 	end
 

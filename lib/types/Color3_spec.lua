@@ -1,5 +1,7 @@
 local Color3 = import("./Color3")
 
+local typeof = import("../functions/typeof")
+
 local function extractColors(color)
 	return {
 		color.r,
@@ -74,7 +76,6 @@ describe("types.Color3", function()
 	end)
 
 	it("should be detected by typeof", function()
-		local typeof = import("../functions/typeof")
 		local type = typeof(Color3.new())
 		assert.are.equal("Color3", type)
 	end)

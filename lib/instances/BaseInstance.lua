@@ -9,16 +9,7 @@
 
 local InstanceProperty = import("../InstanceProperty")
 local Signal = import("../Signal")
-
-local function assign(target, ...)
-	for i = 1, select("#", ...) do
-		for key, value in pairs((select(i, ...))) do
-			target[key] = value
-		end
-	end
-
-	return target
-end
+local assign = import("../assign")
 
 local function isInstance(value)
 	local metatable = getmetatable(value)
