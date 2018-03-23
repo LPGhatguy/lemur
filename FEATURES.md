@@ -13,10 +13,14 @@ This document should remain up-to-date with current API coverage and status.
 * warn
 
 ## Implemented types
-* Color3 (stub)
+* Color3
 	* Color3.new()
 	* Color3.new(r, g, b)
 	* Color3.fromRGB(r, g, b)
+	* Color3.fromHSV(h, s, v)
+	* Color3.toHSV(color)
+	* Color3:lerp()
+	* Equality checks (`Color3.new(0, 1, 0) == Color3.new(0, 1, 0) == true`)
 
 ## Implemented Instance Members
 * Instance
