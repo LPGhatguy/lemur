@@ -27,4 +27,17 @@ describe("types.Color3", function()
 
 		assert.are.same(extractColors(color), { 1, 0, 0 })
 	end)
+
+	it("should have the fromHSV method", function()
+		local color = Color3.fromHSV(120 / 360, 0.5, 0.75)
+
+		-- Round the colors to the nearest whole number
+		-- This ensures we don't get errors from rounding, which are
+		-- ultimately fairly unimportant.
+		local r = math.floor(color.r * 255 + 0.5)
+		local g = math.floor(color.g * 255 + 0.5)
+		local b = math.floor(color.b * 255 + 0.5)
+
+		assert.are.same({ 96, 191, 96 }, { r, g, b })
+	end)
 end)
