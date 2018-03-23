@@ -1,4 +1,5 @@
 local Color3 = {}
+Color3.__index = Color3
 
 function Color3.new(...)
 	if select("#", ...) == 0 then
@@ -6,11 +7,11 @@ function Color3.new(...)
 	else
 		local r, g, b = ...
 
-		return {
+		return setmetatable({
 			r = r,
 			g = g,
 			b = b,
-		}
+		}, Color3)
 	end
 end
 
