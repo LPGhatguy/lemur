@@ -1,3 +1,7 @@
+local function lerpNumber(a, b, alpha)
+	return (1 - alpha) * a + b * alpha
+end
+
 local Color3 = {}
 Color3.__index = Color3
 
@@ -49,6 +53,14 @@ function Color3.fromHSV(h, s, v)
 	end
 
 	return Color3.new(r + m, g + m, b + m)
+end
+
+function Color3:lerp(goal, alpha)
+	return Color3.new(
+		lerpNumber(self.r, goal.r, alpha),
+		lerpNumber(self.g, goal.g, alpha),
+		lerpNumber(self.b, goal.b, alpha)
+	)
 end
 
 return Color3

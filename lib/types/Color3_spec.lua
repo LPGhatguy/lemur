@@ -40,4 +40,23 @@ describe("types.Color3", function()
 
 		assert.are.same({ 96, 191, 96 }, { r, g, b })
 	end)
+
+	describe("lerp", function()
+		local a = Color3.new(0, 0, 0)
+		local b = Color3.new(1, 1, 1)
+
+		it("should lerp colors", function()
+			-- Middle used to avoid rounding / float precision issues.
+			local middle = a:lerp(b, 0.5)
+			assert.are.same({ 0.5, 0.5, 0.5 }, extractColors(middle))
+		end)
+
+		it("should equal the goal when alpha is 1", function()
+			assert.are.same({ 1, 1, 1 }, extractColors(a:lerp(b, 1)))
+		end)
+
+		it("should equal the start when alpha is 0", function()
+			assert.are.same({ 0, 0, 0 }, extractColors(a:lerp(b, 0)))
+		end)
+	end)
 end)
