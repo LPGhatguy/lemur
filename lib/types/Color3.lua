@@ -56,6 +56,32 @@ function Color3.fromHSV(h, s, v)
 	return Color3.new(r + m, g + m, b + m)
 end
 
+function Color3.toHSV(color)
+	local minComponent = math.min(color.r, color.g, color.b)
+	local maxComponent = math.max(color.r, color.g, color.b)
+
+	-- Grayscale color.
+	-- Hue and saturation are 0; value is equal to the RGB value.
+	if minComponent == maxComponent then
+		return 0, 0, minComponent
+	end
+
+	local delta = maxComponent - minComponent
+	local hue
+	local saturation = delta / maxComponent
+	local value = maxComponent
+
+	if color.r == maxComponent then
+		hue = (color.g - color.b) / delta
+	elseif color.g == maxComponent then
+		hue = 2 + (color.b - color.r) / delta
+	else
+		hue = 4 + (color.r - color.g) / delta
+	end
+
+	return (hue * 60) / 360, saturation, value
+end
+
 function Color3Metatable:lerp(goal, alpha)
 	return Color3.new(
 		lerpNumber(self.r, goal.r, alpha),

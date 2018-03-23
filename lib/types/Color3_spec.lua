@@ -41,6 +41,13 @@ describe("types.Color3", function()
 		assert.are.same({ 96, 191, 96 }, { r, g, b })
 	end)
 
+	it("should have the toHSV method", function()
+		local color = Color3.fromHSV(120 / 360, 0.5, 0.75)
+		local h, s, v = Color3.toHSV(color)
+
+		assert.are.same({ 120 / 360, 0.5, 0.75 }, { h, s, v })
+	end)
+
 	describe("lerp", function()
 		local a = Color3.new(0, 0, 0)
 		local b = Color3.new(1, 1, 1)
