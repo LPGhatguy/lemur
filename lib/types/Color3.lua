@@ -5,6 +5,7 @@ end
 local Color3 = {}
 local Color3Metatable = {}
 Color3Metatable.__index = Color3Metatable
+Color3Metatable.__type = "Color3"
 
 function Color3.new(...)
 	if select("#", ...) == 0 then
