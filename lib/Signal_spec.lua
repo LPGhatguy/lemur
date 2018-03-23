@@ -9,52 +9,41 @@ describe("Signal", function()
 
 	it("should handle connections", function()
 		local signal = Signal.new()
-		local callCount = 0
+		local spy = spy.new(function() end)
 
-		local connection = signal:Connect(function()
-			callCount = callCount + 1
-		end)
+		local connection = signal:Connect(spy)
 
 		assert.not_nil(connection)
-		assert.equal(callCount, 0)
 
 		signal:Fire()
-		assert.equal(callCount, 1)
+		assert.spy(spy).was_called(1)
 
 		signal:Fire()
-		assert.equal(callCount, 2)
+		assert.spy(spy).was_called(2)
 
 		connection:Disconnect()
 		signal:Fire()
-		assert.equal(callCount, 2)
+		assert.spy(spy).was_called(2)
 	end)
 
 	it("should preserve other connections on disconnect", function()
 		local signal = Signal.new()
-		local countA = 0
-		local countB = 0
+		local spyA = spy.new(function() end)
+		local spyB = spy.new(function() end)
 
-		local connectionA = signal:Connect(function()
-			countA = countA + 1
-		end)
-
-		signal:Connect(function()
-			countB = countB + 1
-		end)
-
-		assert.equal(countA, 0)
-		assert.equal(countB, 0)
+		local connectionA = signal:Connect(spyA)
+		signal:Connect(spyB)
 
 		signal:Fire()
 
-		assert.equal(countA, 1)
-		assert.equal(countB, 1)
+		assert.spy(spyA).was_called(1)
+		assert.spy(spyB).was_called(1)
 
 		connectionA:Disconnect()
 		signal:Fire()
 
-		assert.equal(countA, 1)
-		assert.equal(countB, 2)
+		assert.spy(spyA).was_called(1)
+		assert.spy(spyB).was_called(2)
 	end)
 
     -- Remove this when the event loop is made

@@ -11,13 +11,11 @@ describe("instances.BindableEvent", function()
 	it("should fire Event when fired", function()
 		local instance = Instance.new("BindableEvent")
 
-		local callCount = 0
-		instance.Event:Connect(function()
-			callCount = callCount + 1
-		end)
+		local testSpy = spy.new(function() end)
+		instance.Event:Connect(testSpy)
 
 		instance:Fire()
 
-		assert.equal(callCount, 1)
+		assert.spy(testSpy).was_called(1)
 	end)
 end)
