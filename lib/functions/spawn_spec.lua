@@ -2,12 +2,10 @@ local spawn = import("./spawn")
 
 describe("functions.spawn", function()
 	it("does nothing", function()
-		local callCount = 0
+		local testSpy = spy.new(function() end)
 
-		spawn(function()
-			callCount = callCount + 1
-		end)
+		spawn(testSpy)
 
-		assert.equal(callCount, 0)
+		assert.spy(testSpy).was_not_called()
 	end)
 end)
