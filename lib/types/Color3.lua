@@ -90,4 +90,8 @@ function Color3Metatable:lerp(goal, alpha)
 	)
 end
 
+function Color3Metatable:__eq(other)
+	return self.r == other.r and self.g == other.g and self.b == other.b
+end
+
 return Color3
