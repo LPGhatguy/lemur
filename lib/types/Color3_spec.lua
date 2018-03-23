@@ -13,7 +13,7 @@ describe("types.Color3", function()
 		local color = Color3.new()
 
 		assert.not_nil(color)
-		assert.are.same(extractColors(color), { 0, 0, 0 })
+		assert.are.same({ 0, 0, 0 }, extractColors(color))
 	end)
 
 	it("should have a constructor that takes rgb values 0-1", function()
@@ -25,7 +25,7 @@ describe("types.Color3", function()
 	it("should have the fromRGB method", function()
 		local color = Color3.fromRGB(255, 0, 0)
 
-		assert.are.same(extractColors(color), { 1, 0, 0 })
+		assert.are.same({ 1, 0, 0 }, extractColors(color))
 	end)
 
 	it("should have the fromHSV method", function()
