@@ -16,6 +16,6 @@ describe("instances.BindableEvent", function()
 
 		instance:Fire()
 
-		assert.spy(testSpy).was_called()
+		assert.spy(testSpy).was_called(1)
 	end)
 end)

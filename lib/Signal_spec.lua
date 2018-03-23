@@ -16,7 +16,7 @@ describe("Signal", function()
 		assert.not_nil(connection)
 
 		signal:Fire()
-		assert.spy(spy).was_called()
+		assert.spy(spy).was_called(1)
 
 		signal:Fire()
 		assert.spy(spy).was_called(2)
@@ -36,13 +36,13 @@ describe("Signal", function()
 
 		signal:Fire()
 
-		assert.spy(spyA).was_called()
-		assert.spy(spyB).was_called()
+		assert.spy(spyA).was_called(1)
+		assert.spy(spyB).was_called(1)
 
 		connectionA:Disconnect()
 		signal:Fire()
 
-		assert.spy(spyA).was_called()
+		assert.spy(spyA).was_called(1)
 		assert.spy(spyB).was_called(2)
 	end)
 
