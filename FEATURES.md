@@ -29,9 +29,10 @@ This document should remain up-to-date with current API coverage and status.
 	* ClassName
 	* FindFirstChild(name)
 	* GetChildren()
-	* IsA(className) (stub)
-	* Destroy() (stub)
+	* IsA(className) *(partial)*
+	* Destroy()
 	* GetPropertyChangedSignal(key)
+	* GetFullName()
 * Folder
 * BindableEvent
 	* Fire(...)
