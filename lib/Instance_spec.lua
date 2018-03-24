@@ -210,6 +210,20 @@ describe("Instance", function()
 		end)
 	end)
 
+	describe("GetFullName", function()
+		it("should get the full name", function()
+			local instance = Instance.new("Folder")
+			instance.Name = "Test"
+			local other = Instance.new("Folder")
+			other.Name = "Parent"
+
+			instance.Parent = other
+
+			local fullName = instance:GetFullName()
+			assert.equal("Parent.Test", fullName)
+		end)
+	end)
+
 	describe("tostring", function()
 		it("should match the name of the instance", function()
 			local instance = Instance.new("Folder")
