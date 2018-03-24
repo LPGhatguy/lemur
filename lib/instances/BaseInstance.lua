@@ -136,7 +136,7 @@ function BaseInstance.prototype:GetFullName()
 	local name = self.Name
 	local level = self.Parent
 
-	while level do
+	while level and getmetatable(level).class.name ~= "DataModel" do
 		name = level.Name .. "." .. name
 		level = level.Parent
 	end

@@ -222,6 +222,18 @@ describe("Instance", function()
 			local fullName = instance:GetFullName()
 			assert.equal("Parent.Test", fullName)
 		end)
+
+		it("should exclude game", function()
+			local instance = Instance.new("Folder")
+			instance.Name = "Test"
+			local other = Instance.new("Game")
+			other.Name = "Parent"
+
+			instance.Parent = other
+
+			local fullName = instance:GetFullName()
+			assert.equal("Test", fullName)
+		end)
 	end)
 
 	describe("tostring", function()
