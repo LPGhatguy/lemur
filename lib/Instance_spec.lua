@@ -234,6 +234,14 @@ describe("Instance", function()
 			local fullName = instance:GetFullName()
 			assert.equal("Test", fullName)
 		end)
+
+		it("should return the instance name if there is no parent", function()
+			local instance = Instance.new("Folder")
+			instance.Name = "Test"
+
+			local fullName = instance:GetFullName()
+			assert.equal("Test", fullName)
+		end)
 	end)
 
 	describe("tostring", function()
