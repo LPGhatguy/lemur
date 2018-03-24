@@ -132,6 +132,18 @@ function BaseInstance.prototype:GetPropertyChangedSignal(key)
 	return listener
 end
 
+function BaseInstance.prototype:GetFullName()
+	local name = self.Name
+	local level = self.Parent
+
+	while level and getmetatable(level).class.name ~= "DataModel" do
+		name = level.Name .. "." .. name
+		level = level.Parent
+	end
+
+	return name
+end
+
 BaseInstance.metatable = {}
 BaseInstance.metatable.type = "Instance"
 

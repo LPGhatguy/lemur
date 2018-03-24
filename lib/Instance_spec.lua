@@ -210,6 +210,40 @@ describe("Instance", function()
 		end)
 	end)
 
+	describe("GetFullName", function()
+		it("should get the full name", function()
+			local instance = Instance.new("Folder")
+			instance.Name = "Test"
+			local other = Instance.new("Folder")
+			other.Name = "Parent"
+
+			instance.Parent = other
+
+			local fullName = instance:GetFullName()
+			assert.equal("Parent.Test", fullName)
+		end)
+
+		it("should exclude game", function()
+			local instance = Instance.new("Folder")
+			instance.Name = "Test"
+			local other = Instance.new("Game")
+			other.Name = "Parent"
+
+			instance.Parent = other
+
+			local fullName = instance:GetFullName()
+			assert.equal("Test", fullName)
+		end)
+
+		it("should return the instance name if there is no parent", function()
+			local instance = Instance.new("Folder")
+			instance.Name = "Test"
+
+			local fullName = instance:GetFullName()
+			assert.equal("Test", fullName)
+		end)
+	end)
+
 	describe("tostring", function()
 		it("should match the name of the instance", function()
 			local instance = Instance.new("Folder")
