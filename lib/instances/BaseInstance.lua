@@ -71,6 +71,38 @@ BaseInstance.properties.Parent = InstanceProperty.normal({
 
 BaseInstance.prototype = {}
 
+function BaseInstance.prototype:ClearAllChildren()
+	local children = getmetatable(self).instance.children
+
+	for child in pairs(children) do
+		child:Destroy()
+	end
+end
+
+function BaseInstance.prototype:FindFirstAncestor(name)
+	local level = self.Parent
+
+	while level do
+		if level.Name == name then
+			return level
+		end
+
+		level = level.Parent
+	end
+end
+
+function BaseInstance.prototype:FindFirstAncestorOfClass(name)
+	local level = self.Parent
+
+	while level do
+		if level.ClassName == name then
+			return level
+		end
+
+		level = level.Parent
+	end
+end
+
 function BaseInstance.prototype:FindFirstChild(name)
 	local children = getmetatable(self).instance.children
 
@@ -103,11 +135,7 @@ function BaseInstance.prototype:IsA(className)
 end
 
 function BaseInstance.prototype:Destroy()
-	local children = getmetatable(self).instance.children
-
-	for child in pairs(children) do
-		child:Destroy()
-	end
+	self:ClearAllChildren()
 
 	if self.Parent ~= nil then
 		self.Parent = nil

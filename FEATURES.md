@@ -33,6 +33,9 @@ This document should remain up-to-date with current API coverage and status.
 	* Destroy()
 	* GetPropertyChangedSignal(key)
 	* GetFullName()
+	* ClearAllChildren()
+	* FindFirstAncestor(name)
+	* FindFirstAncestorOfClass(className)
 * Folder
 * BindableEvent
 	* Fire(...)
