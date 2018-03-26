@@ -289,4 +289,45 @@ describe("Instance", function()
 			end)
 		end)
 	end)
+
+	describe("ClearAllChildren", function()
+		it("should clear children", function()
+			local parent = Instance.new("Folder")
+			local child = Instance.new("Folder", parent)
+			parent:ClearAllChildren()
+			assert.equal(child.Parent, nil)
+		end)
+	end)
+
+	describe("FindFirstAncestor", function()
+		it("should find ancestors", function()
+			local parent = Instance.new("Folder")
+			parent.Name = "Ancestor"
+
+			local child = Instance.new("Folder", parent)
+
+			assert.equal(child:FindFirstAncestor("Ancestor"), parent)
+		end)
+
+		it("should return nil", function()
+			local parent = Instance.new("Folder")
+			local child = Instance.new("Folder", parent)
+			assert.equal(child:FindFirstAncestor("Ancestor"), nil)
+		end)
+	end)
+
+	describe("FindFirstAncestorOfClass", function()
+		it("should find ancestors", function()
+			local parent = Instance.new("Folder")
+			local child = Instance.new("Folder", parent)
+
+			assert.equal(child:FindFirstAncestorOfClass("Folder"), parent)
+		end)
+
+		it("should return nil", function()
+			local parent = Instance.new("Frame")
+			local child = Instance.new("Folder", parent)
+			assert.equal(child:FindFirstAncestorOfClass("Folder"), nil)
+		end)
+	end)
 end)

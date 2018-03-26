@@ -1,8 +1,10 @@
 local ok, lfs = pcall(require, "lfs")
 
+-- luacov: start_ignore
 if not ok then
 	error("Lemur requires LuaFileSystem, which couldn't be found: " .. lfs)
 end
+-- luacov: end_ignore
 
 local fs = {}
 
