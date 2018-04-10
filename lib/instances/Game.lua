@@ -13,7 +13,7 @@ function Game:init(instance)
 end
 
 function Game.prototype:GetService(serviceName)
-	local service = self:FindFirstChild(serviceName)
+	local service = self:FindFirstChildOfClass(serviceName)
 
 	if service then
 		return service
