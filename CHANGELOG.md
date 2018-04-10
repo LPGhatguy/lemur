@@ -10,6 +10,7 @@
 * Added `Instance:ClearAllChildren()`, `Instance:FindFirstAncestor(name)` and `Instance:FindFirstAncestorOfClass(className)` ([#24](https://github.com/LPGhatguy/lemur/pull/24))
 * Roblox Instances are now `userdata`
 * `RunService` is now correctly named `Run Service` ([#25](https://github.com/LPGhatguy/lemur/pull/25))
+* Added `Instance:FindFirstChildOfClass(name)` and `Instance:FindFirstChildWhichIsA(className)`
 * Changed `Signal:Wait()` mechanism to error instead of fire the event
 
 ## v0.1.0 (November 28, 2017)
