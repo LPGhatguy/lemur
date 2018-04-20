@@ -14,11 +14,11 @@ setmetatable(UDim2, {
 
 local prototype = {}
 
-function prototype:lerp(goal, alpha)
+function prototype:Lerp(goal, alpha)
 	return UDim2.new(
 		lerpNumber(self.X, goal.X, alpha),
-		lerpNumber(self.Y, goal.Y, alpha),
 		lerpNumber(self.Width, goal.Width, alpha),
+		lerpNumber(self.Y, goal.Y, alpha),
 		lerpNumber(self.Height, goal.Height, alpha)
 	)
 end
