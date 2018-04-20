@@ -16,8 +16,15 @@ local names = {
 	-- Services
 	"RunService",
 	"CoreGui",
+	"GuiService",
+	"HttpService",
+	"LocalizationService",
+	"Players",
 	"ReplicatedStorage",
 	"TestService",
+	"TextService",
+	"TweenService",
+	"UserInputService",
 }
 
 local instances = {}

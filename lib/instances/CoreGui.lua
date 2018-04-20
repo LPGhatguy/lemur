@@ -1,3 +1,7 @@
 local BaseInstance = import("./BaseInstance")
+local CoreGui = BaseInstance:extend("CoreGui")
+local InstanceProperty = import("../InstanceProperty")
 
-return BaseInstance:extend("CoreGui")
+CoreGui.properties.RobloxGui = InstanceProperty.normal({})
+
+return CoreGui

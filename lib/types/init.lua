@@ -1,5 +1,7 @@
 local names = {
 	"Color3",
+	"UDim2",
+	"Vector2",
 }
 
 local types = {}

@@ -4,6 +4,7 @@ local names = {
 	"tick",
 	"wait",
 	"spawn",
+	"settings",
 }
 
 local functions = {}

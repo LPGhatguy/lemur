@@ -1,4 +1,10 @@
 local names = {
+	"ConnectionState",
+	"EasingDirection",
+	"EasingStyle",
+	"Font",
+	"Platform",
+	"VirtualInputMode"
 }
 
 local enums = {}
