@@ -1,5 +1,5 @@
 if not pcall(require, "dkjson") then
-    return
+	return
 end
 
 local Instance = import("../Instance")
@@ -11,9 +11,9 @@ describe("instances.HttpService", function()
 		assert.not_nil(instance)
 		assert.equal("Value", instance.Name)
 		assert.equal(0, instance.Value)
-    end)
+	end)
 
-    it("should json encode properly", function()
+	it("should json encode properly", function()
 		local instance = Instance.new("HttpService")
 
 		assert.equal(instance:JSONEncode({ 1, true }), "[1,true]")
