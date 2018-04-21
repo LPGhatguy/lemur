@@ -1,7 +1,3 @@
-if not pcall(require, "dkjson") then
-	return
-end
-
 local Instance = import("../Instance")
 
 describe("instances.HttpService", function()

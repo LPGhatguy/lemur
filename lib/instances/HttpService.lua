@@ -5,7 +5,7 @@ local HttpService = BaseInstance:extend("HttpService")
 
 function HttpService.prototype:JSONEncode(input)
 	if not exists then
-		error("JSONEncode is disabled while dkjson is not installed.")
+		error("Please install dkjson to use HttpService:JSONEncode.")
 	else
 		return json.encode(input)
 	end
@@ -13,7 +13,7 @@ end
 
 function HttpService.prototype:JSONDecode(input)
 	if not exists then
-		error("JSONDecode is disabled while dkjson is not installed.")
+		error("Please install dkjson to use HttpService:JSONDecode.")
 	else
 		return json.decode(input)
 	end
