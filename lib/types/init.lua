@@ -1,5 +1,6 @@
 local names = {
 	"Color3",
+	"UDim",
 	"UDim2",
 	"Vector2",
 }

@@ -2,7 +2,7 @@ local UDim = import("./UDim")
 local UDim2 = import("./UDim2")
 
 local function extractUDim2(udim)
-	return { udim.X, udim.Width, udim.Y, udim.Height }
+	return { udim.X.Scale, udim.X.Offset, udim.Y.Scale, udim.Y.Offset }
 end
 
 describe("types.UDim2", function()
@@ -27,9 +27,24 @@ describe("types.UDim2", function()
 		assert.are.same({10, 20, 50, 100}, extractUDim2(udim))
 	end)
 
+	it("should have property X equal property Width", function()
+		local udim = UDim2.new(10, 20, 50, 100)
+
+		assert.not_nil(udim)
+		assert.equals(udim.X, udim.Width)
+	end)
+
+
+	it("should have property Y equal property Height", function()
+		local udim = UDim2.new(10, 20, 50, 100)
+
+		assert.not_nil(udim)
+		assert.equals(udim.Y, udim.Height)
+	end)
+
 	it("should add another UDim2", function()
 		local udimA = UDim2.new(10, 30, 50, 200)
-		local udimB = UDim2.new(20, 40, 100, 500)
+		local udimB = UDim2.new(UDim.new(20, 40), UDim.new(100, 500))
 		local udim = udimA + udimB
 
 		assert.not_nil(udim)

@@ -1,4 +1,6 @@
 local assign = import("../assign")
+local typeof = import("../functions/typeof")
+local UDim = import("./UDim")
 
 local function lerpNumber(a, b, alpha)
 	return (1 - alpha) * a + b * alpha
@@ -16,10 +18,10 @@ local prototype = {}
 
 function prototype:Lerp(goal, alpha)
 	return UDim2.new(
-		lerpNumber(self.X, goal.X, alpha),
-		lerpNumber(self.Width, goal.Width, alpha),
-		lerpNumber(self.Y, goal.Y, alpha),
-		lerpNumber(self.Height, goal.Height, alpha)
+		lerpNumber(self.X.Scale, goal.X.Scale, alpha),
+		lerpNumber(self.X.Offset, goal.X.Offset, alpha),
+		lerpNumber(self.Y.Scale, goal.Y.Scale, alpha),
+		lerpNumber(self.Y.Offset, goal.Y.Offset, alpha)
 	)
 end
 
@@ -41,32 +43,33 @@ function metatable:__index(key)
 end
 
 function metatable:__eq(other)
-	return self.X == other.X and self.Y == other.Y and self.Width == other.Width and self.Height == other.Height
+	return self.X == other.X and self.Y == other.Y
 end
 
 function metatable:__add(other)
-    return UDim2.new(self.X + other.X, self.Width + other.Width, self.Y + other.Y, self.Height + other.Height)
+	return UDim2.new(self.X + other.X, self.Y + other.Y)
 end
 
 function UDim2.new(...)
-	if select("#", ...) == 0 then
-		return UDim2.new(0, 0, 0, 0)
-    end
+	local param1, param2, param3, param4 = ...
 
-    if select("#", ...) == 2 then
-       local xDim, yDim = ...
-       return UDim2.new(xDim.Scale, xDim.Offset, yDim.Scale, yDim.Offset)
-    end
+	if typeof(param1) ~= "UDim" then
+		return UDim2.new(
+			UDim.new(param1, param2), -- UDim converts params to numbers by default
+			UDim.new(param3, param4)
+		)
+	end
 
-	local X, Width, Y, Height = ...
+	if typeof(param2) ~= "UDim" then
+		param2 = UDim.new()
+	end
 
 	local internalInstance = {
-        X = X,
-        Width = Width,
-        Y = Y,
-        Height = Height,
+		X = param1,
+		Y = param2,
+		Width = param1,
+		Height = param2,
 	}
-
 	local instance = newproxy(true)
 
 	assign(getmetatable(instance), metatable)

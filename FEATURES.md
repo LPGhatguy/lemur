@@ -3,6 +3,14 @@ Lemur does not aim to provide full coverage of all Roblox APIs. Coverage progres
 
 This document should remain up-to-date with current API coverage and status.
 
+## Implemented enums
+* ConnectionState
+* EasingDirection
+* EasingStyle
+* Font
+* Platform
+* VirtualInputMode
+
 ## Implemented globals
 * require
 * script
@@ -21,6 +29,22 @@ This document should remain up-to-date with current API coverage and status.
 	* Color3.toHSV(color)
 	* Color3:lerp()
 	* Equality checks (`Color3.new(0, 1, 0) == Color3.new(0, 1, 0) == true`)
+* UDim
+	* UDim.new()
+	* UDim.new(scale, offset)
+	* Addition
+	* Equality checks
+* UDim2
+	* UDim2.new()
+	* UDim2.new(xDim, yDim)
+	* UDim2.new(xScale, xOffset, yScale, yOffset)
+	* UDim2:lerp()
+	* Addition
+	* Equality checks
+* Vector2
+	* Vector2.new()
+	* Vector2.new(x, y)
+	* Addition
 
 ## Implemented Instance Members
 * Instance
@@ -52,12 +76,20 @@ This document should remain up-to-date with current API coverage and status.
 * Frame
 
 ## Implemented Service Members
+* CoreGui
+* GuiService
+* HttpService
+* LocalizationService
+* Players
 * ReplicatedStorage
 * RunService
 	* Heartbeat
-* CoreGui
+	* IsStudio
 * TestService
 	* Error(message)
+* TextService
+* TweenService
+* UserInputService
 
 ## Implemented Enums
 *None*
