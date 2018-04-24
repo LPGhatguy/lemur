@@ -10,6 +10,7 @@ function Game:init(instance)
 	Instance.new("CoreGui", instance)
 	Instance.new("ReplicatedStorage", instance)
 	Instance.new("TestService", instance)
+	Instance.new("HttpService", instance)
 end
 
 function Game.prototype:GetService(serviceName)

@@ -58,6 +58,9 @@ This document should remain up-to-date with current API coverage and status.
 * CoreGui
 * TestService
 	* Error(message)
+* HttpService (requires dkjson installed)
+	* JSONEncode(input)
+	* JSONDecode(input)
 
 ## Implemented Enums
 *None*
