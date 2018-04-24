@@ -76,6 +76,8 @@ This document should remain up-to-date with current API coverage and status.
 * Frame
 
 ## Implemented Service Members
+* ContentProvider
+	* ContentProvider.BaseUrl
 * CoreGui
 * GuiService
 * HttpService (requires dkjson installed)

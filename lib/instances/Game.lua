@@ -7,6 +7,7 @@ function Game:init(instance)
 	local Instance = import("../Instance")
 
 	Instance.new("RunService", instance)
+	Instance.new("ContentProvider", instance)
 	Instance.new("CoreGui", instance)
 	Instance.new("GuiService", instance)
 	Instance.new("HttpService", instance)

@@ -16,6 +16,7 @@ local names = {
 
 	-- Services
 	"RunService",
+	"ContentProvider",
 	"CoreGui",
 	"GuiService",
 	"HttpService",
