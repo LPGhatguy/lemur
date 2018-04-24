@@ -23,6 +23,6 @@ local platformArray = {
 
 local platforms = {}
 for _, value in ipairs(platformArray) do
-    platforms[value] = value
+	platforms[value] = value
 end
 return platforms

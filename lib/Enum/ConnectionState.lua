@@ -1,4 +1,4 @@
 return {
-    CONNECTED = 0,
-    DISCONNECTED = 1,
+	CONNECTED = 0,
+	DISCONNECTED = 1,
 }

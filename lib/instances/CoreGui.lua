@@ -4,7 +4,7 @@ local InstanceProperty = import("../InstanceProperty")
 
 CoreGui.properties.RobloxGui = InstanceProperty.normal({
 	getDefault = function()
-        local Instance = import("../Instance")
+		local Instance = import("../Instance")
 		return Instance.new("ScreenGui")
 	end,
 })
