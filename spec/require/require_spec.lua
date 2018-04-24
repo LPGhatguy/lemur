@@ -4,11 +4,10 @@ local lemur = require("lib")
 describe("Lemur", function()
 	it("should load modules directly", function()
 		local habitat = lemur.Habitat.new()
-		local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
 
-		habitat:loadFromFs("spec/require", ReplicatedStorage)
+		local root = habitat:loadFromFs("spec/require")
 
-		local module = ReplicatedStorage:FindFirstChild("a")
+		local module = root:FindFirstChild("a")
 
 		assert.not_nil(module)
 
@@ -16,52 +15,44 @@ describe("Lemur", function()
 
 		assert.equal(value, "foo")
 
-		local children = ReplicatedStorage
-
-		assert.equal(children:FindFirstChild("a"), module)
-		assert.not_nil(children:FindFirstChild("b"))
+		assert.equal(root:FindFirstChild("a"), module)
+		assert.not_nil(root:FindFirstChild("b"))
 	end)
 
 	it("should load modules from within folders", function()
 		local habitat = lemur.Habitat.new()
-		local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
 
-		habitat:loadFromFs("spec/require", ReplicatedStorage)
+		local root = habitat:loadFromFs("spec/require")
 
-		local module = ReplicatedStorage.foo
-		local value = habitat:require(module)
+		local value = habitat:require(root.foo)
 
 		assert.equal(value, "qux")
 	end)
 
 	it("should keep a module cache", function()
 		local habitat = lemur.Habitat.new()
-		local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
 
-		habitat:loadFromFs("spec/require", ReplicatedStorage)
+		local root = habitat:loadFromFs("spec/require")
 
-		local module = ReplicatedStorage.cacheme
-
-		local a = habitat:require(module)
-		local b = habitat:require(module)
+		local a = habitat:require(root.cacheme)
+		local b = habitat:require(root.cacheme)
 
 		assert.equal(a, b)
 	end)
 
 	it("should fail to find non-existent modules", function()
 		local habitat = lemur.Habitat.new()
-		local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
 
-		habitat:loadFromFs("spec/require", ReplicatedStorage)
+		local root = habitat:loadFromFs("spec/require")
 
 		local function nop()
 		end
 
 		assert.has.errors(function()
-			nop(ReplicatedStorage.NOPE_NOT_HERE)
+			nop(root.NOPE_NOT_HERE)
 		end)
 
-		local object = ReplicatedStorage:FindFirstChild("STILL_NOT_HERE")
+		local object = root:FindFirstChild("STILL_NOT_HERE")
 
 		assert.is_nil(object)
 	end)
