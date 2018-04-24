@@ -43,8 +43,8 @@ function Vector2.new(...)
 	local X, Y = ...
 
 	local internalInstance = {
-        X = X,
-        Y = Y,
+		X = tonumber(X) or 0,
+		Y = tonumber(Y) or 0,
 	}
 
 	local instance = newproxy(true)
