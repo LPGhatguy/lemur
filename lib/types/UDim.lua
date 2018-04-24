@@ -45,7 +45,6 @@ function UDim.new(...)
 		error("UDim.new must take in 2 numbers", 2)
 	end
 
-	-- UDim converts params to numbers by default
 	local internalInstance = {
 		Scale = Scale,
 		Offset = Offset,
