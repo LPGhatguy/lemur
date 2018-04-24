@@ -78,6 +78,9 @@ This document should remain up-to-date with current API coverage and status.
 ## Implemented Service Members
 * CoreGui
 * GuiService
+* HttpService (requires dkjson installed)
+	* JSONEncode(input)
+	* JSONDecode(input)
 * LocalizationService
 * Players
 * ReplicatedStorage

@@ -20,6 +20,7 @@ install:
   - luarocks install luacov-coveralls
   - luarocks install luacheck
   - luarocks install luafilesystem
+  - luarocks install dkjson
 
 script:
   - luacheck lib

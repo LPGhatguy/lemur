@@ -18,6 +18,7 @@ local names = {
 	"RunService",
 	"CoreGui",
 	"GuiService",
+	"HttpService",
 	"LocalizationService",
 	"Players",
 	"ReplicatedStorage",
