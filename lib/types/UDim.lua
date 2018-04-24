@@ -36,12 +36,19 @@ function metatable:__eq(other)
 end
 
 function UDim.new(...)
+	if select("#", ...) == 0 then
+		return UDim.new(0, 0)
+	end
+
 	local Scale, Offset = ...
+	if type(Scale) ~= "number" or type(Offset) ~= "number" then
+		error("UDim.new must take in 2 numbers", 2)
+	end
 
 	-- UDim converts params to numbers by default
 	local internalInstance = {
-		Scale = tonumber(Scale) or 0,
-		Offset = tonumber(Offset) or 0,
+		Scale = Scale,
+		Offset = Offset,
 	}
 
 	local instance = newproxy(true)

@@ -41,10 +41,13 @@ function Vector2.new(...)
 	end
 
 	local X, Y = ...
+	if type(X) ~= "number" or type(Y) ~= "number" then
+		error("Vector2.new takes in 2 numbers", 2)
+	end
 
 	local internalInstance = {
-		X = tonumber(X) or 0,
-		Y = tonumber(Y) or 0,
+		X = X,
+		Y = Y,
 	}
 
 	local instance = newproxy(true)

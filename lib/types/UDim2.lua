@@ -51,24 +51,37 @@ function metatable:__add(other)
 end
 
 function UDim2.new(...)
-	local param1, param2, param3, param4 = ...
-
-	if typeof(param1) ~= "UDim" then
+	if select("#", ...) == 0 then
 		return UDim2.new(
-			UDim.new(param1, param2), -- UDim converts params to numbers by default
-			UDim.new(param3, param4)
+			UDim.new(0, 0),
+			UDim.new(0, 0)
 		)
 	end
 
-	if typeof(param2) ~= "UDim" then
-		param2 = UDim.new()
+	if select("#", ...) == 4 then
+		local xScale, xOffset, yScale, yOffset = ...
+		if type(xScale) ~= "number" or type(xOffset) ~= "number" or
+			type(yScale) ~= "number" or type(yOffset) ~= "number" then
+			error("UDim2.new(xScale, xOffset, yScale, yOffset) takes in 4 numbers", 2)
+		end
+
+		return UDim2.new(
+			UDim.new(xScale, xOffset),
+			UDim.new(yScale, yOffset)
+		)
+	end
+
+	local xDim, yDim = ...
+
+	if typeof(xDim) ~= "UDim" or typeof(yDim) ~= "UDim" then
+		error("UDim2.new(xDim, yDim) takes in 2 UDims", 2)
 	end
 
 	local internalInstance = {
-		X = param1,
-		Y = param2,
-		Width = param1,
-		Height = param2,
+		X = xDim,
+		Y = yDim,
+		Width = xDim,
+		Height = yDim,
 	}
 	local instance = newproxy(true)
 

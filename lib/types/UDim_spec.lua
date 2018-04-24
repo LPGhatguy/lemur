@@ -19,6 +19,20 @@ describe("types.UDim", function()
 		assert.are.same({1, 200}, extractValues(udim))
 	end)
 
+	it("should throw when bad params are passed to the constructor", function()
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim.new(1, "test")
+			-- luacheck: pop
+		end)
+
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim.new("test", 10)
+			-- luacheck: pop
+		end)
+	end)
+
 	it("should add another UDim", function()
 		local udimA = UDim.new(1, 200)
 		local udimB = UDim.new(100, 500)

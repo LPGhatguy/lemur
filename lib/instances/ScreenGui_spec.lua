@@ -1,8 +1,8 @@
 local Instance = import("../Instance")
 
-describe("instances.HttpService", function()
+describe("instances.ScreenGui", function()
 	it("should instantiate", function()
-		local instance = Instance.new("HttpService")
+		local instance = Instance.new("ScreenGui")
 
 		assert.not_nil(instance)
 	end)

@@ -20,6 +20,20 @@ describe("types.Vector2", function()
 		assert.are.same({1, 200}, extractValues(v))
 	end)
 
+	it("should throw when bad params are passed to the constructor", function()
+		assert.has.errors(function()
+			-- luacheck: push ignore v
+			local v = Vector2.new(1, "test")
+			-- luacheck: pop
+		end)
+
+		assert.has.errors(function()
+			-- luacheck: push ignore v
+			local v = Vector2.new("test", 10)
+			-- luacheck: pop
+		end)
+	end)
+
 	it("should add another Vector2", function()
 		local vectorA = Vector2.new(1, 200)
 		local vectorB = Vector2.new(100, 500)

@@ -27,6 +27,46 @@ describe("types.UDim2", function()
 		assert.are.same({10, 20, 50, 100}, extractUDim2(udim))
 	end)
 
+	it("should throw when bad params are passed to the 4-param constructor", function()
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim2.new("test", 1, 2, 3)
+			-- luacheck: pop
+		end)
+
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim2.new(1, "test", 2, 3)
+			-- luacheck: pop
+		end)
+
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim2.new(1, 2, "test", 3)
+			-- luacheck: pop
+		end)
+
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim2.new(1, 2, 3, "test")
+			-- luacheck: pop
+		end)
+	end)
+
+	it("should throw when bad params are passed to the 2-param constructor", function()
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim2.new("test", UDim.new())
+			-- luacheck: pop
+		end)
+
+		assert.has.errors(function()
+			-- luacheck: push ignore udim
+			local udim = UDim2.new(UDim.new(), "test")
+			-- luacheck: pop
+		end)
+	end)
+
 	it("should have property X equal property Width", function()
 		local udim = UDim2.new(10, 20, 50, 100)
 

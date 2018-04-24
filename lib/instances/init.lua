@@ -12,12 +12,12 @@ local names = {
 	"IntValue",
 	"Frame",
 	"BindableEvent",
+	"ScreenGui",
 
 	-- Services
 	"RunService",
 	"CoreGui",
 	"GuiService",
-	"HttpService",
 	"LocalizationService",
 	"Players",
 	"ReplicatedStorage",
