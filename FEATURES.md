@@ -28,6 +28,8 @@ This document should remain up-to-date with current API coverage and status.
 	* Name
 	* ClassName
 	* FindFirstChild(name)
+	* FindFirstChildOfClass(className)
+	* FindFirstChildWhichIsA(className)
 	* GetChildren()
 	* IsA(className) *(partial)*
 	* Destroy()
@@ -56,6 +58,9 @@ This document should remain up-to-date with current API coverage and status.
 * CoreGui
 * TestService
 	* Error(message)
+* HttpService (requires dkjson installed)
+	* JSONEncode(input)
+	* JSONDecode(input)
 
 ## Implemented Enums
 *None*

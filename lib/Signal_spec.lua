@@ -46,7 +46,7 @@ describe("Signal", function()
 		assert.spy(spyB).was_called(2)
 	end)
 
-    -- Remove this when the event loop is made
+	-- Remove this when the event loop is made
 	it("should error on Wait", function()
 		local signal = Signal.new()
 

@@ -117,6 +117,34 @@ function BaseInstance.prototype:FindFirstChild(name)
 	return nil
 end
 
+function BaseInstance.prototype:FindFirstChildOfClass(className)
+	local children = getmetatable(self).instance.children
+
+	-- Search for existing children
+	-- This is a set stored by child instead of by name, since names are not unique.
+	for child in pairs(children) do
+		if child.ClassName == className then
+			return child
+		end
+	end
+
+	return nil
+end
+
+function BaseInstance.prototype:FindFirstChildWhichIsA(className)
+	local children = getmetatable(self).instance.children
+
+	-- Search for existing children
+	-- This is a set stored by child instead of by name, since names are not unique.
+	for child in pairs(children) do
+		if child:IsA(className) then
+			return child
+		end
+	end
+
+	return nil
+end
+
 function BaseInstance.prototype:GetChildren()
 	local children = getmetatable(self).instance.children
 	local result = {}
