@@ -22,15 +22,11 @@ describe("types.Vector2", function()
 
 	it("should throw when bad params are passed to the constructor", function()
 		assert.has.errors(function()
-			-- luacheck: push ignore v
-			local v = Vector2.new(1, "test")
-			-- luacheck: pop
+			Vector2.new(1, "test")
 		end)
 
 		assert.has.errors(function()
-			-- luacheck: push ignore v
-			local v = Vector2.new("test", 10)
-			-- luacheck: pop
+			Vector2.new("test", 10)
 		end)
 	end)
 

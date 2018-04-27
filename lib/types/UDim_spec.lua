@@ -21,15 +21,11 @@ describe("types.UDim", function()
 
 	it("should throw when bad params are passed to the constructor", function()
 		assert.has.errors(function()
-			-- luacheck: push ignore udim
-			local udim = UDim.new(1, "test")
-			-- luacheck: pop
+			UDim.new(1, "test")
 		end)
 
 		assert.has.errors(function()
-			-- luacheck: push ignore udim
-			local udim = UDim.new("test", 10)
-			-- luacheck: pop
+			UDim.new("test", 10)
 		end)
 	end)
 
