@@ -39,12 +39,11 @@ This document should remain up-to-date with current API coverage and status.
 	* UDim2.new(xDim, yDim)
 	* UDim2.new(xScale, xOffset, yScale, yOffset)
 	* UDim2:lerp()
-	* Addition
-	* Equality checks
+	* Operators: `+`, `==`
 * Vector2
 	* Vector2.new()
 	* Vector2.new(x, y)
-	* Addition
+	* Operators: `+`
 
 ## Implemented Instance Members
 * Instance
