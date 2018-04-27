@@ -1,3 +1,4 @@
+local CoreGui = import("./CoreGui")
 local Instance = import("../Instance")
 
 describe("instances.CoreGui", function()
@@ -6,11 +7,13 @@ describe("instances.CoreGui", function()
 
 		assert.not_nil(instance)
 	end)
-	it("should have a settable RobloxGui property", function()
-		local instance = Instance.new("CoreGui")
-		local table = { test = 1234 }
 
-		instance.RobloxGui = table
-		assert.equals(instance.RobloxGui, table)
+	it("should have a ScreenGui child named RobloxGui", function()
+		local instance = CoreGui:new()
+
+		local robloxGui = instance:FindFirstChild("RobloxGui")
+
+		assert.not_nil(robloxGui)
+		assert.equal(robloxGui.ClassName, "ScreenGui")
 	end)
 end)

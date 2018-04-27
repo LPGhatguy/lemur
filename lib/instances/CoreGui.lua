@@ -1,12 +1,11 @@
 local BaseInstance = import("./BaseInstance")
 local CoreGui = BaseInstance:extend("CoreGui")
-local InstanceProperty = import("../InstanceProperty")
+local ScreenGui = import("./ScreenGui")
 
-CoreGui.properties.RobloxGui = InstanceProperty.normal({
-	getDefault = function()
-		local Instance = import("../Instance")
-		return Instance.new("ScreenGui")
-	end,
-})
+function CoreGui:init(instance)
+	local RobloxGui = ScreenGui:new()
+	RobloxGui.Name = "RobloxGui"
+	RobloxGui.Parent = instance
+end
 
 return CoreGui
