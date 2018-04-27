@@ -23,30 +23,39 @@ function Habitat.new()
 	return habitat
 end
 
-function Habitat:loadFromFs(path, rootInstance)
-	for name in fs.dir(path) do
-		-- Why are these even in the iterator?
-		if name ~= "." and name ~= ".." then
-			local childPath = path .. "/" .. name
+function Habitat:loadFromFs(path)
+	if fs.isFile(path) then
+		if path:find("%.lua$") then
+			local instance = Instance.new("ModuleScript")
+			local contents = assert(fs.read(path))
 
-			if fs.isFile(childPath) then
-				if name:find("%.lua$") then
-					local instance = Instance.new("ModuleScript", rootInstance)
-					local contents = assert(fs.read(childPath))
+			instance.Name = path:match("([^/]-)%.lua$")
+			instance.Source = contents
 
-					instance.Name = name:match("^(.-)%.lua$")
-					instance.Source = contents
+			getmetatable(instance).instance.modulePath = path
 
-					getmetatable(instance).instance.modulePath = childPath
+			return instance
+		end
+	elseif fs.isDirectory(path) then
+		local instance = Instance.new("Folder")
+		instance.Name = path:match("([^/]-)$")
+
+		for name in fs.dir(path) do
+			-- Why are these even in the iterator?
+			if name ~= "." and name ~= ".." then
+				local childPath = path .. "/" .. name
+
+				local childInstance = Habitat:loadFromFs(childPath)
+				if childInstance then
+					childInstance.Parent = instance
 				end
-			elseif fs.isDirectory(childPath) then
-				local instance = Instance.new("Folder", rootInstance)
-				instance.Name = name
-
-				self:loadFromFs(childPath, instance)
 			end
 		end
+
+		return instance
 	end
+
+	return nil
 end
 
 --[[

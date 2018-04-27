@@ -36,14 +36,12 @@ local lemur = require("lemur")
 local habitat = lemur.Habitat.new()
 local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
 
--- Load `src/roblox` into ReplicatedStorage as a set of `ModuleScript` objects
-habitat:loadFromFs("src/roblox", ReplicatedStorage)
+-- Load `src/roblox` as a Folder containing some ModuleScripts:
+local root = habitat:loadFromFs("src/roblox", ReplicatedStorage)
+root.Parent = ReplicatedStorage
 
--- Locate src/roblox/CoolModule.lua from inside the habitat
-local module = ReplicatedStorage.CoolModule
-
--- Load it!
-local CoolModule = habitat:require(module)
+-- Locate src/roblox/CoolModule.lua from inside the habitat and load it!
+local CoolModule = habitat:require(root.CoolModule)
 
 -- Invoke a method on our Roblox module!
 CoolModule.doSomething()
