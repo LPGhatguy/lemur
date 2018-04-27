@@ -4,7 +4,7 @@ local names = {
 	"EasingStyle",
 	"Font",
 	"Platform",
-	"VirtualInputMode"
+	"VirtualInputMode",
 }
 
 local enums = {}
