@@ -12,13 +12,21 @@ local names = {
 	"IntValue",
 	"Frame",
 	"BindableEvent",
+	"ScreenGui",
 
 	-- Services
 	"RunService",
+	"ContentProvider",
 	"CoreGui",
+	"GuiService",
+	"HttpService",
+	"LocalizationService",
+	"Players",
 	"ReplicatedStorage",
 	"TestService",
-	"HttpService",
+	"TextService",
+	"TweenService",
+	"UserInputService",
 }
 
 local instances = {}

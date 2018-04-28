@@ -1,3 +1,4 @@
+local Game = import("./Game")
 local Instance = import("../Instance")
 
 describe("instances.Game", function()
@@ -9,7 +10,7 @@ describe("instances.Game", function()
 
 	describe("GetService", function()
 		it("should have GetService", function()
-			local instance = Instance.new("Game")
+			local instance = Game:new()
 
 			local ReplicatedStorage = instance:GetService("ReplicatedStorage")
 
@@ -18,7 +19,7 @@ describe("instances.Game", function()
 		end)
 
 		it("should throw when given invalid service names", function()
-			local instance = Instance.new("Game")
+			local instance = Game:new()
 
 			assert.has.errors(function()
 				instance:GetService("SOMETHING THAT WILL NEVER EXIST")

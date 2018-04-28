@@ -7,10 +7,17 @@ function Game:init(instance)
 	local Instance = import("../Instance")
 
 	Instance.new("RunService", instance)
+	Instance.new("ContentProvider", instance)
 	Instance.new("CoreGui", instance)
+	Instance.new("GuiService", instance)
+	Instance.new("HttpService", instance)
+	Instance.new("LocalizationService", instance)
+	Instance.new("Players", instance)
 	Instance.new("ReplicatedStorage", instance)
 	Instance.new("TestService", instance)
-	Instance.new("HttpService", instance)
+	Instance.new("TextService", instance)
+	Instance.new("TweenService", instance)
+	Instance.new("UserInputService", instance)
 end
 
 function Game.prototype:GetService(serviceName)
