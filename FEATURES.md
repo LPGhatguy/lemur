@@ -94,6 +94,7 @@ This document should remain up-to-date with current API coverage and status.
 	* JSONEncode(input)
 	* JSONDecode(input)
 * LocalizationService
+	* SystemLocaleId
 * Players
 * ReplicatedStorage
 * RunService
