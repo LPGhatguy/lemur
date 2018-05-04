@@ -3,7 +3,7 @@ Lemur does not aim to provide full coverage of all Roblox APIs. Coverage progres
 
 This document should remain up-to-date with current API coverage and status.
 
-## Implemented enums
+## Implemented Enums
 - ConnectionState
 - EasingDirection
 - EasingStyle
@@ -16,7 +16,7 @@ This document should remain up-to-date with current API coverage and status.
 - TextYAlignment
 - VirtualInputMode
 
-## Implemented globals
+## Implemented Globals
 * require
 * script
 * spawn (stub)
@@ -25,7 +25,7 @@ This document should remain up-to-date with current API coverage and status.
 * wait (stub)
 * warn
 
-## Implemented types
+## Implemented Types
 * Color3
 	* Color3.new()
 	* Color3.new(r, g, b)
@@ -33,22 +33,25 @@ This document should remain up-to-date with current API coverage and status.
 	* Color3.fromHSV(h, s, v)
 	* Color3.toHSV(color)
 	* Color3:lerp()
-	* Equality checks (`Color3.new(0, 1, 0) == Color3.new(0, 1, 0) == true`)
+	* Operators: `==`
 * UDim
 	* UDim.new()
 	* UDim.new(scale, offset)
-	* Addition
-	* Equality checks
+	* Operators: `==`, `+`
 * UDim2
 	* UDim2.new()
 	* UDim2.new(xDim, yDim)
 	* UDim2.new(xScale, xOffset, yScale, yOffset)
 	* UDim2:lerp()
-	* Operators: `+`, `==`
+	* Operators: `==`, `+`
 * Vector2
 	* Vector2.new()
 	* Vector2.new(x, y)
-	* Operators: `+`
+	* Operators: `==`, `+`
+* Rect
+	* Rect.new(x, y, width, height)
+	* Rect.new(min, max)
+	* Operators: `==`
 
 ## Implemented Instance Members
 * Instance
@@ -79,9 +82,9 @@ This document should remain up-to-date with current API coverage and status.
 	* Source
 * Frame
 
-## Implemented Service Members
+## Implemented Services
 * ContentProvider
-	* ContentProvider.BaseUrl
+	* BaseUrl
 * CoreGui
 * GuiService
 * HttpService (requires dkjson installed)
@@ -98,6 +101,3 @@ This document should remain up-to-date with current API coverage and status.
 * TextService
 * TweenService
 * UserInputService
-
-## Implemented Enums
-*None*
