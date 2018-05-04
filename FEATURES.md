@@ -14,6 +14,9 @@ This document should remain up-to-date with current API coverage and status.
 ## Implemented globals
 * require
 * script
+* settings
+	* Rendering
+		* QualityLevel
 * spawn (stub)
 * tick
 * typeof
