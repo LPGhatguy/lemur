@@ -200,6 +200,10 @@ function BaseInstance.prototype:GetFullName()
 	return name
 end
 
+function BaseInstance.prototype:WaitForChild(name, delay)
+	return self:FindFirstChild(name)
+end
+
 BaseInstance.metatable = {}
 BaseInstance.metatable.type = "Instance"
 
