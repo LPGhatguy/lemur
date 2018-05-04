@@ -73,6 +73,8 @@ This document should remain up-to-date with current API coverage and status.
 * LocalScript (stub)
 	* Source
 * Frame
+* ScreenGui
+	* DisplayOrder
 
 ## Implemented Service Members
 * ContentProvider
