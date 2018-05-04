@@ -1,4 +1,5 @@
 local settings = import("./settings")
+local typeof = import("./typeof")
 
 describe("functions.settings", function()
 	it("should be a function", function()
@@ -6,7 +7,7 @@ describe("functions.settings", function()
 	end)
 	it("should return an object", function()
 		local instance = settings()
-		assert.equals(type(instance), "table")
+		assert.equals(type(instance), "userdata")
 	end)
 	it("should always return the same object", function()
 		local instance = settings()
@@ -24,6 +25,6 @@ describe("functions.settings", function()
 		local renderSettings = instance.Rendering
 
 		assert.not_nil(renderSettings)
-		assert.equals(getmetatable(renderSettings).type, "RenderSettings")
+		assert.equals(typeof(renderSettings), "RenderSettings")
 	end)
 end)

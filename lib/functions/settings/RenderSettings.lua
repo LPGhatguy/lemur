@@ -1,13 +1,54 @@
+local assign = import("../../assign")
+
 local RenderSettings = {}
-RenderSettings.__index = RenderSettings
-RenderSettings.type = "RenderSettings"
+
+setmetatable(RenderSettings, {
+	__tostring = function()
+		return "RenderSettings"
+	end,
+})
+
+local prototype = {}
+
+local metatable = {}
+metatable.type = RenderSettings
+
+function metatable:__index(key)
+	local internal = getmetatable(self).internal
+
+	if internal[key] ~= nil then
+		return internal[key]
+	end
+
+	if prototype[key] ~= nil then
+		return prototype[key]
+	end
+
+	error(string.format("%s is not a valid member of RenderSettings", tostring(key)), 2)
+end
+
+function metatable:__newindex(key, value)
+	local internal = getmetatable(self).internal
+
+	if internal[key] then
+		internal[key] = value
+		return
+	end
+
+	error(string.format("%q is not a valid member of %s", tostring(key), self.ClassName), 2)
+end
+
 
 function RenderSettings.new()
-	local instance = {
+	local internalInstance = {
 		QualityLevel = 0,
 	}
 
-	setmetatable(instance, RenderSettings)
+	local instance = newproxy(true)
+
+	assign(getmetatable(instance), metatable)
+	getmetatable(instance).internal = internalInstance
+
 	return instance
 end
 
