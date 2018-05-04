@@ -55,20 +55,21 @@ This document should remain up-to-date with current API coverage and status.
 
 ## Implemented Instance Members
 * Instance
-	* Parent
-	* Name
 	* ClassName
+	* Name
+	* Parent
+	* ClearAllChildren()
+	* Destroy()
+	* FindFirstAncestor(name)
+	* FindFirstAncestorOfClass(className)
 	* FindFirstChild(name)
 	* FindFirstChildOfClass(className)
 	* FindFirstChildWhichIsA(className)
 	* GetChildren()
-	* IsA(className) *(partial)*
-	* Destroy()
-	* GetPropertyChangedSignal(key)
 	* GetFullName()
-	* ClearAllChildren()
-	* FindFirstAncestor(name)
-	* FindFirstAncestorOfClass(className)
+	* GetPropertyChangedSignal(key)
+	* IsA(className) *(partial)*
+	* WaitForChild
 * Folder
 * BindableEvent
 	* Fire(...)

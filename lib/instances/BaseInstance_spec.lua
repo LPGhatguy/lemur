@@ -141,6 +141,23 @@ describe("instances.BaseInstance", function()
 		end)
 	end)
 
+	describe("WaitForChild", function()
+		it("should work just like FindFirstChild", function()
+			local parent = BaseInstance:new()
+
+			local child = BaseInstance:new()
+			child.Parent = parent
+			child.Name = "foo"
+
+			local result = parent:WaitForChild("foo")
+			assert.equal(result, child)
+
+			child.Parent = nil
+			result = parent:WaitForChild("foo")
+			assert.equal(result, nil)
+		end)
+	end)
+
 	describe("Destroy", function()
 		it("should set the instance's Parent to nil", function()
 			local parent = BaseInstance:new()
