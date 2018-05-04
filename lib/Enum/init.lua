@@ -4,6 +4,11 @@ local names = {
 	"EasingStyle",
 	"Font",
 	"Platform",
+	"PlaybackState",
+	"ScaleType",
+	"SortOrder",
+	"TextXAlignment",
+	"TextYAlignment",
 	"VirtualInputMode",
 }
 
