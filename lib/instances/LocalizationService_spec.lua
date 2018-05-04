@@ -6,4 +6,19 @@ describe("instances.LocalizationService", function()
 
 		assert.not_nil(instance)
 	end)
+
+	describe("SystemLocaleId", function()
+		it("should have a string value", function()
+			local instance = Instance.new("LocalizationService")
+			assert.not_nil(instance.SystemLocaleId)
+			assert.equals(type(instance.SystemLocaleId), "string")
+		end)
+
+		it("should be read-only", function()
+			local instance = Instance.new("LocalizationService")
+			assert.has.errors(function()
+				instance.SystemLocaleId = "es-mx"
+			end)
+		end)
+	end)
 end)
