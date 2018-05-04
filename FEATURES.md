@@ -4,12 +4,17 @@ Lemur does not aim to provide full coverage of all Roblox APIs. Coverage progres
 This document should remain up-to-date with current API coverage and status.
 
 ## Implemented enums
-* ConnectionState
-* EasingDirection
-* EasingStyle
-* Font
-* Platform
-* VirtualInputMode
+- ConnectionState
+- EasingDirection
+- EasingStyle
+- Font
+- Platform
+- PlaybackState
+- ScaleType
+- SortOrder
+- TextXAlignment
+- TextYAlignment
+- VirtualInputMode
 
 ## Implemented globals
 * require
