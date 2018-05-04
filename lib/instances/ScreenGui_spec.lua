@@ -22,7 +22,7 @@ describe("instances.ScreenGui", function()
 		it("should only accept numbers", function()
 			local instance = Instance.new("ScreenGui")
 			assert.has.errors(function()
-				instance.DisplayOrder = 2
+				instance.DisplayOrder = "string"
 			end)
 		end)
 	end)
