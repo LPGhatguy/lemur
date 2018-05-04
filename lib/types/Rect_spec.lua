@@ -1,5 +1,6 @@
 local Rect = import("./Rect")
 local Vector2 = import("./Vector2")
+local typeof = import("../functions/typeof")
 
 local function extractRect(r)
 	return { r.Min.X, r.Min.Y, r.Max.X, r.Max.Y, r.Width, r.Height }
@@ -24,6 +25,10 @@ describe("types.Rect", function()
 
 		assert.not_nil(r)
 		assert.are.same({10, 20, 50, 100, 40, 80}, extractRect(r))
+	end)
+
+	it("should be type Rect", function()
+		assert.equal(typeof(Rect.new(0, 0, 0, 0)), "Rect")
 	end)
 
 	it("should throw when bad params are passed to the 4-param constructor", function()
@@ -63,7 +68,7 @@ describe("types.Rect", function()
 		assert.equals(r2, r2)
 	end)
 
-	it("should not equal another UDim with different scale and offset", function()
+	it("should not equal another Rect with different min and max values", function()
 		local rectA = Rect.new(10, 30, 50, 200)
 
 		local rectB1 = Rect.new(11, 30, 50, 200)

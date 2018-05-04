@@ -38,7 +38,7 @@ function Rect.new(...)
 		local minX, minY, maxX, maxY = ...
 		if type(minX) ~= "number" or type(minY) ~= "number" or
 			type(maxX) ~= "number" or type(maxY) ~= "number" then
-			error("Vector2.new(minX, minY, maxX, maxY) takes in 4 numbers", 2)
+			error("Rect.new(minX, minY, maxX, maxY) takes in 4 numbers", 2)
 		end
 
 		return Rect.new(
