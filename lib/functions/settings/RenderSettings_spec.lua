@@ -1,0 +1,10 @@
+local RenderSettings = import("./RenderSettings")
+
+describe("functions.settings.RenderSettings", function()
+	it("should be an object", function()
+		local instance = RenderSettings.new()
+		assert.not_nil(instance)
+		assert.equals(type(instance), "table")
+		assert.equals(getmetatable(instance).type, "RenderSettings")
+	end)
+end)
