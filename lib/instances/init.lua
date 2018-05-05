@@ -6,6 +6,7 @@ local names = {
 	"BoolValue",
 	"Folder",
 	"Frame",
+	"GuiObject",
 	"IntValue",
 	"LocalScript",
 	"ModuleScript",
