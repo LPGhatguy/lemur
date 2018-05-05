@@ -34,6 +34,10 @@ This document should remain up-to-date with current API coverage and status.
 	* Color3.toHSV(color)
 	* Color3:lerp()
 	* Operators: `==`
+* Rect
+	* Rect.new(x, y, width, height)
+	* Rect.new(min, max)
+	* Operators: `==`
 * UDim
 	* UDim.new()
 	* UDim.new(scale, offset)
@@ -48,12 +52,14 @@ This document should remain up-to-date with current API coverage and status.
 	* Vector2.new()
 	* Vector2.new(x, y)
 	* Operators: `==`, `+`
-* Rect
-	* Rect.new(x, y, width, height)
-	* Rect.new(min, max)
-	* Operators: `==`
 
 ## Implemented Instance Members
+* BindableEvent
+	* Fire(...)
+* BoolValue, StringValue, IntValue, ObjectValue
+	* Value
+* Folder
+* Frame
 * Instance
 	* ClassName
 	* Name
@@ -69,19 +75,13 @@ This document should remain up-to-date with current API coverage and status.
 	* GetFullName()
 	* GetPropertyChangedSignal(key)
 	* IsA(className) *(partial)*
-	* WaitForChild
-* Folder
-* BindableEvent
-	* Fire(...)
-* BoolValue, StringValue, IntValue, ObjectValue
-	* Value
+	* WaitForChild(name)
+* LocalScript (stub)
+	* Source
 * ModuleScript
 	* Source
 * Script (stub)
 	* Source
-* LocalScript (stub)
-	* Source
-* Frame
 * ScreenGui
 	* DisplayOrder
 
@@ -91,15 +91,15 @@ This document should remain up-to-date with current API coverage and status.
 * CoreGui
 * GuiService
 * HttpService (requires dkjson installed)
-	* JSONEncode(input)
 	* JSONDecode(input)
+	* JSONEncode(input)
 * LocalizationService
 	* SystemLocaleId
 * Players
 * ReplicatedStorage
 * RunService
 	* Heartbeat
-	* IsStudio
+	* IsStudio()
 * TestService
 	* Error(message)
 * TextService
