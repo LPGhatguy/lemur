@@ -14,15 +14,26 @@
 
 <div>&nbsp;</div>
 
-## Problem
-Currently, there's no way to test Roblox code on an open-source CI system like Travis-CI or Jenkins. Lemur tries to help solve the problem by _emulating_ some of Roblox's tree and function semantics.
+Lemur reimplements a large portion of Roblox's API in Lua in order to enable Roblox projects to have continuous integration using services like Travis CI or Jenkins.
+
+Lemur aims to be a fairly complete and up-to-date implementation of Roblox's API, however:
+
+* Lemur will always be incomplete by nature
+* Lemur will not implement deprecated APIs for the sake of simplicity
+* Lemur is naturally restricted by the environment it runs in
 
 Current feature coverage is detailed in [FEATURES.md](FEATURES.md)
 
 ## Installation
 Lemur requires:
+
 * Lua 5.1
 * LuaFileSystem (`luarocks install luafilesystem`)
+
+Lemur needs certain extra dependencies for some optional features:
+
+* dkjson (Roblox JSON API) (`luarocks install dkjson`)
+* LuaSocket (high performance timer) (`luarocks install luasocket`)
 
 Clone the Git repository wherever, then call `require` on it.
 
@@ -48,8 +59,6 @@ CoolModule.doSomething()
 ```
 
 ## Contributing
-Lemur is, by nature, always going to be an incomplete implementation of the Roblox API.
-
 If there are any APIs you'd like that are missing, feel free to open an [issue on GitHub](https://github.com/LPGhatguy/lemur/issues)!
 
 ## License
