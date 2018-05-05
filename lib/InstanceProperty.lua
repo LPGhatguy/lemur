@@ -42,8 +42,9 @@ end
 function InstanceProperty.typed(type, config)
 	return merge(InstanceProperty.normal(config), {
 		set = function(self, key, value)
-			if typeof(value) ~= type then
-				error(string.format("%s must be of type %s", key, type), 2)
+			local passedType = typeof(value)
+			if passedType ~= type then
+				error(string.format("%s must be of type %s, received type %s", key, type, passedType), 2)
 			end
 
 			getmetatable(self).instance.properties[key] = value
