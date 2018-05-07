@@ -1,9 +1,10 @@
 local BaseInstance = import("./BaseInstance")
-local HttpService = import("./HttpService")
 local InstanceProperty = import("../InstanceProperty")
-local LocalizationTable = BaseInstance:extend("LocalizationTable")
+local json = import("../json")
 
-local httpService = HttpService:new()
+local CONTENTS = "contents"
+
+local LocalizationTable = BaseInstance:extend("LocalizationTable")
 
 LocalizationTable.properties.SourceLocaleId = InstanceProperty.normal({
 	getDefault = function()
@@ -11,18 +12,18 @@ LocalizationTable.properties.SourceLocaleId = InstanceProperty.normal({
 	end,
 })
 
-LocalizationTable.properties.Contents = InstanceProperty.normal({
-	getDefault = function()
-		return {}
-	end,
-})
-
 function LocalizationTable.prototype:SetContents(contents)
-	self.Contents = httpService:JSONDecode(contents)
+	getmetatable(self).instance.properties[CONTENTS] = json.decode(contents)
 end
 
 function LocalizationTable.prototype:GetString(targetLocaleId, key)
-	for _, entry in ipairs(self.Contents) do
+	local contents = getmetatable(self).instance.properties[CONTENTS]
+
+	if contents == nil then
+		return nil
+	end
+
+	for _, entry in ipairs(contents) do
 		if entry.key == key then
 			return entry.values[targetLocaleId]
 		end
