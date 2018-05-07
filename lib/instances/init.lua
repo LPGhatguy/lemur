@@ -8,6 +8,9 @@ local names = {
 	"Folder",
 	"Frame",
 	"GuiObject",
+	"GuiButton",
+	"ImageButton",
+	"ImageLabel",
 	"IntValue",
 	"LocalScript",
 	"ModuleScript",
@@ -15,6 +18,10 @@ local names = {
 	"ScreenGui",
 	"Script",
 	"StringValue",
+	"TextButton",
+	"TextLabel",
+	"UIListLayout",
+	"UIPadding",
 	"Workspace",
 
 	-- Services
