@@ -27,6 +27,7 @@ local names = {
 	"Players",
 	"ReplicatedStorage",
 	"RunService",
+	"Stats",
 	"TestService",
 	"TextService",
 	"TweenService",
