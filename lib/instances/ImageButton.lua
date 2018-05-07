@@ -3,12 +3,6 @@ local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
 local ImageButton = GuiButton:extend("ImageButton")
 
-ImageButton.properties.AutoButtonColor = InstanceProperty.typed("boolean", {
-	getDefault = function()
-		return false
-	end,
-})
-
 ImageButton.properties.Image = InstanceProperty.normal({
 	getDefault = function()
 		return ""

@@ -3,12 +3,6 @@ local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
 local TextButton = GuiButton:extend("TextButton")
 
-TextButton.properties.AutoButtonColor = InstanceProperty.typed("boolean", {
-	getDefault = function()
-		return false
-	end,
-})
-
 TextButton.properties.Text = InstanceProperty.normal({
 	getDefault = function()
 		return ""

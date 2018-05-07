@@ -9,6 +9,12 @@ GuiButton.properties.Activated = InstanceProperty.normal({
 	end,
 })
 
+GuiButton.properties.AutoButtonColor = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return false
+	end,
+})
+
 GuiButton.properties.MouseButton1Click = InstanceProperty.normal({
 	getDefault = function()
 		return Signal.new()
