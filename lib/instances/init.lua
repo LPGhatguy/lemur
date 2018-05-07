@@ -13,6 +13,7 @@ local names = {
 	"ScreenGui",
 	"Script",
 	"StringValue",
+	"Workspace",
 
 	-- Services
 	"ContentProvider",
