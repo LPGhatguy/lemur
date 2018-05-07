@@ -3,15 +3,20 @@ Lemur does not aim to provide full coverage of all Roblox APIs. Coverage progres
 
 This document should remain up-to-date with current API coverage and status.
 
-## Implemented enums
-* ConnectionState
-* EasingDirection
-* EasingStyle
-* Font
-* Platform
-* VirtualInputMode
+## Implemented Enums
+- ConnectionState
+- EasingDirection
+- EasingStyle
+- Font
+- Platform
+- PlaybackState
+- ScaleType
+- SortOrder
+- TextXAlignment
+- TextYAlignment
+- VirtualInputMode
 
-## Implemented globals
+## Implemented Globals
 * require
 * script
 * settings
@@ -23,7 +28,7 @@ This document should remain up-to-date with current API coverage and status.
 * wait (stub)
 * warn
 
-## Implemented types
+## Implemented Types
 * Color3
 	* Color3.new()
 	* Color3.new(r, g, b)
@@ -31,71 +36,75 @@ This document should remain up-to-date with current API coverage and status.
 	* Color3.fromHSV(h, s, v)
 	* Color3.toHSV(color)
 	* Color3:lerp()
-	* Equality checks (`Color3.new(0, 1, 0) == Color3.new(0, 1, 0) == true`)
+	* Operators: `==`
+* Rect
+	* Rect.new(x, y, width, height)
+	* Rect.new(min, max)
+	* Operators: `==`
 * UDim
 	* UDim.new()
 	* UDim.new(scale, offset)
-	* Addition
-	* Equality checks
+	* Operators: `==`, `+`
 * UDim2
 	* UDim2.new()
 	* UDim2.new(xDim, yDim)
 	* UDim2.new(xScale, xOffset, yScale, yOffset)
 	* UDim2:lerp()
-	* Operators: `+`, `==`
+	* Operators: `==`, `+`
 * Vector2
 	* Vector2.new()
 	* Vector2.new(x, y)
-	* Operators: `+`
+	* Operators: `==`, `+`
 
 ## Implemented Instance Members
-* Instance
-	* Parent
-	* Name
-	* ClassName
-	* FindFirstChild(name)
-	* FindFirstChildOfClass(className)
-	* FindFirstChildWhichIsA(className)
-	* GetChildren()
-	* IsA(className) *(partial)*
-	* Destroy()
-	* GetPropertyChangedSignal(key)
-	* GetFullName()
-	* ClearAllChildren()
-	* FindFirstAncestor(name)
-	* FindFirstAncestorOfClass(className)
-* Folder
 * BindableEvent
 	* Fire(...)
 * BoolValue, StringValue, IntValue, ObjectValue
 	* Value
+* Folder
+* Frame
+* Instance
+	* ClassName
+	* Name
+	* Parent
+	* ClearAllChildren()
+	* Destroy()
+	* FindFirstAncestor(name)
+	* FindFirstAncestorOfClass(className)
+	* FindFirstChild(name)
+	* FindFirstChildOfClass(className)
+	* FindFirstChildWhichIsA(className)
+	* GetChildren()
+	* GetFullName()
+	* GetPropertyChangedSignal(key)
+	* IsA(className) *(partial)*
+	* WaitForChild(name)
+* LocalScript (stub)
+	* Source
 * ModuleScript
 	* Source
 * Script (stub)
 	* Source
-* LocalScript (stub)
-	* Source
-* Frame
+* ScreenGui
+	* DisplayOrder
 
-## Implemented Service Members
+## Implemented Services
 * ContentProvider
-	* ContentProvider.BaseUrl
+	* BaseUrl
 * CoreGui
 * GuiService
 * HttpService (requires dkjson installed)
-	* JSONEncode(input)
 	* JSONDecode(input)
+	* JSONEncode(input)
 * LocalizationService
+	* SystemLocaleId
 * Players
 * ReplicatedStorage
 * RunService
 	* Heartbeat
-	* IsStudio
+	* IsStudio()
 * TestService
 	* Error(message)
 * TextService
 * TweenService
 * UserInputService
-
-## Implemented Enums
-*None*
