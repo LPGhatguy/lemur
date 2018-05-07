@@ -100,6 +100,7 @@ This document should remain up-to-date with current API coverage and status.
 * RunService
 	* Heartbeat
 	* IsStudio()
+* Stats
 * TestService
 	* Error(message)
 * TextService
