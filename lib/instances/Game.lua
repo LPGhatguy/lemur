@@ -18,6 +18,7 @@ function Game:init(instance)
 	Instance.new("TextService", instance)
 	Instance.new("TweenService", instance)
 	Instance.new("UserInputService", instance)
+	Instance.new("Workspace", instance)
 end
 
 function Game.prototype:GetService(serviceName)
