@@ -19,6 +19,9 @@ This document should remain up-to-date with current API coverage and status.
 ## Implemented Globals
 * require
 * script
+* settings
+	* Rendering
+		* QualityLevel
 * spawn (stub)
 * tick
 * typeof
@@ -60,6 +63,22 @@ This document should remain up-to-date with current API coverage and status.
 	* Value
 * Folder
 * Frame
+* GuiObject
+	* Active
+	* AnchorPoint
+	* AutoButtonColor
+	* BackgroundColor3
+	* BackgroundTransparency
+	* BorderSizePixel
+	* ClipsDescendants
+	* Frame
+	* InputBegan
+	* InputEnded
+	* LayoutOrder
+	* Position
+	* Size
+	* Visible
+
 * Instance
 	* ClassName
 	* Name
@@ -89,6 +108,7 @@ This document should remain up-to-date with current API coverage and status.
 * ContentProvider
 	* BaseUrl
 * CoreGui
+* NotificationService
 * GuiService
 * HttpService (requires dkjson installed)
 	* JSONDecode(input)
@@ -101,8 +121,12 @@ This document should remain up-to-date with current API coverage and status.
 * RunService
 	* Heartbeat
 	* IsStudio()
+* Stats
 * TestService
 	* Error(message)
 * TextService
 * TweenService
 * UserInputService
+* Workspace
+	* CurrentCamera
+		* ViewportSize

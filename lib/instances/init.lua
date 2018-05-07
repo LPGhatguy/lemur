@@ -4,8 +4,10 @@ local names = {
 	-- Regular instances
 	"BindableEvent",
 	"BoolValue",
+	"Camera",
 	"Folder",
 	"Frame",
+	"GuiObject",
 	"IntValue",
 	"LocalizationTable",
 	"LocalScript",
@@ -14,6 +16,7 @@ local names = {
 	"ScreenGui",
 	"Script",
 	"StringValue",
+	"Workspace",
 
 	-- Services
 	"ContentProvider",
@@ -21,9 +24,11 @@ local names = {
 	"GuiService",
 	"HttpService",
 	"LocalizationService",
+	"NotificationService",
 	"Players",
 	"ReplicatedStorage",
 	"RunService",
+	"Stats",
 	"TestService",
 	"TextService",
 	"TweenService",

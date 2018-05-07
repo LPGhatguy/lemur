@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local RenderSettings = import("./settings/RenderSettings")
 
 local Settings = {}
 
@@ -34,6 +35,7 @@ end
 function Settings.new(settings)
 	local internalInstance = {
 		settings = settings or {},
+		Rendering = RenderSettings.new()
 	}
 
 	local instance = newproxy(true)
