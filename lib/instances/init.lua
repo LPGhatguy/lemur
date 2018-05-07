@@ -23,6 +23,7 @@ local names = {
 	"GuiService",
 	"HttpService",
 	"LocalizationService",
+	"NotificationService",
 	"Players",
 	"ReplicatedStorage",
 	"RunService",

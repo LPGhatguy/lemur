@@ -108,6 +108,7 @@ This document should remain up-to-date with current API coverage and status.
 * ContentProvider
 	* BaseUrl
 * CoreGui
+* NotificationService
 * GuiService
 * HttpService (requires dkjson installed)
 	* JSONDecode(input)
