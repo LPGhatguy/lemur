@@ -7,6 +7,7 @@ local names = {
 	"Folder",
 	"Frame",
 	"IntValue",
+	"LocalizationTable",
 	"LocalScript",
 	"ModuleScript",
 	"ObjectValue",
