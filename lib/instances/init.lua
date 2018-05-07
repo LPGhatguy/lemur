@@ -4,6 +4,7 @@ local names = {
 	-- Regular instances
 	"BindableEvent",
 	"BoolValue",
+	"Camera",
 	"Folder",
 	"Frame",
 	"IntValue",
