@@ -30,7 +30,7 @@ end
 function metatable:__newindex(key, value)
 	local internal = getmetatable(self).internal
 
-	if internal[key] then
+	if internal[key] ~= nil then
 		internal[key] = value
 		return
 	end
