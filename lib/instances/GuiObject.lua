@@ -12,16 +12,9 @@ GuiObject.properties.Active = InstanceProperty.typed("boolean", {
 	end,
 })
 
-
 GuiObject.properties.AnchorPoint = InstanceProperty.typed("Vector2", {
 	getDefault = function()
 		return Vector2.new()
-	end,
-})
-
-GuiObject.properties.AutoButtonColor = InstanceProperty.typed("boolean", {
-	getDefault = function()
-		return false
 	end,
 })
 
@@ -46,12 +39,6 @@ GuiObject.properties.BorderSizePixel = InstanceProperty.typed("number", {
 GuiObject.properties.ClipsDescendants = InstanceProperty.typed("boolean", {
 	getDefault = function()
 		return false
-	end,
-})
-
-GuiObject.properties.Frame = InstanceProperty.typed("UDim2", {
-	getDefault = function()
-		return UDim2.new()
 	end,
 })
 
