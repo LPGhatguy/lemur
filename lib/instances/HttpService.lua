@@ -1,14 +1,14 @@
 local BaseInstance = import("./BaseInstance")
-local JSON = import("../util/JSON")
+local json = import("../json")
 
 local HttpService = BaseInstance:extend("HttpService")
 
 function HttpService.prototype:JSONEncode(input)
-	return JSON.Encode(input)
+	return json.encode(input)
 end
 
 function HttpService.prototype:JSONDecode(input)
-	return JSON.Decode(input)
+	return json.decode(input)
 end
 
 return HttpService
