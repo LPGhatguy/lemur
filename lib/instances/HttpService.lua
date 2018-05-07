@@ -1,22 +1,14 @@
 local BaseInstance = import("./BaseInstance")
-local exists, json = pcall(require, "dkjson")
+local JSON = import("../util/JSON")
 
 local HttpService = BaseInstance:extend("HttpService")
 
 function HttpService.prototype:JSONEncode(input)
-	if not exists then
-		error("Please install dkjson to use HttpService:JSONEncode.")
-	else
-		return json.encode(input)
-	end
+	return JSON.Encode(input)
 end
 
 function HttpService.prototype:JSONDecode(input)
-	if not exists then
-		error("Please install dkjson to use HttpService:JSONDecode.")
-	else
-		return json.decode(input)
-	end
+	return JSON.Decode(input)
 end
 
 return HttpService
