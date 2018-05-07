@@ -60,6 +60,22 @@ This document should remain up-to-date with current API coverage and status.
 	* Value
 * Folder
 * Frame
+* GuiObject
+	* Active
+	* AnchorPoint
+	* AutoButtonColor
+	* BackgroundColor3
+	* BackgroundTransparency
+	* BorderSizePixel
+	* ClipsDescendants
+	* Frame
+	* InputBegan
+	* InputEnded
+	* LayoutOrder
+	* Position
+	* Size
+	* Visible
+
 * Instance
 	* ClassName
 	* Name

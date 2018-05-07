@@ -1,3 +1,3 @@
-local BaseInstance = import("./BaseInstance")
+local GuiObject = import("./GuiObject")
 
-return BaseInstance:extend("Frame")
+return GuiObject:extend("Frame")

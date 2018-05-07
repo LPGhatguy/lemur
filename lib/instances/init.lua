@@ -7,6 +7,7 @@ local names = {
 	"Camera",
 	"Folder",
 	"Frame",
+	"GuiObject",
 	"IntValue",
 	"LocalScript",
 	"ModuleScript",
