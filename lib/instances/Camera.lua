@@ -6,7 +6,7 @@ local Camera = BaseInstance:extend("Camera")
 
 Camera.properties.ViewportSize = InstanceProperty.normal({
 	getDefault = function()
-		return Vector2.new()
+		return Vector2.new(800, 600)
 	end,
 })
 
