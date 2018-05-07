@@ -4,6 +4,7 @@ local names = {
 	-- Regular instances
 	"BindableEvent",
 	"BoolValue",
+	"Camera",
 	"Folder",
 	"Frame",
 	"IntValue",
@@ -13,6 +14,7 @@ local names = {
 	"ScreenGui",
 	"Script",
 	"StringValue",
+	"Workspace",
 
 	-- Services
 	"ContentProvider",
