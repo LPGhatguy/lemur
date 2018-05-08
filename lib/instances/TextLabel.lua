@@ -4,43 +4,43 @@ local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local TextLabel = GuiObject:extend("TextLabel")
 
-TextLabel.properties.Font = InstanceProperty.normal({
+TextLabel.properties.Font = InstanceProperty.typed("number", {
 	getDefault = function()
-		return 0
+		return Enum.Font.Legacy
 	end,
 })
 
-TextLabel.properties.Text = InstanceProperty.normal({
+TextLabel.properties.Text = InstanceProperty.typed("string", {
 	getDefault = function()
 		return "Label"
 	end,
 })
 
-TextLabel.properties.TextColor3 = InstanceProperty.normal({
+TextLabel.properties.TextColor3 = InstanceProperty.typed("Color3", {
 	getDefault = function()
 		return Color3.new(27, 42, 53)
 	end,
 })
 
-TextLabel.properties.TextSize = InstanceProperty.normal({
+TextLabel.properties.TextSize = InstanceProperty.typed("number", {
 	getDefault = function()
 		return 14
 	end,
 })
 
-TextLabel.properties.TextWrapped = InstanceProperty.normal({
+TextLabel.properties.TextWrapped = InstanceProperty.typed("boolean", {
 	getDefault = function()
 		return false
 	end,
 })
 
-TextLabel.properties.TextXAlignment = InstanceProperty.normal({
+TextLabel.properties.TextXAlignment = InstanceProperty.typed("number", {
 	getDefault = function()
 		return Enum.TextXAlignment.Left
 	end,
 })
 
-TextLabel.properties.TextYAlignment = InstanceProperty.normal({
+TextLabel.properties.TextYAlignment = InstanceProperty.typed("number", {
 	getDefault = function()
 		return Enum.TextYAlignment.Top
 	end,

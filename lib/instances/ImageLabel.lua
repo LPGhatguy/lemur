@@ -1,21 +1,22 @@
+local Enum = import("../Enum")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
 local ImageLabel = GuiObject:extend("ImageLabel")
 
-ImageLabel.properties.Image = InstanceProperty.normal({
+ImageLabel.properties.Image = InstanceProperty.typed("string", {
 	getDefault = function()
 		return ""
 	end,
 })
 
-ImageLabel.properties.ScaleType = InstanceProperty.normal({
+ImageLabel.properties.ScaleType = InstanceProperty.typed("number", {
 	getDefault = function()
-		return 0
+		return Enum.ScaleType.Stretch
 	end,
 })
 
-ImageLabel.properties.SliceCenter = InstanceProperty.normal({
+ImageLabel.properties.SliceCenter = InstanceProperty.typed("Rect", {
 	getDefault = function()
 		return Rect.new(0, 0, 1, 1)
 	end,
