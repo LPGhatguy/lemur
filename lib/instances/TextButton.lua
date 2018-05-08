@@ -5,19 +5,19 @@ local TextButton = GuiButton:extend("TextButton")
 
 TextButton.properties.Text = InstanceProperty.normal({
 	getDefault = function()
-		return ""
+		return "Button"
 	end,
 })
 
 TextButton.properties.TextColor3 = InstanceProperty.normal({
 	getDefault = function()
-		return Color3.new()
+		return Color3.new(27, 42, 53)
 	end,
 })
 
 TextButton.properties.TextSize = InstanceProperty.normal({
 	getDefault = function()
-		return 12
+		return 14
 	end,
 })
 

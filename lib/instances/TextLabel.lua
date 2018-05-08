@@ -1,4 +1,5 @@
 local Color3 = import("../types/Color3")
+local Enum = import("../Enum")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local TextLabel = GuiObject:extend("TextLabel")
@@ -35,13 +36,13 @@ TextLabel.properties.TextWrapped = InstanceProperty.normal({
 
 TextLabel.properties.TextXAlignment = InstanceProperty.normal({
 	getDefault = function()
-		return 0
+		return Enum.TextXAlignment.Left
 	end,
 })
 
 TextLabel.properties.TextYAlignment = InstanceProperty.normal({
 	getDefault = function()
-		return 0
+		return Enum.TextYAlignment.Top
 	end,
 })
 
