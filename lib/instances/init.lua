@@ -12,6 +12,7 @@ local names = {
 	"LocalScript",
 	"ModuleScript",
 	"ObjectValue",
+	"Player",
 	"ScreenGui",
 	"Script",
 	"StringValue",
