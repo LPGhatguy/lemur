@@ -8,4 +8,10 @@ LocalizationService.properties.SystemLocaleId = InstanceProperty.readOnly({
 	end,
 })
 
+LocalizationService.properties.RobloxLocaleId = InstanceProperty.readOnly({
+	getDefault = function()
+		return "en-us"
+	end,
+})
+
 return LocalizationService
