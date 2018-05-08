@@ -126,6 +126,14 @@ This document should remain up-to-date with current API coverage and status.
 * TextService
 * TweenService
 * UserInputService
+* VirtualInputManager
+	* AdditionalLuaState
+	* PlaybackCompleted
+	* RecordingCompleted
+	* Dump()
+	* StartRecording()
+	* StartPlaying(filename)
+	* StopRecording()
 * Workspace
 	* CurrentCamera
 		* ViewportSize
