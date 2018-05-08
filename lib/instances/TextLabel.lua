@@ -11,23 +11,23 @@ TextLabel.properties.Font = InstanceProperty.normal({
 
 TextLabel.properties.Text = InstanceProperty.normal({
 	getDefault = function()
-		return ""
+		return "Label"
 	end,
 })
 
 TextLabel.properties.TextColor3 = InstanceProperty.normal({
 	getDefault = function()
-		return Color3.new()
+		return Color3.new(27, 42, 53)
 	end,
 })
 
 TextLabel.properties.TextSize = InstanceProperty.normal({
 	getDefault = function()
-		return 12
+		return 14
 	end,
 })
 
-TextLabel.properties.TextWrap = InstanceProperty.normal({
+TextLabel.properties.TextWrapped = InstanceProperty.normal({
 	getDefault = function()
 		return false
 	end,
