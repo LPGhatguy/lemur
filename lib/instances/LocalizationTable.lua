@@ -10,8 +10,8 @@ LocalizationTable.properties.SourceLocaleId = InstanceProperty.normal({
 	end,
 })
 
-function LocalizationTable:init()
-	getmetatable(self).instance.contents = {}
+function LocalizationTable:init(instance)
+	getmetatable(instance).instance.contents = {}
 end
 
 function LocalizationTable.prototype:SetContents(contents)
