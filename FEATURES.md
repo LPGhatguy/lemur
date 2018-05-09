@@ -17,6 +17,9 @@ This document should remain up-to-date with current API coverage and status.
 - VirtualInputMode
 
 ## Implemented Globals
+* UserSettings
+	* GameSettings
+		* InStudioMode()
 * require
 * script
 * settings
