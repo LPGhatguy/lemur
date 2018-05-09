@@ -126,6 +126,7 @@ This document should remain up-to-date with current API coverage and status.
 * TextService
 * TweenService
 * UserInputService
+* VirtualInputManager
 * Workspace
 	* CurrentCamera
 		* ViewportSize

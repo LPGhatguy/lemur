@@ -33,6 +33,7 @@ local names = {
 	"TextService",
 	"TweenService",
 	"UserInputService",
+	"VirtualInputManager",
 }
 
 local instances = {}

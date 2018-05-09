@@ -20,6 +20,7 @@ function Game:init(instance)
 	Instance.new("TextService", instance)
 	Instance.new("TweenService", instance)
 	Instance.new("UserInputService", instance)
+	Instance.new("VirtualInputManager", instance)
 	Instance.new("Workspace", instance)
 end
 
