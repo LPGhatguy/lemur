@@ -41,5 +41,7 @@ describe("instances.LocalizationTable", function()
 
 		assert.equals(instance:GetString("en-us", "TEST_STRING"), "VALUE")
 		assert.equals(instance:GetString("es-mx", "TEST_STRING"), "SPANISH")
+		assert.equals(instance:GetString("language-not-defined", "TEST_STRING"), nil)
+		assert.equals(instance:GetString("en-us", "STRING_KEY_NOT_DEFINED"), nil)
 	end)
 end)
