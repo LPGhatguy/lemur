@@ -9,6 +9,8 @@ local names = {
 	"SortOrder",
 	"TextXAlignment",
 	"TextYAlignment",
+	"ThumbnailSize",
+	"ThumbnailType",
 	"VirtualInputMode",
 }
 
