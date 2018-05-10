@@ -59,6 +59,7 @@ This document should remain up-to-date with current API coverage and status.
 	* Operators: `==`, `+`
 
 ## Implemented Instance Members
+* AnalyticsService
 * BindableEvent
 	* Fire(...)
 * BoolValue, StringValue, IntValue, ObjectValue
