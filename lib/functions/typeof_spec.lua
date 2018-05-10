@@ -14,7 +14,7 @@ describe("functions.typeof", function()
 	it("should identify all Instances as Instance", function()
 		local instances = import("../instances")
 
-		for _, instance in ipairs(instances) do
+		for _, instance in pairs(instances) do
 			assert.equal("Instance", typeof(instance:new()))
 		end
 	end)
