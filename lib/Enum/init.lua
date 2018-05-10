@@ -3,14 +3,17 @@ local names = {
 	"EasingDirection",
 	"EasingStyle",
 	"Font",
+	"HorizontalAlignment",
 	"Platform",
 	"PlaybackState",
 	"ScaleType",
+	"SizeConstraint",
 	"SortOrder",
 	"TextXAlignment",
 	"TextYAlignment",
 	"ThumbnailSize",
 	"ThumbnailType",
+	"VerticalAlignment",
 	"VirtualInputMode",
 }
 
