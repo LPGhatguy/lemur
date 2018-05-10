@@ -127,6 +127,7 @@ This document should remain up-to-date with current API coverage and status.
 * TestService
 	* Error(message)
 * TextService
+	* GetTextSize(text, fontSize, font, frameSize)
 * TweenService
 * UserInputService
 * VirtualInputManager
