@@ -6,6 +6,7 @@ function Game:init(instance)
 	-- Late import here to avoid a circular reference
 	local Instance = import("../Instance")
 
+	Instance.new("AnalyticsService", instance)
 	Instance.new("ContentProvider", instance)
 	Instance.new("CoreGui", instance)
 	Instance.new("GuiService", instance)
