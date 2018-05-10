@@ -12,6 +12,7 @@ local names = {
 	"ImageButton",
 	"ImageLabel",
 	"IntValue",
+	"LocalizationTable",
 	"LocalScript",
 	"ModuleScript",
 	"ObjectValue",
