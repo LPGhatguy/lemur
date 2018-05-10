@@ -8,14 +8,17 @@ This document should remain up-to-date with current API coverage and status.
 - EasingDirection
 - EasingStyle
 - Font
+- HorizontalAlignment
 - Platform
 - PlaybackState
 - ScaleType
+- SizeConstraint
 - SortOrder
 - TextXAlignment
 - TextYAlignment
 - ThumbnailSize
 - ThumbnailType
+- VerticalAlignment
 - VirtualInputMode
 
 ## Implemented Globals
