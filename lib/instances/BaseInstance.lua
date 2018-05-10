@@ -35,6 +35,12 @@ BaseInstance.properties.ClassName = InstanceProperty.readOnly({
 	end,
 })
 
+BaseInstance.properties.AncestryChanged = InstanceProperty.readOnly({
+	getDefault = function()
+		return Signal.new()
+	end,
+})
+
 BaseInstance.properties.Changed = InstanceProperty.readOnly({
 	getDefault = function()
 		return Signal.new()
@@ -66,6 +72,8 @@ BaseInstance.properties.Parent = InstanceProperty.normal({
 		if value ~= nil then
 			getmetatable(value).instance.children[self] = true
 		end
+
+		self:_PropagateAncestryChanged(self, value)
 	end,
 })
 
@@ -204,6 +212,16 @@ function BaseInstance.prototype:WaitForChild(name, delay)
 	return self:FindFirstChild(name)
 end
 
+function BaseInstance.prototype:_PropagateAncestryChanged(child, parent)
+	self.AncestryChanged:Fire(child, parent)
+
+	local children = getmetatable(self).instance.children
+
+	for c in pairs(children) do
+		c:_PropagateAncestryChanged(child, parent)
+	end
+end
+
 BaseInstance.metatable = {}
 BaseInstance.metatable.type = "Instance"
 
@@ -250,7 +268,7 @@ function BaseInstance.metatable:__tostring()
 	return self.Name
 end
 
-function BaseInstance:new()
+function BaseInstance:new(...)
 	local internalInstance = {
 		destroyed = false,
 		properties = {},
@@ -269,12 +287,12 @@ function BaseInstance:new()
 		internalInstance.properties[key] = property.getDefault(instance)
 	end
 
-	self:init(instance)
+	self:init(instance, ...)
 
 	return instance
 end
 
-function BaseInstance:init(instance)
+function BaseInstance:init(instance, ...)
 end
 
 --[[
