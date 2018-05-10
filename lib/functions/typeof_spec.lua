@@ -10,4 +10,12 @@ describe("functions.typeof", function()
 			assert.equal(type(value), typeof(value))
 		end
 	end)
+
+	it("should identify all Instances as Instance", function()
+		local instances = import("../instances")
+
+		for _, instance in pairs(instances) do
+			assert.equal("Instance", typeof(instance:new()))
+		end
+	end)
 end)
