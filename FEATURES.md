@@ -14,6 +14,8 @@ This document should remain up-to-date with current API coverage and status.
 - SortOrder
 - TextXAlignment
 - TextYAlignment
+- ThumbnailSize
+- ThumbnailType
 - VirtualInputMode
 
 ## Implemented Globals
