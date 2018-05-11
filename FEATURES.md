@@ -85,6 +85,16 @@ This document should remain up-to-date with current API coverage and status.
 	* Size
 	* SizeConstraint
 	* Visible
+* ImageButton
+	* Image
+	* ImageColor3
+	* ScaleType
+	* SliceCenter
+* ImageLabel
+	* Image
+	* ImageColor3
+	* ScaleType
+	* SliceCenter
 * Instance
 	* AncestryChanged
 	* ClassName
