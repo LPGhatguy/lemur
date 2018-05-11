@@ -16,4 +16,8 @@ RunService.prototype.IsStudio = function()
 	return false
 end
 
+RunService.properties.RenderStepped = InstanceProperty.readOnly({
+	getDefault = Signal.new,
+})
+
 return RunService
