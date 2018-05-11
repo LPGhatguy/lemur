@@ -1,5 +1,5 @@
 local RunService = import("./RunService")
-local typeof = import("../functions/typeof")
+local Signal = import("../Signal")
 
 describe("instances.RunService", function()
 	it("should instantiate", function()
@@ -21,7 +21,8 @@ describe("instances.RunService", function()
 
 	it("should have properties defined", function()
 		local instance = RunService:new()
-		assert(typeof(instance.Heartbeat), "Signal")
-		assert(typeof(instance.RenderStepped), "Signal")
+
+		assert.equals(instance.Heartbeat.__index, Signal)
+		assert.equals(instance.RenderStepped.__index, Signal)
 	end)
 end)
