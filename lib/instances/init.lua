@@ -22,6 +22,7 @@ local names = {
 	"StringValue",
 	"TextButton",
 	"TextLabel",
+	"UIGridStyleLayout",
 	"UIListLayout",
 	"UIPadding",
 	"Workspace",

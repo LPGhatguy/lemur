@@ -122,6 +122,12 @@ This document should remain up-to-date with current API coverage and status.
 * ScreenGui
 	* AbsoluteSize
 	* DisplayOrder
+* UIGridStyleLayout
+	* HorizontalAlignment
+	* SortOrder
+	* VerticalAlignment
+* UIListLayout
+	* Padding
 
 ## Implemented Services
 * ContentProvider
