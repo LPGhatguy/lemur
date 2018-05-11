@@ -159,8 +159,7 @@ end
 function BaseInstance.prototype:IsA(className)
 	local currentClass = getmetatable(self).class
 
-	while (currentClass ~= nil)
-	do
+	while currentClass ~= nil do
 		if currentClass.name == className then
 			return true
 		end
