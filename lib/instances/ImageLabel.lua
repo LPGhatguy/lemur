@@ -1,3 +1,4 @@
+local Color3 = import("../types/Color3")
 local Enum = import("../Enum")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
@@ -7,6 +8,12 @@ local ImageLabel = GuiObject:extend("ImageLabel")
 ImageLabel.properties.Image = InstanceProperty.typed("string", {
 	getDefault = function()
 		return ""
+	end,
+})
+
+ImageLabel.properties.ImageColor3 = InstanceProperty.typed("Color3", {
+	getDefault = function()
+		return Color3.new()
 	end,
 })
 
