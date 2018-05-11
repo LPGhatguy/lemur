@@ -7,6 +7,40 @@ local UDim2 = import("../types/UDim2")
 local Vector2 = import("../types/Vector2")
 local GuiObject = BaseInstance:extend("GuiObject")
 
+local function isChildOfScreenGui(instance)
+	while instance ~= nil do
+		if instance.ClassName == "ScreenGui" then
+			return true
+		end
+
+		instance = instance.Parent
+	end
+
+	return false
+end
+
+GuiObject.properties.AbsoluteSize = InstanceProperty.readOnly({
+	get = function(self)
+		if not isChildOfScreenGui(self) then
+			return Vector2.new()
+		end
+
+		local size = self.Size
+		local scaleX, scaleY = 0, 0
+
+		if self.Parent ~= nil and (self.Parent:IsA("GuiObject") or self.Parent:IsA("ScreenGui")) then
+			local parentSize = self.Parent.AbsoluteSize
+			scaleX = parentSize.X
+			scaleY = parentSize.Y
+		end
+
+		return Vector2.new(
+			scaleX * size.X.Scale + size.X.Offset,
+			scaleY * size.Y.Scale + size.Y.Offset
+		)
+	end,
+})
+
 GuiObject.properties.Active = InstanceProperty.typed("boolean", {
 	getDefault = function()
 		return true
