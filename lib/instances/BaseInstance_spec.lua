@@ -409,4 +409,70 @@ describe("instances.BaseInstance", function()
 			assert.equal(parent:FindFirstChildWhichIsA("Folder"), nil)
 		end)
 	end)
+
+	describe("AncestryChanged", function()
+		it("should fire when my parent changes", function()
+			local parent = BaseInstance:new()
+			local parentSpy = spy.new(function() end)
+			parent.AncestryChanged:Connect(parentSpy)
+
+			local child = BaseInstance:new()
+			local childSpy = spy.new(function() end)
+			child.AncestryChanged:Connect(childSpy)
+
+			child.Parent = parent
+			assert.spy(parentSpy).was_not_called()
+			assert.spy(childSpy).was_called_with(child, parent)
+
+			child.Parent = nil
+			assert.spy(parentSpy).was_not_called()
+			assert.spy(childSpy).was_called_with(child, nil)
+		end)
+
+		it("should fire when my ancestor changes", function()
+			local parent = BaseInstance:new()
+			local parentSpy = spy.new(function() end)
+			parent.AncestryChanged:Connect(parentSpy)
+
+			local child = BaseInstance:new()
+			local childSpy = spy.new(function() end)
+			child.AncestryChanged:Connect(childSpy)
+
+			local grandchild = BaseInstance:new()
+			local grandchildSpy = spy.new(function() end)
+			grandchild.AncestryChanged:Connect(grandchildSpy)
+
+			grandchild.Parent = child
+			assert.spy(parentSpy).was_not_called()
+			assert.spy(childSpy).was_not_called()
+			assert.spy(grandchildSpy).was_called_with(grandchild, child)
+
+			parentSpy:clear()
+			childSpy:clear()
+			grandchildSpy:clear()
+
+			child.Parent = parent
+			assert.spy(parentSpy).was_not_called()
+			assert.spy(childSpy).was_called_with(child, parent)
+			assert.spy(grandchildSpy).was_called_with(child, parent)
+
+			parentSpy:clear()
+			childSpy:clear()
+			grandchildSpy:clear()
+
+			child.Parent = nil
+			assert.spy(parentSpy).was_not_called()
+			assert.spy(childSpy).was_called_with(child, nil)
+			assert.spy(grandchildSpy).was_called_with(child, nil)
+
+			parentSpy:clear()
+			childSpy:clear()
+			grandchildSpy:clear()
+
+			grandchild.Parent = nil
+			assert.spy(parentSpy).was_not_called()
+			assert.spy(childSpy).was_not_called()
+			assert.spy(grandchildSpy).was_called_with(grandchild, nil)
+		end)
+	end)
 end)
