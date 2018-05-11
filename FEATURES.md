@@ -83,6 +83,7 @@ This document should remain up-to-date with current API coverage and status.
 	* LayoutOrder
 	* Position
 	* Size
+	* SizeConstraint
 	* Visible
 * ImageButton
 	* Image
