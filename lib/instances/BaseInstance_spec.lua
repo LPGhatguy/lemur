@@ -206,10 +206,35 @@ describe("instances.BaseInstance", function()
 	end)
 
 	describe("IsA", function()
-		it("should check classes directly", function()
-			local instance = BaseInstance:new()
+		it("should check the class's hierarchy", function()
+			local ClassA = BaseInstance:extend("ClassA")
+			local ClassB = ClassA:extend("ClassB")
+			local ClassC = ClassB:extend("ClassC")
 
-			assert.equal(instance:IsA("Instance"), true)
+			local instance = BaseInstance:new()
+			local objA = ClassA:new()
+			local objB = ClassB:new()
+			local objC = ClassC:new()
+
+			assert.False(instance:IsA("ClassC"))
+			assert.False(instance:IsA("ClassB"))
+			assert.False(instance:IsA("ClassA"))
+			assert.True(instance:IsA("Instance"))
+
+			assert.False(objA:IsA("ClassC"))
+			assert.False(objA:IsA("ClassB"))
+			assert.True(objA:IsA("ClassA"))
+			assert.True(objA:IsA("Instance"))
+
+			assert.False(objB:IsA("ClassC"))
+			assert.True(objB:IsA("ClassB"))
+			assert.True(objB:IsA("ClassA"))
+			assert.True(objB:IsA("Instance"))
+
+			assert.True(objC:IsA("ClassC"))
+			assert.True(objC:IsA("ClassB"))
+			assert.True(objC:IsA("ClassA"))
+			assert.True(objC:IsA("Instance"))
 		end)
 	end)
 
@@ -407,6 +432,19 @@ describe("instances.BaseInstance", function()
 			local parent = BaseInstance:new()
 
 			assert.equal(parent:FindFirstChildWhichIsA("Folder"), nil)
+		end)
+	end)
+
+	describe("super", function()
+		it("should reference the parent class", function()
+			local ClassA = BaseInstance:extend("ClassA")
+			local ClassB = ClassA:extend("ClassB")
+			local ClassC = ClassB:extend("ClassC")
+
+			assert.equals(ClassC.super, ClassB)
+			assert.equals(ClassB.super, ClassA)
+			assert.equals(ClassA.super, BaseInstance)
+			assert.equals(BaseInstance.super, nil)
 		end)
 	end)
 

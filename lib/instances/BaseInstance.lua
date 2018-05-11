@@ -165,9 +165,17 @@ function BaseInstance.prototype:GetChildren()
 end
 
 function BaseInstance.prototype:IsA(className)
-	-- TODO: Hierarchy stuff
+	local currentClass = getmetatable(self).class
 
-	return self.ClassName == className
+	while currentClass ~= nil do
+		if currentClass.name == className then
+			return true
+		end
+
+		currentClass = currentClass.super
+	end
+
+	return false
 end
 
 function BaseInstance.prototype:Destroy()
@@ -304,6 +312,7 @@ function BaseInstance:extend(name)
 	local newClass = assign({}, self)
 
 	newClass.name = name
+	newClass.super = self
 
 	newClass.properties = assign({}, self.properties)
 	newClass.prototype = assign({}, self.prototype)
