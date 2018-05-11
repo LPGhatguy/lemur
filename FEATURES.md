@@ -70,6 +70,7 @@ This document should remain up-to-date with current API coverage and status.
 * Folder
 * Frame
 * GuiObject
+	* AbsoluteSize
 	* Active
 	* AnchorPoint
 	* AutoButtonColor
@@ -119,7 +120,14 @@ This document should remain up-to-date with current API coverage and status.
 * Script (stub)
 	* Source
 * ScreenGui
+	* AbsoluteSize
 	* DisplayOrder
+* UIGridStyleLayout
+	* HorizontalAlignment
+	* SortOrder
+	* VerticalAlignment
+* UIListLayout
+	* Padding
 
 ## Implemented Services
 * ContentProvider
