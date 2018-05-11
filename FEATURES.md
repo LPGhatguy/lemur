@@ -124,6 +124,8 @@ This document should remain up-to-date with current API coverage and status.
 	* SystemLocaleId
 * LocalizationTable
 * Players
+	* LocalPlayer
+		* UserId
 * ReplicatedStorage
 * RunService
 	* Heartbeat
