@@ -86,6 +86,7 @@ This document should remain up-to-date with current API coverage and status.
 	* Visible
 
 * Instance
+	* AncestryChanged
 	* ClassName
 	* Name
 	* Parent
@@ -126,11 +127,13 @@ This document should remain up-to-date with current API coverage and status.
 * ReplicatedStorage
 * RunService
 	* Heartbeat
+	* RenderStepped
 	* IsStudio()
 * Stats
 * TestService
 	* Error(message)
 * TextService
+	* GetTextSize(text, fontSize, font, frameSize)
 * TweenService
 * UserInputService
 * VirtualInputManager
