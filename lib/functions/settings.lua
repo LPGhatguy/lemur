@@ -46,7 +46,9 @@ function Settings.new(settings)
 	return instance
 end
 
-local instance = Settings.new({})
-return function()
-	return instance
+return function(flags)
+	local instance = Settings.new(flags)
+	return function()
+		return instance
+	end
 end

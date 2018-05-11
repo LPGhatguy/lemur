@@ -11,9 +11,10 @@ local fs = import("./fs")
 local Habitat = {}
 Habitat.__index = Habitat
 
-function Habitat.new()
+function Habitat.new(flags)
 	local habitat = {
 		game = nil,
+		flags = flags,
 	}
 
 	habitat.game = Instance.new("Game")
