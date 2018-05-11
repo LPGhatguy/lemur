@@ -99,7 +99,7 @@ This document should remain up-to-date with current API coverage and status.
 	* GetChildren()
 	* GetFullName()
 	* GetPropertyChangedSignal(key)
-	* IsA(className) *(partial)*
+	* IsA(className)
 	* WaitForChild(name)
 * LocalScript (stub)
 	* Source
