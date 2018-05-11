@@ -1,5 +1,5 @@
 local UIListLayout = import("./UIListLayout")
-local UDim = import("../types/UDim")
+local typeof = import("../functions/typeof")
 
 describe("instances.UIListLayout", function()
 	it("should instantiate", function()
@@ -17,6 +17,6 @@ describe("instances.UIListLayout", function()
 	it("should have properties defined", function()
 		local instance = UIListLayout:new()
 
-		assert.equals(getmetatable(instance.Padding).type, UDim)
+		assert.equals(typeof(instance.Padding), "UDim")
 	end)
 end)
