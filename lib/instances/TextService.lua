@@ -6,11 +6,11 @@ local TextService = BaseInstance:extend("TextService")
 -- right now this is just a lazy [fontSize * len(text), fontSize] clipped by frameSize
 function TextService.prototype:GetTextSize(text, fontSize, font, frameSize)
 	if typeof(text) ~= "string" then
-		error("text must a string", 2)
+		error("text must be a string", 2)
 	elseif typeof(fontSize) ~= "number" then
-		error("fontSize must a number", 2)
+		error("fontSize must be a number", 2)
 	elseif typeof(font) ~= "number" then
-		error("font must an Enum.Font", 2)
+		error("font must be an Enum.Font", 2)
 	elseif typeof(frameSize) ~= "Vector2" then
 		error("frameSize must be a Vector2", 2)
 	end
