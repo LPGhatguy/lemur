@@ -46,8 +46,8 @@ function Settings.new(settings)
 	return instance
 end
 
-return function(flags)
-	local instance = Settings.new(flags)
+return function(habitat)
+	local instance = Settings.new(habitat.flags)
 	return function()
 		return instance
 	end

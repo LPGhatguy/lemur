@@ -31,7 +31,7 @@ function environment.create(habitat, scriptInstance)
 		new[key] = value
 	end
 
-	local functionsWithFlags = functions(habitat.flags)
+	local functionsWithFlags = functions(habitat)
 	for key, value in pairs(functionsWithFlags) do
 		new[key] = value
 	end
