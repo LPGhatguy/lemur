@@ -1,4 +1,4 @@
-return function(flags)
+return function(habitat)
 	local names = {
 		"typeof",
 		"warn",
@@ -13,7 +13,7 @@ return function(flags)
 		functions[name] = import("./" .. name)
 	end
 
-	functions["settings"] = import("./settings")(flags)
+	functions["settings"] = import("./settings")(habitat)
 
 	return functions
 end
