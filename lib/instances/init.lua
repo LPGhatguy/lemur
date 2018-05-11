@@ -27,6 +27,7 @@ local names = {
 	"Workspace",
 
 	-- Services
+	"AnalyticsService",
 	"ContentProvider",
 	"CoreGui",
 	"GuiService",
