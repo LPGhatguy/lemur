@@ -212,13 +212,13 @@ function BaseInstance.prototype:WaitForChild(name, delay)
 	return self:FindFirstChild(name)
 end
 
-function BaseInstance.prototype:_PropagateAncestryChanged(child, parent)
-	self.AncestryChanged:Fire(child, parent)
+function BaseInstance.prototype:_PropagateAncestryChanged(instance, parent)
+	self.AncestryChanged:Fire(instance, parent)
 
 	local children = getmetatable(self).instance.children
 
-	for c in pairs(children) do
-		c:_PropagateAncestryChanged(child, parent)
+	for child in pairs(children) do
+		child:_PropagateAncestryChanged(instance, parent)
 	end
 end
 
