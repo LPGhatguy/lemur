@@ -13,7 +13,7 @@ return function(habitat)
 		functions[name] = import("./" .. name)
 	end
 
-	functions["settings"] = import("./settings")(habitat)
+	functions["settings"] = import("./createSettings")(habitat)
 
 	return functions
 end

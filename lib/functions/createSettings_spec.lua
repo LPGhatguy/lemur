@@ -1,19 +1,19 @@
-local SettingsGenerator = import("./settings")
+local createSettings = import("./createSettings")
 local typeof = import("./typeof")
 
 describe("functions.settings", function()
 	it("should be a function", function()
-		assert.is_function(SettingsGenerator)
+		assert.is_function(createSettings)
 	end)
 
 	it("should return the actual settings() function", function()
-		local settings = SettingsGenerator({})
+		local settings = createSettings({})
 		local instance = settings()
 		assert.equals(type(instance), "userdata")
 	end)
 
 	it("should always return the same object", function()
-		local settings = SettingsGenerator({})
+		local settings = createSettings({})
 
 		local instance = settings()
 		local instance2 = settings()
@@ -21,7 +21,7 @@ describe("functions.settings", function()
 	end)
 
 	it("should accept fast flags", function()
-		local settings = SettingsGenerator({
+		local settings = createSettings({
 			FFTest = true,
 			FFTest2 = true,
 			FFDoesSomethingHappen = false,
@@ -35,7 +35,7 @@ describe("functions.settings", function()
 	end)
 
 	it("should have a property Rendering", function()
-		local settings = SettingsGenerator({})
+		local settings = createSettings({})
 
 		local instance = settings()
 		local renderSettings = instance.Rendering
@@ -45,7 +45,7 @@ describe("functions.settings", function()
 	end)
 
 	it("should not allow me to set the Rendering property", function()
-		local settings = SettingsGenerator({})
+		local settings = createSettings({})
 
 		local instance = settings()
 		assert.has.errors(function()
@@ -54,7 +54,7 @@ describe("functions.settings", function()
 	end)
 
 	it("should not allow me to access undefined properties", function()
-		local settings = SettingsGenerator({})
+		local settings = createSettings({})
 
 		local instance = settings()
 		assert.has.errors(function()
@@ -63,7 +63,7 @@ describe("functions.settings", function()
 	end)
 
 	it("should not allow me to set undefined properties", function()
-		local settings = SettingsGenerator({})
+		local settings = createSettings({})
 
 		local instance = settings()
 		assert.has.errors(function()

@@ -14,7 +14,7 @@ Habitat.__index = Habitat
 function Habitat.new(flags)
 	local habitat = {
 		game = nil,
-		flags = flags,
+		flags = flags or {},
 	}
 
 	habitat.game = Instance.new("Game")
