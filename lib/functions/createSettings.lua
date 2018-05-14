@@ -1,3 +1,8 @@
+--[[
+	This file creates the settings() method.
+	Since settings implements the GetFFlag method, we need to pass fast flags
+	from a Habitat instance.
+]]
 local assign = import("../assign")
 local RenderSettings = import("./settings/RenderSettings")
 
@@ -46,7 +51,9 @@ function Settings.new(settings)
 	return instance
 end
 
-local instance = Settings.new({})
-return function()
-	return instance
+return function(habitat)
+	local instance = Settings.new(habitat.flags)
+	return function()
+		return instance
+	end
 end

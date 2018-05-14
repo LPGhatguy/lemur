@@ -12,10 +12,6 @@ do
 		environment.base[key] = value
 	end
 
-	for key, value in pairs(functions) do
-		environment.base[key] = value
-	end
-
 	for key, value in pairs(types) do
 		environment.base[key] = value
 	end
@@ -32,6 +28,11 @@ function environment.create(habitat, scriptInstance)
 	local new = {}
 
 	for key, value in pairs(environment.base) do
+		new[key] = value
+	end
+
+	local functionsWithFlags = functions(habitat)
+	for key, value in pairs(functionsWithFlags) do
 		new[key] = value
 	end
 
