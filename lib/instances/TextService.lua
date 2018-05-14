@@ -15,7 +15,7 @@ function TextService.prototype:GetTextSize(text, fontSize, font, frameSize)
 		error("frameSize must be a Vector2", 2)
 	end
 
-	local width = text:len()
+	local width = text:len() * fontSize
 
 	return Vector2.new(math.min(width, frameSize.X), math.min(fontSize, frameSize.Y))
 end
