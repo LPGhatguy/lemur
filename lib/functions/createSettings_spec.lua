@@ -22,16 +22,18 @@ describe("functions.settings", function()
 
 	it("should accept fast flags", function()
 		local settings = createSettings({
-			FFTest = true,
-			FFTest2 = true,
-			FFDoesSomethingHappen = false,
+			flags = {
+				FFTest = true,
+				FFTest2 = true,
+				FFDoesSomethingHappen = false,
+			}
 		})
 
 		local instance = settings()
-		assert.equals(instance:GetFFlag("FFTest"), false)
-		assert.equals(instance:GetFFlag("FFTest2"), false)
-		assert.equals(instance:GetFFlag("FFDoesSomethingHappen"), false)
-		assert.equals(instance:GetFFlag("FFUndefinedFastFlag"), false)
+		assert.True(instance:GetFFlag("FFTest"))
+		assert.True(instance:GetFFlag("FFTest2"))
+		assert.False(instance:GetFFlag("FFDoesSomethingHappen"))
+		assert.False(instance:GetFFlag("FFUndefinedFastFlag"))
 	end)
 
 	it("should have a property Rendering", function()
