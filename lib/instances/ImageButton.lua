@@ -29,4 +29,10 @@ ImageButton.properties.SliceCenter = InstanceProperty.typed("Rect", {
 	end,
 })
 
+ImageButton.properties.Style = InstanceProperty.typed("number", {
+	getDefault = function()
+		return 0
+	end,
+})
+
 return ImageButton

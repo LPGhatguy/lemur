@@ -1,9 +1,11 @@
 local names = {
+	"ButtonStyle",
 	"ConnectionState",
 	"EasingDirection",
 	"EasingStyle",
 	"Font",
 	"HorizontalAlignment",
+	"InfoType",
 	"Platform",
 	"PlaybackState",
 	"ScaleType",
