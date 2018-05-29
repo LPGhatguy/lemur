@@ -2,6 +2,7 @@ local names = {
 	"Game",
 
 	-- Regular instances
+	"BasePart",
 	"BindableEvent",
 	"BoolValue",
 	"Camera",
@@ -14,7 +15,9 @@ local names = {
 	"IntValue",
 	"LocalizationTable",
 	"LocalScript",
+	"Model",
 	"ModuleScript",
+	"NumberValue",
 	"ObjectValue",
 	"Player",
 	"ScreenGui",
@@ -27,6 +30,7 @@ local names = {
 	"UIListLayout",
 	"UIPadding",
 	"UITextSizeConstraint",
+	"Vector3Value",
 	"Workspace",
 
 	-- Services
