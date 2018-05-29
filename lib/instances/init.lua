@@ -19,12 +19,14 @@ local names = {
 	"Player",
 	"ScreenGui",
 	"Script",
+	"ScrollingFrame",
 	"StringValue",
 	"TextButton",
 	"TextLabel",
 	"UIGridStyleLayout",
 	"UIListLayout",
 	"UIPadding",
+	"UITextSizeConstraint",
 	"Workspace",
 
 	-- Services
