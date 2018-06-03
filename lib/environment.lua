@@ -36,7 +36,7 @@ function environment.create(habitat, scriptInstance)
 		new[key] = value
 	end
 
-	new['settings'] = createSettings(habitat)
+	new.settings = createSettings(habitat.settings)
 
 	new.require = function(path)
 		return habitat:require(path)

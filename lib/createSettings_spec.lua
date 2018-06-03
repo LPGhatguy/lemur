@@ -20,20 +20,36 @@ describe("functions.settings", function()
 		assert.equals(instance, instance2)
 	end)
 
-	it("should accept fast flags", function()
-		local settings = createSettings({
-			flags = {
-				FFTest = true,
-				FFTest2 = true,
-				FFDoesSomethingHappen = false,
-			}
-		})
+	describe("GetFFlag", function()
+		it("should check fast flags", function()
+			local settings = createSettings({
+				flags = {
+					FFTest = true,
+					FFTest2 = true,
+					FFDoesSomethingHappen = false,
+				}
+			})
 
-		local instance = settings()
-		assert.True(instance:GetFFlag("FFTest"))
-		assert.True(instance:GetFFlag("FFTest2"))
-		assert.False(instance:GetFFlag("FFDoesSomethingHappen"))
-		assert.False(instance:GetFFlag("FFUndefinedFastFlag"))
+			local instance = settings()
+			assert.True(instance:GetFFlag("FFTest"))
+			assert.True(instance:GetFFlag("FFTest2"))
+			assert.False(instance:GetFFlag("FFDoesSomethingHappen"))
+		end)
+
+		it("should throw if a fast flag does not exist", function()
+			assert.has.errors(function()
+				local settings = createSettings({
+					flags = {
+						FFTest = true,
+						FFTest2 = true,
+						FFDoesSomethingHappen = false,
+					}
+				})
+	
+				local instance = settings()
+				instance:GetFFlag("FFUndefinedFastFlag")
+			end)
+		end)
 	end)
 
 	it("should have a property Rendering", function()

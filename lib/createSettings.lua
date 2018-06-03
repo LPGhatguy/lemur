@@ -17,7 +17,11 @@ setmetatable(Settings, {
 local prototype = {}
 
 function prototype:GetFFlag(name)
-	return self.settings[name] or false
+	if self.settings.flags[name] == nil then
+		error(string.format("Fast flag %s does not exist", name), 2)
+	end
+
+	return self.settings.flags[name]
 end
 
 local metatable = {}
@@ -43,6 +47,8 @@ function Settings.new(settings)
 		Rendering = RenderSettings.new()
 	}
 
+	internalInstance.settings.flags = internalInstance.settings.flags or {}
+
 	local instance = newproxy(true)
 
 	assign(getmetatable(instance), metatable)
@@ -51,8 +57,8 @@ function Settings.new(settings)
 	return instance
 end
 
-return function(habitat)
-	local instance = Settings.new(habitat.flags)
+return function(settings)
+	local instance = Settings.new(settings)
 	return function()
 		return instance
 	end
