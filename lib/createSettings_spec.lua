@@ -37,18 +37,31 @@ describe("functions.settings", function()
 		end)
 
 		it("should throw if a fast flag does not exist", function()
+			local settings = createSettings({
+				flags = {
+					FFTest = true,
+					FFTest2 = true,
+					FFDoesSomethingHappen = false,
+				}
+			})
+			local instance = settings()
+
 			assert.has.errors(function()
-				local settings = createSettings({
-					flags = {
-						FFTest = true,
-						FFTest2 = true,
-						FFDoesSomethingHappen = false,
-					}
-				})
-	
-				local instance = settings()
 				instance:GetFFlag("FFUndefinedFastFlag")
 			end)
+		end)
+
+		it("should accept ignoreMissingFFlags setting", function()
+			local settings = createSettings({
+				ignoreMissingFFlags = true,
+				flags = {
+					FFTest = true,
+					FFTest2 = true,
+					FFDoesSomethingHappen = false,
+				}
+			})
+			local instance = settings()
+			assert.False(instance:GetFFlag("FFUndefinedFastFlag"))
 		end)
 	end)
 
