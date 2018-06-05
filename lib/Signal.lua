@@ -37,20 +37,25 @@ local Signal = {}
 Signal.__index = Signal
 
 function Signal.new()
-	local self = {
-		_listeners = {}
+	local internal = {
+		listeners = {},
 	}
 
-	setmetatable(self, Signal)
+	local self = newproxy(true)
+	getmetatable(self).__index = Signal
+	getmetatable(self).internal = internal
+	getmetatable(self).type = "RBXScriptSignal"
 
 	return self
 end
 
 function Signal:Connect(callback)
-	self._listeners = immutableAppend(self._listeners, callback)
+	local internal = getmetatable(self).internal
+
+	internal.listeners = immutableAppend(internal.listeners, callback)
 
 	local function disconnect()
-		self._listeners = immutableRemoveValue(self._listeners, callback)
+		internal.listeners = immutableRemoveValue(internal.listeners, callback)
 	end
 
 	return {
@@ -59,7 +64,12 @@ function Signal:Connect(callback)
 end
 
 function Signal:Fire(...)
-	for _, listener in ipairs(self._listeners) do
+	-- TODO: Move this function somewhere else, since it isn't part of the
+	-- public API that Roblox exposes.
+
+	local internal = getmetatable(self).internal
+
+	for _, listener in ipairs(internal.listeners) do
 		listener(...)
 	end
 end

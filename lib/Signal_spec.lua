@@ -4,7 +4,12 @@ describe("Signal", function()
 	it("should be instantiable", function()
 		local signal = Signal.new()
 
-		assert.not_nil(signal)
+		assert.is_userdata(signal)
+		assert.is_function(signal.Connect)
+		assert.is_function(signal.Wait)
+
+		-- This isn't a standard function, but it's how users of Signal fire it!
+		assert.is_function(signal.Fire)
 	end)
 
 	it("should handle connections", function()

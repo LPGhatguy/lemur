@@ -11,6 +11,6 @@ describe("instances.Players", function()
 	it("should have properties defined", function()
 		local instance = Instance.new("Players")
 
-		assert(typeof(instance.LocalPlayer), "Player")
+		assert.equal(typeof(instance.LocalPlayer), "Instance")
 	end)
 end)

@@ -13,7 +13,7 @@ describe("instances.Workspace", function()
 			local instance = Instance.new("Workspace")
 			local camera = instance.CurrentCamera
 			assert.not_nil(camera)
-			assert(typeof(camera), "Camera")
+			assert.equal(typeof(camera), "Instance")
 		end)
 
 		it("should be accessible as a child named Camera", function()
