@@ -1,12 +1,7 @@
 local BaseInstance = import("./BaseInstance")
-local GuiService = BaseInstance:extend("GuiService")
+local validateType = import("../validateType")
 
-local function validateType(name, value, expectedTypeAsString)
-	local actualType = type(value)
-	if actualType ~= expectedTypeAsString then
-		error(string.format("%s must be type `%s`, got type `%s`", name, expectedTypeAsString, actualType), 3)
-	end
-end
+local GuiService = BaseInstance:extend("GuiService")
 
 function GuiService.prototype.BroadcastNotification(data, notification)
 	validateType("data", data, "string")
