@@ -1,5 +1,10 @@
-local assign = import("../assign")
-local RenderSettings = import("./settings/RenderSettings")
+--[[
+	This file creates the settings() method.
+	Since settings implements the GetFFlag method, we need to pass fast flags
+	from a Habitat instance.
+]]
+local assign = import("./assign")
+local RenderSettings = import("./functions/settings/RenderSettings")
 
 local Settings = {}
 
@@ -11,8 +16,15 @@ setmetatable(Settings, {
 
 local prototype = {}
 
+--[[
+	GetFFlag will throw on missing fast flags if ignoreMissingFFlags setting is false/nil
+]]
 function prototype:GetFFlag(name)
-	return self.settings[name] or false
+	if self.settings.flags[name] == nil then
+		error(string.format("Fast flag %s does not exist", name), 2)
+	end
+
+	return self.settings.flags[name]
 end
 
 local metatable = {}
@@ -38,6 +50,8 @@ function Settings.new(settings)
 		Rendering = RenderSettings.new()
 	}
 
+	internalInstance.settings.flags = internalInstance.settings.flags or {}
+
 	local instance = newproxy(true)
 
 	assign(getmetatable(instance), metatable)
@@ -46,7 +60,9 @@ function Settings.new(settings)
 	return instance
 end
 
-local instance = Settings.new({})
-return function()
-	return instance
+return function(settings)
+	local instance = Settings.new(settings)
+	return function()
+		return instance
+	end
 end
