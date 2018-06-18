@@ -5,7 +5,7 @@ local Instance = {}
 function Instance.new(className, parent)
 	local class = instances[className]
 
-	if not class then
+	if class == nil or not class.options.creatable then
 		error(string.format("Can't make an instance of type %q", tostring(className)), 2)
 	end
 
