@@ -30,6 +30,7 @@ describe("instances.GuiObject", function()
 		assert(typeof(instance.Size), "UDim2")
 		assert(typeof(instance.SizeConstraint), "number")
 		assert(typeof(instance.Visible), "boolean")
+		assert(typeof(instance.ZIndex), "number")
 	end)
 
 	describe("AbsoluteSize", function()
