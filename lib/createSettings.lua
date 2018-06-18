@@ -20,11 +20,11 @@ local prototype = {}
 	GetFFlag will throw on missing fast flags if ignoreMissingFFlags setting is false/nil
 ]]
 function prototype:GetFFlag(name)
-	if not self.settings.ignoreMissingFFlags and self.settings.flags[name] == nil then
+	if self.settings.flags[name] == nil then
 		error(string.format("Fast flag %s does not exist", name), 2)
 	end
 
-	return self.settings.flags[name] or false
+	return self.settings.flags[name]
 end
 
 local metatable = {}

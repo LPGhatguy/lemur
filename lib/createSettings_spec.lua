@@ -50,19 +50,6 @@ describe("functions.settings", function()
 				instance:GetFFlag("FFUndefinedFastFlag")
 			end)
 		end)
-
-		it("should accept ignoreMissingFFlags setting", function()
-			local settings = createSettings({
-				ignoreMissingFFlags = true,
-				flags = {
-					FFTest = true,
-					FFTest2 = true,
-					FFDoesSomethingHappen = false,
-				}
-			})
-			local instance = settings()
-			assert.False(instance:GetFFlag("FFUndefinedFastFlag"))
-		end)
 	end)
 
 	it("should have a property Rendering", function()
