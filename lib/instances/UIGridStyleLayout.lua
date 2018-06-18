@@ -3,6 +3,12 @@ local BaseInstance = import("./BaseInstance")
 local InstanceProperty = import("../InstanceProperty")
 local UIGridStyleLayout = BaseInstance:extend("UIGridStyleLayout")
 
+UIGridStyleLayout.properties.FillDirection = InstanceProperty.typed("number", {
+	getDefault = function()
+		return Enum.FillDirection.Horizontal
+	end,
+})
+
 UIGridStyleLayout.properties.HorizontalAlignment = InstanceProperty.typed("number", {
 	getDefault = function()
 		return Enum.HorizontalAlignment.Center
