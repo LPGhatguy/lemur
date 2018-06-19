@@ -1,8 +1,8 @@
-local Instance = import("../Instance")
+local Stats = import("./Stats")
 
 describe("instances.Stats", function()
 	it("should instantiate", function()
-		local instance = Instance.new("Stats")
+		local instance = Stats:new()
 
 		assert.not_nil(instance)
 	end)

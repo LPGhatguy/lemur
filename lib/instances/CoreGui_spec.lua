@@ -1,9 +1,8 @@
 local CoreGui = import("./CoreGui")
-local Instance = import("../Instance")
 
 describe("instances.CoreGui", function()
 	it("should instantiate", function()
-		local instance = Instance.new("CoreGui")
+		local instance = CoreGui:new()
 
 		assert.not_nil(instance)
 	end)

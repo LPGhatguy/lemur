@@ -1,15 +1,15 @@
-local Instance = import("../Instance")
+local TestService = import("./TestService")
 
 describe("instances.TestService", function()
 	it("should instantiate", function()
-		local instance = Instance.new("TestService")
+		local instance = TestService:new()
 
 		assert.not_nil(instance)
 		assert.not_nil(instance.Error)
 	end)
 
 	it("should write to stderr", function()
-		local instance = Instance.new("TestService")
+		local instance = TestService:new()
 		local oldErr = io.stderr
 
 		local writeSpy = spy.new(function(_, msg) end)

@@ -20,7 +20,7 @@ end
 local BaseInstance = {}
 
 BaseInstance.options = {
-	creatable = true,
+	creatable = false,
 }
 
 BaseInstance.name = "Instance"

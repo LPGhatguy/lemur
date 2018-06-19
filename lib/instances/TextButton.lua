@@ -1,7 +1,10 @@
 local Color3 = import("../types/Color3")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
-local TextButton = GuiButton:extend("TextButton")
+
+local TextButton = GuiButton:extend("TextButton", {
+	creatable = true,
+})
 
 TextButton.properties.Text = InstanceProperty.typed("string", {
 	getDefault = function()

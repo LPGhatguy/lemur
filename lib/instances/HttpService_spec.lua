@@ -1,22 +1,20 @@
-local Instance = import("../Instance")
+local HttpService = import("./HttpService")
 
 describe("instances.HttpService", function()
 	it("should instantiate", function()
-		local instance = Instance.new("IntValue")
+		local instance = HttpService:new()
 
 		assert.not_nil(instance)
-		assert.equal("Value", instance.Name)
-		assert.equal(0, instance.Value)
 	end)
 
 	it("should json encode properly", function()
-		local instance = Instance.new("HttpService")
+		local instance = HttpService:new()
 
 		assert.equal(instance:JSONEncode({ 1, true }), "[1,true]")
 	end)
 
 	it("should json decode properly", function()
-		local instance = Instance.new("HttpService")
+		local instance = HttpService:new()
 
 		assert.are.same(instance:JSONDecode("[1,true]"), { 1, true })
 	end)
