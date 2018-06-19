@@ -3,7 +3,10 @@ local Enum = import("../Enum")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
-local ImageLabel = GuiObject:extend("ImageLabel")
+
+local ImageLabel = GuiObject:extend("ImageLabel", {
+	creatable = true,
+})
 
 ImageLabel.properties.Image = InstanceProperty.typed("string", {
 	getDefault = function()

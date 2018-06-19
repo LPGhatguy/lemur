@@ -7,6 +7,7 @@
 local Instance = import("./Instance")
 local environment = import("./environment")
 local fs = import("./fs")
+local Game = import("./instances/Game")
 
 local Habitat = {}
 Habitat.__index = Habitat
@@ -17,7 +18,7 @@ function Habitat.new(settings)
 		settings = settings or {},
 	}
 
-	habitat.game = Instance.new("Game")
+	habitat.game = Game:new()
 
 	setmetatable(habitat, Habitat)
 

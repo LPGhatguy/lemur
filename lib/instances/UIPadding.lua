@@ -1,7 +1,10 @@
 local BaseInstance = import("./BaseInstance")
 local InstanceProperty = import("../InstanceProperty")
 local UDim = import("../types/UDim")
-local UIPadding = BaseInstance:extend("UIPadding")
+
+local UIPadding = BaseInstance:extend("UIPadding", {
+	creatable = true,
+})
 
 UIPadding.properties.PaddingBottom = InstanceProperty.typed("UDim", {
 	getDefault = function()

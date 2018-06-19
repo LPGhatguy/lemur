@@ -1,8 +1,8 @@
-local BaseInstance = import("./BaseInstance")
-
 local Game = import("./Game")
 local Folder = import("./Folder")
 local typeof = import("../functions/typeof")
+
+local BaseInstance = import("./BaseInstance")
 
 describe("instances.BaseInstance", function()
 	it("should error when parenting instances to invalid objects", function()

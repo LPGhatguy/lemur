@@ -1,6 +1,7 @@
 local Enum = import("../Enum")
 local BaseInstance = import("./BaseInstance")
 local InstanceProperty = import("../InstanceProperty")
+
 local UIGridStyleLayout = BaseInstance:extend("UIGridStyleLayout")
 
 UIGridStyleLayout.properties.HorizontalAlignment = InstanceProperty.typed("number", {
