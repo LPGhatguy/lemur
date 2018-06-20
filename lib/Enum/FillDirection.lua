@@ -1,4 +1,4 @@
 return {
-    Horizontal = 0,
-    Vertical = 1,
+	Horizontal = 0,
+	Vertical = 1,
 }
