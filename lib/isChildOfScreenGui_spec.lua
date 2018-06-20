@@ -1,5 +1,5 @@
-local Frame = import("../instances/Frame")
-local ScreenGui = import("../instances/ScreenGui")
+local Frame = import("./instances/Frame")
+local ScreenGui = import("./instances/ScreenGui")
 local isChildOfScreenGui = import("./isChildOfScreenGui")
 
 describe("isChildOfScreenGui", function()
