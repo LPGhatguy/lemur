@@ -12,6 +12,7 @@ describe("instances.UIGridStyleLayout", function()
 	it("should have properties defined", function()
 		local instance = UIGridStyleLayout:new()
 
+		assert.equals(typeof(instance.FillDirection), "number")
 		assert.equals(typeof(instance.HorizontalAlignment), "number")
 		assert.equals(typeof(instance.SortOrder), "number")
 		assert.equals(typeof(instance.VerticalAlignment), "number")

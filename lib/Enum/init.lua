@@ -2,6 +2,7 @@ local names = {
 	"ConnectionState",
 	"EasingDirection",
 	"EasingStyle",
+	"FillDirection",
 	"Font",
 	"HorizontalAlignment",
 	"Platform",
