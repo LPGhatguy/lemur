@@ -10,6 +10,6 @@ describe("instances.Camera", function()
 
 	it("should have properties defined", function()
 		local instance = Camera:new()
-		assert(typeof(instance.ViewportSize), "Vector2")
+		assert.equal(typeof(instance.ViewportSize), "Vector2")
 	end)
 end)

@@ -1,3 +1,4 @@
+local createSettings = import("./createSettings")
 local functions = import("./functions")
 local types = import("./types")
 local Enum = import("./Enum")
@@ -34,6 +35,8 @@ function environment.create(habitat, scriptInstance)
 	for key, value in pairs(environment.base) do
 		new[key] = value
 	end
+
+	new.settings = createSettings(habitat.settings)
 
 	new.require = function(path)
 		return habitat:require(path)
