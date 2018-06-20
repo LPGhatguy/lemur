@@ -19,6 +19,10 @@ end
 
 local BaseInstance = {}
 
+BaseInstance.options = {
+	creatable = false,
+}
+
 BaseInstance.name = "Instance"
 
 BaseInstance.properties = {}
@@ -306,8 +310,9 @@ end
 --[[
 	Create a new instance class with the given name.
 ]]
-function BaseInstance:extend(name)
-	assert(type(name) == "string", "Expected string name as argument to BaseInstance:extend.")
+function BaseInstance:extend(name, options)
+	assert(type(name) == "string", "Expected string 'name' as argument #1.")
+	assert(type(options) == "table" or options == nil, "Expected optional table 'options' as argument #2.")
 
 	local newClass = assign({}, self)
 
@@ -317,6 +322,7 @@ function BaseInstance:extend(name)
 	newClass.properties = assign({}, self.properties)
 	newClass.prototype = assign({}, self.prototype)
 	newClass.metatable = assign({}, self.metatable)
+	newClass.options = assign({}, self.options, options or {})
 
 	return newClass
 end

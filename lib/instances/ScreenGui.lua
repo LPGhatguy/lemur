@@ -3,7 +3,9 @@ local Enum = import("../Enum")
 local InstanceProperty = import("../InstanceProperty")
 local Vector2 = import("../types/Vector2")
 
-local ScreenGui = BaseInstance:extend("ScreenGui")
+local ScreenGui = BaseInstance:extend("ScreenGui", {
+	creatable = true,
+})
 
 ScreenGui.properties.AbsoluteSize = InstanceProperty.readOnly({
 	get = function(self)

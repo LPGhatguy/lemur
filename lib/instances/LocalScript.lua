@@ -5,7 +5,9 @@
 local BaseInstance = import("./BaseInstance")
 local InstanceProperty = import("../InstanceProperty")
 
-local LocalScript = BaseInstance:extend("LocalScript")
+local LocalScript = BaseInstance:extend("LocalScript", {
+	creatable = true,
+})
 
 LocalScript.properties.Source = InstanceProperty.normal({
 	getDefault = function()

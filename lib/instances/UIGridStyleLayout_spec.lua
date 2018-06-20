@@ -1,5 +1,6 @@
-local UIGridStyleLayout = import("./UIGridStyleLayout")
 local typeof = import("../functions/typeof")
+
+local UIGridStyleLayout = import("./UIGridStyleLayout")
 
 describe("instances.UIGridStyleLayout", function()
 	it("should instantiate", function()

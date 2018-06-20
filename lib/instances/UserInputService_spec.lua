@@ -1,8 +1,8 @@
-local Instance = import("../Instance")
+local UserInputService = import("./UserInputService")
 
 describe("instances.UserInputService", function()
 	it("should instantiate", function()
-		local instance = Instance.new("UserInputService")
+		local instance = UserInputService:new()
 
 		assert.not_nil(instance)
 	end)
