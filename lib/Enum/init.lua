@@ -7,6 +7,7 @@ local names = {
 	"Platform",
 	"PlaybackState",
 	"ScaleType",
+	"ScrollingDirection",
 	"SizeConstraint",
 	"SortOrder",
 	"TextXAlignment",

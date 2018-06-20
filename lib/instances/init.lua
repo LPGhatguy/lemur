@@ -19,6 +19,7 @@ local names = {
 	"Player",
 	"ScreenGui",
 	"Script",
+	"ScrollingFrame",
 	"StringValue",
 	"TextButton",
 	"TextLabel",
