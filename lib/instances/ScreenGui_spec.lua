@@ -10,7 +10,6 @@ describe("instances.ScreenGui", function()
 
 	it("should have properties defined", function()
 		local instance = ScreenGui:new()
-
 		assert.equals(typeof(instance.ZIndexBehavior), "number")
 	end)
 
