@@ -1,4 +1,4 @@
 return {
-    Global = 0,
-    Sibling = 1,
+	Global = 0,
+	Sibling = 1,
 }
