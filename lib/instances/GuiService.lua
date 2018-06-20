@@ -1,5 +1,5 @@
 local BaseInstance = import("./BaseInstance")
-local validateType = import("../validateType")
+local validateType = import("../utils/validateType")
 
 local GuiService = BaseInstance:extend("GuiService")
 

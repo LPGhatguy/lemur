@@ -1,4 +1,4 @@
-local typeof = import("./functions/typeof")
+local typeof = import("../functions/typeof")
 
 return function(name, value, expectedTypeAsString)
 	local actualType = typeof(value)

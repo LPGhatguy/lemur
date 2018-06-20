@@ -8,7 +8,7 @@ local Instance = import("./Instance")
 local environment = import("./environment")
 local fs = import("./fs")
 local Game = import("./instances/Game")
-local validateType = import("./validateType")
+local validateType = import("./utils/validateType")
 local assign = import("./assign")
 
 local defaultLoadFromFsOptions = {
