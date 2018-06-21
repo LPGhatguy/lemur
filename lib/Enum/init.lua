@@ -16,6 +16,7 @@ local names = {
 	"ThumbnailType",
 	"VerticalAlignment",
 	"VirtualInputMode",
+	"ZIndexBehavior",
 }
 
 local enums = {}

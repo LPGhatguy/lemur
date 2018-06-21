@@ -8,6 +8,11 @@ describe("instances.ScreenGui", function()
 		assert.not_nil(instance)
 	end)
 
+	it("should have properties defined", function()
+		local instance = Instance.new("ScreenGui")
+		assert.equals(typeof(instance.ZIndexBehavior), "number")
+	end)
+
 	describe("DisplayOrder", function()
 		it("should have a value that is a number", function()
 			local instance = Instance.new("ScreenGui")

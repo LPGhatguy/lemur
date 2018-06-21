@@ -108,4 +108,10 @@ GuiObject.properties.Visible = InstanceProperty.typed("boolean", {
 	end,
 })
 
+GuiObject.properties.ZIndex = InstanceProperty.typed("number", {
+	getDefault = function()
+		return 1
+	end,
+})
+
 return GuiObject
