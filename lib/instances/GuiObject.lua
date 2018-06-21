@@ -2,22 +2,11 @@ local BaseInstance = import("./BaseInstance")
 local Color3 = import("../types/Color3")
 local Enum = import("../Enum")
 local InstanceProperty = import("../InstanceProperty")
+local isChildOfScreenGui = import("../isChildOfScreenGui")
 local Signal = import("../Signal")
 local UDim2 = import("../types/UDim2")
 local Vector2 = import("../types/Vector2")
 local GuiObject = BaseInstance:extend("GuiObject")
-
-local function isChildOfScreenGui(instance)
-	while instance ~= nil do
-		if instance.ClassName == "ScreenGui" then
-			return true
-		end
-
-		instance = instance.Parent
-	end
-
-	return false
-end
 
 GuiObject.properties.AbsoluteSize = InstanceProperty.readOnly({
 	get = function(self)
