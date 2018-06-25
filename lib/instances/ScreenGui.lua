@@ -19,12 +19,6 @@ ScreenGui.properties.AbsoluteSize = InstanceProperty.readOnly({
 	end,
 })
 
-ScreenGui.properties.AbsolutePosition = InstanceProperty.readOnly({
-	get = function(self)
-		return Vector2.new(0, 0)
-	end,
-})
-
 ScreenGui.properties.DisplayOrder = InstanceProperty.normal({
 	set = function(self, key, value)
 		if type(value) ~= "number" then
