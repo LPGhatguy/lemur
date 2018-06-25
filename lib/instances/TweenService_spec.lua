@@ -1,8 +1,8 @@
-local Instance = import("../Instance")
+local TweenService = import("./TweenService")
 
 describe("instances.TweenService", function()
 	it("should instantiate", function()
-		local instance = Instance.new("TweenService")
+		local instance = TweenService:new()
 
 		assert.not_nil(instance)
 	end)

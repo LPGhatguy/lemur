@@ -7,6 +7,13 @@
 local Instance = import("./Instance")
 local environment = import("./environment")
 local fs = import("./fs")
+local Game = import("./instances/Game")
+local validateType = import("./validateType")
+local assign = import("./assign")
+
+local defaultLoadFromFsOptions = {
+	loadInitModules = true,
+}
 
 local Habitat = {}
 Habitat.__index = Habitat
@@ -17,14 +24,22 @@ function Habitat.new(settings)
 		settings = settings or {},
 	}
 
-	habitat.game = Instance.new("Game")
+	habitat.game = Game:new()
 
 	setmetatable(habitat, Habitat)
 
 	return habitat
 end
 
-function Habitat:loadFromFs(path)
+function Habitat:loadFromFs(path, passedOptions)
+	validateType("path", path, "string")
+
+	if passedOptions ~= nil then
+		validateType("passedOptions", passedOptions, "table")
+	end
+
+	local options = assign({}, defaultLoadFromFsOptions, passedOptions or {})
+
 	if fs.isFile(path) then
 		if path:find("%.lua$") then
 			local instance = Instance.new("ModuleScript")
@@ -46,10 +61,29 @@ function Habitat:loadFromFs(path)
 			if name ~= "." and name ~= ".." then
 				local childPath = path .. "/" .. name
 
-				local childInstance = Habitat:loadFromFs(childPath)
-				if childInstance then
+				local childInstance = Habitat:loadFromFs(childPath, passedOptions)
+				if childInstance ~= nil then
 					childInstance.Parent = instance
 				end
+			end
+		end
+
+		if options.loadInitModules then
+			local init = instance:FindFirstChild("init")
+
+			if init ~= nil then
+				for _, child in ipairs(instance:GetChildren()) do
+					if child ~= init then
+						child.Parent = init
+					end
+				end
+
+				init.Name = instance.Name
+				init.Parent = nil
+
+				instance:Destroy()
+
+				instance = init
 			end
 		end
 
@@ -63,6 +97,8 @@ end
 	Equivalent to Roblox's 'require', called on an emulated Roblox instance.
 ]]
 function Habitat:require(instance)
+	validateType("instance", instance, "Instance")
+
 	if not instance:IsA("ModuleScript") then
 		local message = ("Attempted to require non-ModuleScript object %q (%s)"):format(
 			instance.Name,

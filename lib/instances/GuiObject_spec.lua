@@ -30,6 +30,7 @@ describe("instances.GuiObject", function()
 		assert.equal(typeof(instance.Size), "UDim2")
 		assert.equal(typeof(instance.SizeConstraint), "number")
 		assert.equal(typeof(instance.Visible), "boolean")
+		assert.equal(typeof(instance.ZIndex), "number")
 	end)
 
 	describe("AbsoluteSize", function()

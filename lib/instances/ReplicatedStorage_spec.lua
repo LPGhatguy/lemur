@@ -1,8 +1,8 @@
-local Instance = import("../Instance")
+local ReplicatedStorage = import("./ReplicatedStorage")
 
 describe("instances.ReplicatedStorage", function()
 	it("should instantiate", function()
-		local instance = Instance.new("ReplicatedStorage")
+		local instance = ReplicatedStorage:new()
 
 		assert.not_nil(instance)
 	end)

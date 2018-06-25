@@ -1,4 +1,5 @@
 local BaseInstance = import("./BaseInstance")
-local NotificationService = BaseInstance:extend("NotificationService")
 
-return NotificationService
+return BaseInstance:extend("NotificationService", {
+	creatable = true,
+})

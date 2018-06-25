@@ -1,9 +1,8 @@
 local Game = import("./Game")
-local Instance = import("../Instance")
 
 describe("instances.Game", function()
 	it("should instantiate", function()
-		local instance = Instance.new("Game")
+		local instance = Game:new()
 
 		assert.not_nil(instance)
 	end)

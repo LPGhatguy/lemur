@@ -2,7 +2,9 @@ local BaseInstance = import("./BaseInstance")
 local InstanceProperty = import("../InstanceProperty")
 local json = import("../json")
 
-local LocalizationTable = BaseInstance:extend("LocalizationTable")
+local LocalizationTable = BaseInstance:extend("LocalizationTable", {
+	creatable = true,
+})
 
 LocalizationTable.properties.SourceLocaleId = InstanceProperty.normal({
 	getDefault = function()

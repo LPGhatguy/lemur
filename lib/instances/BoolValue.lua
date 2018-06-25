@@ -1,7 +1,9 @@
 local BaseInstance = import("./BaseInstance")
 local InstanceProperty = import("../InstanceProperty")
 
-local BoolValue = BaseInstance:extend("BoolValue")
+local BoolValue = BaseInstance:extend("BoolValue", {
+	creatable = true,
+})
 
 BoolValue.properties.Value = InstanceProperty.normal({
 	getDefault = function()

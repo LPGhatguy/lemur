@@ -1,5 +1,6 @@
-local UIGridStyleLayout = import("./UIGridStyleLayout")
 local typeof = import("../functions/typeof")
+
+local UIGridStyleLayout = import("./UIGridStyleLayout")
 
 describe("instances.UIGridStyleLayout", function()
 	it("should instantiate", function()
@@ -11,6 +12,7 @@ describe("instances.UIGridStyleLayout", function()
 	it("should have properties defined", function()
 		local instance = UIGridStyleLayout:new()
 
+		assert.equals(typeof(instance.FillDirection), "number")
 		assert.equals(typeof(instance.HorizontalAlignment), "number")
 		assert.equals(typeof(instance.SortOrder), "number")
 		assert.equals(typeof(instance.VerticalAlignment), "number")

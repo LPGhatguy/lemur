@@ -2,6 +2,7 @@ local names = {
 	"ConnectionState",
 	"EasingDirection",
 	"EasingStyle",
+	"FillDirection",
 	"Font",
 	"HorizontalAlignment",
 	"Platform",
@@ -16,6 +17,7 @@ local names = {
 	"ThumbnailType",
 	"VerticalAlignment",
 	"VirtualInputMode",
+	"ZIndexBehavior",
 }
 
 local enums = {}

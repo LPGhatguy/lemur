@@ -3,7 +3,10 @@ local Enum = import("../Enum")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
-local ImageButton = GuiButton:extend("ImageButton")
+
+local ImageButton = GuiButton:extend("ImageButton", {
+	creatable = true,
+})
 
 ImageButton.properties.Image = InstanceProperty.typed("string", {
 	getDefault = function()
