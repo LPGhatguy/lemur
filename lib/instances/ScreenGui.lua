@@ -7,6 +7,12 @@ local ScreenGui = BaseInstance:extend("ScreenGui", {
 	creatable = true,
 })
 
+ScreenGui.properties.AbsolutePosition = InstanceProperty.readOnly({
+	get = function(self)
+		return Vector2.new(0, 0)
+	end,
+})
+
 ScreenGui.properties.AbsoluteSize = InstanceProperty.readOnly({
 	get = function(self)
 		return Vector2.new(800, 600)

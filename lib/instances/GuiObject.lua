@@ -8,6 +8,23 @@ local UDim2 = import("../types/UDim2")
 local Vector2 = import("../types/Vector2")
 local GuiObject = BaseInstance:extend("GuiObject")
 
+GuiObject.properties.AbsolutePosition = InstanceProperty.readOnly({
+	get = function(self)
+		if not isChildOfScreenGui(self) then
+			return Vector2.new()
+		end
+
+		local parentAbsolutePosition = self.Parent.AbsolutePosition
+		local parentAbsoluteSize = self.Parent.AbsoluteSize
+		local position = self.Position
+
+		return Vector2.new(
+			parentAbsolutePosition.X + position.X.Scale * parentAbsoluteSize.X + position.X.Offset,
+			parentAbsolutePosition.Y + position.Y.Scale * parentAbsoluteSize.Y + position.Y.Offset
+		)
+	end,
+})
+
 GuiObject.properties.AbsoluteSize = InstanceProperty.readOnly({
 	get = function(self)
 		if not isChildOfScreenGui(self) then
