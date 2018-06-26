@@ -4,31 +4,29 @@ local InstanceProperty = import("../InstanceProperty")
 local Vector2 = import("../types/Vector2")
 local UDim2 = import("../types/UDim2")
 
-local ScrollingFrame = GuiObject:extend("ScrollingFrame")
+local ScrollingFrame = GuiObject:extend("ScrollingFrame", {
+	creatable = true,
+})
 
 ScrollingFrame.properties.AbsoluteWindowSize = InstanceProperty.readOnly({
 	get = function(self)
 		local size = self.AbsoluteSize
 
-		if size.X == 0 and size.Y == 0 then
-			return size
-		end
-
 		local thickness = self.ScrollBarThickness
 		local marginX = 0
 		local marginY = 0
 
-		if self._canScrollHorizontal then
+		if self:_canScrollHorizontal() then
 			marginX = thickness
 		end
 
-		if self._canScrollVertical then
+		if self:_canScrollVertical() then
 			marginY = thickness
 		end
 
 		return Vector2.new(
-			size.X - marginX,
-			size.Y - marginY
+			math.max(0, size.X - marginX),
+			math.max(0, size.Y - marginY)
 		)
 	end,
 })
