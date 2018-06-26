@@ -12,6 +12,7 @@ This document should remain up-to-date with current API coverage and status.
 - Platform
 - PlaybackState
 - ScaleType
+- ScrollingDirection
 - SizeConstraint
 - SortOrder
 - TextXAlignment
@@ -122,6 +123,12 @@ This document should remain up-to-date with current API coverage and status.
 * ScreenGui
 	* AbsoluteSize
 	* DisplayOrder
+* ScrollingFrame
+	* AbsoluteWindowSize
+	* CanvasSize
+	* ScrollBarThickness
+	* ScrollingDirection
+	* Scrollingenabled
 * UIGridStyleLayout
 	* HorizontalAlignment
 	* SortOrder
