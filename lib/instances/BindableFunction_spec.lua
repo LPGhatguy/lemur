@@ -17,7 +17,7 @@ describe("instances.BindableFunction", function()
 
 	it("should be able to write to OnInvoke", function()
 		local instance = Instance.new("BindableFunction")
-		
+
 		assert.has_no.errors(function()
 			instance.OnInvoke = function() end
 		end)

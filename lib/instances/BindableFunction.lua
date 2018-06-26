@@ -1,4 +1,3 @@
-local Signal = import("../Signal")
 local BaseInstance = import("./BaseInstance")
 local InstanceProperty = import("../InstanceProperty")
 
@@ -21,7 +20,7 @@ function BindableFunction.prototype:Invoke(...)
     if callback == nil then
         callback = function() end -- noop
     end
-    
+
     callback(...)
 end
 
