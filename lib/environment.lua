@@ -44,6 +44,7 @@ function environment.create(habitat, scriptInstance)
 
 	new.script = scriptInstance
 	new.game = habitat.game
+	new.workspace = habitat.game.Workspace
 
 	return new
 end

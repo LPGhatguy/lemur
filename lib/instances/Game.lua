@@ -3,6 +3,7 @@ local BaseInstance = import("./BaseInstance")
 local AnalyticsService = import("./AnalyticsService")
 local ContentProvider = import("./ContentProvider")
 local CoreGui = import("./CoreGui")
+local CorePackages = import("./CorePackages")
 local GuiService = import("./GuiService")
 local HttpService = import("./HttpService")
 local LocalizationService = import("./LocalizationService")
@@ -24,6 +25,7 @@ function Game:init(instance)
 	AnalyticsService:new().Parent = instance
 	ContentProvider:new().Parent = instance
 	CoreGui:new().Parent = instance
+	CorePackages:new().Parent = instance
 	GuiService:new().Parent = instance
 	HttpService:new().Parent = instance
 	LocalizationService:new().Parent = instance
