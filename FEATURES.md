@@ -128,7 +128,7 @@ This document should remain up-to-date with current API coverage and status.
 	* CanvasSize
 	* ScrollBarThickness
 	* ScrollingDirection
-	* Scrollingenabled
+	* ScrollingEnabled
 * UIGridStyleLayout
 	* HorizontalAlignment
 	* SortOrder
