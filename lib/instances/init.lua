@@ -28,6 +28,7 @@ local names = {
 	"RunService",
 	"ScreenGui",
 	"Script",
+	"ScrollingFrame",
 	"Stats",
 	"StringValue",
 	"TestService",
