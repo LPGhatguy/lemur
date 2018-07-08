@@ -1,20 +1,10 @@
 local typeof = import("./functions/typeof")
+local assign = import("./assign")
+
 local InstanceProperty = {}
 
-local function merge(...)
-	local target = {}
-
-	for i = 1, select("#", ...) do
-		for key, value in pairs((select(i, ...))) do
-			target[key] = value
-		end
-	end
-
-	return target
-end
-
 function InstanceProperty.normal(config)
-	return merge({
+	return assign({}, {
 		get = function(self, key)
 			return getmetatable(self).instance.properties[key]
 		end,
@@ -28,7 +18,7 @@ function InstanceProperty.normal(config)
 end
 
 function InstanceProperty.readOnly(config)
-	return merge(InstanceProperty.normal(config), {
+	return assign(InstanceProperty.normal(config), {
 		set = function(self, key, value)
 			error(string.format("Unable to assign property %s. Script write access is restricted.", key))
 		end,
@@ -36,11 +26,12 @@ function InstanceProperty.readOnly(config)
 end
 
 --[[
-	This method forces the value of a setter to be typed
-	type is a string paramater that is compared to typeof(value)
-]]--
+	This method forces the value of a setter to be typed.
+
+	`type` is a string paramater that is compared to typeof(value)
+]]
 function InstanceProperty.typed(type, config)
-	return merge(InstanceProperty.normal(config), {
+	return assign(InstanceProperty.normal(config), {
 		set = function(self, key, value)
 			local passedType = typeof(value)
 			if passedType ~= type then
