@@ -21,7 +21,7 @@ local Workspace = import("./Workspace")
 
 local Game = BaseInstance:extend("DataModel")
 
-function Game:init(instance)
+function Game:init(instance, habitat)
 	AnalyticsService:new().Parent = instance
 	ContentProvider:new().Parent = instance
 	CoreGui:new().Parent = instance
@@ -40,6 +40,8 @@ function Game:init(instance)
 	UserInputService:new().Parent = instance
 	VirtualInputManager:new().Parent = instance
 	Workspace:new().Parent = instance
+
+	getmetatable(instance).instance.habitat = habitat
 end
 
 function Game.prototype:GetService(serviceName)

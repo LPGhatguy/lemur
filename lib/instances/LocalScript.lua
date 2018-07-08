@@ -1,18 +1,9 @@
 --[[
-	Serves as just a source container right now.
+	Currently exactly the same as Script.
 ]]
 
-local BaseInstance = import("./BaseInstance")
-local InstanceProperty = import("../InstanceProperty")
+local Script = import("./Script")
 
-local LocalScript = BaseInstance:extend("LocalScript", {
-	creatable = true,
-})
-
-LocalScript.properties.Source = InstanceProperty.normal({
-	getDefault = function()
-		return ""
-	end,
-})
+local LocalScript = Script:extend("LocalScript")
 
 return LocalScript
