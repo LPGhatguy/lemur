@@ -4,8 +4,12 @@
 
 return function(target, ...)
 	for i = 1, select("#", ...) do
-		for key, value in pairs((select(i, ...))) do
-			target[key] = value
+		local source = select(i, ...)
+
+		if source ~= nil then
+			for key, value in pairs(source) do
+				target[key] = value
+			end
 		end
 	end
 

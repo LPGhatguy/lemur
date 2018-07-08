@@ -41,7 +41,7 @@ function Habitat:loadFromFs(path, passedOptions)
 		validateType("passedOptions", passedOptions, "table")
 	end
 
-	local options = assign({}, defaultLoadFromFsOptions, passedOptions or {})
+	local options = assign({}, defaultLoadFromFsOptions, passedOptions)
 
 	if fs.isFile(path) then
 		if path:find("%.lua$") then
