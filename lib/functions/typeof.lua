@@ -1,4 +1,4 @@
-return function(object)
+local function typeof(object)
 	local realType = type(object)
 
 	if realType == "userdata" then
@@ -15,3 +15,5 @@ return function(object)
 
 	return realType
 end
+
+return typeof

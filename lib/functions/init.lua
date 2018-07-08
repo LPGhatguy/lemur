@@ -2,8 +2,6 @@ local names = {
 	"typeof",
 	"warn",
 	"tick",
-	"wait",
-	"spawn",
 }
 
 local functions = {}

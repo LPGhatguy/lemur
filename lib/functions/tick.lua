@@ -1,7 +1,10 @@
 local success, socket = pcall(require, "socket")
 
+local tick
 if success then
-	return socket.gettime
+	tick = socket.gettime
 else
-	return os.clock
+	tick = os.clock
 end
+
+return tick

@@ -5,6 +5,7 @@
 ]]
 
 local Instance = import("./Instance")
+local TaskScheduler = import("./TaskScheduler")
 local createEnvironment = import("./createEnvironment")
 local fs = import("./fs")
 local Game = import("./instances/Game")
@@ -21,6 +22,7 @@ Habitat.__index = Habitat
 function Habitat.new(settings)
 	local habitat = {
 		game = Game:new(),
+		taskScheduler = TaskScheduler.new(),
 		settings = settings or {},
 		environment = nil,
 	}
