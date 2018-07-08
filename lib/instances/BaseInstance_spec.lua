@@ -203,6 +203,50 @@ describe("instances.BaseInstance", function()
 				goodFolder.Parent = goodParent
 			end)
 		end)
+
+		it("should disconnect all Changed listeners", function()
+			local instance = BaseInstance:new()
+
+			local calls = 0
+			instance.Changed:Connect(function()
+				calls = calls + 1
+			end)
+
+			instance.Name = "Foo"
+
+			assert.equal(calls, 1)
+
+			instance:Destroy()
+			instance.Name = "Bar"
+
+			assert.equal(calls, 1)
+		end)
+
+		it("should disconnect all GetPropertyChangedSignal listeners", function()
+			local instance = BaseInstance:new()
+
+			local callsA = 0
+			local callsB = 0
+
+			instance:GetPropertyChangedSignal("Name"):Connect(function()
+				callsA = callsA + 1
+			end)
+
+			instance:GetPropertyChangedSignal("Name"):Connect(function()
+				callsB = callsB + 1
+			end)
+
+			instance.Name = "Foo"
+
+			assert.equal(callsA, 1)
+			assert.equal(callsB, 1)
+
+			instance:Destroy()
+			instance.Name = "Bar"
+
+			assert.equal(callsA, 1)
+			assert.equal(callsB, 1)
+		end)
 	end)
 
 	describe("IsA", function()

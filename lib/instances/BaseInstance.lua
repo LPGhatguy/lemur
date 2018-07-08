@@ -189,6 +189,8 @@ function BaseInstance.prototype:Destroy()
 		self.Parent = nil
 	end
 
+	self:_DisconnectAllChangedListeners()
+
 	getmetatable(self).instance.destroyed = true
 end
 
@@ -222,6 +224,16 @@ end
 
 function BaseInstance.prototype:WaitForChild(name, delay)
 	return self:FindFirstChild(name)
+end
+
+function BaseInstance.prototype:_DisconnectAllChangedListeners()
+	local propertySignals = getmetatable(self).instance.propertySignals
+
+	for _, signal in pairs(propertySignals) do
+		signal:_DisconnectAllListeners()
+	end
+
+	self.Changed:_DisconnectAllListeners()
 end
 
 function BaseInstance.prototype:_PropagateAncestryChanged(instance, parent)

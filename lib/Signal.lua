@@ -79,4 +79,10 @@ function Signal:Wait()
 	error("Signal:Wait is not implemented in Lemur", 2)
 end
 
+function Signal:_DisconnectAllListeners()
+	local internal = getmetatable(self).internal
+
+	internal.listeners = {}
+end
+
 return Signal
