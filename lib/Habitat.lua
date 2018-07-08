@@ -5,7 +5,7 @@
 ]]
 
 local Instance = import("./Instance")
-local environment = import("./environment")
+local createEnvironment = import("./createEnvironment")
 local fs = import("./fs")
 local Game = import("./instances/Game")
 local validateType = import("./validateType")
@@ -20,13 +20,14 @@ Habitat.__index = Habitat
 
 function Habitat.new(settings)
 	local habitat = {
-		game = nil,
+		game = Game:new(),
 		settings = settings or {},
+		environment = nil,
 	}
 
-	habitat.game = Game:new()
-
 	setmetatable(habitat, Habitat)
+
+	habitat.environment = createEnvironment(habitat)
 
 	return habitat
 end
@@ -114,8 +115,8 @@ function Habitat:require(instance)
 
 	local chunk = assert(loadstring(instance.Source, "@" .. internalInstance.modulePath))
 
-	local env = environment.create(self, instance)
-	setfenv(chunk, env)
+	local environment = assign({}, self.environment, { script = instance })
+	setfenv(chunk, environment)
 
 	local result = chunk()
 
