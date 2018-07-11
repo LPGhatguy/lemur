@@ -106,6 +106,7 @@ This document should remain up-to-date with current API coverage and status.
 	* Destroy()
 	* FindFirstAncestor(name)
 	* FindFirstAncestorOfClass(className)
+	* FindFirstAncestorWhichIsA(className)
 	* FindFirstChild(name)
 	* FindFirstChildOfClass(className)
 	* FindFirstChildWhichIsA(className)

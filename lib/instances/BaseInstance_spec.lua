@@ -423,6 +423,38 @@ describe("instances.BaseInstance", function()
 		end)
 	end)
 
+	describe("FindFirstAncestorWhichIsA", function()
+		it("should find ancestors", function()
+			local parent = BaseInstance:new()
+			local child = BaseInstance:new()
+			child.Parent = parent
+
+			assert.equal(child:FindFirstAncestorOfClass("Instance"), parent)
+		end)
+
+		it("should return nil with no matching ancestor", function()
+			local parent = BaseInstance:new()
+			local child = BaseInstance:new()
+			child.Parent = parent
+
+			assert.equal(child:FindFirstAncestorOfClass("Ancestor"), nil)
+		end)
+
+		it("should return nil with no ancestor", function()
+			local child = BaseInstance:new()
+
+			assert.equal(child:FindFirstAncestorOfClass("Instance"), nil)
+		end)
+
+		it("should handle narrower ancestor classes", function()
+			local child = BaseInstance:new()
+			local parent = Folder:new()
+			child.Parent = parent
+
+			assert.equal(child:FindFirstAncestorWhichIsA("Instance"), parent)
+		end)
+	end)
+
 	describe("FindFirstChildOfClass", function()
 		it("should find instances", function()
 			local parent = BaseInstance:new()
