@@ -19,17 +19,7 @@ function Script:init(instance)
 			return
 		end
 
-		local game = nil
-
-		local now = instance
-		while now do
-			now = now.Parent
-
-			if now.ClassName == "DataModel" then
-				game = now
-				break
-			end
-		end
+		local game = instance:FindFirstAncestorOfClass("DataModel")
 
 		if game == nil then
 			return
