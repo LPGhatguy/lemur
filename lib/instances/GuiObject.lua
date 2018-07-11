@@ -2,7 +2,6 @@ local BaseInstance = import("./BaseInstance")
 local Color3 = import("../types/Color3")
 local Enum = import("../Enum")
 local InstanceProperty = import("../InstanceProperty")
-local isChildOfScreenGui = import("../isChildOfScreenGui")
 local Signal = import("../Signal")
 local UDim2 = import("../types/UDim2")
 local Vector2 = import("../types/Vector2")
@@ -10,7 +9,7 @@ local GuiObject = BaseInstance:extend("GuiObject")
 
 GuiObject.properties.AbsolutePosition = InstanceProperty.readOnly({
 	get = function(self)
-		if not isChildOfScreenGui(self) then
+		if self:FindFirstAncestorOfClass("ScreenGui") == nil then
 			return Vector2.new()
 		end
 
@@ -27,7 +26,7 @@ GuiObject.properties.AbsolutePosition = InstanceProperty.readOnly({
 
 GuiObject.properties.AbsoluteSize = InstanceProperty.readOnly({
 	get = function(self)
-		if not isChildOfScreenGui(self) then
+		if self:FindFirstAncestorOfClass("ScreenGui") == nil then
 			return Vector2.new()
 		end
 
