@@ -115,6 +115,18 @@ function BaseInstance.prototype:FindFirstAncestorOfClass(name)
 	end
 end
 
+function BaseInstance.prototype:FindFirstAncestorWhichIsA(className)
+	local level = self.Parent
+
+	while level do
+		if level:IsA(className) then
+			return level
+		end
+
+		level = level.Parent
+	end
+end
+
 function BaseInstance.prototype:FindFirstChild(name)
 	local children = getmetatable(self).instance.children
 
