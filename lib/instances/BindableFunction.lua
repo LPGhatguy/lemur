@@ -21,7 +21,32 @@ function BindableFunction.prototype:Invoke(...)
         callback = function() end -- noop
     end
 
-    callback(...)
+    -- Replicate Roblox behavior in that mixed tables will only send the numerical part
+    local arguments = {...}
+
+    for index,value in ipairs(arguments) do
+        if type(value) == "table" then
+            -- Check if a mixed table
+            local numIndexes, numNamedKeys = #value, 0
+
+            for _ in pairs(value) do
+                numNamedKeys = numNamedKeys + 1
+            end
+
+            if numIndexes > 0 and numNamedKeys ~= numIndexes then
+                -- Mixed table, only send numerical portion
+                local newValue = {}
+
+                for _,value2 in ipairs(value) do
+                    table.insert(newValue, value2)
+                end
+
+                arguments[index] = newValue
+            end
+        end
+    end
+
+    callback(unpack(arguments))
 end
 
 return BindableFunction
