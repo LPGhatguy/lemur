@@ -13,6 +13,10 @@ BindableFunction.properties.OnInvoke = InstanceProperty.writeOnly({
 	end,
 })
 
+function BindableFunction:init(instance)
+	instance.Name = "Function"
+end
+
 function BindableFunction.prototype:Invoke(...)
     local callback = getmetatable(self).instance.properties.OnInvoke
 

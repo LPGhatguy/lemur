@@ -7,6 +7,12 @@ describe("instances.BindableFunction", function()
 		assert.not_nil(instance)
 	end)
 
+	it("should have the name Function", function()
+		local instance = Instance.new("BindableFunction")
+
+		assert.equals(instance.Name, "Function")
+	end)
+
 	it("should error when trying to read", function()
 		local instance = Instance.new("BindableFunction")
 
@@ -37,18 +43,6 @@ describe("instances.BindableFunction", function()
 		local instance = Instance.new("BindableFunction")
 
 		assert.has_no.errors(function()
-			instance:Invoke()
-		end)
-	end)
-
-	it("should error when OnInvoke is not a function when called", function()
-		local instance = Instance.new("BindableFunction")
-
-		assert.has_no.errors(function()
-			instance.OnInvoke = 3
-		end)
-
-		assert.has.errors(function()
 			instance:Invoke()
 		end)
 	end)
