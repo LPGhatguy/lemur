@@ -27,7 +27,8 @@ Current feature coverage is detailed in [FEATURES.md](FEATURES.md)
 ## Installation
 Lemur requires:
 
-* Lua 5.1
+* Lua 5.1 or LuaJIT
+	* `./?/init.lua` should be in your `LUA_PATH`. This is the default in some, but not all, installations.
 * LuaFileSystem (`luarocks install luafilesystem`)
 
 Lemur needs certain extra dependencies for some optional features:
