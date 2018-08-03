@@ -8,6 +8,8 @@ local function warn(...)
 			io.stderr:write("\t")
 		end
 	end
+
+	io.stderr:write("\n")
 end
 
 return warn

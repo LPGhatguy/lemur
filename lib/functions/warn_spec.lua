@@ -27,7 +27,7 @@ describe("functions.warn", function()
 	it("should warn with multiple arguments", function()
 		local oldErr, writeSpy = setupWarnDetour()
 		warn("IT'S DOGE!", "AAH!")
-		assert.spy(writeSpy).was.called(3) -- IT'S DOGE, \t, AAH!
+		assert.spy(writeSpy).was.called(4) -- IT'S DOGE, \t, AAH!, \n
 		io.stderr = oldErr -- luacheck: ignore
 	end)
 end)
