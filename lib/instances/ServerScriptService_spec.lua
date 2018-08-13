@@ -14,7 +14,7 @@ describe("instances.ServerScriptService", function()
 		habitat.game:GetService("ServerScriptService").LoadStringEnabled = true
 
 		assert.has.no.errors(function()
-			habitat:loadstring("do end")
+			habitat.environment.loadstring("do end")
 		end)
 	end)
 
@@ -24,7 +24,7 @@ describe("instances.ServerScriptService", function()
 		habitat.game:GetService("ServerScriptService").LoadStringEnabled = false
 
 		assert.has.errors(function()
-			habitat:loadstring("do end")
+			habitat.environment.loadstring("do end")
 		end)
 	end)
 end)
