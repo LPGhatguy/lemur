@@ -128,4 +128,14 @@ function Habitat:require(instance)
 	return result
 end
 
+function Habitat:loadstring(code)
+	local ServerScriptService = self.game:GetService("ServerScriptService")
+
+	if not ServerScriptService.LoadStringEnabled then
+		error("loadstring is unavailable")
+	end
+
+	return loadstring(code)
+end
+
 return Habitat

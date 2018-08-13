@@ -42,6 +42,10 @@ local function createEnvironment(habitat)
 		return habitat:require(path)
 	end
 
+	environment.loadstring = function(code)
+		return habitat:loadstring(code)
+	end
+
 	environment.game = habitat.game
 
 	return environment
