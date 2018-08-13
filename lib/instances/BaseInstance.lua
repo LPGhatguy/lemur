@@ -180,22 +180,21 @@ function BaseInstance.prototype:GetChildren()
 	return result
 end
 
--- GetDescendants implementation using a queue rather than recursion
 function BaseInstance.prototype:GetDescendants()
-	local queue = {}
+	local stack = {}
 	local descendants = {}
 	local current = self
 
 	while current do
 		local children = current:GetChildren()
 
-		for _,child in pairs(children) do
+		for _, child in pairs(children) do
 			descendants[#descendants + 1] = child
-			queue[#queue + 1] = child
+			stack[#stack + 1] = child
 		end
 
-		current = queue[#queue]
-		queue[#queue] = nil
+		current = stack[#stack]
+		stack[#stack] = nil
 	end
 
 	return descendants
