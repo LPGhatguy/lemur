@@ -49,7 +49,7 @@ local habitat = lemur.Habitat.new()
 local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
 
 -- Load `src/roblox` as a Folder containing some ModuleScripts:
-local root = habitat:loadFromFs("src/roblox", ReplicatedStorage)
+local root = habitat:loadFromFs("src/roblox")
 root.Parent = ReplicatedStorage
 
 -- Locate src/roblox/CoolModule.lua from inside the habitat and load it!
