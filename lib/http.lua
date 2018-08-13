@@ -1,4 +1,4 @@
-local exists, http = require("socket.http")
+local exists, http = pcall(require, "socket.http")
 
 local httpShim = {}
 
