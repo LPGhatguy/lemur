@@ -111,6 +111,7 @@ This document should remain up-to-date with current API coverage and status.
 	* FindFirstChildOfClass(className)
 	* FindFirstChildWhichIsA(className)
 	* GetChildren()
+	* GetDescendants()
 	* GetFullName()
 	* GetPropertyChangedSignal(key)
 	* IsA(className)

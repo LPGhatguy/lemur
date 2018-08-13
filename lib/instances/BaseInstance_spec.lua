@@ -141,6 +141,75 @@ describe("instances.BaseInstance", function()
 		end)
 	end)
 
+	describe("GetDescendants", function()
+		it("should return no descendants for empty instances", function()
+			local instance = BaseInstance:new()
+
+			assert.equal(#instance:GetDescendants(), 0)
+		end)
+
+		it("should return all first level children", function()
+			local parent = BaseInstance:new()
+
+			local child1 = BaseInstance:new()
+			child1.Parent = parent
+
+			local child2 = BaseInstance:new()
+			child2.Parent = parent
+
+			assert.equal(#parent:GetDescendants(), 2)
+
+			local child1Seen = false
+			local child2Seen = false
+			for _, child in ipairs(parent:GetDescendants()) do
+				if child == child1 then
+					child1Seen = true
+				elseif child == child2 then
+					child2Seen = true
+				else
+					error("Invalid child found")
+				end
+			end
+
+			assert.equal(child1Seen, true)
+			assert.equal(child2Seen, true)
+		end)
+
+		it("should return all descendants", function()
+			local parent = BaseInstance:new()
+
+			local child1 = BaseInstance:new()
+			child1.Parent = parent
+
+			local child2 = BaseInstance:new()
+			child2.Parent = parent
+
+			local child3 = BaseInstance:new()
+			child3.Parent = child2
+
+			assert.equal(#parent:GetDescendants(), 3)
+
+			local child1Seen = false
+			local child2Seen = false
+			local child3Seen = false
+			for _, child in ipairs(parent:GetDescendants()) do
+				if child == child1 then
+					child1Seen = true
+				elseif child == child2 then
+					child2Seen = true
+				elseif child == child3 then
+					child3Seen = true
+				else
+					error("Invalid child found")
+				end
+			end
+
+			assert.equal(child1Seen, true)
+			assert.equal(child2Seen, true)
+			assert.equal(child3Seen, true)
+		end)
+	end)
+
 	describe("WaitForChild", function()
 		it("should work just like FindFirstChild", function()
 			local parent = BaseInstance:new()
