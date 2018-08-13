@@ -180,6 +180,27 @@ function BaseInstance.prototype:GetChildren()
 	return result
 end
 
+-- GetDescendants implementation using a queue rather than recursion
+function BaseInstance.prototype:GetDescendants()
+	local queue = {}
+	local descendants = {}
+	local current = self
+
+	while current do
+		local children = current:GetChildren()
+
+		for _,child in pairs(children) do
+			descendants[#descendants + 1] = child
+			queue[#queue + 1] = child
+		end
+
+		current = queue[#queue]
+		queue[#queue] = nil
+	end
+
+	return descendants
+end
+
 function BaseInstance.prototype:IsA(className)
 	local currentClass = getmetatable(self).class
 
