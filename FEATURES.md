@@ -118,6 +118,7 @@ This document should remain up-to-date with current API coverage and status.
 	* WaitForChild(name)
 * LocalScript (stub)
 	* Source
+* Model (stub)
 * ModuleScript
 	* Source
 * Script (stub)
