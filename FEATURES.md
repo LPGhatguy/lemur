@@ -159,6 +159,7 @@ This document should remain up-to-date with current API coverage and status.
 	* Heartbeat
 	* RenderStepped
 	* IsStudio()
+* ServerScriptService
 * Stats
 * TestService
 	* Error(message)
