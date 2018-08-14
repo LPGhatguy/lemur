@@ -668,7 +668,7 @@ describe("instances.BaseInstance", function()
 			parent.ChildAdded:Connect(spy)
 
 			child.Parent = parent
-			assert.spy(spy).was_called()
+			assert.spy(spy).was_called_with(child)
 		end)
 	end)
 end)

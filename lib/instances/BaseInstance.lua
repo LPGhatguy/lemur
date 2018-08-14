@@ -79,7 +79,7 @@ BaseInstance.properties.Parent = InstanceProperty.normal({
 
 		if value ~= nil then
 			getmetatable(value).instance.children[self] = true
-			value.ChildAdded:Fire(instance)
+			value.ChildAdded:Fire(self)
 		end
 
 		self:_PropagateAncestryChanged(self, value)
