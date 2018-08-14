@@ -19,6 +19,7 @@ local names = {
 	"LocalizationService",
 	"LocalizationTable",
 	"LocalScript",
+	"Model",
 	"ModuleScript",
 	"NotificationService",
 	"ObjectValue",
