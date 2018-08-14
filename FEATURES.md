@@ -99,6 +99,7 @@ This document should remain up-to-date with current API coverage and status.
 	* SliceCenter
 * Instance
 	* AncestryChanged
+	* ChildAdded
 	* ClassName
 	* Name
 	* Parent

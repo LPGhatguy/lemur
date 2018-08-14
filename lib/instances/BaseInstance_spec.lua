@@ -658,4 +658,17 @@ describe("instances.BaseInstance", function()
 			assert.spy(grandchildSpy).was_called_with(grandchild, nil)
 		end)
 	end)
+
+	describe("ChildAdded", function()
+		it("should fire when a child is added", function()
+			local parent = BaseInstance:new()
+			local child = BaseInstance:new()
+
+			local spy = spy.new(function() end)
+			parent.ChildAdded:Connect(spy)
+
+			child.Parent = parent
+			assert.spy(spy).was_called()
+		end)
+	end)
 end)
