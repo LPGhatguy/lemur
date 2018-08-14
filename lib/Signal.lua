@@ -5,6 +5,8 @@
 	executing an event.
 ]]
 
+local typeKey = import("./typeKey")
+
 local function immutableAppend(list, ...)
 	local new = {}
 	local len = #list
@@ -44,7 +46,7 @@ function Signal.new()
 	local self = newproxy(true)
 	getmetatable(self).__index = Signal
 	getmetatable(self).internal = internal
-	getmetatable(self).type = "RBXScriptSignal"
+	getmetatable(self)[typeKey] = "RBXScriptSignal"
 
 	return self
 end

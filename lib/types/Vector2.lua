@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local typeKey = import("../typeKey")
 
 local Vector2 = {}
 
@@ -11,7 +12,7 @@ setmetatable(Vector2, {
 local prototype = {}
 
 local metatable = {}
-metatable.type = Vector2
+metatable[typeKey] = "Vector2"
 
 function metatable:__index(key)
 	local internal = getmetatable(self).internal

@@ -5,7 +5,7 @@ describe("functions.settings.RenderSettings", function()
 	it("should be an object", function()
 		local instance = RenderSettings.new()
 		assert.not_nil(instance)
-		assert.equals(type(instance), "userdata")
+		assert.equals(typeof(instance), "RenderSettings")
 	end)
 
 	it("should be of type RenderSettings", function()

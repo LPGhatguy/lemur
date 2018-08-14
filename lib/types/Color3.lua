@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local typeKey = import("../typeKey")
 
 local function lerpNumber(a, b, alpha)
 	return (1 - alpha) * a + b * alpha
@@ -23,7 +24,7 @@ function prototype:lerp(goal, alpha)
 end
 
 local metatable = {}
-metatable.type = Color3
+metatable[typeKey] = "Color3"
 
 function metatable:__index(key)
 	local internal = getmetatable(self).internal

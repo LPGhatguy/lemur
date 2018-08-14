@@ -1,4 +1,5 @@
 local assign = import("../../assign")
+local typeKey = import("../../typeKey")
 
 local RenderSettings = {}
 
@@ -11,7 +12,7 @@ setmetatable(RenderSettings, {
 local prototype = {}
 
 local metatable = {}
-metatable.type = RenderSettings
+metatable[typeKey] = "RenderSettings"
 
 function metatable:__index(key)
 	local internal = getmetatable(self).internal

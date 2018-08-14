@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local typeKey = import("../typeKey")
 local typeof = import("../functions/typeof")
 local UDim = import("./UDim")
 
@@ -26,7 +27,7 @@ function prototype:Lerp(goal, alpha)
 end
 
 local metatable = {}
-metatable.type = UDim2
+metatable[typeKey] = "UDim2"
 
 function metatable:__index(key)
 	local internal = getmetatable(self).internal
