@@ -1,5 +1,4 @@
 local ServerScriptService = import("./ServerScriptService")
-local lemur = require("lib")
 
 describe("instances.ServerScriptService", function()
 	it("should instantiate", function()
