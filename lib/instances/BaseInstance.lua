@@ -181,6 +181,26 @@ function BaseInstance.prototype:GetChildren()
 	return result
 end
 
+function BaseInstance.prototype:GetDescendants()
+	local stack = {}
+	local descendants = {}
+	local current = self
+
+	while current do
+		local children = current:GetChildren()
+
+		for _, child in pairs(children) do
+			descendants[#descendants + 1] = child
+			stack[#stack + 1] = child
+		end
+
+		current = stack[#stack]
+		stack[#stack] = nil
+	end
+
+	return descendants
+end
+
 function BaseInstance.prototype:IsA(className)
 	local currentClass = getmetatable(self).class
 

@@ -111,12 +111,14 @@ This document should remain up-to-date with current API coverage and status.
 	* FindFirstChildOfClass(className)
 	* FindFirstChildWhichIsA(className)
 	* GetChildren()
+	* GetDescendants()
 	* GetFullName()
 	* GetPropertyChangedSignal(key)
 	* IsA(className)
 	* WaitForChild(name)
 * LocalScript (stub)
 	* Source
+* Model (stub)
 * ModuleScript
 	* Source
 * Script (stub)
@@ -157,6 +159,7 @@ This document should remain up-to-date with current API coverage and status.
 	* Heartbeat
 	* RenderStepped
 	* IsStudio()
+* ServerScriptService
 * Stats
 * TestService
 	* Error(message)

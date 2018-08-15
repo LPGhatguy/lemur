@@ -1,5 +1,6 @@
 local names = {
 	"ConnectionState",
+	"CreatorType",
 	"EasingDirection",
 	"EasingStyle",
 	"FillDirection",
