@@ -1,5 +1,6 @@
 local Instance = import("../Instance")
 local typeof = import("../functions/typeof")
+local ZIndexBehavior = import("../Enum/ZIndexBehavior")
 
 describe("instances.ScreenGui", function()
 	it("should instantiate", function()
@@ -11,7 +12,8 @@ describe("instances.ScreenGui", function()
 	it("should have properties defined", function()
 		local instance = Instance.new("ScreenGui")
 		assert.equals(typeof(instance.AbsolutePosition), "Vector2")
-		assert.equals(typeof(instance.ZIndexBehavior), "number")
+		assert.equals(typeof(instance.ZIndexBehavior), "EnumItem")
+		assert.equals(instance.ZIndexBehavior.EnumType, ZIndexBehavior)
 	end)
 
 	describe("DisplayOrder", function()

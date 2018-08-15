@@ -1,7 +1,7 @@
 local BaseInstance = import("./BaseInstance")
-local Enum = import("../Enum")
 local InstanceProperty = import("../InstanceProperty")
 local Vector2 = import("../types/Vector2")
+local ZIndexBehavior = import("../Enum/ZIndexBehavior")
 
 local ScreenGui = BaseInstance:extend("ScreenGui", {
 	creatable = true,
@@ -33,9 +33,9 @@ ScreenGui.properties.DisplayOrder = InstanceProperty.normal({
 	end,
 })
 
-ScreenGui.properties.ZIndexBehavior = InstanceProperty.typed("number", {
+ScreenGui.properties.ZIndexBehavior = InstanceProperty.enum(ZIndexBehavior, {
 	getDefault = function()
-		return Enum.ZIndexBehavior.Global
+		return ZIndexBehavior.Global
 	end,
 })
 

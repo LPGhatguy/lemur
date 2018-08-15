@@ -28,6 +28,8 @@ describe("createEnum", function()
 			assert.equal(typeof(enumValue), "EnumItem")
 			assert.equal(tostring(enumValue), string.format("Enum.Bar.%s", name))
 			assert.equal(enumValue.Value, value)
+			assert.equal(enumValue.Name, name)
+			assert.equal(enumValue.EnumType, enum)
 		end
 	end)
 

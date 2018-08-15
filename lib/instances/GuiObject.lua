@@ -3,8 +3,10 @@ local Color3 = import("../types/Color3")
 local Enum = import("../Enum")
 local InstanceProperty = import("../InstanceProperty")
 local Signal = import("../Signal")
+local SizeConstraint = import("../Enum/SizeConstraint")
 local UDim2 = import("../types/UDim2")
 local Vector2 = import("../types/Vector2")
+
 local GuiObject = BaseInstance:extend("GuiObject")
 
 GuiObject.properties.AbsolutePosition = InstanceProperty.readOnly({
@@ -112,7 +114,7 @@ GuiObject.properties.Size = InstanceProperty.typed("UDim2", {
 	end,
 })
 
-GuiObject.properties.SizeConstraint = InstanceProperty.typed("number", {
+GuiObject.properties.SizeConstraint = InstanceProperty.enum(SizeConstraint, {
 	getDefault = function()
 		return Enum.SizeConstraint.RelativeXY
 	end,

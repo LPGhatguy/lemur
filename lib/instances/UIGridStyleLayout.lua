@@ -1,30 +1,33 @@
-local Enum = import("../Enum")
 local BaseInstance = import("./BaseInstance")
+local FillDirection = import("../Enum/FillDirection")
+local HorizontalAlignment = import("../Enum/HorizontalAlignment")
 local InstanceProperty = import("../InstanceProperty")
+local SortOrder = import("../Enum/SortOrder")
+local VerticalAlignment = import("../Enum/VerticalAlignment")
 
 local UIGridStyleLayout = BaseInstance:extend("UIGridStyleLayout")
 
-UIGridStyleLayout.properties.FillDirection = InstanceProperty.typed("number", {
+UIGridStyleLayout.properties.FillDirection = InstanceProperty.enum(FillDirection, {
 	getDefault = function()
-		return Enum.FillDirection.Horizontal
+		return FillDirection.Horizontal
 	end,
 })
 
-UIGridStyleLayout.properties.HorizontalAlignment = InstanceProperty.typed("number", {
+UIGridStyleLayout.properties.HorizontalAlignment = InstanceProperty.enum(HorizontalAlignment, {
 	getDefault = function()
-		return Enum.HorizontalAlignment.Center
+		return HorizontalAlignment.Center
 	end,
 })
 
-UIGridStyleLayout.properties.SortOrder = InstanceProperty.typed("number", {
+UIGridStyleLayout.properties.SortOrder = InstanceProperty.enum(SortOrder, {
 	getDefault = function()
-		return Enum.SortOrder.Name
+		return SortOrder.Name
 	end,
 })
 
-UIGridStyleLayout.properties.VerticalAlignment = InstanceProperty.typed("number", {
+UIGridStyleLayout.properties.VerticalAlignment = InstanceProperty.enum(VerticalAlignment, {
 	getDefault = function()
-		return Enum.VerticalAlignment.Center
+		return VerticalAlignment.Center
 	end,
 })
 

@@ -1,8 +1,8 @@
-local Enum = import("../Enum")
+local ScrollingDirection = import("../Enum/ScrollingDirection")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
-local Vector2 = import("../types/Vector2")
 local UDim2 = import("../types/UDim2")
+local Vector2 = import("../types/Vector2")
 
 local ScrollingFrame = GuiObject:extend("ScrollingFrame", {
 	creatable = true,
@@ -43,9 +43,9 @@ ScrollingFrame.properties.ScrollBarThickness = InstanceProperty.typed("number", 
 	end,
 })
 
-ScrollingFrame.properties.ScrollingDirection = InstanceProperty.typed("number", {
+ScrollingFrame.properties.ScrollingDirection = InstanceProperty.enum(ScrollingDirection, {
 	getDefault = function()
-		return Enum.ScrollingDirection.XY
+		return ScrollingDirection.XY
 	end,
 })
 
@@ -58,15 +58,15 @@ ScrollingFrame.properties.ScrollingEnabled = InstanceProperty.typed("boolean", {
 function ScrollingFrame.prototype:_canScrollHorizontal()
 	local scrollDir = self.ScrollingDirection
 	return self.ScrollingEnabled and
-		(scrollDir == Enum.ScrollingDirection.X or
-		scrollDir == Enum.ScrollingDirection.XY)
+		(scrollDir == ScrollingDirection.X or
+		scrollDir == ScrollingDirection.XY)
 end
 
 function ScrollingFrame.prototype:_canScrollVertical()
 	local scrollDir = self.ScrollingDirection
 	return self.ScrollingEnabled and
-		(scrollDir == Enum.ScrollingDirection.Y or
-		scrollDir == Enum.ScrollingDirection.XY)
+		(scrollDir == ScrollingDirection.Y or
+		scrollDir == ScrollingDirection.XY)
 end
 
 return ScrollingFrame

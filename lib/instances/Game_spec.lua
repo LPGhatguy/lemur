@@ -31,7 +31,7 @@ describe("instances.Game", function()
 		local instance = Game:new()
 
 		assert.equal(typeof(instance.CreatorId), "number")
-		assert.equal(typeof(instance.CreatorType), "number")
+		assert.equal(typeof(instance.CreatorType), "EnumItem")
 		assert.equal(typeof(instance.GameId), "number")
 		assert.equal(typeof(instance.JobId), "string")
 		assert.equal(typeof(instance.PlaceId), "number")

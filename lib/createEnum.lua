@@ -1,16 +1,18 @@
 local typeKey = import("./typeKey")
 
-local function createEnumVariant(enumName, variantName, variantValue)
+local function createEnumVariant(enum, variantName, variantValue)
 	local enumVariant = newproxy(true)
 
 	local internal = {
 		Value = variantValue,
+		Name = variantName,
+		EnumType = enum,
 	}
 
 	getmetatable(enumVariant)[typeKey] = "EnumItem"
 
 	getmetatable(enumVariant).__tostring = function()
-		return ("Enum.%s.%s"):format(enumName, variantName)
+		return ("Enum.%s.%s"):format(tostring(enum), variantName)
 	end
 
 	getmetatable(enumVariant).__index = function(self, key)
@@ -32,7 +34,7 @@ local function createEnum(enumName, variantValues)
 	local variants = {}
 
 	for variantName, value in pairs(variantValues) do
-		variants[variantName] = createEnumVariant(enumName, variantName, value)
+		variants[variantName] = createEnumVariant(enum, variantName, value)
 	end
 
 	getmetatable(enum)[typeKey] = "Enum"
