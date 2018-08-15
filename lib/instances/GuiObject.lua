@@ -1,6 +1,5 @@
 local BaseInstance = import("./BaseInstance")
 local Color3 = import("../types/Color3")
-local Enum = import("../Enum")
 local InstanceProperty = import("../InstanceProperty")
 local Signal = import("../Signal")
 local SizeConstraint = import("../Enum/SizeConstraint")
@@ -116,7 +115,7 @@ GuiObject.properties.Size = InstanceProperty.typed("UDim2", {
 
 GuiObject.properties.SizeConstraint = InstanceProperty.enum(SizeConstraint, {
 	getDefault = function()
-		return Enum.SizeConstraint.RelativeXY
+		return SizeConstraint.RelativeXY
 	end,
 })
 

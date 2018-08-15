@@ -4,7 +4,7 @@ local AnalyticsService = import("./AnalyticsService")
 local ContentProvider = import("./ContentProvider")
 local CoreGui = import("./CoreGui")
 local CorePackages = import("./CorePackages")
-local Enum = import("../Enum")
+local CreatorType = import("../Enum/CreatorType")
 local GuiService = import("./GuiService")
 local HttpService = import("./HttpService")
 local InstanceProperty = import("../InstanceProperty")
@@ -66,7 +66,7 @@ Game.properties.CreatorId = InstanceProperty.readOnly({
 
 Game.properties.CreatorType = InstanceProperty.readOnly({
 	getDefault = function()
-		return Enum.CreatorType.User
+		return CreatorType.User
 	end,
 })
 

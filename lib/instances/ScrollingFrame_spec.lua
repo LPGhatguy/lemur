@@ -1,4 +1,3 @@
-local Enum = import("../Enum")
 local Instance = import("../Instance")
 local ScrollingDirection = import("../Enum/ScrollingDirection")
 local typeof = import("../functions/typeof")
@@ -36,7 +35,7 @@ describe("instances.ScrollingFrame", function()
 			assert.same(extractVector2(screenGuiSize), extractVector2(instance.AbsoluteWindowSize))
 
 			instance.ScrollingEnabled = true
-			instance.ScrollingDirection = Enum.ScrollingDirection.XY
+			instance.ScrollingDirection = ScrollingDirection.XY
 			assert.same(
 				{
 					screenGuiSize.X - instance.ScrollBarThickness,
@@ -45,7 +44,7 @@ describe("instances.ScrollingFrame", function()
 				extractVector2(instance.AbsoluteWindowSize)
 			)
 
-			instance.ScrollingDirection = Enum.ScrollingDirection.X
+			instance.ScrollingDirection = ScrollingDirection.X
 			instance.ScrollingEnabled = true
 			assert.same(
 				{
@@ -55,7 +54,7 @@ describe("instances.ScrollingFrame", function()
 				extractVector2(instance.AbsoluteWindowSize)
 			)
 
-			instance.ScrollingDirection = Enum.ScrollingDirection.Y
+			instance.ScrollingDirection = ScrollingDirection.Y
 			instance.ScrollingEnabled = true
 			assert.same(
 				{

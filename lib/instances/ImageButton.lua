@@ -1,5 +1,4 @@
 local Color3 = import("../types/Color3")
-local Enum = import("../Enum")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
@@ -23,7 +22,7 @@ ImageButton.properties.ImageColor3 = InstanceProperty.typed("Color3", {
 
 ImageButton.properties.ScaleType = InstanceProperty.enum(ScaleType, {
 	getDefault = function()
-		return Enum.ScaleType.Stretch
+		return ScaleType.Stretch
 	end,
 })
 
