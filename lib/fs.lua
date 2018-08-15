@@ -23,6 +23,8 @@ function fs.read(path)
 
 	local contents = handle:read("*all")
 
+	handle:close()
+
 	return contents
 end
 
