@@ -1,4 +1,5 @@
 local typeof = import("./functions/typeof")
+local createEnum = import("./createEnum")
 
 local createEnumGroup = import("./createEnumGroup")
 
@@ -15,13 +16,21 @@ describe("createEnumGroup", function()
 		assert.equal(typeof(group), "Enums")
 	end)
 
-	it("should contain all of the inputs", function()
-		local bar = {}
+	it("should contain all input enums", function()
+		local Foo = createEnum("Foo", {})
 		local group = createEnumGroup({
-			foo = bar,
+			Foo = Foo,
 		})
 
-		assert.equal(group.foo, bar)
+		assert.equal(group.Foo, Foo)
+	end)
+
+	it("should throw when passing non-enum values in", function()
+		assert.has.errors(function()
+			createEnumGroup({
+				something = {},
+			})
+		end)
 	end)
 
 	it("should throw when indexing with unknown keys", function()

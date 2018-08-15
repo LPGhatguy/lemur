@@ -1,3 +1,5 @@
+local createEnumGroup = import("../createEnumGroup")
+
 local names = {
 	"ConnectionState",
 	"CreatorType",
@@ -27,4 +29,4 @@ for _, name in ipairs(names) do
 	enums[name] = import("./" .. name)
 end
 
-return enums
+return createEnumGroup(enums)

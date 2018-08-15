@@ -1,4 +1,6 @@
-return {
+local createEnum = import("../createEnum")
+
+return createEnum("Font", {
 	Legacy = 0,
 	Arial = 1,
 	ArialBold = 2,
@@ -18,4 +20,4 @@ return {
 	SourceSansSemiBold = 16,
 	Count = 17,
 	Fallback = 17,
-}
+})
