@@ -1,15 +1,15 @@
-local exists, http = pcall(require, "socket.http")
+local httpExists, socketHttp = pcall(require, "socket.http")
+local ltn12Exists, ltn12 = pcall(require, "ltn12")
 
-local httpShim = {}
+local http = {}
 
-function httpShim.get(url)
+function http.request()
 	error("Please install `luasocket` to use HTTP features.", 2)
 end
 
-if exists then
-	function httpShim.get(url)
-		return (http.request(url))
-	end
+if httpExists and ltn12Exists then
+	http.request = socketHttp.request
+	http.tableSink = ltn12.sink.table
 end
 
-return httpShim
+return http

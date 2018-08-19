@@ -18,4 +18,23 @@ describe("instances.HttpService", function()
 
 		assert.are.same(instance:JSONDecode("[1,true]"), { 1, true })
 	end)
+
+	it("should send HTTP requests", function()
+		local httpImpl = {
+			request = function()
+				return 1, 200, {}
+			end,
+			tableSink = function()
+				return {}
+			end,
+		}
+
+		local instance = HttpService:new(httpImpl)
+
+		local response = instance:RequestAsync({
+			Url = "https://google.com/",
+		})
+
+		print(response.Body)
+	end)
 end)
