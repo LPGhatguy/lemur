@@ -1,5 +1,5 @@
 local Color3 = import("../types/Color3")
-local Enum = import("../Enum")
+local Font = import("../Enum/Font")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
 
@@ -7,9 +7,9 @@ local TextButton = GuiButton:extend("TextButton", {
 	creatable = true,
 })
 
-TextButton.properties.Font = InstanceProperty.typed("number", {
+TextButton.properties.Font = InstanceProperty.enum(Font, {
 	getDefault = function()
-		return Enum.Font.Legacy
+		return Font.Legacy
 	end,
 })
 
