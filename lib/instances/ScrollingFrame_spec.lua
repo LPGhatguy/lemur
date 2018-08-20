@@ -1,7 +1,7 @@
-local Enum = import("../Enum")
 local Instance = import("../Instance")
-local UDim2 = import("../types/UDim2")
+local ScrollingDirection = import("../Enum/ScrollingDirection")
 local typeof = import("../functions/typeof")
+local UDim2 = import("../types/UDim2")
 
 local function extractVector2(vector2)
 	return { vector2.X, vector2.Y }
@@ -18,7 +18,8 @@ describe("instances.ScrollingFrame", function()
 
 		assert.equal(typeof(instance.CanvasSize), "UDim2")
 		assert.equal(typeof(instance.ScrollBarThickness), "number")
-		assert.equal(typeof(instance.ScrollingDirection), "number")
+		assert.equal(typeof(instance.ScrollingDirection), "EnumItem")
+		assert.equal(instance.ScrollingDirection.EnumType, ScrollingDirection)
 		assert.equal(typeof(instance.ScrollingEnabled), "boolean")
 	end)
 
@@ -34,7 +35,7 @@ describe("instances.ScrollingFrame", function()
 			assert.same(extractVector2(screenGuiSize), extractVector2(instance.AbsoluteWindowSize))
 
 			instance.ScrollingEnabled = true
-			instance.ScrollingDirection = Enum.ScrollingDirection.XY
+			instance.ScrollingDirection = ScrollingDirection.XY
 			assert.same(
 				{
 					screenGuiSize.X - instance.ScrollBarThickness,
@@ -43,7 +44,7 @@ describe("instances.ScrollingFrame", function()
 				extractVector2(instance.AbsoluteWindowSize)
 			)
 
-			instance.ScrollingDirection = Enum.ScrollingDirection.X
+			instance.ScrollingDirection = ScrollingDirection.X
 			instance.ScrollingEnabled = true
 			assert.same(
 				{
@@ -53,7 +54,7 @@ describe("instances.ScrollingFrame", function()
 				extractVector2(instance.AbsoluteWindowSize)
 			)
 
-			instance.ScrollingDirection = Enum.ScrollingDirection.Y
+			instance.ScrollingDirection = ScrollingDirection.Y
 			instance.ScrollingEnabled = true
 			assert.same(
 				{

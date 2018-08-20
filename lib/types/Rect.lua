@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local typeKey = import("../typeKey")
 local typeof = import("../functions/typeof")
 local Vector2 = import("./Vector2")
 
@@ -13,7 +14,7 @@ setmetatable(Rect, {
 local prototype = {}
 
 local metatable = {}
-metatable.type = Rect
+metatable[typeKey] = "Rect"
 
 function metatable:__index(key)
 	local internal = getmetatable(self).internal

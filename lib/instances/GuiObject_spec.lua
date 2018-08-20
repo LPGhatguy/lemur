@@ -1,7 +1,9 @@
-local GuiObject = import("./GuiObject")
 local ScreenGui = import("./ScreenGui")
 local UDim2 = import("../types/UDim2")
 local typeof = import("../functions/typeof")
+local SizeConstraint = import("../Enum/SizeConstraint")
+
+local GuiObject = import("./GuiObject")
 
 local function extractVector2(v)
 	return { v.X, v.Y }
@@ -28,7 +30,8 @@ describe("instances.GuiObject", function()
 		assert.equal(typeof(instance.LayoutOrder), "number")
 		assert.equal(typeof(instance.Position), "UDim2")
 		assert.equal(typeof(instance.Size), "UDim2")
-		assert.equal(typeof(instance.SizeConstraint), "number")
+		assert.equal(typeof(instance.SizeConstraint), "EnumItem")
+		assert.equal(instance.SizeConstraint.EnumType, SizeConstraint)
 		assert.equal(typeof(instance.Visible), "boolean")
 		assert.equal(typeof(instance.ZIndex), "number")
 	end)

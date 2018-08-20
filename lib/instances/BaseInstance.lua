@@ -7,9 +7,10 @@
 	* init, called by the class's constructor
 ]]
 
+local assign = import("../assign")
 local InstanceProperty = import("../InstanceProperty")
 local Signal = import("../Signal")
-local assign = import("../assign")
+local typeKey = import("../typeKey")
 
 local function isInstance(value)
 	local metatable = getmetatable(value)
@@ -279,7 +280,7 @@ function BaseInstance.prototype:_PropagateAncestryChanged(instance, parent)
 end
 
 BaseInstance.metatable = {}
-BaseInstance.metatable.type = "Instance"
+BaseInstance.metatable[typeKey] = "Instance"
 
 function BaseInstance.metatable.__index(self, key)
 	local class = getmetatable(self).class

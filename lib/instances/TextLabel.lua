@@ -1,15 +1,17 @@
 local Color3 = import("../types/Color3")
-local Enum = import("../Enum")
+local Font = import("../Enum/Font")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
+local TextXAlignment = import("../Enum/TextXAlignment")
+local TextYAlignment = import("../Enum/TextYAlignment")
 
 local TextLabel = GuiObject:extend("TextLabel", {
 	creatable = true,
 })
 
-TextLabel.properties.Font = InstanceProperty.typed("number", {
+TextLabel.properties.Font = InstanceProperty.enum(Font, {
 	getDefault = function()
-		return Enum.Font.Legacy
+		return Font.Legacy
 	end,
 })
 
@@ -37,15 +39,15 @@ TextLabel.properties.TextWrapped = InstanceProperty.typed("boolean", {
 	end,
 })
 
-TextLabel.properties.TextXAlignment = InstanceProperty.typed("number", {
+TextLabel.properties.TextXAlignment = InstanceProperty.enum(TextXAlignment, {
 	getDefault = function()
-		return Enum.TextXAlignment.Left
+		return TextXAlignment.Left
 	end,
 })
 
-TextLabel.properties.TextYAlignment = InstanceProperty.typed("number", {
+TextLabel.properties.TextYAlignment = InstanceProperty.enum(TextYAlignment, {
 	getDefault = function()
-		return Enum.TextYAlignment.Top
+		return TextYAlignment.Top
 	end,
 })
 

@@ -1,8 +1,8 @@
 local Color3 = import("../types/Color3")
-local Enum = import("../Enum")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
+local ScaleType = import("../Enum/ScaleType")
 
 local ImageLabel = GuiObject:extend("ImageLabel", {
 	creatable = true,
@@ -20,9 +20,9 @@ ImageLabel.properties.ImageColor3 = InstanceProperty.typed("Color3", {
 	end,
 })
 
-ImageLabel.properties.ScaleType = InstanceProperty.typed("number", {
+ImageLabel.properties.ScaleType = InstanceProperty.enum(ScaleType, {
 	getDefault = function()
-		return Enum.ScaleType.Stretch
+		return ScaleType.Stretch
 	end,
 })
 

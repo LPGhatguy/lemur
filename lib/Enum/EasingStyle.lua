@@ -1,4 +1,6 @@
-return {
+local createEnum = import("../createEnum")
+
+return createEnum("EasingStyle", {
 	Linear = 0,
 	Sine = 1,
 	Back = 2,
@@ -7,4 +9,4 @@ return {
 	Quint = 5,
 	Bounce = 6,
 	Elastic = 7,
-}
+})
