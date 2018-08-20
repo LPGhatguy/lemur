@@ -39,13 +39,13 @@ TextButton.properties.TextWrapped = InstanceProperty.typed("boolean", {
 	end,
 })
 
-TextButton.properties.TextXAlignment = InstanceProperty.typed("number", {
+TextButton.properties.TextXAlignment = InstanceProperty.enum(TextXAlignment, {
 	getDefault = function()
 		return TextXAlignment.Left
 	end,
 })
 
-TextButton.properties.TextYAlignment = InstanceProperty.typed("number", {
+TextButton.properties.TextYAlignment = InstanceProperty.enum(TextYAlignment, {
 	getDefault = function()
 		return TextYAlignment.Top
 	end,
