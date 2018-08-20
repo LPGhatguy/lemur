@@ -137,6 +137,9 @@ This document should remain up-to-date with current API coverage and status.
 	* Text
 	* TextColor3
 	* TextSize
+	* TextWrapped
+	* TextXAlignment
+	* TextYAlignment
 * TextLabel
 	* Font
 	* Text
