@@ -10,6 +10,7 @@ describe("instances.TextButton", function()
 
 	it("should have properties defined", function()
 		local instance = Instance.new("TextButton")
+		assert.equal(typeof(instance.Font), "number")
 		assert.equal(typeof(instance.Text), "string")
 		assert.equal(typeof(instance.TextColor3), "Color3")
 		assert.equal(typeof(instance.TextSize), "number")
