@@ -132,6 +132,19 @@ This document should remain up-to-date with current API coverage and status.
 	* ScrollBarThickness
 	* ScrollingDirection
 	* ScrollingEnabled
+* TextButton
+	* Font
+	* Text
+	* TextColor3
+	* TextSize
+* TextLabel
+	* Font
+	* Text
+	* TextColor3
+	* TextSize
+	* TextWrapped
+	* TextXAlignment
+	* TextYAlignment
 * UIGridStyleLayout
 	* HorizontalAlignment
 	* SortOrder
