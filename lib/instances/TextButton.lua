@@ -1,5 +1,4 @@
 local Color3 = import("../types/Color3")
-local Enum = import("../Enum")
 local Font = import("../Enum/Font")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
