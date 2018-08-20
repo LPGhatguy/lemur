@@ -3,6 +3,8 @@ local Enum = import("../Enum")
 local Font = import("../Enum/Font")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
+local TextXAlignment = import("../Enum/TextXAlignment")
+local TextYAlignment = import("../Enum/TextYAlignment")
 
 local TextButton = GuiButton:extend("TextButton", {
 	creatable = true,
@@ -40,13 +42,13 @@ TextButton.properties.TextWrapped = InstanceProperty.typed("boolean", {
 
 TextButton.properties.TextXAlignment = InstanceProperty.typed("number", {
 	getDefault = function()
-		return Enum.TextXAlignment.Left
+		return TextXAlignment.Left
 	end,
 })
 
 TextButton.properties.TextYAlignment = InstanceProperty.typed("number", {
 	getDefault = function()
-		return Enum.TextYAlignment.Top
+		return TextYAlignment.Top
 	end,
 })
 
