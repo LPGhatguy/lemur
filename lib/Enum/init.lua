@@ -3,6 +3,7 @@ local createEnumGroup = import("../createEnumGroup")
 local names = {
 	"ConnectionState",
 	"CreatorType",
+	"DataStoreRequestType",
 	"EasingDirection",
 	"EasingStyle",
 	"FillDirection",
