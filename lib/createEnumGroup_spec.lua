@@ -49,7 +49,7 @@ describe("createEnumGroup", function()
 
 		local enumItems = Foo:GetEnumItems()
 		assert.equal(#enumItems, 2)
-		
+
 		local enumItemDoge = enumItems[1]
 		assert.equal(enumItemDoge.Name, "Doge")
 		assert.equal(enumItemDoge.Value, 1)
