@@ -6,16 +6,9 @@ describe("taskFunctions.spawn", function()
 		local scheduler = TaskScheduler.new()
 		local spawn = createSpawn(scheduler)
 
-		local count = 0
-
-		spawn(function()
-			count = count + 1
-		end)
-
-		assert.equal(count, 0)
-
+		local spy = spy.new(function() end)
+		spawn(function() spy() end)
 		scheduler:step(0.2)
-
-		assert.equal(count, 1)
+		assert.spy(spy).was_called()
 	end)
 end)
