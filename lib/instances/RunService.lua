@@ -12,6 +12,10 @@ RunService.properties.Heartbeat = InstanceProperty.readOnly({
 	getDefault = Signal.new,
 })
 
+RunService.prototype.IsServer = function()
+	return false -- TODO: You should be able to customize this option (#115)
+end
+
 RunService.prototype.IsStudio = function()
 	return false
 end

@@ -19,6 +19,11 @@ describe("instances.RunService", function()
 		assert.is_equal(instance.IsStudio(), false)
 	end)
 
+	it("should return a bool when IsServer() is called", function()
+		local instance = RunService:new()
+		assert.is_equal(type(instance:IsServer()), "boolean")
+	end)
+
 	it("should have properties defined", function()
 		local instance = RunService:new()
 
