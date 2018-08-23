@@ -5,6 +5,7 @@ This document should remain up-to-date with current API coverage and status.
 
 ## Implemented Enums
 - ConnectionState
+- DataStoreRequestType
 - EasingDirection
 - EasingStyle
 - Font
