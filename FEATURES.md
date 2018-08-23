@@ -29,7 +29,8 @@ This document should remain up-to-date with current API coverage and status.
 * settings
 	* Rendering
 		* QualityLevel
-* spawn (stub)
+* delay
+* spawn
 * tick
 * typeof
 * wait (stub)
@@ -175,6 +176,7 @@ This document should remain up-to-date with current API coverage and status.
 * RunService
 	* Heartbeat
 	* RenderStepped
+	* IsServer()
 	* IsStudio()
 * ServerScriptService
 * Stats
