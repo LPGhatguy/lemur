@@ -42,20 +42,20 @@ describe("createEnumGroup", function()
 	end)
 
 	it("should return enum items with GetEnumItems", function()
-		local Foo = createEnum("Foo", {
+		local values = {
 			Doge = 1,
 			Funny = 2,
-		})
+		}
+
+		local Foo = createEnum("Foo", values)
 
 		local enumItems = Foo:GetEnumItems()
 		assert.equal(#enumItems, 2)
 
-		local enumItemDoge = enumItems[1]
-		assert.equal(enumItemDoge.Name, "Doge")
-		assert.equal(enumItemDoge.Value, 1)
+		for index=1,2 do
+			local enumItem = enumItems[index]
 
-		local enumItemFunny = enumItems[2]
-		assert.equal(enumItemFunny.Name, "Funny")
-		assert.equal(enumItemFunny.Value, 2)
+			assert.not_nil(values[enumItem.Name])
+		end
 	end)
 end)
