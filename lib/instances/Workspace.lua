@@ -13,4 +13,6 @@ end
 
 Workspace.properties.CurrentCamera = InstanceProperty.normal({})
 
+Workspace.properties.DistributedGameTime = InstanceProperty.normal({})
+
 return Workspace

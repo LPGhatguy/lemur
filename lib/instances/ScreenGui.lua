@@ -33,6 +33,34 @@ ScreenGui.properties.DisplayOrder = InstanceProperty.normal({
 	end,
 })
 
+ScreenGui.properties.AutoLocalize = InstanceProperty.normal({
+	set = function(self, key, value)
+		if type(value) ~= "boolean" then
+			error(string.format("%s must be a boolean", key), 2)
+		end
+
+		getmetatable(self).instance.properties[key] = value
+	end,
+
+	getDefault = function()
+		return false
+	end,
+})
+
+ScreenGui.properties.IgnoreGuiInset = InstanceProperty.normal({
+	set = function(self, key, value)
+		if type(value) ~= "boolean" then
+			error(string.format("%s must be a boolean", key), 2)
+		end
+
+		getmetatable(self).instance.properties[key] = value
+	end,
+
+	getDefault = function()
+		return 0
+	end,
+})
+
 ScreenGui.properties.ZIndexBehavior = InstanceProperty.enum(ZIndexBehavior, {
 	getDefault = function()
 		return ZIndexBehavior.Global

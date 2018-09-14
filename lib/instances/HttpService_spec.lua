@@ -18,4 +18,8 @@ describe("instances.HttpService", function()
 
 		assert.are.same(instance:JSONDecode("[1,true]"), { 1, true })
 	end)
+
+	describe("GenerateGUID", function()
+
+	end)
 end)
