@@ -10,6 +10,8 @@ local names = {
 	"Font",
 	"HorizontalAlignment",
 	"Platform",
+	"InfoType",
+	"KeyCode",
 	"PlaybackState",
 	"ScaleType",
 	"ScrollingDirection",
