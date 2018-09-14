@@ -16,7 +16,7 @@ describe("instances.RunService", function()
 
 	it("should return false when IsStudio() is called", function()
 		local instance = RunService:new()
-		assert.is_equal(instance.IsStudio(), false)
+		assert.is_equal(instance:IsStudio(), false)
 	end)
 
 	it("should have properties defined", function()
