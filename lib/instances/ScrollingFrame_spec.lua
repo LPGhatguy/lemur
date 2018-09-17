@@ -3,6 +3,7 @@ local ScrollingDirection = import("../Enum/ScrollingDirection")
 local ScrollBarInset = import("../Enum/ScrollBarInset")
 local typeof = import("../functions/typeof")
 local UDim2 = import("../types/UDim2")
+local VerticalScrollBarPosition = import("../Enum/VerticalScrollBarPosition")
 
 local function extractVector2(vector2)
 	return { vector2.X, vector2.Y }
@@ -24,6 +25,8 @@ describe("instances.ScrollingFrame", function()
 		assert.equal(typeof(instance.ScrollingEnabled), "boolean")
 		assert.equal(typeof(instance.VerticalScrollBarInset), "EnumItem")
 		assert.equal(instance.VerticalScrollBarInset.EnumType, ScrollBarInset)
+		assert.equal(typeof(instance.VerticalScrollBarPosition), "EnumItem")
+		assert.equal(instance.VerticalScrollBarPosition.EnumType, VerticalScrollBarPosition)
 	end)
 
 	describe("AbsoluteWindowSize", function()

@@ -1,5 +1,6 @@
 local ScrollingDirection = import("../Enum/ScrollingDirection")
 local ScrollBarInset = import("../Enum/ScrollBarInset")
+local VerticalScrollBarPosition = import("../Enum/VerticalScrollBarPosition")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local UDim2 = import("../types/UDim2")
@@ -59,6 +60,12 @@ ScrollingFrame.properties.ScrollingEnabled = InstanceProperty.typed("boolean", {
 ScrollingFrame.properties.VerticalScrollBarInset = InstanceProperty.enum(ScrollBarInset, {
 	getDefault = function()
 		return ScrollBarInset.None
+	end,
+})
+
+ScrollingFrame.properties.VerticalScrollBarPosition = InstanceProperty.enum(VerticalScrollBarPosition, {
+	getDefault = function()
+		return VerticalScrollBarPosition.Right
 	end,
 })
 
