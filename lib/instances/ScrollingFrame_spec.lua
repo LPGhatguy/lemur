@@ -18,6 +18,7 @@ describe("instances.ScrollingFrame", function()
 	it("should have properties defined", function()
 		local instance = Instance.new("ScrollingFrame")
 
+		assert.equal(typeof(instance.CanvasPosition), "Vector2")
 		assert.equal(typeof(instance.CanvasSize), "UDim2")
 		assert.equal(typeof(instance.ScrollBarThickness), "number")
 		assert.equal(typeof(instance.ScrollingDirection), "EnumItem")
