@@ -1,5 +1,6 @@
 local Instance = import("../Instance")
 local ScrollingDirection = import("../Enum/ScrollingDirection")
+local ScrollBarInset = import("../Enum/ScrollBarInset")
 local typeof = import("../functions/typeof")
 local UDim2 = import("../types/UDim2")
 
@@ -21,6 +22,8 @@ describe("instances.ScrollingFrame", function()
 		assert.equal(typeof(instance.ScrollingDirection), "EnumItem")
 		assert.equal(instance.ScrollingDirection.EnumType, ScrollingDirection)
 		assert.equal(typeof(instance.ScrollingEnabled), "boolean")
+		assert.equal(typeof(instance.VerticalScrollBarInset), "EnumItem")
+		assert.equal(instance.VerticalScrollBarInset.EnumType, ScrollBarInset)
 	end)
 
 	describe("AbsoluteWindowSize", function()
