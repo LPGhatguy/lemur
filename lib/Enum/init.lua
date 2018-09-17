@@ -21,6 +21,7 @@ local names = {
 	"ThumbnailSize",
 	"ThumbnailType",
 	"VerticalAlignment",
+	"VerticalScrollBarPosition",
 	"VirtualInputMode",
 	"ZIndexBehavior",
 }
