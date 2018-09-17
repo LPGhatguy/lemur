@@ -16,6 +16,7 @@ describe("instances.UIGridStyleLayout", function()
 	it("should have properties defined", function()
 		local instance = UIGridStyleLayout:new()
 
+		assert.equals(typeof(instance.AbsoluteContentSize), "Vector2")
 		assert.equals(typeof(instance.FillDirection), "EnumItem")
 		assert.equals(instance.FillDirection.EnumType, FillDirection)
 		assert.equals(typeof(instance.HorizontalAlignment), "EnumItem")

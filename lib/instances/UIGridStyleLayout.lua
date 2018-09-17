@@ -3,9 +3,16 @@ local FillDirection = import("../Enum/FillDirection")
 local HorizontalAlignment = import("../Enum/HorizontalAlignment")
 local InstanceProperty = import("../InstanceProperty")
 local SortOrder = import("../Enum/SortOrder")
+local Vector2 = import("../types/Vector2")
 local VerticalAlignment = import("../Enum/VerticalAlignment")
 
 local UIGridStyleLayout = BaseInstance:extend("UIGridStyleLayout")
+
+UIGridStyleLayout.properties.AbsoluteContentSize = InstanceProperty.readOnly({
+	getDefault = function()
+		return Vector2.new()
+	end
+})
 
 UIGridStyleLayout.properties.FillDirection = InstanceProperty.enum(FillDirection, {
 	getDefault = function()
