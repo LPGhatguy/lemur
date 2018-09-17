@@ -33,6 +33,12 @@ ScrollingFrame.properties.AbsoluteWindowSize = InstanceProperty.readOnly({
 	end,
 })
 
+ScrollingFrame.properties.CanvasPosition = InstanceProperty.typed("Vector2", {
+	getDefault = function()
+		return Vector2.new()
+	end,
+})
+
 ScrollingFrame.properties.CanvasSize = InstanceProperty.typed("UDim2", {
 	getDefault = function()
 		return UDim2.new()
