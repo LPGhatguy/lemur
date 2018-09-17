@@ -77,6 +77,12 @@ GuiObject.properties.BorderSizePixel = InstanceProperty.typed("number", {
 	end,
 })
 
+GuiObject.properties.BorderColor3 = InstanceProperty.typed("Color3", {
+	getDefault = function()
+		return Color3.fromRGB(27, 42, 53)
+	end,
+})
+
 GuiObject.properties.ClipsDescendants = InstanceProperty.typed("boolean", {
 	getDefault = function()
 		return false
