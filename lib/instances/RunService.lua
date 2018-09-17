@@ -12,12 +12,12 @@ RunService.properties.Heartbeat = InstanceProperty.readOnly({
 	getDefault = Signal.new,
 })
 
-RunService.prototype.IsStudio = function()
-	return false
-end
-
 RunService.properties.RenderStepped = InstanceProperty.readOnly({
 	getDefault = Signal.new,
 })
+
+function RunService.prototype:IsStudio()
+	return false
+end
 
 return RunService
