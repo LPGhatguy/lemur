@@ -12,6 +12,7 @@ local names = {
 	"Platform",
 	"PlaybackState",
 	"ScaleType",
+	"ScrollBarInset",
 	"ScrollingDirection",
 	"SizeConstraint",
 	"SortOrder",
