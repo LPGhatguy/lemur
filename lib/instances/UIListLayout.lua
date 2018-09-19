@@ -40,7 +40,7 @@ UIListLayout.properties.AbsoluteContentSize = InstanceProperty.readOnly({
 			end
 		end
 		return size
-	end
+	end,
 })
 
 return UIListLayout
