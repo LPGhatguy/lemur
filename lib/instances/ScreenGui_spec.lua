@@ -42,4 +42,44 @@ describe("instances.ScreenGui", function()
 			assert.equals(typeof(instance.AbsoluteSize), "Vector2")
 		end)
 	end)
+
+	describe("AutoLocalize", function()
+		it("should have a value that is a boolean", function()
+			local instance = Instance.new("ScreenGui")
+			assert.equals(type(instance.AutoLocalize), "boolean")
+		end)
+
+		it("should be settable", function()
+			local instance = Instance.new("ScreenGui")
+			instance.AutoLocalize = true
+			assert.equals(instance.AutoLocalize, true)
+		end)
+
+		it("should only accept booleans", function()
+			local instance = Instance.new("ScreenGui")
+			assert.has.errors(function()
+				instance.AutoLocalize = "string"
+			end)
+		end)
+	end)
+
+	describe("IgnoreGuiInset", function()
+		it("should have a value that is a boolean", function()
+			local instance = Instance.new("ScreenGui")
+			assert.equals(type(instance.IgnoreGuiInset), "boolean")
+		end)
+
+		it("should be settable", function()
+			local instance = Instance.new("ScreenGui")
+			instance.IgnoreGuiInset = true
+			assert.equals(instance.IgnoreGuiInset, true)
+		end)
+
+		it("should only accept booleans", function()
+			local instance = Instance.new("ScreenGui")
+			assert.has.errors(function()
+				instance.IgnoreGuiInset = "string"
+			end)
+		end)
+	end)
 end)

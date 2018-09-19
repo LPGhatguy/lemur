@@ -57,7 +57,7 @@ ScreenGui.properties.IgnoreGuiInset = InstanceProperty.normal({
 	end,
 
 	getDefault = function()
-		return 0
+		return false
 	end,
 })
 
