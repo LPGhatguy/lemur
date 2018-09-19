@@ -1,5 +1,5 @@
 local BaseInstance = import("./BaseInstance")
-local validateType = import("../validateType")
+local typeof = import("../functions/typeof")
 local json = import("../json")
 
 local HttpService = BaseInstance:extend("HttpService")
@@ -13,12 +13,19 @@ function HttpService.prototype:JSONDecode(input)
 end
 
 function HttpService.prototype:GenerateGUID(wrapInCurlyBraces)
-	validateType("wrapInCurlyBraces", wrapInCurlyBraces, "boolean")
+	local argType = typeof(wrapInCurlyBraces)
+	if argType == "userdata" or argType == "table" or argType == "function" then
+		error("Unable to cast argument to bool", 2)
+	end
 
-	if wrapInCurlyBraces then
-		return "{04AEBFEA-87FC-480F-A98B-E5E221007A90}"
-	else
+	--[[
+		`GenerateGUID` allows any value type for `wrapInCurlyBraces`, but it
+		only omits the curly braces when `wrapInCurlyBraces` is set to `false`
+	]]
+	if wrapInCurlyBraces == false then
 		return "04AEBFEA-87FC-480F-A98B-E5E221007A90"
+	else
+		return "{04AEBFEA-87FC-480F-A98B-E5E221007A90}"
 	end
 end
 
