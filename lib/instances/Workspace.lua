@@ -13,6 +13,10 @@ end
 
 Workspace.properties.CurrentCamera = InstanceProperty.normal({})
 
-Workspace.properties.DistributedGameTime = InstanceProperty.normal({})
+Workspace.properties.DistributedGameTime = InstanceProperty.readOnly({
+	getDefault = function ()
+		return 0
+	end
+})
 
 return Workspace

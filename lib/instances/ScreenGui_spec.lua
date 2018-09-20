@@ -17,22 +17,9 @@ describe("instances.ScreenGui", function()
 	end)
 
 	describe("DisplayOrder", function()
-		it("should have a value that is a number", function()
+		it("should return a number", function()
 			local instance = Instance.new("ScreenGui")
 			assert.equals(type(instance.DisplayOrder), "number")
-		end)
-
-		it("should be settable", function()
-			local instance = Instance.new("ScreenGui")
-			instance.DisplayOrder = 2
-			assert.equals(instance.DisplayOrder, 2)
-		end)
-
-		it("should only accept numbers", function()
-			local instance = Instance.new("ScreenGui")
-			assert.has.errors(function()
-				instance.DisplayOrder = "string"
-			end)
 		end)
 	end)
 
@@ -44,42 +31,16 @@ describe("instances.ScreenGui", function()
 	end)
 
 	describe("AutoLocalize", function()
-		it("should have a value that is a boolean", function()
+		it("should return a boolean", function()
 			local instance = Instance.new("ScreenGui")
 			assert.equals(type(instance.AutoLocalize), "boolean")
-		end)
-
-		it("should be settable", function()
-			local instance = Instance.new("ScreenGui")
-			instance.AutoLocalize = true
-			assert.equals(instance.AutoLocalize, true)
-		end)
-
-		it("should only accept booleans", function()
-			local instance = Instance.new("ScreenGui")
-			assert.has.errors(function()
-				instance.AutoLocalize = "string"
-			end)
 		end)
 	end)
 
 	describe("IgnoreGuiInset", function()
-		it("should have a value that is a boolean", function()
+		it("should return a boolean", function()
 			local instance = Instance.new("ScreenGui")
 			assert.equals(type(instance.IgnoreGuiInset), "boolean")
-		end)
-
-		it("should be settable", function()
-			local instance = Instance.new("ScreenGui")
-			instance.IgnoreGuiInset = true
-			assert.equals(instance.IgnoreGuiInset, true)
-		end)
-
-		it("should only accept booleans", function()
-			local instance = Instance.new("ScreenGui")
-			assert.has.errors(function()
-				instance.IgnoreGuiInset = "string"
-			end)
 		end)
 	end)
 end)

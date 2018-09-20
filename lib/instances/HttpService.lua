@@ -14,8 +14,8 @@ end
 
 function HttpService.prototype:GenerateGUID(wrapInCurlyBraces)
 	local argType = typeof(wrapInCurlyBraces)
-	if argType == "userdata" or argType == "table" or argType == "function" then
-		error("Unable to cast argument to bool", 2)
+	if wrapInCurlyBraces ~= nil and argType ~= "boolean" then
+		error(("Unable to cast %s to bool"):format(argType), 2)
 	end
 
 	--[[

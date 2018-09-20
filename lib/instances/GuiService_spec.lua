@@ -33,8 +33,8 @@ describe("instances.GuiService", function()
 	end)
 
 	describe("IsTenFootInterface", function()
-		it("should exist", function()
-			GuiService:new():IsTenFootInterface()
+		it("should return a boolean", function()
+			assert.equal(type(GuiService:new():IsTenFootInterface()), "boolean")
 		end)
 	end)
 

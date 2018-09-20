@@ -28,6 +28,7 @@ function GuiService.prototype:SafeZoneOffsetsChanged()
 end
 
 function GuiService.prototype:IsTenFootInterface()
+	return false
 end
 
 GuiService.properties.BrowserWindowClosed = InstanceProperty.readOnly({

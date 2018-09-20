@@ -28,21 +28,9 @@ describe("instances.HttpService", function()
 			assert.equal(guid:find("}"), nil)
 		end)
 
-		it("should include curly braces when wrapInCurlyBraces is nil or truthy", function()
+		it("should include curly braces when wrapInCurlyBraces is nil or true", function()
 			local instance = HttpService:new()
 			local guid = instance:GenerateGUID(true)
-
-			assert.equal(guid:find("{.+}"), 1)
-
-			guid = instance:GenerateGUID("foo")
-
-			assert.equal(guid:find("{.+}"), 1)
-
-			guid = instance:GenerateGUID(100)
-
-			assert.equal(guid:find("{.+}"), 1)
-
-			guid = instance:GenerateGUID(nil)
 
 			assert.equal(guid:find("{.+}"), 1)
 
