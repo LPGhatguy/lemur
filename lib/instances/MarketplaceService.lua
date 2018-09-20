@@ -27,5 +27,4 @@ MarketplaceService.properties.ServerPurchaseVerification = InstanceProperty.read
 	end,
 })
 
-
 return MarketplaceService
