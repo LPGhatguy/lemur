@@ -19,4 +19,10 @@ Workspace.properties.DistributedGameTime = InstanceProperty.readOnly({
 	end
 })
 
+Workspace.properties.AllowThirdPartySales = InstanceProperty.typed("boolean", {
+	getDefault = function ()
+		return false
+	end
+})
+
 return Workspace
