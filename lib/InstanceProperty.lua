@@ -25,6 +25,14 @@ function InstanceProperty.readOnly(config)
 	}, config)
 end
 
+function InstanceProperty.writeOnly(config)
+	return merge(InstanceProperty.normal(config), {
+		get = function(self, key)
+			error(string.format("Unable to read property %s. You are only able to write the value.", key))
+		end,
+	}, config)
+end
+
 --[[
 	This method forces the value of a setter to be typed.
 

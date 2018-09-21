@@ -1,6 +1,7 @@
 local names = {
 	"AnalyticsService",
 	"BindableEvent",
+	"BindableFunction",
 	"BoolValue",
 	"Camera",
 	"ContentProvider",

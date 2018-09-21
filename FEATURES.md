@@ -68,6 +68,9 @@ This document should remain up-to-date with current API coverage and status.
 * AnalyticsService
 * BindableEvent
 	* Fire(...)
+* BindableFunction
+	* Invoke(...)
+	* OnInvoke
 * BoolValue, StringValue, IntValue, ObjectValue
 	* Value
 * Folder
