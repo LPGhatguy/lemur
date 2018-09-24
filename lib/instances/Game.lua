@@ -1,3 +1,4 @@
+local http = import("../http")
 local BaseInstance = import("./BaseInstance")
 
 local AnalyticsService = import("./AnalyticsService")
@@ -30,7 +31,7 @@ function Game:init(instance)
 	CoreGui:new().Parent = instance
 	CorePackages:new().Parent = instance
 	GuiService:new().Parent = instance
-	HttpService:new().Parent = instance
+	HttpService:new(http).Parent = instance
 	LocalizationService:new().Parent = instance
 	NotificationService:new().Parent = instance
 	Players:new().Parent = instance
