@@ -32,6 +32,10 @@ function metatable:__add(other)
 	return Vector2.new(self.X + other.X, self.Y + other.Y)
 end
 
+function metatable:__sub(other)
+	return Vector2.new(self.X - other.X, self.Y - other.Y)
+end
+
 function metatable:__eq(other)
 	return self.X == other.X and self.Y == other.Y
 end
