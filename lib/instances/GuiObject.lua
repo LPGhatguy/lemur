@@ -79,7 +79,7 @@ GuiObject.properties.BorderSizePixel = InstanceProperty.typed("number", {
 
 GuiObject.properties.BorderColor3 = InstanceProperty.typed("Color3", {
 	getDefault = function()
-		return Color3.new()
+		return Color3.fromRGB(27, 42, 53)
 	end,
 })
 
