@@ -28,7 +28,7 @@ describe("instances.UIListLayout", function()
 	end)
 
 	describe("AbsoluteContentSize", function()
-		it("should include padding", function()
+		it("should include padding vertically", function()
 			local screenGui = Instance.new("ScreenGui")
 
 			local instance = Instance.new("UIListLayout")
@@ -49,6 +49,29 @@ describe("instances.UIListLayout", function()
 			frame3.Parent = screenGui
 
 			assert.same({ 300, 1020 }, extractVector2(instance.AbsoluteContentSize))
+		end)
+
+		it("should include padding horizonally", function()
+			local screenGui = Instance.new("ScreenGui")
+
+			local instance = Instance.new("UIListLayout")
+			instance.Padding = UDim.new(0, 10)
+			instance.FillDirection = FillDirection.Horizontal
+			instance.Parent = screenGui
+
+			local frame1 = Instance.new("Frame")
+			frame1.Size = UDim2.new(0, 300, 0, 400)
+			frame1.Parent = screenGui
+
+			local frame2 = Instance.new("Frame")
+			frame2.Size = UDim2.new(0, 200, 0, 500)
+			frame2.Parent = screenGui
+
+			local frame3 = Instance.new("Frame")
+			frame3.Size = UDim2.new(0, 100, 0, 100)
+			frame3.Parent = screenGui
+
+			assert.same({ 620, 500 }, extractVector2(instance.AbsoluteContentSize))
 		end)
 	end)
 end)
