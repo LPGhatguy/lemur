@@ -34,6 +34,12 @@ TextLabel.properties.TextSize = InstanceProperty.typed("number", {
 	end,
 })
 
+TextLabel.properties.TextTransparency = InstanceProperty.typed("number", {
+	getDefault = function()
+		return 0
+	end,
+})
+
 TextLabel.properties.TextTruncate = InstanceProperty.enum(TextTruncate, {
 	getDefault = function()
 		return TextTruncate.None
