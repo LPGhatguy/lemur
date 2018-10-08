@@ -52,6 +52,10 @@ BaseInstance.properties.Changed = InstanceProperty.readOnly({
 	end,
 })
 
+BaseInstance.properties.ChildAdded = InstanceProperty.readOnly({
+	getDefault = Signal.new
+})
+
 BaseInstance.properties.Parent = InstanceProperty.normal({
 	set = function(self, key, value)
 		local instance = getmetatable(self).instance
@@ -76,6 +80,7 @@ BaseInstance.properties.Parent = InstanceProperty.normal({
 
 		if value ~= nil then
 			getmetatable(value).instance.children[self] = true
+			value.ChildAdded:Fire(self)
 		end
 
 		self:_PropagateAncestryChanged(self, value)

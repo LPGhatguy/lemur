@@ -9,6 +9,7 @@ local names = {
 	"FillDirection",
 	"Font",
 	"HorizontalAlignment",
+	"HttpContentType",
 	"Platform",
 	"PlaybackState",
 	"ScaleType",
