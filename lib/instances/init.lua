@@ -22,6 +22,7 @@ local names = {
 	"Model",
 	"ModuleScript",
 	"NotificationService",
+	"NumberValue",
 	"ObjectValue",
 	"Player",
 	"Players",
