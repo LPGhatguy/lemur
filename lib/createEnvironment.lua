@@ -43,6 +43,7 @@ local function createEnvironment(habitat)
 	end
 
 	environment.game = habitat.game
+	environment.workspace = habitat.game:GetService("Workspace")
 
 	return environment
 end
