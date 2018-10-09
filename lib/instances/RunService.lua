@@ -16,6 +16,10 @@ RunService.properties.RenderStepped = InstanceProperty.readOnly({
 	getDefault = Signal.new,
 })
 
+function RunService.prototype:IsServer()
+	return false -- TODO: You should be able to customize this option (#115)
+end
+
 function RunService.prototype:IsStudio()
 	return false
 end
