@@ -13,4 +13,16 @@ end
 
 Workspace.properties.CurrentCamera = InstanceProperty.normal({})
 
+Workspace.properties.DistributedGameTime = InstanceProperty.readOnly({
+	getDefault = function ()
+		return 0
+	end
+})
+
+Workspace.properties.AllowThirdPartySales = InstanceProperty.typed("boolean", {
+	getDefault = function ()
+		return false
+	end
+})
+
 return Workspace
