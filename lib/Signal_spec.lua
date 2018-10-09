@@ -51,6 +51,16 @@ describe("Signal", function()
 		assert.spy(spyB).was_called(2)
 	end)
 
+	it("should set Connected", function()
+		local signal = Signal.new()
+
+		local connection = signal:Connect(function() end)
+		assert.is_true(connection.Connected)
+
+		connection:Disconnect()
+		assert.is_false(connection.Connected)
+	end)
+
 	-- Remove this when the event loop is made
 	it("should error on Wait", function()
 		local signal = Signal.new()
