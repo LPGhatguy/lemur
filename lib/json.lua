@@ -12,7 +12,16 @@ end
 
 if exists then
 	json.encode = dkjson.encode
-	json.decode = dkjson.decode
+	json.decode = function(input)
+
+		local result, _, err = dkjson.decode(input)
+
+		if err then
+			return 'Can\'t parse JSON'
+		else
+			return result
+		end
+	end
 end
 
 return json
