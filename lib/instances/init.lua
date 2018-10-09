@@ -32,6 +32,7 @@ local names = {
 	"Script",
 	"ScrollingFrame",
 	"ServerScriptService",
+	"ServerStorage",
 	"Stats",
 	"StringValue",
 	"TestService",
