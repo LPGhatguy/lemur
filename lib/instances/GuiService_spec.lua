@@ -1,4 +1,5 @@
 local GuiService = import("./GuiService")
+local typeof = import("../functions/typeof")
 
 describe("instances.GuiService", function()
 	it("should instantiate", function()
@@ -28,6 +29,20 @@ describe("instances.GuiService", function()
 	describe("SafeZoneOffsetsChanged", function()
 		it("should exist", function()
 			GuiService:new():SafeZoneOffsetsChanged()
+		end)
+	end)
+
+	describe("IsTenFootInterface", function()
+		it("should return a boolean", function()
+			assert.equal(type(GuiService:new():IsTenFootInterface()), "boolean")
+		end)
+	end)
+
+	describe("BrowserWindowClosed", function()
+		it("should return a signal", function()
+			local instance = GuiService:new()
+
+			assert.equal(typeof(instance.BrowserWindowClosed), "RBXScriptSignal")
 		end)
 	end)
 end)

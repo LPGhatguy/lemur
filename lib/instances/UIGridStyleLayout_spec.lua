@@ -31,6 +31,7 @@ describe("instances.UIGridStyleLayout", function()
 		assert.equals(instance.SortOrder.EnumType, SortOrder)
 		assert.equals(typeof(instance.VerticalAlignment), "EnumItem")
 		assert.equal(instance.VerticalAlignment.EnumType, VerticalAlignment)
+		assert.equals(typeof(instance.AbsoluteContentSize), "Vector2")
 	end)
 
 	describe("AbsoluteContentSize", function()

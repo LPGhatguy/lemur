@@ -68,7 +68,7 @@ This document should remain up-to-date with current API coverage and status.
 * AnalyticsService
 * BindableEvent
 	* Fire(...)
-* BoolValue, StringValue, IntValue, ObjectValue
+* BoolValue, StringValue, IntValue, NumberValue, ObjectValue
 	* Value
 * Folder
 * Frame
@@ -180,6 +180,7 @@ This document should remain up-to-date with current API coverage and status.
 	* IsServer()
 	* IsStudio()
 * ServerScriptService
+* ServerStorage
 * Stats
 * TestService
 	* Error(message)

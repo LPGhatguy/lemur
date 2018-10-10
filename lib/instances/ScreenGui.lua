@@ -19,17 +19,21 @@ ScreenGui.properties.AbsoluteSize = InstanceProperty.readOnly({
 	end,
 })
 
-ScreenGui.properties.DisplayOrder = InstanceProperty.normal({
-	set = function(self, key, value)
-		if type(value) ~= "number" then
-			error(string.format("%s must be a number", key), 2)
-		end
-
-		getmetatable(self).instance.properties[key] = value
-	end,
-
+ScreenGui.properties.DisplayOrder = InstanceProperty.typed("number", {
 	getDefault = function()
 		return 0
+	end,
+})
+
+ScreenGui.properties.AutoLocalize = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return true
+	end,
+})
+
+ScreenGui.properties.IgnoreGuiInset = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return false
 	end,
 })
 

@@ -1,4 +1,6 @@
 local BaseInstance = import("./BaseInstance")
+local InstanceProperty = import("../InstanceProperty")
+local Signal = import("../Signal")
 local validateType = import("../validateType")
 
 local GuiService = BaseInstance:extend("GuiService")
@@ -24,5 +26,15 @@ end
 
 function GuiService.prototype:SafeZoneOffsetsChanged()
 end
+
+function GuiService.prototype:IsTenFootInterface()
+	return false
+end
+
+GuiService.properties.BrowserWindowClosed = InstanceProperty.readOnly({
+	getDefault = function()
+		return Signal.new()
+	end,
+})
 
 return GuiService
