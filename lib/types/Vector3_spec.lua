@@ -75,4 +75,8 @@ describe("types.Vector3", function()
 			v.frobulations = v.frobulations + 1
 		end)
 	end)
+
+	it("should have a string representation of \"Vector3\"", function()
+		assert.equal(tostring(Vector3), "Vector3")
+	end)
 end)
