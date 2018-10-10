@@ -351,6 +351,30 @@ describe("instances.BaseInstance", function()
 		end)
 	end)
 
+	describe("IsDescendantOf", function()
+		it("should return true when the instance is a descendant of the passed argument, false if not", function()
+			local parent = BaseInstance:new()
+			local child = BaseInstance:new()
+			child.Parent = parent
+			assert.True(child:IsDescendantOf(parent))
+			assert.False(BaseInstance:new():IsDescendantOf(parent))
+
+			local someOtherParent = BaseInstance:new()
+			local childOfSomethingElse = BaseInstance:new()
+			childOfSomethingElse.Parent = someOtherParent
+			assert.False(childOfSomethingElse:IsDescendantOf(parent))
+
+			local descendantInSomethingElse = BaseInstance:new()
+			descendantInSomethingElse.Parent = child
+			assert.True(descendantInSomethingElse:IsDescendantOf(parent))
+		end)
+
+		-- Weird, but documented, behavior (https://www.robloxdev.com/api-reference/function/Instance/IsDescendantOf).
+		it("should always return true for nil", function()
+			assert.True(BaseInstance:new():IsDescendantOf(nil))
+		end)
+	end)
+
 	describe("GetFullName", function()
 		it("should get the full name", function()
 			local instance = BaseInstance:new()
