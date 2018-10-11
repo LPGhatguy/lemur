@@ -3,6 +3,7 @@ local names = {
 	"BindableEvent",
 	"BoolValue",
 	"Camera",
+	"Configuration",
 	"ContentProvider",
 	"CoreGui",
 	"CorePackages",
