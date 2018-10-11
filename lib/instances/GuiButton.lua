@@ -15,6 +15,12 @@ GuiButton.properties.AutoButtonColor = InstanceProperty.typed("boolean", {
 	end,
 })
 
+GuiButton.properties.Modal = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return false
+	end,
+})
+
 GuiButton.properties.MouseButton1Click = InstanceProperty.readOnly({
 	getDefault = function()
 		return Signal.new()
