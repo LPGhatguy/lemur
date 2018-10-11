@@ -1,18 +1,18 @@
 local assign = import("../assign")
 local typeKey = import("../typeKey")
 
-local Vector2 = {}
+local Vector3 = {}
 
-setmetatable(Vector2, {
+setmetatable(Vector3, {
 	__tostring = function()
-		return "Vector2"
+		return "Vector3"
 	end,
 })
 
 local prototype = {}
 
 local metatable = {}
-metatable[typeKey] = "Vector2"
+metatable[typeKey] = "Vector3"
 
 function metatable:__index(key)
 	local internal = getmetatable(self).internal
@@ -25,34 +25,35 @@ function metatable:__index(key)
 		return prototype[key]
 	end
 
-	error(string.format("%s is not a valid member of Vector2", tostring(key)), 2)
+	error(string.format("%s is not a valid member of Vector3", tostring(key)), 2)
 end
 
 function metatable:__add(other)
-	return Vector2.new(self.X + other.X, self.Y + other.Y)
+	return Vector3.new(self.X + other.X, self.Y + other.Y, self.Z + other.Z)
 end
 
 function metatable:__sub(other)
-	return Vector2.new(self.X - other.X, self.Y - other.Y)
+	return Vector3.new(self.X - other.X, self.Y - other.Y, self.Z - other.Z)
 end
 
 function metatable:__eq(other)
-	return self.X == other.X and self.Y == other.Y
+	return self.X == other.X and self.Y == other.Y and self.Z == other.Z
 end
 
-function Vector2.new(...)
+function Vector3.new(...)
 	if select("#", ...) == 0 then
-		return Vector2.new(0, 0)
+		return Vector3.new(0, 0, 0)
 	end
 
-	local X, Y = ...
-	if type(X) ~= "number" or type(Y) ~= "number" then
-		error("Vector2.new takes in 2 numbers", 2)
+	local X, Y, Z = ...
+	if type(X) ~= "number" or type(Y) ~= "number" or type(Z) ~= "number" then
+		error("Vector3.new takes in 3 numbers", 2)
 	end
 
 	local internalInstance = {
 		X = X,
 		Y = Y,
+		Z = Z,
 	}
 
 	local instance = newproxy(true)
@@ -63,4 +64,4 @@ function Vector2.new(...)
 	return instance
 end
 
-return Vector2
+return Vector3

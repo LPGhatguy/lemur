@@ -2,6 +2,7 @@ local Color3 = import("../types/Color3")
 local Font = import("../Enum/Font")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
+local TextTruncate = import("../Enum/TextTruncate")
 local TextXAlignment = import("../Enum/TextXAlignment")
 local TextYAlignment = import("../Enum/TextYAlignment")
 
@@ -30,6 +31,18 @@ TextLabel.properties.TextColor3 = InstanceProperty.typed("Color3", {
 TextLabel.properties.TextSize = InstanceProperty.typed("number", {
 	getDefault = function()
 		return 14
+	end,
+})
+
+TextLabel.properties.TextTransparency = InstanceProperty.typed("number", {
+	getDefault = function()
+		return 0
+	end,
+})
+
+TextLabel.properties.TextTruncate = InstanceProperty.enum(TextTruncate, {
+	getDefault = function()
+		return TextTruncate.None
 	end,
 })
 
