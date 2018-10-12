@@ -39,6 +39,12 @@ TextLabel.properties.TextWrapped = InstanceProperty.typed("boolean", {
 	end,
 })
 
+TextLabel.properties.TextScaled = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return false
+	end,
+})
+
 TextLabel.properties.TextXAlignment = InstanceProperty.enum(TextXAlignment, {
 	getDefault = function()
 		return TextXAlignment.Left

@@ -44,6 +44,7 @@ local names = {
 	"UIGridStyleLayout",
 	"UIListLayout",
 	"UIPadding",
+	"UITextSizeConstraint",
 	"UserInputService",
 	"VirtualInputManager",
 	"Workspace",
