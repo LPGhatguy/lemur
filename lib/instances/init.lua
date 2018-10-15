@@ -24,6 +24,7 @@ local names = {
 	"NotificationService",
 	"NumberValue",
 	"ObjectValue",
+	"ParticleEffect",
 	"Player",
 	"Players",
 	"ReplicatedStorage",
