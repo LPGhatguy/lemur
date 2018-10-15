@@ -91,9 +91,9 @@ describe("types.Vector3", function()
 		assert.are.same({0.25, 12.5, 50}, extractValues(v))
 	end)
 
-	it("should throw an error when multiplied by an incompatible type", function()
+	it("should throw an error when divided by an incompatible type", function()
 		assert.has.errors(function()
-			return Vector3.new(1, 2, 3) * "abc"
+			return Vector3.new(1, 2, 3) / "abc"
 		end)
 	end)
 
