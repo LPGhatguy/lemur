@@ -1,5 +1,6 @@
 local assign = import("../assign")
 local typeKey = import("../typeKey")
+local typeof = import("../functions/typeof")
 
 local Vector3 = {}
 
@@ -34,6 +35,26 @@ end
 
 function metatable:__sub(other)
 	return Vector3.new(self.X - other.X, self.Y - other.Y, self.Z - other.Z)
+end
+
+function metatable:__mul(other)
+	if typeof(other) == "Vector3" then
+		return Vector3.new(self.X * other.X, self.Y * other.Y, self.Z * other.Z)
+	elseif typeof(other) == "number" then
+		return Vector3.new(self.X * other, self.Y * other, self.Z * other)
+	else
+		error("attempt to multiply a Vector3 with an incompatible value type or nil")
+	end
+end
+
+function metatable:__div(other)
+	if typeof(other) == "Vector3" then
+		return Vector3.new(self.X / other.X, self.Y / other.Y, self.Z / other.Z)
+	elseif typeof(other) == "number" then
+		return Vector3.new(self.X / other, self.Y / other, self.Z / other)
+	else
+		error("attempt to divide a Vector3 with an incompatible value type or nil")
+	end
 end
 
 function metatable:__eq(other)

@@ -51,6 +51,52 @@ describe("types.Vector3", function()
 		assert.are.same({-99, -250, -300}, extractValues(v))
 	end)
 
+	it("should multiply by another Vector3", function()
+		local vectorA = Vector3.new(1, 50, 200)
+		local vectorB = Vector3.new(2, 0.5, 1)
+		local v = vectorA * vectorB
+
+		assert.not_nil(v)
+		assert.are.same({2, 25, 200}, extractValues(v))
+	end)
+
+	it("should multiply by a number", function()
+		local vectorA = Vector3.new(1, 50, 200)
+		local v = vectorA * 3
+
+		assert.not_nil(v)
+		assert.are.same({3, 150, 600}, extractValues(v))
+	end)
+
+	it("should throw an error when multiplied by an incompatible type", function()
+		assert.has.errors(function()
+			return Vector3.new(1, 2, 3) * nil
+		end)
+	end)
+
+	it("should divide by another Vector3", function()
+		local vectorA = Vector3.new(1, 50, 200)
+		local vectorB = Vector3.new(2, 1, 0.5)
+		local v = vectorA / vectorB
+
+		assert.not_nil(v)
+		assert.are.same({0.5, 50, 400}, extractValues(v))
+	end)
+
+	it("should divide by a number", function()
+		local vectorA = Vector3.new(1, 50, 200)
+		local v = vectorA / 4
+
+		assert.not_nil(v)
+		assert.are.same({0.25, 12.5, 50}, extractValues(v))
+	end)
+
+	it("should throw an error when multiplied by an incompatible type", function()
+		assert.has.errors(function()
+			return Vector3.new(1, 2, 3) * "abc"
+		end)
+	end)
+
 	it("should equal another Vector3 with the same x and y", function()
 		local vectorA = Vector3.new(1, 200, 400)
 		local vectorB = Vector3.new(1, 200, 400)
