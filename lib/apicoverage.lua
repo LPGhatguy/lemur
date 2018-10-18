@@ -1,7 +1,6 @@
 require("lib.baste").global()
 
 local httpExists, http = pcall(require, "socket.http")
-local instances = import("./instances")
 local json = import("./json")
 
 if not httpExists then
@@ -10,7 +9,7 @@ end
 
 local urls = {
 	APIDump = "https://s3.amazonaws.com/setup.roblox.com/{VERSION_ID}-API-Dump.json",
-	GetVersion = "http://versioncompatibility.api.roblox.com/GetCurrentClientVersionUpload?binaryType=WindowsStudio&apiKey=76e5a40c-3ae1-4028-9f10-7c62520bd94f",
+	GetVersion = "http://versioncompatibility.api.roblox.com/GetCurrentClientVersionUpload?binaryType=WindowsStudio&apiKey=76e5a40c-3ae1-4028-9f10-7c62520bd94f", -- luacheck: ignore
 }
 
 -- Get current version of Roblox to get the latest JSON dump. The url returns it in quotes, so strip the quotes.
@@ -21,15 +20,6 @@ local apiDump = json.decode(apiDumpBody)
 
 local COVERAGE_CLASS_OUTPUT_LINE = "[%d%%] %s"
 local COVERAGE_MEMBER_OUTPUT_LINE = "\t[%s] %s"
-local PRIMITIVE_PROPERTIES = {
-	-- dumpType = luaType
-	bool = "boolean",
-	double = "number",
-	float = "number",
-	int = "number",
-	int64 = "number",
-	string = "string",
-}
 
 -- Replace Instance with BaseInstance.
 apiDump.Classes[1].Name = "BaseInstance"
