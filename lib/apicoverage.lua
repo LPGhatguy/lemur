@@ -44,13 +44,7 @@ end
 local function verifyProperty(instance, member)
 	local metatable = getmetatable(instance)
 	local property = metatable.class.properties[member.Name]
-	if not property then return false end
-
-	if member.ValueType.Category == "Primitive" then
-		return type(property.getDefault(instance)) == PRIMITIVE_PROPERTIES[member.ValueType.Name]
-	end
-
-	return false
+	return property ~= nil
 end
 
 local coverage = {}
