@@ -19,6 +19,7 @@ local names = {
 	"ScrollingDirection",
 	"SizeConstraint",
 	"SortOrder",
+	"TextTruncate",
 	"TextXAlignment",
 	"TextYAlignment",
 	"ThumbnailSize",

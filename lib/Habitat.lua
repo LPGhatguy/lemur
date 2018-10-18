@@ -93,7 +93,7 @@ function Habitat:loadFromFs(path, passedOptions)
 		return instance
 	end
 
-	return nil
+	error(("loadFromFs failed: Path %s did not exist."):format(path), 2)
 end
 
 --[[
