@@ -24,6 +24,16 @@ local COVERAGE_MEMBER_OUTPUT_LINE = "\t[%s] %s"
 -- Replace Instance with BaseInstance.
 apiDump.Classes[1].Name = "BaseInstance"
 
+local function validMember(member)
+	for _, tag in ipairs(member.Tags or {}) do
+		if tag == "Deprecated" then
+			return false
+		end
+	end
+
+	return true
+end
+
 local function verifyFunction(instance, member)
 	-- TODO: Verify return types
 	local metatable = getmetatable(instance)
@@ -63,16 +73,7 @@ for _, class in ipairs(apiDump.Classes) do
 			local instance = instanceReference:new()
 
 			for _, member in ipairs(class.Members) do
-				local skipMember = false
-
-				for _, tag in ipairs(member.Tags or {}) do
-					if tag == "Deprecated" then
-						skipMember = true
-						break
-					end
-				end
-
-				if not skipMember then
+				if validMember(member) then
 					local success = false
 
 					if member.MemberType == "Function" then
@@ -92,9 +93,11 @@ for _, class in ipairs(apiDump.Classes) do
 		else
 			-- Instance doesn't exist, everything fails!!!
 			for _, member in ipairs(class.Members) do
-				classCoverage.Results[member.Name] = {
-					Success = false,
-				}
+				if validMember(member) then
+					classCoverage.Results[member.Name] = {
+						Success = false,
+					}
+				end
 			end
 		end
 	end
