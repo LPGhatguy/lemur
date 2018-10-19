@@ -1,4 +1,4 @@
-local Game = import("./Game")
+local DataModel = import("./DataModel")
 local Folder = import("./Folder")
 local typeof = import("../functions/typeof")
 
@@ -367,7 +367,7 @@ describe("instances.BaseInstance", function()
 		it("should exclude game", function()
 			local instance = BaseInstance:new()
 			instance.Name = "Test"
-			local other = Game:new()
+			local other = DataModel:new()
 			other.Name = "Parent"
 
 			instance.Parent = other

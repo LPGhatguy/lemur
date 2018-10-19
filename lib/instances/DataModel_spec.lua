@@ -1,16 +1,16 @@
-local Game = import("./Game")
+local DataModel = import("./DataModel")
 local typeof = import("../functions/typeof")
 
-describe("instances.Game", function()
+describe("instances.DataModel", function()
 	it("should instantiate", function()
-		local instance = Game:new()
+		local instance = DataModel:new()
 
 		assert.not_nil(instance)
 	end)
 
 	describe("GetService", function()
 		it("should have GetService", function()
-			local instance = Game:new()
+			local instance = DataModel:new()
 
 			local ReplicatedStorage = instance:GetService("ReplicatedStorage")
 
@@ -19,7 +19,7 @@ describe("instances.Game", function()
 		end)
 
 		it("should throw when given invalid service names", function()
-			local instance = Game:new()
+			local instance = DataModel:new()
 
 			assert.has.errors(function()
 				instance:GetService("SOMETHING THAT WILL NEVER EXIST")
@@ -28,7 +28,7 @@ describe("instances.Game", function()
 	end)
 
 	it("should have properties defined", function()
-		local instance = Game:new()
+		local instance = DataModel:new()
 
 		assert.equal(typeof(instance.CreatorId), "number")
 		assert.equal(typeof(instance.CreatorType), "EnumItem")
