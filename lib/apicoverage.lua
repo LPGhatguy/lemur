@@ -133,7 +133,7 @@ for name, results in pairs(coverage) do
 
 	print(COVERAGE_CLASS_OUTPUT_LINE:format(average, name))
 
-	for _, line in pairs(output) do
+	for _, line in ipairs(output) do
 		print(line)
 	end
 end
