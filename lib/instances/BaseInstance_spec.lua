@@ -671,4 +671,36 @@ describe("instances.BaseInstance", function()
 			assert.spy(spy).was_called_with(child)
 		end)
 	end)
+
+	describe("ChildRemoved", function()
+		it("should fire when a child is destroyed", function()
+			local parent = BaseInstance:new()
+			local child = BaseInstance:new()
+
+			local spy = spy.new(function() end)
+			parent.ChildRemoved:Connect(spy)
+
+			child.Parent = parent
+			assert.spy(spy).was_not_called()
+
+			child:Destroy()
+			assert.spy(spy).was_called_with(child)
+		end)
+
+		it("should fire when a child's parent is set to nil", function()
+			local parent = BaseInstance:new()
+			local child = BaseInstance:new()
+
+			local spy = spy.new(function() end)
+			parent.ChildRemoved:Connect(spy)
+
+			child.Parent = parent
+
+			assert.spy(spy).was_not_called()
+
+			child.Parent = nil
+
+			assert.spy(spy).was_called_with(child)
+		end)
+	end)
 end)

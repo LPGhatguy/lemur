@@ -56,6 +56,10 @@ BaseInstance.properties.ChildAdded = InstanceProperty.readOnly({
 	getDefault = Signal.new
 })
 
+BaseInstance.properties.ChildRemoved = InstanceProperty.readOnly({
+		getDefault = Signal.new
+})
+
 BaseInstance.properties.Parent = InstanceProperty.normal({
 	set = function(self, key, value)
 		local instance = getmetatable(self).instance
@@ -74,6 +78,7 @@ BaseInstance.properties.Parent = InstanceProperty.normal({
 
 		if instance.properties.Parent ~= nil then
 			getmetatable(instance.properties.Parent).instance.children[self] = nil
+			instance.properties.Parent.ChildRemoved:Fire(self)
 		end
 
 		instance.properties.Parent = value
