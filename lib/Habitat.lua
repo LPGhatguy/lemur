@@ -55,6 +55,8 @@ function Habitat:loadFromFs(path, passedOptions)
 
 			return instance
 		end
+		-- Ignore non-lua files
+		return
 	elseif fs.isDirectory(path) then
 		local instance = Instance.new("Folder")
 		instance.Name = path:match("([^/]-)$")
