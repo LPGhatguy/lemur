@@ -118,6 +118,7 @@ This document should remain up-to-date with current API coverage and status.
 	* GetFullName()
 	* GetPropertyChangedSignal(key)
 	* IsA(className)
+	* IsDescendantOf(object)
 	* WaitForChild(name)
 * LocalScript (stub)
 	* Source

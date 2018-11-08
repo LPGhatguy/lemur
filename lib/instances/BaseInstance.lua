@@ -220,6 +220,16 @@ function BaseInstance.prototype:IsA(className)
 	return false
 end
 
+function BaseInstance.prototype:IsDescendantOf(object)
+	local parent = self
+
+	repeat
+		parent = parent.Parent
+	until parent == nil or parent == object
+
+	return parent == object
+end
+
 function BaseInstance.prototype:Destroy()
 	self:ClearAllChildren()
 
