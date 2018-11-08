@@ -39,6 +39,15 @@ describe("types.Vector2", function()
 		assert.are.same({101, 700}, extractValues(v))
 	end)
 
+	it("should subtract another Vector2", function()
+		local vectorA = Vector2.new(1, 200)
+		local vectorB = Vector2.new(100, 500)
+		local v = vectorA - vectorB
+
+		assert.not_nil(v)
+		assert.are.same({-99, -300}, extractValues(v))
+	end)
+
 	it("should equal another Vector2 with the same x and y", function()
 		local vectorA = Vector2.new(1, 200)
 		local vectorB = Vector2.new(1, 200)
