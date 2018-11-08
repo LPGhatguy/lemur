@@ -1,4 +1,6 @@
 local ScrollingDirection = import("../Enum/ScrollingDirection")
+local ScrollBarInset = import("../Enum/ScrollBarInset")
+local VerticalScrollBarPosition = import("../Enum/VerticalScrollBarPosition")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local UDim2 = import("../types/UDim2")
@@ -31,6 +33,12 @@ ScrollingFrame.properties.AbsoluteWindowSize = InstanceProperty.readOnly({
 	end,
 })
 
+ScrollingFrame.properties.CanvasPosition = InstanceProperty.typed("Vector2", {
+	getDefault = function()
+		return Vector2.new()
+	end,
+})
+
 ScrollingFrame.properties.CanvasSize = InstanceProperty.typed("UDim2", {
 	getDefault = function()
 		return UDim2.new()
@@ -52,6 +60,18 @@ ScrollingFrame.properties.ScrollingDirection = InstanceProperty.enum(ScrollingDi
 ScrollingFrame.properties.ScrollingEnabled = InstanceProperty.typed("boolean", {
 	getDefault = function()
 		return true
+	end,
+})
+
+ScrollingFrame.properties.VerticalScrollBarInset = InstanceProperty.enum(ScrollBarInset, {
+	getDefault = function()
+		return ScrollBarInset.None
+	end,
+})
+
+ScrollingFrame.properties.VerticalScrollBarPosition = InstanceProperty.enum(VerticalScrollBarPosition, {
+	getDefault = function()
+		return VerticalScrollBarPosition.Right
 	end,
 })
 

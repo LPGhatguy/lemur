@@ -16,6 +16,7 @@ local names = {
 	"MouseBehavior",
 	"PlaybackState",
 	"ScaleType",
+	"ScrollBarInset",
 	"ScrollingDirection",
 	"SizeConstraint",
 	"SortOrder",
@@ -26,6 +27,7 @@ local names = {
 	"ThumbnailType",
 	"UserInputType",
 	"VerticalAlignment",
+	"VerticalScrollBarPosition",
 	"VirtualInputMode",
 	"ZIndexBehavior",
 }
