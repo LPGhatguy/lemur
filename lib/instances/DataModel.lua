@@ -27,9 +27,9 @@ local UserInputService = import("./UserInputService")
 local VirtualInputManager = import("./VirtualInputManager")
 local Workspace = import("./Workspace")
 
-local Game = BaseInstance:extend("DataModel")
+local DataModel = BaseInstance:extend("DataModel")
 
-function Game:init(instance)
+function DataModel:init(instance)
 	AnalyticsService:new().Parent = instance
 	ContentProvider:new().Parent = instance
 	CoreGui:new().Parent = instance
@@ -56,7 +56,7 @@ function Game:init(instance)
 	Workspace:new().Parent = instance
 end
 
-function Game.prototype:GetService(serviceName)
+function DataModel.prototype:GetService(serviceName)
 	local service = self:FindFirstChildOfClass(serviceName)
 
 	if service then
@@ -68,52 +68,52 @@ function Game.prototype:GetService(serviceName)
 	error(string.format("Cannot get service %q", tostring(serviceName)), 2)
 end
 
-Game.properties.CreatorId = InstanceProperty.readOnly({
+DataModel.properties.CreatorId = InstanceProperty.readOnly({
 	getDefault = function()
 		return 0
 	end,
 })
 
-Game.properties.CreatorType = InstanceProperty.readOnly({
+DataModel.properties.CreatorType = InstanceProperty.readOnly({
 	getDefault = function()
 		return CreatorType.User
 	end,
 })
 
-Game.properties.GameId = InstanceProperty.readOnly({
+DataModel.properties.GameId = InstanceProperty.readOnly({
 	getDefault = function()
 		return 0
 	end,
 })
 
-Game.properties.JobId = InstanceProperty.readOnly({
+DataModel.properties.JobId = InstanceProperty.readOnly({
 	getDefault = function()
 		return ""
 	end,
 })
 
-Game.properties.PlaceId = InstanceProperty.readOnly({
+DataModel.properties.PlaceId = InstanceProperty.readOnly({
 	getDefault = function()
 		return 0
 	end,
 })
 
-Game.properties.PlaceVersion = InstanceProperty.readOnly({
+DataModel.properties.PlaceVersion = InstanceProperty.readOnly({
 	getDefault = function()
 		return 0
 	end,
 })
 
-Game.properties.VIPServerId = InstanceProperty.readOnly({
+DataModel.properties.VIPServerId = InstanceProperty.readOnly({
 	getDefault = function()
 		return ""
 	end,
 })
 
-Game.properties.VIPServerOwnerId = InstanceProperty.readOnly({
+DataModel.properties.VIPServerOwnerId = InstanceProperty.readOnly({
 	getDefault = function()
 		return 0
 	end,
 })
 
-return Game
+return DataModel

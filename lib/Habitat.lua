@@ -8,7 +8,7 @@ local Instance = import("./Instance")
 local TaskScheduler = import("./TaskScheduler")
 local createEnvironment = import("./createEnvironment")
 local fs = import("./fs")
-local Game = import("./instances/Game")
+local DataModel = import("./instances/DataModel")
 local validateType = import("./validateType")
 local assign = import("./assign")
 
@@ -21,7 +21,7 @@ Habitat.__index = Habitat
 
 function Habitat.new(settings)
 	local habitat = {
-		game = Game:new(),
+		game = DataModel:new(),
 		taskScheduler = TaskScheduler.new(),
 		settings = settings or {},
 		environment = nil,
