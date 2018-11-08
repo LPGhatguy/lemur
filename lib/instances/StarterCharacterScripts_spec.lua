@@ -6,4 +6,8 @@ describe("instances.StarterCharacterScripts", function()
 
 		assert.not_nil(instance)
 	end)
+
+	it("should inherit StarterPlayerScripts", function()
+		assert.True(StarterCharacterScripts:new():IsA("StarterPlayerScripts"))
+	end)
 end)

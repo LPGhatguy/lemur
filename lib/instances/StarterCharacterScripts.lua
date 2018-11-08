@@ -1,4 +1,4 @@
-local BaseInstance = import("./BaseInstance")
-local StarterCharacterScripts = BaseInstance:extend("StarterCharacterScripts")
+local StarterPlayerScripts = import("./StarterPlayerScripts")
+local StarterCharacterScripts = StarterPlayerScripts:extend("StarterCharacterScripts")
 
 return StarterCharacterScripts
