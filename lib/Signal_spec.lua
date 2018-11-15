@@ -61,6 +61,31 @@ describe("Signal", function()
 		assert.is_false(connection.Connected)
 	end)
 
+	it("should catch yields", function()
+		local signal = Signal.new()
+
+		signal:Connect(function()
+			coroutine.yield()
+		end)
+
+		local co = coroutine.create(function()
+			signal:Fire()
+		end)
+
+		assert(coroutine.resume(co))
+		assert.equal(coroutine.status(co), "dead")
+	end)
+
+	it("should catch errors", function()
+		local signal = Signal.new()
+
+		signal:Connect(function()
+			error("The test failed.")
+		end)
+
+		signal:Fire()
+	end)
+
 	-- Remove this when the event loop is made
 	it("should error on Wait", function()
 		local signal = Signal.new()

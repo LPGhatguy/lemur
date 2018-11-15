@@ -74,7 +74,13 @@ function Signal:Fire(...)
 	local internal = getmetatable(self).internal
 
 	for _, listener in ipairs(internal.listeners) do
-		listener(...)
+		-- Busted uses tables for spies, which angers coroutine.create if we use
+		-- them directly.
+		local co = coroutine.create(function(...)
+			return listener(...)
+		end)
+
+		coroutine.resume(co, ...)
 	end
 end
 
