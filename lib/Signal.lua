@@ -80,6 +80,7 @@ function Signal:Fire(...)
 			return listener(...)
 		end)
 
+		-- TODO: Report errors in a nice way that won't spam tests
 		coroutine.resume(co, ...)
 	end
 end
