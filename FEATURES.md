@@ -86,6 +86,7 @@ This document should remain up-to-date with current API coverage and status.
 	* InputEnded
 	* LayoutOrder
 	* Position
+	* Selectable
 	* Size
 	* SizeConstraint
 	* Visible
