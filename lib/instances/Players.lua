@@ -10,4 +10,8 @@ Players.properties.LocalPlayer = InstanceProperty.normal({
 	end,
 })
 
+function Players.prototype:GetPlayerFromCharacter()
+	return nil
+end
+
 return Players

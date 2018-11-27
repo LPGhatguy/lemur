@@ -175,6 +175,7 @@ This document should remain up-to-date with current API coverage and status.
 	* SystemLocaleId
 * LocalizationTable
 * Players
+	* GetPlayerFromCharacter (stub)
 	* LocalPlayer
 		* UserId
 * ReplicatedStorage

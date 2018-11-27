@@ -1,5 +1,6 @@
 local typeof = import("../functions/typeof")
 
+local Model = import("./Model")
 local Players = import("./Players")
 
 describe("instances.Players", function()
@@ -13,5 +14,11 @@ describe("instances.Players", function()
 		local instance = Players:new()
 
 		assert.equal(typeof(instance.LocalPlayer), "Instance")
+	end)
+
+	it("should return nil when using GetPlayerFromCharacter", function()
+		local instance = Players:new()
+
+		assert.equal(instance:GetPlayerFromCharacter(Model:new()), nil)
 	end)
 end)
