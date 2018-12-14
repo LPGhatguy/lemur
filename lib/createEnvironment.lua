@@ -17,6 +17,7 @@ end
 
 baseEnvironment.Instance = Instance
 baseEnvironment.Enum = Enum
+baseEnvironment.__LEMUR__ = true
 
 --[[
 	Create a new script environment, suitable for use with the given habitat.
