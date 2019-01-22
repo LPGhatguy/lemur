@@ -20,6 +20,29 @@ describe("instances.HttpService", function()
 	end)
 
 	describe("GenerateGUID", function()
+		it("should have proper length guids", function()
+			local instance = HttpService:new()
+			local guid = instance:GenerateGUID(false)
+
+			assert.equal(36, #guid)
+		end)
+
+		it("should give unique guids", function()
+			local instance = HttpService:new()
+			local guids = {}
+
+			for _ = 1, 100 do
+				guids[instance:GenerateGUID()] = true
+			end
+
+			local guidsGenerated = 0
+			for _ in pairs(guids) do
+				guidsGenerated = guidsGenerated + 1
+			end
+
+			assert.equal(100, guidsGenerated)
+		end)
+
 		it("should omit curly braces when wrapInCurlyBraces is false", function()
 			local instance = HttpService:new()
 			local guid = instance:GenerateGUID(false)
