@@ -14,6 +14,7 @@ local names = {
 	"GuiObject",
 	"GuiService",
 	"HttpService",
+	"Humanoid",
 	"ImageButton",
 	"ImageLabel",
 	"IntValue",
