@@ -35,7 +35,6 @@ describe("instances.Humanoid", function()
 
 	it("should call Died when Health is set to 0 and the Humanoid is in Workspace", function()
 		local instance = Humanoid:new()
-		local Workspace = Workspace:new()
 
 		local spy = spy.new(function() end)
 		instance.Died:Connect(spy)
@@ -44,7 +43,7 @@ describe("instances.Humanoid", function()
 		instance.Health = 100
 		assert.spy(spy).was_called(0)
 
-		instance.Parent = Workspace
+		instance.Parent = Workspace:new()
 		assert.spy(spy).was_called(0)
 		instance.Health = 0
 		assert.spy(spy).was_called(1)
