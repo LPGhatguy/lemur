@@ -90,6 +90,10 @@ This document should remain up-to-date with current API coverage and status.
 	* Size
 	* SizeConstraint
 	* Visible
+* Humanoid
+	* Died
+	* Health
+	* MaxHealth
 * ImageButton
 	* Image
 	* ImageColor3
