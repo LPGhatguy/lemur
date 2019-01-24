@@ -1,9 +1,10 @@
 local Humanoid = import("./Humanoid")
+local Instance = import("../Instance")
 local Workspace = import("./Workspace")
 
 describe("instances.Humanoid", function()
 	it("should instantiate", function()
-		local instance = Humanoid:new()
+		local instance = Instance.new("Humanoid")
 
 		assert.not_nil(instance)
 		assert.equal(instance.Health, 100)
