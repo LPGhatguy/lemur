@@ -30,7 +30,7 @@ Humanoid.properties.Health = InstanceProperty.normal({
 
 		instance.properties.Health = health
 
-		if not instance.died and health == 0 and self:FindFirstAncestorWhichIsA("Workspace") then
+		if not instance.died and health == 0 and self:FindFirstAncestorWhichIsA("Workspace") ~= nil then
 			instance.died = true
 			self.Died:Fire()
 		end
@@ -43,7 +43,7 @@ Humanoid.properties.MaxHealth = InstanceProperty.normal({
 	end,
 
 	set = function(self, key, value)
-		validateType("Health", value, "number")
+		validateType("MaxHealth", value, "number")
 		local instance = getmetatable(self).instance
 		local maxHealth = math.max(0, value)
 
