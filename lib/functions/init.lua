@@ -1,7 +1,8 @@
 local names = {
+	"pcall",
+	"tick",
 	"typeof",
 	"warn",
-	"tick",
 }
 
 local functions = {}
