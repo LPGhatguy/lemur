@@ -40,8 +40,7 @@ describe("types.BrickColor", function()
     end)
 
     it("should map r g b values to the nearest BrickColor", function()
-		local color = BrickColor.new(0.123, 0.123, 0.123)
-
+        local color = BrickColor.new(0.123, 0.123, 0.123)
         assert.not_nil(color)
         assert.are.same(149, color.Number)
     end)
@@ -148,4 +147,35 @@ describe("types.BrickColor", function()
         assert.are.same(194, color.Number)
     end)
 
+	it("should error when an invalid palette index is given", function()
+        assert.has_error(
+            function()
+                BrickColor.palette()
+            end,
+            "Argument 1 missing or nil"
+        )
+
+        assert.has_error(
+            function()
+                BrickColor.palette(-1)
+            end,
+            "palette index out of bounds (-1)"
+        )
+
+        assert.has_error(
+            function()
+                BrickColor.palette("")
+            end,
+            "Unable to cast string to int"
+        )
+    end)
+
+	it("should error when an invalid argument type is given", function()
+        assert.has_error(
+            function()
+                BrickColor.new(true)
+            end,
+            "Bad argument #1 to 'new' (Color3 expected got boolean)"
+        )
+    end)
 end)
