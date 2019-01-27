@@ -108,6 +108,13 @@ describe("types.BrickColor", function()
         assert.are.same(23, color.Number)
     end)
 
+	it("should have the Yellow method", function()
+		local color = BrickColor.Yellow()
+
+        assert.not_nil(color)
+        assert.are.same(24, color.Number)
+    end)
+
 	it("should compare BrickColors", function()
         local c1, c2 = BrickColor.new(1), BrickColor.new(1)
         assert.are.equal(c1, c2)
@@ -117,6 +124,28 @@ describe("types.BrickColor", function()
 	it("should be detected by typeof", function()
 		local type = typeof(BrickColor.new())
 		assert.are.equal("BrickColor", type)
+    end)
+
+	it("tostring should return 'BrickColor'", function()
+		local typeString = tostring(BrickColor)
+
+        assert.not_nil(typeString)
+        assert.are.same(typeString, "BrickColor")
+    end)
+
+	it("should return color 'Medium stone grey' for invalid name", function()
+		local color = BrickColor.new("")
+
+        assert.not_nil(color)
+        assert.are.same(194, color.Number)
+    end)
+
+
+	it("should return color 'Medium stone grey' for invalid number", function()
+		local color = BrickColor.new(-1)
+
+        assert.not_nil(color)
+        assert.are.same(194, color.Number)
     end)
 
 end)
