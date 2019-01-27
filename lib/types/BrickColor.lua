@@ -268,7 +268,9 @@ local function getColorInfoFromNumber(number)
 end
 
 local function getBestColorInfoFromRGB(r, g, b)
-    r, g, b = r * 255, g * 255, b * 255
+    r = r and r * 255 or 0
+    g = g and g * 255 or 0
+    b = b and b * 255 or 0
     local colorInfoChosen
     local difference = math.huge
     for i = 1, #VALUES do
@@ -323,7 +325,7 @@ function BrickColor.new(...)
     local numArgs = select("#", ...)
 
     local colorInfo
-    if numArgs == 3 then
+    if numArgs >= 2 then
         colorInfo = getBestColorInfoFromRGB(...)
     elseif numArgs == 1 then
         local argType = typeof(...)
