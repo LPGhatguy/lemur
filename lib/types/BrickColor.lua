@@ -302,12 +302,14 @@ local function getColorInfoFromPaletteValue(paletteValue)
 end
 
 local function buildFromColorInfo(colorInfo)
-    local r, g, b = colorInfo.r, colorInfo.g, colorInfo.b
+    local r = colorInfo.r / 255
+    local g = colorInfo.g / 255
+    local b = colorInfo.b / 255
 
 	local internalInstance = {
         Number = colorInfo.number,
         Name = colorInfo.name,
-        Color = Color3.fromRGB(r, g, b),
+        Color = Color3.new(r, g, b),
         r = r,
         g = g,
         b = b
@@ -355,7 +357,7 @@ function BrickColor.palette(paletteValue)
     end
     paletteValue = math.floor(paletteValue + 0.5)
     if paletteValue < 0 or paletteValue > 127 then
-        error(string.format("palette index out of bounds (%d)"), paletteValue)
+        error(string.format("palette index out of bounds (%d)", paletteValue))
     end
     local colorInfo = getColorInfoFromPaletteValue(paletteValue)
     return buildFromColorInfo(colorInfo)
