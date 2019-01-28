@@ -1,4 +1,5 @@
 local Signal = import("./Signal")
+local typeof = import("./functions/typeof")
 
 describe("Signal", function()
 	it("should be instantiable", function()
@@ -93,5 +94,9 @@ describe("Signal", function()
 		assert.has.errors(function()
 			signal:Wait()
 		end)
+	end)
+
+	it("should have connections with the typeof RBXScriptConnection", function()
+		assert.equal("RBXScriptConnection", typeof(Signal.new():Connect(function() end)))
 	end)
 end)
