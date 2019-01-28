@@ -99,4 +99,10 @@ describe("Signal", function()
 	it("should have connections with the typeof RBXScriptConnection", function()
 		assert.equal("RBXScriptConnection", typeof(Signal.new():Connect(function() end)))
 	end)
+
+	it("should error when giving a bad index", function()
+		assert.has.errors(function()
+			local _ = Signal.new():Connect(function() end).Doge
+		end)
+	end)
 end)
