@@ -6,6 +6,7 @@ describe("instances.Workspace", function()
 		local instance = Workspace:new()
 
 		assert.not_nil(instance)
+		assert.equal(typeof(instance.Gravity), "number")
 	end)
 
 	describe("CurrentCamera", function()
