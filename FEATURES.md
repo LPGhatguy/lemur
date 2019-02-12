@@ -165,6 +165,10 @@ This document should remain up-to-date with current API coverage and status.
 	* VerticalAlignment
 * UIListLayout
 	* Padding
+* Workspace
+	* AllowThirdPartySales
+	* DistributedGameTime
+	* Gravity
 
 ## Implemented Services
 * ContentProvider
