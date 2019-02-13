@@ -1,6 +1,5 @@
 local Folder = import("./Folder")
 local Game = import("./Game")
-local InstanceProperty = import("../InstanceProperty")
 local typeof = import("../functions/typeof")
 
 local BaseInstance = import("./BaseInstance")
@@ -790,6 +789,8 @@ describe("instances.BaseInstance", function()
 		end)
 
 		it("should not clone instance properties", function()
+			local InstanceProperty = import("../InstanceProperty")
+
 			local CreatableClass = BaseInstance:extend("Creatable", {
 				creatable = true,
 			})
@@ -804,26 +805,6 @@ describe("instances.BaseInstance", function()
 			local clone = instance:Clone()
 			assert.equal(clone.Value, ref)
 			assert.equal(instance.Value, ref)
-		end)
-
-		it("should clone enums", function()
-			local CreatableClass = BaseInstance:extend("Creatable", {
-				creatable = true,
-			})
-
-			CreatableClass.properties.Value = InstanceProperty.normal({})
-
-			local enum = import("../createEnum")("TestEnum", {
-				A = 0,
-				B = 1,
-				C = 2,
-			})
-
-			local instance = CreatableClass:new()
-			instance.Value = enum.A
-
-			local clone = instance:Clone()
-			assert.equal(clone.Value, enum.A)
 		end)
 
 		it("should error when trying to clone a non-creatable object", function()

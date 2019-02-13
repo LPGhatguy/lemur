@@ -52,4 +52,27 @@ describe("createEnum", function()
 			tostring(variant.something)
 		end)
 	end)
+
+	it("should clone", function()
+		local BaseInstance = import("./instances/BaseInstance")
+		local InstanceProperty = import("./InstanceProperty")
+
+		local CreatableClass = BaseInstance:extend("Creatable", {
+			creatable = true,
+		})
+
+		CreatableClass.properties.Value = InstanceProperty.normal({})
+
+		local enum = createEnum("TestEnum", {
+			A = 0,
+			B = 1,
+			C = 2,
+		})
+
+		local instance = CreatableClass:new()
+		instance.Value = enum.A
+
+		local clone = instance:Clone()
+		assert.equal(clone.Value, enum.A)
+	end)
 end)
