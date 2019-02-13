@@ -19,7 +19,7 @@ function InstanceProperty.normal(config)
 			local value = getmetatable(self).instance.properties[key]
 
 			if typeof(value) == "Instance" then
-				return nil
+				return value
 			elseif type(value) == "userdata" and typeof(value) ~= "userdata" then
 				-- Lemur implemented userdata, should have its own Clone function
 				local metatable = assert(getmetatable(value), "no metatable on cloning userdata")

@@ -1,5 +1,6 @@
-local Game = import("./Game")
 local Folder = import("./Folder")
+local Game = import("./Game")
+local InstanceProperty = import("../InstanceProperty")
 local typeof = import("../functions/typeof")
 
 local BaseInstance = import("./BaseInstance")
@@ -786,6 +787,23 @@ describe("instances.BaseInstance", function()
 			local clone = parent:Clone()
 			assert.equal(#clone:GetChildren(), 1)
 			assert.not_nil(clone:FindFirstChild("Child"))
+		end)
+
+		it("should not clone instance properties", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			CreatableClass.properties.Value = InstanceProperty.normal({})
+
+			local ref = CreatableClass:new()
+
+			local instance = CreatableClass:new()
+			instance.Value = ref
+
+			local clone = instance:Clone()
+			assert.equal(clone.Value, ref)
+			assert.equal(instance.Value, ref)
 		end)
 
 		it("should error when trying to clone a non-creatable object", function()
