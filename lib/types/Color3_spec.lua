@@ -79,4 +79,24 @@ describe("types.Color3", function()
 		local type = typeof(Color3.new())
 		assert.are.equal("Color3", type)
 	end)
+
+	it("should clone", function()
+		local BaseInstance = import("../instances/BaseInstance")
+		local InstanceProperty = import("../InstanceProperty")
+
+		local CreatableClass = BaseInstance:extend("Creatable", {
+			creatable = true,
+		})
+
+		CreatableClass.properties.Value = InstanceProperty.normal({})
+
+		local color3 = Color3.new(1, 0, 0)
+
+		local instance = CreatableClass:new()
+		instance.Value = color3
+
+		local clone = instance:Clone()
+		assert.equal(clone.Value, color3)
+		assert.not_equals(getmetatable(color3), getmetatable(clone.Value))
+	end)
 end)
