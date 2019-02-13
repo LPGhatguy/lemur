@@ -114,4 +114,24 @@ describe("types.UDim2", function()
 		assert.are.same({50, 150, 250, 350}, extractUDim2(udimA:Lerp(udimB, 0.5)))
 		assert.are.same({100, 200, 300, 400}, extractUDim2(udimA:Lerp(udimB, 1)))
 	end)
+
+	it("should clone", function()
+		local BaseInstance = import("../instances/BaseInstance")
+		local InstanceProperty = import("../InstanceProperty")
+
+		local CreatableClass = BaseInstance:extend("Creatable", {
+			creatable = true,
+		})
+
+		CreatableClass.properties.Value = InstanceProperty.normal({})
+
+		local udim2 = UDim2.new(0.5, 50, 0.5, 50)
+
+		local instance = CreatableClass:new()
+		instance.Value = udim2
+
+		local clone = instance:Clone()
+		assert.equal(clone.Value, udim2)
+		assert.not_equals(getmetatable(udim2), getmetatable(clone.Value))
+	end)
 end)
