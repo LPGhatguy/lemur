@@ -124,6 +124,8 @@ function BaseInstance.prototype:Clone()
 		cloneProperties[propertyName] = prototype.clone(self, propertyName)
 	end
 
+	class.postClone(clone, self)
+
 	return clone
 end
 
@@ -395,6 +397,9 @@ function BaseInstance:new(...)
 end
 
 function BaseInstance:init(instance, ...)
+end
+
+function BaseInstance:postClone(old)
 end
 
 --[[
