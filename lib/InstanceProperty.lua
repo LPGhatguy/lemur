@@ -18,7 +18,7 @@ function InstanceProperty.normal(config)
 			local value = getmetatable(self).instance.properties[key]
 
 			if typeof(value) == "Instance" then
-				return value:Clone()
+				return nil
 			elseif typeof(value) == "RBXScriptSignal" then
 				return value.new()
 			end

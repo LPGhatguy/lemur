@@ -116,6 +116,10 @@ function BaseInstance.prototype:Clone()
 	local cloneProperties = getmetatable(clone).instance.properties
 	local classProperties = class.properties
 
+	for _, child in pairs(self:GetChildren()) do
+		child:Clone().Parent = clone
+	end
+
 	for propertyName, prototype in pairs(classProperties) do
 		cloneProperties[propertyName] = prototype.clone(self, propertyName)
 	end

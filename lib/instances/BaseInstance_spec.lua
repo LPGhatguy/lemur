@@ -757,7 +757,7 @@ describe("instances.BaseInstance", function()
 
 			BaseInstance:new().Parent = instanceA
 			assert.spy(spyA).was_called()
-			assert.spY(spyB).was_not_called()
+			assert.spy(spyB).was_not_called()
 		end)
 
 		it("should not clone the parent", function()
@@ -771,6 +771,21 @@ describe("instances.BaseInstance", function()
 			local clone = instance:Clone()
 			assert.is_nil(clone.Parent)
 			assert.not_nil(instance.Parent)
+		end)
+
+		it("should clone children", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local parent = CreatableClass:new()
+			local child = CreatableClass:new()
+			child.Name = "Child"
+			child.Parent = parent
+
+			local clone = parent:Clone()
+			assert.equal(#clone:GetChildren(), 1)
+			assert.not_nil(clone:FindFirstChild("Child"))
 		end)
 
 		it("should error when trying to clone a non-creatable object", function()
