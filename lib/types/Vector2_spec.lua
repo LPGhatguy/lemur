@@ -66,4 +66,24 @@ describe("types.Vector2", function()
 		assert.not_equals(vectorA, vectorB2)
 		assert.not_equals(vectorA, vectorB3)
 	end)
+
+	it("should clone", function()
+		local BaseInstance = import("../instances/BaseInstance")
+		local InstanceProperty = import("../InstanceProperty")
+
+		local CreatableClass = BaseInstance:extend("Creatable", {
+			creatable = true,
+		})
+
+		CreatableClass.properties.Value = InstanceProperty.normal({})
+
+		local vector2 = Vector2.new(1, 2)
+
+		local instance = CreatableClass:new()
+		instance.Value = vector2
+
+		local clone = instance:Clone()
+		assert.equal(clone.Value, vector2)
+		assert.not_equals(getmetatable(vector2), getmetatable(clone.Value))
+	end)
 end)
