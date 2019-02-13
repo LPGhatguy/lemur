@@ -14,6 +14,17 @@ function InstanceProperty.normal(config)
 		getDefault = function()
 			return nil
 		end,
+		clone = function(self, key)
+			local value = getmetatable(self).instance.properties[key]
+
+			if typeof(value) == "Instance" then
+				return value:Clone()
+			elseif typeof(value) == "RBXScriptSignal" then
+				return value.new()
+			end
+
+			return value
+		end,
 	}, config)
 end
 

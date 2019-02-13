@@ -719,4 +719,65 @@ describe("instances.BaseInstance", function()
 			assert.spy(spy).was_called_with(child)
 		end)
 	end)
+
+	describe("Clone", function()
+		it("should clone the entire object", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local instance = CreatableClass:new()
+			instance.Name = "Alpha"
+
+			local clone = instance:Clone()
+			assert.not_equals(instance, clone)
+			assert.equal(instance.Name, "Alpha")
+			assert.equal(clone.Name, "Alpha")
+
+			clone.Name = "Beta"
+			assert.equal(instance.Name, "Alpha")
+			assert.equal(clone.Name, "Beta")
+		end)
+
+		it("should clone fresh events", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local instanceA = CreatableClass:new()
+			local spyA = spy.new(function() end)
+			instanceA.ChildAdded:Connect(spyA)
+
+			local instanceB = instanceA:Clone()
+			local spyB = spy.new(function() end)
+			instanceB.ChildAdded:Connect(spyB)
+
+			assert.spy(spyA).was_not_called()
+			assert.spy(spyB).was_not_called()
+
+			BaseInstance:new().Parent = instanceA
+			assert.spy(spyA).was_called()
+			assert.spY(spyB).was_not_called()
+		end)
+
+		it("should not clone the parent", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local instance = CreatableClass:new()
+			instance.Parent = CreatableClass:new()
+
+			local clone = instance:Clone()
+			assert.is_nil(clone.Parent)
+			assert.not_nil(instance.Parent)
+		end)
+
+		it("should error when trying to clone a non-creatable object", function()
+			local instance = BaseInstance:new()
+			assert.has.errors(function()
+				instance:Clone()
+			end)
+		end)
+	end)
 end)
