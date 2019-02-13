@@ -806,6 +806,26 @@ describe("instances.BaseInstance", function()
 			assert.equal(instance.Value, ref)
 		end)
 
+		it("should clone enums", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			CreatableClass.properties.Value = InstanceProperty.normal({})
+
+			local enum = import("../createEnum")("TestEnum", {
+				A = 0,
+				B = 1,
+				C = 2,
+			})
+
+			local instance = CreatableClass:new()
+			instance.Value = enum.A
+
+			local clone = instance:Clone()
+			assert.equal(clone.Value, enum.A)
+		end)
+
 		it("should error when trying to clone a non-creatable object", function()
 			local instance = BaseInstance:new()
 			assert.has.errors(function()
