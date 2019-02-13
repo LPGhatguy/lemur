@@ -81,4 +81,24 @@ describe("types.Rect", function()
 		assert.not_equals(rectA, rectB3)
 		assert.not_equals(rectA, rectB4)
 	end)
+
+	it("should clone", function()
+		local BaseInstance = import("../instances/BaseInstance")
+		local InstanceProperty = import("../InstanceProperty")
+
+		local CreatableClass = BaseInstance:extend("Creatable", {
+			creatable = true,
+		})
+
+		CreatableClass.properties.Value = InstanceProperty.normal({})
+
+		local rect = Rect.new(1, 2, 3, 4)
+
+		local instance = CreatableClass:new()
+		instance.Value = rect
+
+		local clone = instance:Clone()
+		assert.equal(clone.Value, rect)
+		assert.not_equals(getmetatable(rect), getmetatable(clone.Value))
+	end)
 end)
