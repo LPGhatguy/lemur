@@ -112,8 +112,6 @@ function BaseInstance.prototype:Clone()
 		error(string.format("%s cannot be cloned", class.name))
 	end
 
-	local instance = getmetatable(self).instance
-
 	local clone = class:new()
 	local cloneProperties = getmetatable(clone).instance.properties
 	local classProperties = class.properties
