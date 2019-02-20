@@ -12,6 +12,14 @@ function HttpService.prototype:JSONDecode(input)
 	return json.decode(input)
 end
 
+function HttpService.prototype:UrlEncode(input)
+	local url = input:gsub("\n", "\r\n")
+
+	return url:gsub("([^%w])", function(c)
+		return string.format("%%%02X", string.byte(c))
+	end)
+end
+
 function HttpService.prototype:GenerateGUID(wrapInCurlyBraces)
 	local argType = typeof(wrapInCurlyBraces)
 	if wrapInCurlyBraces ~= nil and argType ~= "boolean" then

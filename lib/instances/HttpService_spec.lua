@@ -19,6 +19,15 @@ describe("instances.HttpService", function()
 		assert.are.same(instance:JSONDecode("[1,true]"), { 1, true })
 	end)
 
+	it("should URL encode properly", function()
+		local instance = HttpService:new()
+
+		assert.equal(instance:UrlEncode("testing test&test !@#$%^&*()+" ..
+			"_-=~`<>,./?| François"),
+			"testing%20test%26test%20%21%40%23%24%25%5E%26%2A%28%29" ..
+			"%2B%5F%2D%3D%7E%60%3C%3E%2C%2E%2F%3F%7C%20Fran%C3%A7ois")
+	end)
+
 	describe("GenerateGUID", function()
 		it("should omit curly braces when wrapInCurlyBraces is false", function()
 			local instance = HttpService:new()
