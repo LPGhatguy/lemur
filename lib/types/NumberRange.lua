@@ -57,4 +57,4 @@ function NumberRange.new(...)
 	return instance
 end
 
-return UDim
+return NumberRange
