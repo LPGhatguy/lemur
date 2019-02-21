@@ -63,6 +63,10 @@ This document should remain up-to-date with current API coverage and status.
 	* Vector2.new()
 	* Vector2.new(x, y)
 	* Operators: `==`, `+`
+* NumberRange
+	* NumberRange.new(minmax)
+	* NumberRange.new(min, max)
+	* Operators: `==`
 
 ## Implemented Instance Members
 * AnalyticsService
@@ -176,9 +180,10 @@ This document should remain up-to-date with current API coverage and status.
 * CoreGui
 * NotificationService
 * GuiService
-* HttpService (requires dkjson installed)
+* HttpService (JSON requires dkjson installed)
 	* JSONDecode(input)
 	* JSONEncode(input)
+	* UrlEncode(input)
 * LocalizationService
 	* SystemLocaleId
 * LocalizationTable

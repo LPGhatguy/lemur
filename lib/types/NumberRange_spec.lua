@@ -45,4 +45,10 @@ describe("types.NumberRange", function()
 
 		assert.are.equal("NumberRange", type)
 	end)
+
+	it("should throw when bad indexing", function()
+		assert.has.errors(function()
+			NumberRange.bad()
+		end)
+	end)
 end)
