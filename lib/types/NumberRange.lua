@@ -34,7 +34,7 @@ end
 
 function NumberRange.new(...)
 	if select("#", ...) == 1 then
-		local n = {...}[1]
+		local n = ({...})[1]
 
 		return NumberRange.new(n, n)
 	end
