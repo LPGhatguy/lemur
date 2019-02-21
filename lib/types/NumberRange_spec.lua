@@ -25,11 +25,11 @@ describe("types.NumberRange", function()
 
 	it("should throw when bad params are passed to the 2-param constructor", function()
 		assert.has.errors(function()
-			UDim2.new("test", 1)
+			NumberRange.new("test", 1)
 		end)
 
 		assert.has.errors(function()
-			UDim2.new(1, "test")
+			NumberRange.new(1, "test")
 		end)
 	end)
 
