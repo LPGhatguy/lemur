@@ -13,14 +13,24 @@ describe("types.NumberRange", function()
 		local range = NumberRange.new(1, 2)
 
 		assert.not_nil(range)
-		assert.are.equal(extractRange(range), { 1, 2 })
+		assert.are.same(extractRange(range), { 1, 2 })
 	end)
 
 	it("should have a constructor that takes one value", function()
 		local range = NumberRange.new(1)
 
-		assert.not_nil(rang)
-		assert.are.equal(extractRange(range), { 1, 1 })
+		assert.not_nil(range)
+		assert.are.same(extractRange(range), { 1, 1 })
+	end)
+
+	it("should throw when bad params are passed to the 2-param constructor", function()
+		assert.has.errors(function()
+			UDim2.new("test", 1)
+		end)
+
+		assert.has.errors(function()
+			UDim2.new(1, "test")
+		end)
 	end)
 
 	it("should compare NumberRanges", function()
