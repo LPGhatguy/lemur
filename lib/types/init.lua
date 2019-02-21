@@ -5,6 +5,7 @@ local names = {
 	"UDim2",
 	"Vector2",
 	"Vector3",
+	"NumberRange"
 }
 
 local types = {}
