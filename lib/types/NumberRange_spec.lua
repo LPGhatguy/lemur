@@ -16,7 +16,7 @@ describe("types.NumberRange", function()
 	end)
 
 	it("should be detected by typeof", function()
-		local type = typeof(NumberRange.new())
+		local type = typeof(NumberRange.new(1, 2))
 
 		assert.are.equal("NumberRange", type)
 	end)
