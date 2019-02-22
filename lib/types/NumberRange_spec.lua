@@ -46,9 +46,19 @@ describe("types.NumberRange", function()
 		assert.are.equal("NumberRange", type)
 	end)
 
+	it("should be \"NumberRange\" when tostringed", function()
+		local tostringed = tostring(NumberRange)
+
+		assert.are.equal("NumberRange", tostringed)
+	end)
+
 	it("should throw when bad indexing", function()
 		assert.has.errors(function()
-			NumberRange.bad()
+			NumberRange["Bad"]()
+		end)
+
+		assert.has.errors(function()
+			NumberRange.new(1, 2)["Bad"]()
 		end)
 	end)
 end)
