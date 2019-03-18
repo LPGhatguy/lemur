@@ -70,6 +70,7 @@ This document should remain up-to-date with current API coverage and status.
 	* Fire(...)
 * BoolValue, StringValue, IntValue, NumberValue, ObjectValue
 	* Value
+* CollectionService
 * Folder
 * Frame
 * GuiObject
