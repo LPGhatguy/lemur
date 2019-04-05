@@ -12,7 +12,6 @@ end
 
 function GuiService.prototype:GetNotificationTypeList()
 	return {
-		VIEW_SUB_PAGE_IN_MORE = "VIEW_SUB_PAGE_IN_MORE",
 		ACTION_LOG_OUT = "ACTION_LOG_OUT",
 	}
 end
