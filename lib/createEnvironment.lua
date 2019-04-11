@@ -1,5 +1,6 @@
 local createSettings = import("./createSettings")
 local functions = import("./functions")
+local libs = import("./libs")
 local taskFunctions = import("./taskFunctions")
 local types = import("./types")
 local Enum = import("./Enum")
@@ -13,6 +14,10 @@ end
 
 for key, value in pairs(types) do
 	baseEnvironment[key] = value
+end
+
+for key, lib in pairs(libs) do
+	baseEnvironment[key] = lib
 end
 
 baseEnvironment.Instance = Instance
