@@ -1,3 +1,4 @@
+-- luacheck: ignore 1
 string.split = function(str, sep)
 	local result = {}
 
