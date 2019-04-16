@@ -1,10 +1,4 @@
-local rbxString = {}
-
-for key, value in pairs(string) do
-	rbxString[key] = value
-end
-
-rbxString.split = function(str, sep)
+string.split = function(str, sep)
 	local result = {}
 
 	if sep == "" then
@@ -33,4 +27,4 @@ rbxString.split = function(str, sep)
 	return result
 end
 
-return rbxString
+return string
