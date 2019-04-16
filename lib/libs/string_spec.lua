@@ -5,6 +5,10 @@ describe("libs.string", function()
 		it("should be a function", function()
 			assert.is_function(string.split)
 		end)
+				
+		it("should work as a string method", function()
+			assert.is_function(("").split)
+		end)
 
 		it("should return an array of comma separated strings if sep is nil", function()
 			assert.are.same({"Hello", "world", "and", "lemur"}, string.split("Hello,world,and,lemur"))
