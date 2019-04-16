@@ -1,5 +1,6 @@
 local names = {
 	"math",
+	"string",
 }
 
 local libs = {}
