@@ -11,7 +11,29 @@ describe("libs.string", function()
 		end)
 
 		it("should return an array of all characters in a string if sep is the empty string", function()
-			assert.are.same({"H", "e", "l", "l", "o", ",", "w", "o", "r", "l", "d", ",", "a", "n", "d", ",", "l", "e", "m", "u", "r"}, string.split("Hello,world,and,lemur", ""))
+			assert.are.same({
+				"H",
+				"e",
+				"l",
+				"l",
+				"o",
+				",",
+				"w",
+				"o",
+				"r",
+				"l",
+				"d",
+				",",
+				"a",
+				"n",
+				"d",
+				",",
+				"l",
+				"e",
+				"m",
+				"u",
+				"r",
+			}, string.split("Hello,world,and,lemur", ""))
 		end)
 
 		it("should return an empty table if the string and sep is the empty string", function()
