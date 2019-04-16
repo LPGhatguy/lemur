@@ -5,7 +5,7 @@ describe("libs.string", function()
 		it("should be a function", function()
 			assert.is_function(string.split)
 		end)
-				
+
 		it("should work as a string method", function()
 			assert.is_function(("").split)
 		end)
