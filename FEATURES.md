@@ -63,6 +63,23 @@ This document should remain up-to-date with current API coverage and status.
 	* Vector2.new()
 	* Vector2.new(x, y)
 	* Operators: `==`, `+`
+* BrickColor
+	* BrickColor.new()
+	* BrickColor.new(val)
+	* BrickColor.new(val)
+	* BrickColor.new(color)
+	* BrickColor.new(r, g, b)
+	* BrickColor.palette(paletteValue)
+	* BrickColor.random()
+	* BrickColor.White()
+	* BrickColor.Gray()
+	* BrickColor.DarkGray()
+	* BrickColor.Black()
+	* BrickColor.Red()
+	* BrickColor.Yellow()
+	* BrickColor.Green()
+	* BrickColor.Blue()
+	* Operators: `==`
 
 ## Implemented Instance Members
 * AnalyticsService
