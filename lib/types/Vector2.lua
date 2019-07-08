@@ -36,6 +36,30 @@ function metatable:__sub(other)
 	return Vector2.new(self.X - other.X, self.Y - other.Y)
 end
 
+function metatable:__mul(other)
+	if typeof(self) == "Vector2" and typeof(other) == "Vector2" then
+		return Vector2.new(self.X * other.X, self.Y * other.Y)
+	elseif typeof(self) == "Vector2" and typeof(other) == "number" then
+		return Vector2.new(self.X * other, self.Y * other)
+	elseif typeof(self) == "number" and typeof(other) == "Vector2" then
+		return Vector2.new(other.X * self, other.Y * self)
+	else
+		error("attempt to multiply a Vector2 with an incompatible value type or nil")
+	end
+end
+
+function metatable:__div(other)
+	if typeof(self) == "Vector2" and typeof(other) == "Vector2" then
+		return Vector2.new(self.X / other.X, self.Y / other.Y)
+	elseif typeof(self) == "Vector2" and typeof(other) == "number" then
+		return Vector2.new(self.X / other, self.Y / other)
+	elseif typeof(self) == "number" and typeof(other) == "Vector2" then
+		return Vector2.new(other.X / self, other.Y / self)
+	else
+		error("attempt to divide a Vector2 with an incompatible value type or nil")
+	end
+end
+
 function metatable:__eq(other)
 	return self.X == other.X and self.Y == other.Y
 end
