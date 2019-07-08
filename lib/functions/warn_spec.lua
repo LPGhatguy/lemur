@@ -30,4 +30,18 @@ describe("functions.warn", function()
 		assert.spy(writeSpy).was.called(4) -- IT'S DOGE, \t, AAH!, \n
 		io.stderr = oldErr -- luacheck: ignore
 	end)
+
+	it("should warn with a non-string argument", function()
+		local oldErr, writeSpy = setupWarnDetour()
+		warn(1)
+		assert.spy(writeSpy).was_called_with(io.stderr, "1")
+		io.stderr = oldErr -- luacheck: ignore
+	end)
+
+	it("should warn with non-string arguments", function()
+		local oldErr, writeSpy = setupWarnDetour()
+		warn(2, 3)
+		assert.spy(writeSpy).was.called(4) -- 2, \t, 3, \n
+		io.stderr = oldErr -- luacheck: ignore
+	end)
 end)
