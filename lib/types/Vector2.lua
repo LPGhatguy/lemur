@@ -1,5 +1,6 @@
 local assign = import("../assign")
 local typeKey = import("../typeKey")
+local typeof = import("../functions/typeof")
 
 local Vector2 = {}
 
