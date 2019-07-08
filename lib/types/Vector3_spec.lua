@@ -101,10 +101,10 @@ describe("types.Vector3", function()
 
 	it("should divide by a number reversed", function()
 		local vectorA = Vector3.new(1, 50, 200)
-		local v = 3 / vectorA
+		local v = 4 / vectorA
 
 		assert.not_nil(v)
-		assert.are.same({0.5, 50, 400}, extractValues(v))
+		assert.are.same({0.25, 12.5, 50}, extractValues(v))
 	end)
 
 	it("should throw an error when divided by an incompatible type", function()

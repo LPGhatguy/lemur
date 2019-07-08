@@ -39,7 +39,7 @@ end
 
 function metatable:__mul(other)
 	if typeof(self) == "Vector3" and typeof(other) == "Vector3" then
-		return Vector3.new(self.X * other.X, self.Y * other.Y, other.Z * other.Z)
+		return Vector3.new(self.X * other.X, self.Y * other.Y, self.Z * other.Z)
 	elseif typeof(self) == "Vector3" and typeof(other) == "number" then
 		return Vector3.new(self.X * other, self.Y * other, self.Z * other)
 	elseif typeof(self) == "number" and typeof(other) == "Vector3" then
@@ -51,7 +51,7 @@ end
 
 function metatable:__div(other)
 	if typeof(self) == "Vector3" and typeof(other) == "Vector3" then
-		return Vector3.new(self.X / other.X, self.Y / other.Y, other.Z / other.Z)
+		return Vector3.new(self.X / other.X, self.Y / other.Y, self.Z / other.Z)
 	elseif typeof(self) == "Vector3" and typeof(other) == "number" then
 		return Vector3.new(self.X / other, self.Y / other, self.Z / other)
 	elseif typeof(self) == "number" and typeof(other) == "Vector3" then
