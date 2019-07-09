@@ -62,7 +62,7 @@ This document should remain up-to-date with current API coverage and status.
 * Vector2
 	* Vector2.new()
 	* Vector2.new(x, y)
-	* Operators: `==`, `+`
+	* Operators: `==`, `+`, `*`, `/`
 
 ## Implemented Instance Members
 * AnalyticsService
