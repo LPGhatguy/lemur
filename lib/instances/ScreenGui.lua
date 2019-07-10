@@ -43,4 +43,10 @@ ScreenGui.properties.ZIndexBehavior = InstanceProperty.enum(ZIndexBehavior, {
 	end,
 })
 
+ScreenGui.properties.Enabled = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return true
+	end,
+})
+
 return ScreenGui
