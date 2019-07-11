@@ -38,20 +38,24 @@ function metatable:__sub(other)
 end
 
 function metatable:__mul(other)
-	if typeof(other) == "Vector3" then
+	if typeof(self) == "Vector3" and typeof(other) == "Vector3" then
 		return Vector3.new(self.X * other.X, self.Y * other.Y, self.Z * other.Z)
-	elseif typeof(other) == "number" then
+	elseif typeof(self) == "Vector3" and typeof(other) == "number" then
 		return Vector3.new(self.X * other, self.Y * other, self.Z * other)
+	elseif typeof(self) == "number" and typeof(other) == "Vector3" then
+		return Vector3.new(other.X * self, other.Y * self, other.Z * self)
 	else
 		error("attempt to multiply a Vector3 with an incompatible value type or nil")
 	end
 end
 
 function metatable:__div(other)
-	if typeof(other) == "Vector3" then
+	if typeof(self) == "Vector3" and typeof(other) == "Vector3" then
 		return Vector3.new(self.X / other.X, self.Y / other.Y, self.Z / other.Z)
-	elseif typeof(other) == "number" then
+	elseif typeof(self) == "Vector3" and typeof(other) == "number" then
 		return Vector3.new(self.X / other, self.Y / other, self.Z / other)
+	elseif typeof(self) == "number" and typeof(other) == "Vector3" then
+		return Vector3.new(other.X / self, other.Y / self, other.Z / self)
 	else
 		error("attempt to divide a Vector3 with an incompatible value type or nil")
 	end
