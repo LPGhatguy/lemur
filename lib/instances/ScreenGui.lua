@@ -49,4 +49,10 @@ ScreenGui.properties.Enabled = InstanceProperty.typed("boolean", {
 	end,
 })
 
+ScreenGui.properties.OnTopOfCoreBlur = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return false
+	end,
+})
+
 return ScreenGui
