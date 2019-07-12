@@ -2,6 +2,7 @@ local Color3 = import("../types/Color3")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
+local Vector2 = import("../types/Vector2")
 local ScaleType = import("../Enum/ScaleType")
 
 local ImageButton = GuiButton:extend("ImageButton", {
@@ -17,6 +18,18 @@ ImageButton.properties.Image = InstanceProperty.typed("string", {
 ImageButton.properties.ImageColor3 = InstanceProperty.typed("Color3", {
 	getDefault = function()
 		return Color3.new()
+	end,
+})
+
+ImageButton.properties.ImageRectOffset = InstanceProperty.typed("Vector2", {
+	getDefault = function()
+		return Vector2.new(0, 0)
+	end,
+})
+
+ImageButton.properties.ImageRectSize = InstanceProperty.typed("Vector2", {
+	getDefault = function()
+		return Vector2.new(0, 0)
 	end,
 })
 
