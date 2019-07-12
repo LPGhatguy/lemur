@@ -97,11 +97,15 @@ This document should remain up-to-date with current API coverage and status.
 * ImageButton
 	* Image
 	* ImageColor3
+	* ImageRectOffset
+	* ImageRectSize
 	* ScaleType
 	* SliceCenter
 * ImageLabel
 	* Image
 	* ImageColor3
+	* ImageRectOffset
+	* ImageRectSize
 	* ScaleType
 	* SliceCenter
 * Instance
