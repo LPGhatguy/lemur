@@ -2,8 +2,8 @@ local Color3 = import("../types/Color3")
 local GuiObject = import("./GuiObject")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
-local Vector2 = import("../types/Vector2")
 local ScaleType = import("../Enum/ScaleType")
+local Vector2 = import("../types/Vector2")
 
 local ImageLabel = GuiObject:extend("ImageLabel", {
 	creatable = true,

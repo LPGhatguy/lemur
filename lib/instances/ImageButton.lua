@@ -2,8 +2,8 @@ local Color3 = import("../types/Color3")
 local GuiButton = import("./GuiButton")
 local InstanceProperty = import("../InstanceProperty")
 local Rect = import("../types/Rect")
-local Vector2 = import("../types/Vector2")
 local ScaleType = import("../Enum/ScaleType")
+local Vector2 = import("../types/Vector2")
 
 local ImageButton = GuiButton:extend("ImageButton", {
 	creatable = true,
