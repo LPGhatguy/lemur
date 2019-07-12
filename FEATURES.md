@@ -98,6 +98,8 @@ This document should remain up-to-date with current API coverage and status.
 * ImageLabel
 	* Image
 	* ImageColor3
+	* ImageRectOffset
+	* ImageRectSize
 	* ScaleType
 	* SliceCenter
 * Instance
