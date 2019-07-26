@@ -85,6 +85,8 @@ This document should remain up-to-date with current API coverage and status.
 	* InputBegan
 	* InputEnded
 	* LayoutOrder
+	* MouseEnter
+	* MouseLeave
 	* Position
 	* Selectable
 	* Size
