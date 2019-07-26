@@ -107,6 +107,18 @@ GuiObject.properties.LayoutOrder = InstanceProperty.typed("number", {
 	end,
 })
 
+GuiObject.properties.MouseEnter = InstanceProperty.readOnly({
+	getDefault = function()
+		return Signal.new()
+	end,
+})
+
+GuiObject.properties.MouseLeave = InstanceProperty.readOnly({
+	getDefault = function()
+		return Signal.new()
+	end,
+})
+
 GuiObject.properties.Position = InstanceProperty.typed("UDim2", {
 	getDefault = function()
 		return UDim2.new()
