@@ -68,6 +68,14 @@ describe("types.Vector3", function()
 		assert.are.same({3, 150, 600}, extractValues(v))
 	end)
 
+	it("should multiply by a number reversed", function()
+		local vectorA = Vector3.new(1, 50, 200)
+		local v = 3 * vectorA
+
+		assert.not_nil(v)
+		assert.are.same({3, 150, 600}, extractValues(v))
+	end)
+
 	it("should throw an error when multiplied by an incompatible type", function()
 		assert.has.errors(function()
 			return Vector3.new(1, 2, 3) * nil
@@ -86,6 +94,14 @@ describe("types.Vector3", function()
 	it("should divide by a number", function()
 		local vectorA = Vector3.new(1, 50, 200)
 		local v = vectorA / 4
+
+		assert.not_nil(v)
+		assert.are.same({0.25, 12.5, 50}, extractValues(v))
+	end)
+
+	it("should divide by a number reversed", function()
+		local vectorA = Vector3.new(1, 50, 200)
+		local v = 4 / vectorA
 
 		assert.not_nil(v)
 		assert.are.same({0.25, 12.5, 50}, extractValues(v))

@@ -43,4 +43,16 @@ ScreenGui.properties.ZIndexBehavior = InstanceProperty.enum(ZIndexBehavior, {
 	end,
 })
 
+ScreenGui.properties.Enabled = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return true
+	end,
+})
+
+ScreenGui.properties.OnTopOfCoreBlur = InstanceProperty.typed("boolean", {
+	getDefault = function()
+		return false
+	end,
+})
+
 return ScreenGui
