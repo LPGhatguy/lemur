@@ -1,0 +1,26 @@
+local createEnum = import("../createEnum")
+
+return createEnum("DeveloperMemoryTag", {
+	Internal = 0,
+	HttpCache = 1,
+	Instances = 2,
+	Signals = 3,
+	LuaHeap = 4,
+	Script = 5,
+	PhysicsCollision = 6,
+	PhysicsParts = 7,
+	GraphicsSolidModels = 8,
+	GraphicsMeshParts = 9,
+	GraphicsParticles = 10,
+	GraphicsParts = 11,
+	GraphicsSpatialHash = 12,
+	GraphicsTerrain = 13,
+	GraphicsTexture = 14,
+	GraphicsTextureCharacter = 15,
+	Sounds = 16,
+	StreamingSounds = 17,
+	TerrainVoxels = 18,
+	Gui = 20,
+	Animation = 21,
+	Navigation = 22,
+})
