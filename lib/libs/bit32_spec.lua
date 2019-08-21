@@ -10,7 +10,7 @@ describe("libs.bit32", function()
 		-- 010 -> 2
 		-- 101 | 010 = 111 -> 7
 		it("should bitwise OR two values", function()
-			assert.are.equals(7, bit32.bor(2, 5))
+			assert.are.equals(7, bit32.bor(5, 2))
 		end)
 	end)
 
