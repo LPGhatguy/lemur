@@ -35,6 +35,7 @@ Lemur needs certain extra dependencies for some optional features:
 
 * dkjson (Roblox JSON API) (`luarocks install dkjson`)
 * LuaSocket (high performance timer) (`luarocks install luasocket`)
+* bit32 (Lua 5.1 bit32 implementation) (`luarocks install bit32`)
 
 Clone the Git repository wherever, then call `require` on it.
 

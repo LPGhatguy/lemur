@@ -21,6 +21,7 @@ install:
   - luarocks install luacheck
   - luarocks install luafilesystem
   - luarocks install dkjson
+  - luarocks install bit32
 
 script:
   - luacheck lib

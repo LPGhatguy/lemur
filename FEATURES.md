@@ -35,6 +35,7 @@ This document should remain up-to-date with current API coverage and status.
 * typeof
 * wait (stub)
 * warn
+* bit32 (requires bit32 installed)
 
 ## Implemented Types
 * Color3

@@ -12,6 +12,7 @@
 * `RunService` is now correctly named `Run Service` ([#25](https://github.com/LPGhatguy/lemur/pull/25))
 * Added `Instance:FindFirstChildOfClass(name)` and `Instance:FindFirstChildWhichIsA(className)`
 * Changed `Signal:Wait()` mechanism to error instead of fire the event
+* Added `bit32`; requires `bit32` luarock to be installed
 
 ## v0.1.0 (November 28, 2017)
 * Initial release
