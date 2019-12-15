@@ -29,7 +29,7 @@ local names = {
 	"ParticleEffect",
 	"Player",
 	"Players",
-	"ReplicatedFirst"
+	"ReplicatedFirst",
 	"ReplicatedStorage",
 	"RunService",
 	"ScreenGui",
