@@ -193,6 +193,7 @@ This document should remain up-to-date with current API coverage and status.
 	* GetPlayerFromCharacter (stub)
 	* LocalPlayer
 		* UserId
+* ReplicatedFirst
 * ReplicatedStorage
 * RunService
 	* Heartbeat

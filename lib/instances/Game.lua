@@ -15,6 +15,7 @@ local LocalizationService = import("./LocalizationService")
 local MarketplaceService = import("./MarketplaceService")
 local NotificationService = import("./NotificationService")
 local Players = import("./Players")
+local ReplicatedFirst = import("./ReplicatedFirst")
 local ReplicatedStorage = import("./ReplicatedStorage")
 local RunService = import("./RunService")
 local ServerScriptService = import("./ServerScriptService")
@@ -44,6 +45,7 @@ function Game:init(instance)
 	MarketplaceService:new().Parent = instance
 	NotificationService:new().Parent = instance
 	Players:new().Parent = instance
+	ReplicatedFirst:new().Parent = instance
 	ReplicatedStorage:new().Parent = instance
 	RunService:new().Parent = instance
 	ServerScriptService:new().Parent = instance
