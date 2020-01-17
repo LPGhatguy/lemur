@@ -24,7 +24,7 @@ TextLabel.properties.Text = InstanceProperty.typed("string", {
 
 TextLabel.properties.TextColor3 = InstanceProperty.typed("Color3", {
 	getDefault = function()
-		return Color3.new(27, 42, 53)
+		return Color3.fromRGB(27, 42, 53)
 	end,
 })
 
