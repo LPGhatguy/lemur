@@ -117,7 +117,7 @@ describe("types.Vector2", function()
 		assert.equals(vectorA, vectorB)
 	end)
 
-	it("should not equal another UDim with different scale and offset", function()
+	it("should not equal another Vector2 with different x and/or y", function()
 		local vectorA = Vector2.new(1, 200)
 
 		local vectorB1 = Vector2.new(10, 200)
