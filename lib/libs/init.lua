@@ -2,6 +2,7 @@ local names = {
 	"bit32",
 	"math",
 	"string",
+	"debug",
 }
 
 local libs = {}
