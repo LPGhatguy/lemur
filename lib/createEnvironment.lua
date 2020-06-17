@@ -48,6 +48,10 @@ local function createEnvironment(habitat)
 		return habitat:require(path)
 	end
 
+	environment.debug.loadmodule = function(path)
+		return habitat:loadmodule(path)
+	end
+
 	environment.game = habitat.game
 
 	return environment

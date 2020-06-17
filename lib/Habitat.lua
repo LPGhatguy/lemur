@@ -130,4 +130,27 @@ function Habitat:require(instance)
 	return result
 end
 
+--[[
+	Equivalent to Roblox's 'debug.loadmodule', called on an emulated Roblox instance.
+]]
+function Habitat:loadmodule(instance)
+	validateType("instance", instance, "Instance")
+
+	if not instance:IsA("ModuleScript") then
+		local message = ("Attempted to load non-ModuleScript object %q (%s)"):format(
+			instance.Name,
+			instance.ClassName
+		)
+		error(message, 2)
+	end
+
+	local internalInstance = getmetatable(instance).instance
+	local chunk = assert(loadstring(instance.Source, "@" .. internalInstance.modulePath))
+
+	local environment = assign({}, self.environment, { script = instance })
+	setfenv(chunk, environment)
+
+	return chunk
+end
+
 return Habitat
