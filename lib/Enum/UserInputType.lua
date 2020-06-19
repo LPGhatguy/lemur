@@ -20,5 +20,6 @@ return createEnum("UserInputType", {
 	Gamepad7 = 18,
 	Gamepad8 = 19,
 	TextInput = 20,
-	None = 21,
+	InputMethod = 21,
+	None = 22,
 })

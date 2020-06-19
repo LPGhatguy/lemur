@@ -9,4 +9,7 @@ return createEnum("EasingStyle", {
 	Quint = 5,
 	Bounce = 6,
 	Elastic = 7,
+	Exponential = 8,
+	Circular = 9,
+	Cubic = 10,
 })

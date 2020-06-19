@@ -3,26 +3,6 @@ Lemur does not aim to provide full coverage of all Roblox APIs. Coverage progres
 
 This document should remain up-to-date with current API coverage and status.
 
-## Implemented Enums
-- ConnectionState
-- DataStoreRequestType
-- EasingDirection
-- EasingStyle
-- Font
-- HorizontalAlignment
-- Platform
-- PlaybackState
-- ScaleType
-- ScrollingDirection
-- SizeConstraint
-- SortOrder
-- TextXAlignment
-- TextYAlignment
-- ThumbnailSize
-- ThumbnailType
-- VerticalAlignment
-- VirtualInputMode
-
 ## Implemented Globals
 * require
 * script
@@ -38,6 +18,7 @@ This document should remain up-to-date with current API coverage and status.
 * bit32 (requires bit32 installed)
 
 ## Implemented Types
+* All Enums
 * Color3
 	* Color3.new()
 	* Color3.new(r, g, b)

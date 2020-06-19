@@ -6,5 +6,5 @@ return createEnum("DataStoreRequestType", {
 	UpdateAsync = 2,
 	GetSortedAsync = 3,
 	SetIncrementSortedAsync = 4,
-	OnUpdate = 5
+	OnUpdate = 5,
 })

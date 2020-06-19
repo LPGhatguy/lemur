@@ -1,41 +1,200 @@
 local createEnumGroup = import("../createEnumGroup")
 
-local names = {
-	"ConnectionState",
-	"CreatorType",
-	"DataStoreRequestType",
-	"EasingDirection",
-	"EasingStyle",
-	"FillDirection",
-	"Font",
-	"HorizontalAlignment",
-	"HttpContentType",
-	"Platform",
-	"InfoType",
-	"KeyCode",
-	"MouseBehavior",
-	"PlaybackState",
-	"ScaleType",
-	"ScrollBarInset",
-	"ScrollingDirection",
-	"SizeConstraint",
-	"SortOrder",
-	"TextTruncate",
-	"TextXAlignment",
-	"TextYAlignment",
-	"ThumbnailSize",
-	"ThumbnailType",
-	"UserInputType",
-	"VerticalAlignment",
-	"VerticalScrollBarPosition",
-	"VirtualInputMode",
-	"ZIndexBehavior",
-}
-
-local enums = {}
-
-for _, name in ipairs(names) do
-	enums[name] = import("./" .. name)
-end
-
-return createEnumGroup(enums)
+return createEnumGroup({
+	ActionType = import("./ActionType");
+	ActuatorRelativeTo = import("./ActuatorRelativeTo");
+	ActuatorType = import("./ActuatorType");
+	AlignType = import("./AlignType");
+	AnimationPriority = import("./AnimationPriority");
+	AppShellActionType = import("./AppShellActionType");
+	AspectType = import("./AspectType");
+	AssetFetchStatus = import("./AssetFetchStatus");
+	AssetType = import("./AssetType");
+	AvatarContextMenuOption = import("./AvatarContextMenuOption");
+	AvatarJointPositionType = import("./AvatarJointPositionType");
+	Axis = import("./Axis");
+	BinType = import("./BinType");
+	BodyPart = import("./BodyPart");
+	BodyPartR15 = import("./BodyPartR15");
+	BorderMode = import("./BorderMode");
+	BreakReason = import("./BreakReason");
+	Button = import("./Button");
+	ButtonStyle = import("./ButtonStyle");
+	CameraMode = import("./CameraMode");
+	CameraPanMode = import("./CameraPanMode");
+	CameraType = import("./CameraType");
+	CellBlock = import("./CellBlock");
+	CellMaterial = import("./CellMaterial");
+	CellOrientation = import("./CellOrientation");
+	CenterDialogType = import("./CenterDialogType");
+	ChatCallbackType = import("./ChatCallbackType");
+	ChatColor = import("./ChatColor");
+	ChatMode = import("./ChatMode");
+	ChatPrivacyMode = import("./ChatPrivacyMode");
+	ChatStyle = import("./ChatStyle");
+	CollisionFidelity = import("./CollisionFidelity");
+	ComputerCameraMovementMode = import("./ComputerCameraMovementMode");
+	ComputerMovementMode = import("./ComputerMovementMode");
+	ConnectionError = import("./ConnectionError");
+	ConnectionState = import("./ConnectionState");
+	ContextActionPriority = import("./ContextActionPriority");
+	ContextActionResult = import("./ContextActionResult");
+	ControlMode = import("./ControlMode");
+	CoreGuiType = import("./CoreGuiType");
+	CreatorType = import("./CreatorType");
+	CurrencyType = import("./CurrencyType");
+	CustomCameraMode = import("./CustomCameraMode");
+	DataStoreRequestType = import("./DataStoreRequestType");
+	DevCameraOcclusionMode = import("./DevCameraOcclusionMode");
+	DevComputerCameraMovementMode = import("./DevComputerCameraMovementMode");
+	DevComputerMovementMode = import("./DevComputerMovementMode");
+	DevTouchCameraMovementMode = import("./DevTouchCameraMovementMode");
+	DevTouchMovementMode = import("./DevTouchMovementMode");
+	DeveloperMemoryTag = import("./DeveloperMemoryTag");
+	DeviceType = import("./DeviceType");
+	DialogBehaviorType = import("./DialogBehaviorType");
+	DialogPurpose = import("./DialogPurpose");
+	DialogTone = import("./DialogTone");
+	DominantAxis = import("./DominantAxis");
+	DraftStatusCode = import("./DraftStatusCode");
+	EasingDirection = import("./EasingDirection");
+	EasingStyle = import("./EasingStyle");
+	ElasticBehavior = import("./ElasticBehavior");
+	EnviromentalPhysicsThrottle = import("./EnviromentalPhysicsThrottle");
+	ErrorReporting = import("./ErrorReporting");
+	ExplosionType = import("./ExplosionType");
+	FillDirection = import("./FillDirection");
+	FilterResult = import("./FilterResult");
+	Font = import("./Font");
+	FontSize = import("./FontSize");
+	FormFactor = import("./FormFactor");
+	FrameStyle = import("./FrameStyle");
+	FramerateManagerMode = import("./FramerateManagerMode");
+	FriendRequestEvent = import("./FriendRequestEvent");
+	FriendStatus = import("./FriendStatus");
+	FunctionalTestResult = import("./FunctionalTestResult");
+	GameAvatarType = import("./GameAvatarType");
+	GearGenreSetting = import("./GearGenreSetting");
+	GearType = import("./GearType");
+	Genre = import("./Genre");
+	GraphicsMode = import("./GraphicsMode");
+	HandlesStyle = import("./HandlesStyle");
+	HorizontalAlignment = import("./HorizontalAlignment");
+	HoverAnimateSpeed = import("./HoverAnimateSpeed");
+	HttpCachePolicy = import("./HttpCachePolicy");
+	HttpContentType = import("./HttpContentType");
+	HttpError = import("./HttpError");
+	HttpRequestType = import("./HttpRequestType");
+	HumanoidCollisionType = import("./HumanoidCollisionType");
+	HumanoidDisplayDistanceType = import("./HumanoidDisplayDistanceType");
+	HumanoidHealthDisplayType = import("./HumanoidHealthDisplayType");
+	HumanoidRigType = import("./HumanoidRigType");
+	HumanoidStateType = import("./HumanoidStateType");
+	InOut = import("./InOut");
+	InfoType = import("./InfoType");
+	InitialDockState = import("./InitialDockState");
+	InlineAlignment = import("./InlineAlignment");
+	InputType = import("./InputType");
+	JointCreationMode = import("./JointCreationMode");
+	JointType = import("./JointType");
+	KeyCode = import("./KeyCode");
+	KeywordFilterType = import("./KeywordFilterType");
+	Language = import("./Language");
+	LanguagePreference = import("./LanguagePreference");
+	LeftRight = import("./LeftRight");
+	LevelOfDetailSetting = import("./LevelOfDetailSetting");
+	Limb = import("./Limb");
+	ListDisplayMode = import("./ListDisplayMode");
+	ListenerType = import("./ListenerType");
+	Material = import("./Material");
+	MembershipType = import("./MembershipType");
+	MeshType = import("./MeshType");
+	MessageType = import("./MessageType");
+	MouseBehavior = import("./MouseBehavior");
+	MoveState = import("./MoveState");
+	NameOcclusion = import("./NameOcclusion");
+	NetworkOwnership = import("./NetworkOwnership");
+	NormalId = import("./NormalId");
+	OutputLayoutMode = import("./OutputLayoutMode");
+	OverrideMouseIconBehavior = import("./OverrideMouseIconBehavior");
+	PacketPriority = import("./PacketPriority");
+	PartType = import("./PartType");
+	PathStatus = import("./PathStatus");
+	PathWaypointAction = import("./PathWaypointAction");
+	PermissionLevelShown = import("./PermissionLevelShown");
+	Platform = import("./Platform");
+	PlaybackState = import("./PlaybackState");
+	PlayerActions = import("./PlayerActions");
+	PlayerChatType = import("./PlayerChatType");
+	PoseEasingDirection = import("./PoseEasingDirection");
+	PoseEasingStyle = import("./PoseEasingStyle");
+	PrivilegeType = import("./PrivilegeType");
+	ProductPurchaseDecision = import("./ProductPurchaseDecision");
+	QualityLevel = import("./QualityLevel");
+	R15CollisionType = import("./R15CollisionType");
+	RenderFidelity = import("./RenderFidelity");
+	RenderPriority = import("./RenderPriority");
+	RenderingTestComparisonMethod = import("./RenderingTestComparisonMethod");
+	ReverbType = import("./ReverbType");
+	RibbonTool = import("./RibbonTool");
+	RollOffMode = import("./RollOffMode");
+	RotationType = import("./RotationType");
+	RuntimeUndoBehavior = import("./RuntimeUndoBehavior");
+	SaveFilter = import("./SaveFilter");
+	SavedQualitySetting = import("./SavedQualitySetting");
+	ScaleType = import("./ScaleType");
+	ScreenOrientation = import("./ScreenOrientation");
+	ScrollBarInset = import("./ScrollBarInset");
+	ScrollingDirection = import("./ScrollingDirection");
+	ServerAudioBehavior = import("./ServerAudioBehavior");
+	SizeConstraint = import("./SizeConstraint");
+	SortOrder = import("./SortOrder");
+	SoundType = import("./SoundType");
+	SpecialKey = import("./SpecialKey");
+	StartCorner = import("./StartCorner");
+	Status = import("./Status");
+	StreamingPauseMode = import("./StreamingPauseMode");
+	StudioStyleGuideColor = import("./StudioStyleGuideColor");
+	StudioStyleGuideModifier = import("./StudioStyleGuideModifier");
+	Style = import("./Style");
+	SurfaceConstraint = import("./SurfaceConstraint");
+	SurfaceGuiSizingMode = import("./SurfaceGuiSizingMode");
+	SurfaceType = import("./SurfaceType");
+	SwipeDirection = import("./SwipeDirection");
+	TableMajorAxis = import("./TableMajorAxis");
+	Technology = import("./Technology");
+	TeleportResult = import("./TeleportResult");
+	TeleportState = import("./TeleportState");
+	TeleportType = import("./TeleportType");
+	TextFilterContext = import("./TextFilterContext");
+	TextTruncate = import("./TextTruncate");
+	TextXAlignment = import("./TextXAlignment");
+	TextYAlignment = import("./TextYAlignment");
+	TextureMode = import("./TextureMode");
+	TextureQueryType = import("./TextureQueryType");
+	ThreadPoolConfig = import("./ThreadPoolConfig");
+	ThrottlingPriority = import("./ThrottlingPriority");
+	ThumbnailSize = import("./ThumbnailSize");
+	ThumbnailType = import("./ThumbnailType");
+	TickCountSampleMethod = import("./TickCountSampleMethod");
+	TopBottom = import("./TopBottom");
+	TouchCameraMovementMode = import("./TouchCameraMovementMode");
+	TouchMovementMode = import("./TouchMovementMode");
+	TweenStatus = import("./TweenStatus");
+	UITheme = import("./UITheme");
+	UiMessageType = import("./UiMessageType");
+	UploadSetting = import("./UploadSetting");
+	UserCFrame = import("./UserCFrame");
+	UserInputState = import("./UserInputState");
+	UserInputType = import("./UserInputType");
+	VRTouchpad = import("./VRTouchpad");
+	VRTouchpadMode = import("./VRTouchpadMode");
+	VerticalAlignment = import("./VerticalAlignment");
+	VerticalScrollBarPosition = import("./VerticalScrollBarPosition");
+	VibrationMotor = import("./VibrationMotor");
+	VideoQualitySettings = import("./VideoQualitySettings");
+	VirtualInputMode = import("./VirtualInputMode");
+	WaterDirection = import("./WaterDirection");
+	WaterForce = import("./WaterForce");
+	ZIndexBehavior = import("./ZIndexBehavior");
+})
