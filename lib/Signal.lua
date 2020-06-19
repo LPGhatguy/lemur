@@ -5,6 +5,7 @@
 	executing an event.
 ]]
 
+local assign = import("./assign")
 local typeKey = import("./typeKey")
 
 local function immutableAppend(list, ...)
@@ -34,6 +35,19 @@ local function immutableRemoveValue(list, removeValue)
 	return new
 end
 
+local connectionMetatable = {}
+connectionMetatable[typeKey] = "RBXScriptConnection"
+
+function connectionMetatable:__index(key)
+	local internal = getmetatable(self).internal
+
+	if internal[key] ~= nil then
+		return internal[key]
+	end
+
+	error(string.format("%s is not a valid member of RBXScriptConnection", tostring(key)), 2)
+end
+
 local Signal = {}
 
 Signal.__index = Signal
@@ -56,11 +70,15 @@ function Signal:Connect(callback)
 
 	internal.listeners = immutableAppend(internal.listeners, callback)
 
-	local connection = {}
-	connection.Connected = true
+	local connection = newproxy(true)
+	local instance = getmetatable(connection)
+	instance.internal = {
+		Connected = true
+	}
+	assign(instance, connectionMetatable)
 
-	function connection.Disconnect()
-		connection.Connected = false
+	function instance.internal.Disconnect()
+		instance.internal.Connected = false
 		internal.listeners = immutableRemoveValue(internal.listeners, callback)
 	end
 
