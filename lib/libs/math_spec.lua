@@ -18,4 +18,22 @@ describe("libs.math", function()
 			assert.are.equals(0.5, math.clamp(0.5, 0, 1))
 		end)
 	end)
+
+	describe("sign", function()
+		it("should be a function", function()
+			assert.is_function(math.sign)
+		end)
+
+		it("should return 1 for a positive number", function()
+			assert.are.equals(1, math.sign(2))
+		end)
+
+		it("should return -1 for a negative number", function()
+			assert.are.equals(-1, math.sign(-2))
+		end)
+
+		it("should return 0 for 0.", function()
+			assert.are.equals(0, math.sign(0))
+		end)
+	end)
 end)
