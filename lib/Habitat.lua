@@ -44,11 +44,25 @@ function Habitat:loadFromFs(path, passedOptions)
 	local options = assign({}, defaultLoadFromFsOptions, passedOptions)
 
 	if fs.isFile(path) then
-		if path:find("%.lua$") then
-			local instance = Instance.new("ModuleScript")
+		local className
+		local instanceName
+
+		if path:find("%.server%.lua$") then
+			className = "Script"
+			instanceName = path:match("([^/]-)%.server%.lua$")
+		elseif path:find("%.client%.lua$") then
+			className = "LocalScript"
+			instanceName = path:match("([^/]-)%.client%.lua$")
+		elseif path:find("%.lua$") then
+			className = "ModuleScript"
+			instanceName = path:match("([^/]-)%.lua$")
+		end
+
+		if className ~= nil then
 			local contents = assert(fs.read(path))
 
-			instance.Name = path:match("([^/]-)%.lua$")
+			local instance = Instance.new(className)
+			instance.Name = instanceName
 			instance.Source = contents
 
 			getmetatable(instance).instance.modulePath = path
