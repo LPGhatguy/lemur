@@ -1,4 +1,9 @@
+local cloneKey = import("./cloneKey")
 local typeKey = import("./typeKey")
+
+local function cloneEnumItem(item)
+	return item
+end
 
 local function createEnumVariant(enum, variantName, variantValue)
 	local enumVariant = newproxy(true)
@@ -9,6 +14,7 @@ local function createEnumVariant(enum, variantName, variantValue)
 		EnumType = enum,
 	}
 
+	getmetatable(enumVariant)[cloneKey] = cloneEnumItem
 	getmetatable(enumVariant)[typeKey] = "EnumItem"
 
 	getmetatable(enumVariant).__tostring = function()

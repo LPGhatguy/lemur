@@ -141,4 +141,24 @@ describe("types.Vector3", function()
 	it("should have a string representation of \"Vector3\"", function()
 		assert.equal(tostring(Vector3), "Vector3")
 	end)
+
+	it("should clone", function()
+		local BaseInstance = import("../instances/BaseInstance")
+		local InstanceProperty = import("../InstanceProperty")
+
+		local CreatableClass = BaseInstance:extend("Creatable", {
+			creatable = true,
+		})
+
+		CreatableClass.properties.Value = InstanceProperty.normal({})
+
+		local vector3 = Vector3.new(1, 2, 3)
+
+		local instance = CreatableClass:new()
+		instance.Value = vector3
+
+		local clone = instance:Clone()
+		assert.equal(clone.Value, vector3)
+		assert.not_equals(getmetatable(vector3), getmetatable(clone.Value))
+	end)
 end)

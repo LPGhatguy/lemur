@@ -1,5 +1,5 @@
-local Game = import("./Game")
 local Folder = import("./Folder")
+local Game = import("./Game")
 local typeof = import("../functions/typeof")
 
 local BaseInstance = import("./BaseInstance")
@@ -717,6 +717,101 @@ describe("instances.BaseInstance", function()
 			child.Parent = nil
 
 			assert.spy(spy).was_called_with(child)
+		end)
+	end)
+
+	describe("Clone", function()
+		it("should clone the entire object", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local instance = CreatableClass:new()
+			instance.Name = "Alpha"
+
+			local clone = instance:Clone()
+			assert.not_equals(instance, clone)
+			assert.equal(instance.Name, "Alpha")
+			assert.equal(clone.Name, "Alpha")
+
+			clone.Name = "Beta"
+			assert.equal(instance.Name, "Alpha")
+			assert.equal(clone.Name, "Beta")
+		end)
+
+		it("should clone fresh events", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local instanceA = CreatableClass:new()
+			local spyA = spy.new(function() end)
+			instanceA.ChildAdded:Connect(spyA)
+
+			local instanceB = instanceA:Clone()
+			local spyB = spy.new(function() end)
+			instanceB.ChildAdded:Connect(spyB)
+
+			assert.spy(spyA).was_not_called()
+			assert.spy(spyB).was_not_called()
+
+			BaseInstance:new().Parent = instanceA
+			assert.spy(spyA).was_called()
+			assert.spy(spyB).was_not_called()
+		end)
+
+		it("should not clone the parent", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local instance = CreatableClass:new()
+			instance.Parent = CreatableClass:new()
+
+			local clone = instance:Clone()
+			assert.is_nil(clone.Parent)
+			assert.not_nil(instance.Parent)
+		end)
+
+		it("should clone children", function()
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			local parent = CreatableClass:new()
+			local child = CreatableClass:new()
+			child.Name = "Child"
+			child.Parent = parent
+
+			local clone = parent:Clone()
+			assert.equal(#clone:GetChildren(), 1)
+			assert.not_nil(clone:FindFirstChild("Child"))
+		end)
+
+		it("should not clone instance properties", function()
+			local InstanceProperty = import("../InstanceProperty")
+
+			local CreatableClass = BaseInstance:extend("Creatable", {
+				creatable = true,
+			})
+
+			CreatableClass.properties.Value = InstanceProperty.normal({})
+
+			local ref = CreatableClass:new()
+
+			local instance = CreatableClass:new()
+			instance.Value = ref
+
+			local clone = instance:Clone()
+			assert.equal(clone.Value, ref)
+			assert.equal(instance.Value, ref)
+		end)
+
+		it("should error when trying to clone a non-creatable object", function()
+			local instance = BaseInstance:new()
+			assert.has.errors(function()
+				instance:Clone()
+			end)
 		end)
 	end)
 end)

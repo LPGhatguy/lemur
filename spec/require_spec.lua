@@ -40,6 +40,21 @@ describe("Lemur", function()
 		assert.equal(a, b)
 	end)
 
+	it("should have different caches for cloned modules", function()
+		local habitat = lemur.Habitat.new()
+
+		local root = habitat:loadFromFs("spec/require")
+
+		local a = habitat:require(root.cacheme)
+		local b = habitat:require(root.cacheme)
+
+		assert.equal(a, b)
+
+		local c = habitat:require(root.cacheme:Clone())
+		assert.not_equals(a, c)
+		assert.equal(type(c), "table")
+	end)
+
 	it("should fail to find non-existent modules", function()
 		local habitat = lemur.Habitat.new()
 

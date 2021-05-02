@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local cloneKey = import("../cloneKey")
 local typeKey = import("../typeKey")
 local typeof = import("../functions/typeof")
 local Vector2 = import("./Vector2")
@@ -14,6 +15,9 @@ setmetatable(Rect, {
 local prototype = {}
 
 local metatable = {}
+metatable[cloneKey] = function(rect)
+	return Rect.new(rect.Min, rect.Max)
+end
 metatable[typeKey] = "Rect"
 
 function metatable:__index(key)

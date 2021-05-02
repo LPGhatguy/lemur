@@ -1,5 +1,6 @@
-local typeof = import("./functions/typeof")
 local assign = import("./assign")
+local cloneKey = import("./cloneKey")
+local typeof = import("./functions/typeof")
 
 local InstanceProperty = {}
 
@@ -13,6 +14,20 @@ function InstanceProperty.normal(config)
 		end,
 		getDefault = function()
 			return nil
+		end,
+		clone = function(self, key)
+			local value = getmetatable(self).instance.properties[key]
+
+			if typeof(value) == "Instance" then
+				return value
+			elseif type(value) == "userdata" and typeof(value) ~= "userdata" then
+				-- Lemur implemented userdata, should have its own Clone function
+				local metatable = assert(getmetatable(value), "no metatable on cloning userdata")
+				local cloneImpl = assert(metatable[cloneKey], "no clone implementation for " .. typeof(value))
+				return cloneImpl(value)
+			end
+
+			return value
 		end,
 	}, config)
 end

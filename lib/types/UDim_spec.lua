@@ -56,4 +56,24 @@ describe("types.UDim", function()
 		assert.not_equals(udimA, udimB2)
 		assert.not_equals(udimA, udimB3)
 	end)
+
+	it("should clone", function()
+		local BaseInstance = import("../instances/BaseInstance")
+		local InstanceProperty = import("../InstanceProperty")
+
+		local CreatableClass = BaseInstance:extend("Creatable", {
+			creatable = true,
+		})
+
+		CreatableClass.properties.Value = InstanceProperty.normal({})
+
+		local udim = UDim.new(1, 2)
+
+		local instance = CreatableClass:new()
+		instance.Value = udim
+
+		local clone = instance:Clone()
+		assert.equal(clone.Value, udim)
+		assert.not_equals(getmetatable(udim), getmetatable(clone.Value))
+	end)
 end)

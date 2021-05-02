@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local cloneKey = import("../cloneKey")
 local typeKey = import("../typeKey")
 
 local UDim = {}
@@ -12,6 +13,9 @@ setmetatable(UDim, {
 local prototype = {}
 
 local metatable = {}
+metatable[cloneKey] = function(udim)
+	return UDim.new(udim.Scale, udim.Offset)
+end
 metatable[typeKey] = "UDim"
 
 function metatable:__index(key)

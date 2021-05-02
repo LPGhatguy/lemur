@@ -1,4 +1,5 @@
 local assign = import("../assign")
+local cloneKey = import("../cloneKey")
 local typeKey = import("../typeKey")
 local typeof = import("../functions/typeof")
 
@@ -13,6 +14,9 @@ setmetatable(Vector3, {
 local prototype = {}
 
 local metatable = {}
+metatable[cloneKey] = function(vector3)
+	return Vector3.new(vector3.X, vector3.Y, vector3.Z)
+end
 metatable[typeKey] = "Vector3"
 
 function metatable:__index(key)

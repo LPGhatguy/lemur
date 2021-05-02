@@ -90,6 +90,10 @@ BaseInstance.properties.Parent = InstanceProperty.normal({
 
 		self:_PropagateAncestryChanged(self, value)
 	end,
+
+	clone = function()
+		return nil
+	end,
 })
 
 BaseInstance.prototype = {}
@@ -100,6 +104,29 @@ function BaseInstance.prototype:ClearAllChildren()
 	for child in pairs(children) do
 		child:Destroy()
 	end
+end
+
+function BaseInstance.prototype:Clone()
+	local class = getmetatable(self).class
+	if not class.options.creatable then
+		error(string.format("%s cannot be cloned", class.name))
+	end
+
+	local clone = class:new()
+	local cloneProperties = getmetatable(clone).instance.properties
+	local classProperties = class.properties
+
+	for _, child in pairs(self:GetChildren()) do
+		child:Clone().Parent = clone
+	end
+
+	for propertyName, prototype in pairs(classProperties) do
+		cloneProperties[propertyName] = prototype.clone(self, propertyName)
+	end
+
+	class.postClone(clone, self)
+
+	return clone
 end
 
 function BaseInstance.prototype:FindFirstAncestor(name)
@@ -370,6 +397,9 @@ function BaseInstance:new(...)
 end
 
 function BaseInstance:init(instance, ...)
+end
+
+function BaseInstance:postClone(old)
 end
 
 --[[
