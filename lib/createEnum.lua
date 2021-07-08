@@ -37,6 +37,12 @@ local function createEnum(enumName, variantValues)
 		variants[variantName] = createEnumVariant(enum, variantName, value)
 	end
 
+	local enumItems = {}
+
+	for _, variant in pairs(variants) do
+		enumItems[#enumItems + 1] = variant
+	end
+
 	getmetatable(enum)[typeKey] = "Enum"
 
 	getmetatable(enum).__tostring = function()
@@ -44,6 +50,12 @@ local function createEnum(enumName, variantValues)
 	end
 
 	getmetatable(enum).__index = function(self, key)
+		if key == "GetEnumItems" then
+			return function()
+				return enumItems
+			end
+		end
+
 		local variant = variants[key]
 
 		if variant == nil then

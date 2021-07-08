@@ -40,4 +40,22 @@ describe("createEnumGroup", function()
 			tostring(group.whatever)
 		end)
 	end)
+
+	it("should return enum items with GetEnumItems", function()
+		local values = {
+			Doge = 1,
+			Funny = 2,
+		}
+
+		local Foo = createEnum("Foo", values)
+
+		local enumItems = Foo:GetEnumItems()
+		assert.equal(#enumItems, 2)
+
+		for index=1,2 do
+			local enumItem = enumItems[index]
+
+			assert.not_nil(values[enumItem.Name])
+		end
+	end)
 end)
